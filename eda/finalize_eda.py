@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-OUT = Path(__file__).resolve().parent / "outputs" / "eda_phase1"
+OUT = Path(__file__).resolve().parent.parent / "outputs" / "eda_phase1"
 plt.style.use("seaborn-v0_8-whitegrid")
 
 

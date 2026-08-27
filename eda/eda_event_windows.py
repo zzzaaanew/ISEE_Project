@@ -15,7 +15,7 @@ import pyarrow as pa
 import pyarrow.csv as pacsv
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "outputs" / "eda_phase1" / "xid_event_episodes.csv"
 OUTPUT = ROOT / "outputs" / "eda_event_windows"
 METRICS = {

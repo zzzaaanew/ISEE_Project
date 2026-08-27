@@ -18,7 +18,7 @@ import pyarrow.compute as pc
 import pyarrow.csv as pacsv
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "outputs" / "eda_phase1"
 WIDE_FILES = {
     "dram_active": ROOT / "DRAM_ACTIVE.csv",

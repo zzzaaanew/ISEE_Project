@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "outputs" / "eda_blox_inputs"
 TRACE = ROOT / "trace_seren.csv"
 EPISODES = ROOT / "outputs" / "eda_phase1" / "xid_event_episodes.csv"

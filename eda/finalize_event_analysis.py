@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 
 
-OUT = Path(__file__).resolve().parent / "outputs" / "eda_event_windows"
+OUT = Path(__file__).resolve().parent.parent / "outputs" / "eda_event_windows"
 METRICS = ["dram_active", "fb_used", "gpu_temp", "gpu_util", "power_usage"]
 OFFSETS = np.arange(-60, 60)
 

@@ -16,7 +16,7 @@ import pyarrow.csv as pacsv
 import eda_event_windows as base
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 MATCH_DIR = ROOT / "outputs" / "eda_matched_controls"
 LAG_DIR = ROOT / "outputs" / "eda_xid43_timestamp_lag"
 OUTPUT = ROOT / "outputs" / "eda_extended_metrics"

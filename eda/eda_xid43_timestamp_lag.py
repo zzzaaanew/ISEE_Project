@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 EVENT_DIR = ROOT / "outputs" / "eda_event_windows"
 MATCH_DIR = ROOT / "outputs" / "eda_matched_controls"
 OUTPUT = ROOT / "outputs" / "eda_xid43_timestamp_lag"

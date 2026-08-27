@@ -13,7 +13,7 @@ import pyarrow as pa
 import pyarrow.csv as pacsv
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "outputs" / "eda_xid_observability"
 XID_FILE = ROOT / "XID_ERRORS.csv"
 FAULT_V1 = ROOT / "outputs" / "eda_blox_inputs" / "fault_tape_candidates.csv"

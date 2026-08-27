@@ -18,7 +18,7 @@ from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.metrics import average_precision_score, brier_score_loss, roc_auc_score
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "outputs" / "eda_xid_observability"
 OUTPUT = ROOT / "outputs" / "risk_tape_5m"
 TELEMETRY = {

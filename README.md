@@ -33,32 +33,32 @@ python -m pip install -r requirements.txt
 
 ```bash
 # 1. 기본 데이터 품질 및 XID episode EDA
-python run_eda.py
-python finalize_eda.py
+python eda/run_eda.py
+python eda/finalize_eda.py
 
 # 2. XID 전후 event window
-python run_event_eda_v2.py
-python finalize_event_analysis.py
+python eda/run_event_eda_v2.py
+python eda/finalize_event_analysis.py
 
 # 3. 동일 GPU matched non-event control 비교
-python eda_matched_controls.py
+python eda/eda_matched_controls.py
 
 # 4. XID 43 기록 시각 지연 분석
-python eda_xid43_timestamp_lag.py
+python eda/eda_xid43_timestamp_lag.py
 
 # 5. 메모리 및 노드 전력 보조 분석
-python run_extended_metrics.py
-python postprocess_extended_metrics.py
+python eda/run_extended_metrics.py
+python eda/postprocess_extended_metrics.py
 
 # 6. Blox replay 입력 적합성 EDA
-python eda_blox_inputs.py
+python eda/eda_blox_inputs.py
 
 # 7. XID 결측·관측성 및 Fault Tape 생성
-python run_xid_observability_compact.py --rescan
+python eda/run_xid_observability_compact.py --rescan
 
 # 8. 시간순 OOF Risk Tape 생성
-python build_risk_tape_5m.py
-python finalize_risk_tape_5m.py
+python eda/build_risk_tape_5m.py
+python eda/finalize_risk_tape_5m.py
 ```
 
 ## 핵심 분석 주의사항
