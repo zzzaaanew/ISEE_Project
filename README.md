@@ -250,10 +250,10 @@ python eda/finalize_risk_tape_5m.py
 
 | 성명 / GitHub | 주요 역할 및 연구 기여 내용 |
 | :--- | :--- |
-| **이지한 (Jehan Lee)**<br>[@zzzaaanew](https://github.com/zzzaaanew) | • 프로젝트 총괄 및 End-to-End 시스템 아키텍처 설계<br>• Multi-Branch Risk Ranking 엔진 & ADST 동적 학습 파이프라인 구현<br>• 3-Tape Counterfactual Replay 통합 및 비교 실험 검증 |
+| **지한유 (Hanyu Jee)** <br>[@zzzaaanew](https://github.com/zzzaaanew) | • 프로젝트 총괄 및 End-to-End 시스템 아키텍처 설계<br>• Multi-Branch Risk Ranking 엔진 & ADST 동적 학습 파이프라인 구현<br>• 3-Tape Counterfactual Replay 통합 및 비교 실험 검증 |
 | **김준호 (Junho Kim)** | • Blox 시뮬레이터 연계 및 2단계 의사결정 최적화 모델 수식화<br>• 자원제약 예방정비(PM) 상한($K$) 및 수리적 배치 최적화(Optimization Engine) 구현<br>• 스케줄링 운영 성과 지표(Lost GPU-Hours, JCT) 분석 |
-| **정다나 (Dana Jeong)**<br>[@imdanna](https://github.com/imdanna) | • AcmeTrace 실측 텔레메트리 품질 점검 및 XID 에피소드 EDA 파이프라인 구축<br>• XID 43 로깅 지연(Logging Delay) 규명 및 Data Leakage 방지 버퍼 마스킹 설계<br>• Observability Guard 및 5분 단위 OOF Risk/Fault Tape 생성 파이프라인 개발 |
-
+| **정다나 (Dana Jeong)** <br>[@imdanna](https://github.com/imdanna) | • AcmeTrace 실측 텔레메트리 품질 점검 및 XID 에피소드 EDA 파이프라인 구축<br>• XID 43 로깅 지연(Logging Delay) 규명 및 Data Leakage 방지 버퍼 마스킹 설계<br>• Observability Guard 및 5분 단위 OOF Risk/Fault Tape 생성 파이프라인 개발 | -- (2026.08.27 이후 연구 참여 중단)
+| **정태호 (Taeho Jeong)** | • Purdue University Ph.D 연구 지도 박사님 
 ---
 
 ## 📜 9. 주요 기여점 (Key Contributions)
