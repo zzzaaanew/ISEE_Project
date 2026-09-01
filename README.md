@@ -4,6 +4,8 @@
 > **Target Conference**: IISE (Institute of Industrial and Systems Engineers) Annual Conference  
 > **Core Datasets**: [AcmeTrace Hugging Face Dataset](https://huggingface.co/datasets/Qinghao/AcmeTrace), [InternLM/AcmeTrace](https://github.com/InternLM/AcmeTrace)
 
+> **2026-09-02 미팅 자료**: 현재까지 검증된 결과, 성능 병목의 원인, 다음 실험 제안은 [MEETING_BRIEF_2026-09-02.md](MEETING_BRIEF_2026-09-02.md)를 기준으로 봐주세요. 아래 README에는 초기 구상과 향후 설계도 함께 포함되어 있습니다.
+
 ---
 
 ## 📌 1. 프로젝트 개요 및 연구 배경 (Overview & Background)
