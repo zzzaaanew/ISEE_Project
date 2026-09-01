@@ -180,8 +180,18 @@ $$\min \sum_{j} \sum_{i} x_{ij}(t) \cdot h_j^{rem} \cdot \text{Risk}_i(t) + \alp
 ```text
 ISEE_Project/
 ├── README.md                           # 전체 ISEE 연구 프로젝트 개요 및 파이프라인 문서
-├── requirements.txt                    # 프로젝트 의존성 패키지 목록
+├── requirements.txt                    # 프로젝트 의존성 패키지 목록 (scikit-learn, torch 등)
 ├── .gitignore                          # 대용량 CSV, 파켓, 가상환경 등 제외 설정
+│
+├── ML/                                 # Machine Learning & Deep Learning 파이프라인 모듈
+│   ├── run_branch1.py                  # [단일 자립형 파이프라인] 2D Grid 캐시, 4-Fold OOF 학습 및 Blox Risk Tape 생성
+│   ├── run_model_comparison.py         # [트리/선형 6종 벤치마크] HistGBDT, RandomForest, ExtraTrees, MLP, AdaBoost 등
+│   ├── run_dl_comparison.py            # [시계열 딥러닝 4종 벤치마크] Tiny-TCN, 1D-CNN, LSTM, GRU
+│   └── reports/                        # 10개 모델 종합 성능 리더보드 및 시각화 차트 산출물
+│       ├── all_models_comparison_report.md
+│       ├── all_models_comparison_charts.png
+│       ├── branch1_report.md
+│       └── branch1_performance.png
 │
 ├── eda/                                # AcmeTrace XID 탐색적 데이터 분석 (EDA) 모듈
 │   ├── README.md                       # EDA 상세 실행 매뉴얼
@@ -229,6 +239,18 @@ pip install -r requirements.txt
 [AcmeTrace Hugging Face](https://huggingface.co/datasets/Qinghao/AcmeTrace)에서 아래 데이터 파일을 내려받아 프로젝트 루트 디렉토리에 배치합니다.
 - `DRAM_ACTIVE.csv`, `FB_USED.csv`, `GPU_TEMP.csv`, `GPU_UTIL.csv`, `POWER_USAGE.csv`
 - `XID_ERRORS.csv`, `trace_seren.csv`, `MEMORY_TEMP.csv`, `MEM_CLOCK.csv`, `GPU_AB_Power.csv`, `GPU_C_Power.csv`
+
+### ML 모델 실행 및 벤치마크
+```bash
+# 1. Branch 1 단일 파이프라인 실행 (4-Fold OOF 학습 & Blox용 Risk Tape 생성)
+python ML/run_branch1.py
+
+# 2. 트리 및 선형 6종 모델 비교 벤치마크
+python ML/run_model_comparison.py
+
+# 3. TCN / 1D-CNN / LSTM / GRU 시계열 딥러닝 4종 벤치마크 및 10개 모델 통합 리포트
+python ML/run_dl_comparison.py
+```
 
 ### EDA 및 Risk Tape 생성 실행
 ```bash
