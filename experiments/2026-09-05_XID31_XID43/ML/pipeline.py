@@ -3,11 +3,13 @@
 This is the only executable ML file for the current experiment contract. It
 reconstructs the target from the original 15-second Seren XID file, reads the
 provided 5-minute Parquets, recomputes 5-minute standard deviations from the
-15-second source, evaluates a single binary target (XID 31 OR XID 43 within
-24 hours), and writes exactly three Excel workbooks.
+15-second source, evaluates one configurable binary target mode (XID 31 OR
+XID 43, XID 31 only, or XID 43 only within 24 hours), and writes exactly three
+Excel workbooks.
 
 Calibration, multitask heads, GPU topology, Blox replay, and separate result
-files are intentionally outside this run. Intermediate arrays stay in memory;
+files are intentionally outside this run. Set XID_TARGET_MODE to union_31_43,
+xid31, or xid43 for separate target runs. Intermediate arrays stay in memory;
 only the three requested Excel workbooks are persistent outputs.
 """
 
@@ -62,6 +64,15 @@ VALIDATION_DECISION_TIMES = 240
 TEST_STRIDE_BINS = 6
 SEED = 20260905
 KST = timezone(timedelta(hours=8))
+TARGET_MODES: dict[str, tuple[int, ...]] = {
+    "union_31_43": (31, 43),
+    "xid31": (31,),
+    "xid43": (43,),
+}
+TARGET_MODE = os.environ.get("XID_TARGET_MODE", "union_31_43").strip().lower()
+if TARGET_MODE not in TARGET_MODES:
+    raise ValueError(f"Unsupported XID_TARGET_MODE={TARGET_MODE!r}; use union_31_43, xid31, or xid43.")
+TARGET_CODES = TARGET_MODES[TARGET_MODE]
 
 METRIC_ORDER = ("util", "temp", "power", "fb")
 TELEMETRY_FILES = {
@@ -129,7 +140,7 @@ def read_gpu_ids(xid_path: Path) -> list[str]:
     return header[1:]
 
 
-def reconstruct_target_episodes(xid_path: Path, gpu_ids: list[str]) -> tuple[pd.DataFrame, dict[str, Any]]:
+def reconstruct_target_episodes(xid_path: Path, gpu_ids: list[str], target_codes: tuple[int, ...]) -> tuple[pd.DataFrame, dict[str, Any]]:
     """Stream raw XID and reconstruct target episodes with an audit trail."""
     n_gpu = len(gpu_ids)
     active_code = np.full(n_gpu, -1, dtype=np.int32)
@@ -155,7 +166,7 @@ def reconstruct_target_episodes(xid_path: Path, gpu_ids: list[str]) -> tuple[pd.
     def close(indices: np.ndarray, reason: str) -> None:
         for gpu_index in indices.tolist():
             code = int(active_code[gpu_index])
-            if code in (31, 43):
+            if code in target_codes:
                 episodes.append(
                     {
                         "gpu_id": gpu_ids[gpu_index],
@@ -224,7 +235,7 @@ def reconstruct_target_episodes(xid_path: Path, gpu_ids: list[str]) -> tuple[pd.
         close(remaining, "end_of_file")
     ledger = pd.DataFrame(episodes)
     if ledger.empty:
-        raise ValueError("No XID 31/43 episodes were reconstructed from raw Seren.")
+        raise ValueError(f"No target episodes were reconstructed for XID codes {target_codes} from raw Seren.")
     ledger = ledger.sort_values(["gpu_index", "onset_ns"]).reset_index(drop=True)
     audit["episode_count"] = int(len(ledger))
     audit["certain_episode_count"] = int((~ledger["uncertain_onset"]).sum())
@@ -816,11 +827,12 @@ def main() -> None:
     if missing:
         raise FileNotFoundError("Required inputs are missing: " + ", ".join(missing))
 
-    print("[1/8] Reconstructing XID 31/43 episodes from raw Seren...", flush=True)
+    print(f"[1/8] Reconstructing target episodes for {TARGET_MODE} from raw Seren...", flush=True)
     gpu_ids = read_gpu_ids(xid_path)
-    ledger, audit = reconstruct_target_episodes(xid_path, gpu_ids)
-    audit["target_definition"] = "single binary: future XID 31 OR XID 43 onset within 24 hours"
-    audit["target_codes"] = "31,43"
+    ledger, audit = reconstruct_target_episodes(xid_path, gpu_ids, TARGET_CODES)
+    target_text = " OR ".join(f"XID {code}" for code in TARGET_CODES)
+    audit["target_definition"] = f"single binary: future {target_text} onset within 24 hours"
+    audit["target_codes"] = ",".join(str(code) for code in TARGET_CODES)
     audit["gpu_count"] = len(gpu_ids)
     print(f"  target episodes={len(ledger):,}, certain={audit['certain_episode_count']:,}, uncertain={audit['uncertain_episode_count']:,}", flush=True)
 
@@ -902,10 +914,10 @@ def main() -> None:
     b2_fold = fold_rows(labels_test, eligible_test, context_scores, fold_metric_times, "test_temporal")
     b3_fold = fold_rows(labels_test, eligible_test, obs_scores, fold_metric_times, "test_temporal")
 
-    event_summary = [{"xid_code": int(code), "episodes": int((ledger["xid_code"] == code).sum()), "certain_episodes": int(((ledger["xid_code"] == code) & (~ledger["uncertain_onset"])).sum()), "uncertain_episodes": int(((ledger["xid_code"] == code) & ledger["uncertain_onset"]).sum())} for code in (31, 43)]
+    event_summary = [{"xid_code": int(code), "episodes": int((ledger["xid_code"] == code).sum()), "certain_episodes": int(((ledger["xid_code"] == code) & (~ledger["uncertain_onset"])).sum()), "uncertain_episodes": int(((ledger["xid_code"] == code) & ledger["uncertain_onset"]).sum())} for code in TARGET_CODES]
     split_summary = [{"split": name, "available_grid_points": int(len(values)), "start": utc_text(int(grid[values.min()] + STEP_NS)), "end": utc_text(int(grid[values.max()] + STEP_NS)), "purge_between_splits": "36 hours"} for name, values in splits.items()]
     config = {
-        "target": "single binary XID31_OR_XID43",
+        "target": f"single binary {TARGET_MODE} ({'/'.join(f'XID{code}' for code in TARGET_CODES)})",
         "horizon": "24 hours",
         "input_window": "1 hour = 12 x 5-minute buckets",
         "feature_cutoff": "last 10 minutes excluded; history buckets decision-65m through decision-10m",
@@ -917,7 +929,7 @@ def main() -> None:
         "branch_2_models": "historical logistic and historical GBDT using XID history + context",
         "branch_3_model": "Isolation Forest on observability/missingness only",
         "calibration": "not run by user decision",
-        "multitask": "not run; one union target only",
+        "multitask": "not run; one target mode per execution",
         "gpu_topology": "excluded; unavailable",
         "random_seed": SEED,
         "persistent_outputs": "exactly three Excel workbooks; no CSV/Parquet/JSON/plot outputs",
