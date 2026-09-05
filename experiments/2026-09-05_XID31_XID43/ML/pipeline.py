@@ -42,11 +42,12 @@ except Exception as exc:  # pragma: no cover - reported clearly at runtime
     TORCH_IMPORT_ERROR = exc
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+EXPERIMENT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = EXPERIMENT_ROOT.parents[1]
 RESEARCH_ROOT = PROJECT_ROOT.parent
-LOCAL_DATA_ROOT = PROJECT_ROOT / "DATA"
+LOCAL_DATA_ROOT = EXPERIMENT_ROOT / "DATA"
 EXTERNAL_DATA_ROOT = RESEARCH_ROOT / "DATA"
-RESULT_ROOT = PROJECT_ROOT / "결과 산출"
+RESULT_ROOT = EXPERIMENT_ROOT / "결과 산출"
 
 STEP_NS = 5 * 60 * 1_000_000_000
 MERGE_NS = 30 * 1_000_000_000
