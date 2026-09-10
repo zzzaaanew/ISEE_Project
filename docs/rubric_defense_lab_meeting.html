@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[랩미팅 보고서] GPU 고장 예측 & ADST 방법론 루브릭 및 선행연구 분석</title>
+  
+  <!-- Fonts & KaTeX for Math Rendering -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #dbeafe;
+      --secondary: #0f172a;
+      --accent: #059669;
+      --accent-light: #d1fae5;
+      --warning: #d97706;
+      --warning-light: #fef3c7;
+      --danger: #dc2626;
+      --danger-light: #fee2e2;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-focus: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    /* Header Section */
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 48px 40px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.2);
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid rgba(147, 197, 253, 0.3);
+      color: #93c5fd;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    header p.subtitle {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      max-width: 860px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+
+    .meta-item span.label {
+      color: #94a3b8;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .meta-item span.value {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 36px 36px;
+      margin-bottom: 36px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .section-num {
+      background: var(--primary);
+      color: white;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--secondary);
+      letter-spacing: -0.3px;
+    }
+
+    /* Paper Cards */
+    .paper-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .paper-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .paper-box {
+      border: 1px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 24px;
+      background: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .paper-box.paper-1 {
+      border-top: 4px solid var(--primary);
+    }
+
+    .paper-box.paper-2 {
+      border-top: 4px solid var(--accent);
+    }
+
+    .paper-venue {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .paper-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--secondary);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .paper-authors {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-bottom: 16px;
+    }
+
+    .paper-summary {
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 0.92rem;
+      color: #334155;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .paper-application {
+      background: #eff6ff;
+      border-left: 3px solid var(--primary);
+      border-radius: 0 10px 10px 0;
+      padding: 14px;
+      font-size: 0.92rem;
+      color: #1e3a8a;
+    }
+
+    .paper-application.green-box {
+      background: #ecfdf5;
+      border-left: 3px solid var(--accent);
+      color: #064e3b;
+    }
+
+    .paper-application h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Rubric Item Card */
+    .rubric-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .rubric-card:hover {
+      border-color: var(--border-focus);
+      box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .rubric-header {
+      background: #f8fafc;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rubric-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: #e2e8f0;
+      color: #475569;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .rubric-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    .rubric-content {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .rubric-block {
+      background: #ffffff;
+    }
+
+    .rubric-block h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rubric-block p, .rubric-block ul {
+      font-size: 0.93rem;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .rubric-block ul {
+      padding-left: 20px;
+    }
+
+    .rubric-block li {
+      margin-bottom: 6px;
+    }
+
+    .highlight-badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Timeline Box for ADST */
+    .timeline-container {
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 20px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      overflow-x: auto;
+    }
+
+    .timeline-title {
+      color: #38bdf8;
+      font-weight: 700;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Callout Boxes */
+    .callout {
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .callout-info {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+    }
+
+    .callout-warning {
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      color: #854d0e;
+    }
+
+    .callout-success {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+    }
+
+    .callout-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .callout-text h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .callout-text p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Table Styles */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+
+    table.data-table th, table.data-table td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.data-table th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    table.data-table tr:hover {
+      background: #f1f5f9;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="header-badge">IISE 2026 Annual Conference Research Memo</div>
+    <h1>GPU Failure Prediction & ADST Methodology Rubric</h1>
+    <p class="subtitle">
+      데이터센터 텔레메트리 기반 무누출(Leakage-Free) 시계열 데이터 프로세싱, 
+      비동차 포아송 과정(NHPP) 기반 동적 슬라이딩 학습(ADST), 그리고 산업공학적 의사결정 평가 루브릭 종합 보고서
+    </p>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="label">Author / Researcher</span>
+        <span class="value">지한유 (Hanyu Jee)</span>
+      </div>
+      <div class="meta-item">
+        <span class="label">Research Advisor</span>
+        <span class="value">정태호 박사님 (Purdue Univ. Ph.D)</span>
+      </div>
+      <div class="meta-item">
+        <span class="label">Target Conference</span>
+        <span class="value">IISE Annual Conference 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="label">Primary Focus</span>
+        <span class="value">Data Pipeline & Reliability Rubric</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 1: Research Philosophy -->
+  <section class="section-card">
+    <div class="section-header">
+      <div class="section-num">0</div>
+      <div class="section-title">연구 철학: 왜 "모델 구조"보다 "데이터 엔지니어링 & ADST"가 핵심인가?</div>
+    </div>
+
+    <p style="font-size: 1rem; color: #334155; margin-bottom: 16px;">
+      대규모 분산 GPU 클러스터(LLM 학습 환경)에서 머신러닝 모델의 복잡성은 부차적인 요소입니다. 
+      실제 데이터센터 실측 데이터(AcmeTrace)는 <strong>로깅 지연(Logging Delay), 센서 결측, 극단적 불균형(양성률 &lt; 1%)</strong>이라는 
+      거대한 노이즈를 내포하고 있습니다.
+    </p>
+
+    <div class="callout callout-warning">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-text">
+        <h4>학술 심사위원(Reviewer)이 가장 먼저 검증하는 실패 요인</h4>
+        <p>
+          고장 직전 10분의 사후 셧다운 신호(사용률 급락)를 보거나, 무작위 K-Fold로 미래 데이터를 과거 학습에 섞으면 
+          아무리 뛰어난 딥러닝 모델도 <strong>"가짜 상관관계(Spurious Correlation)"</strong>를 학습하여 실전에서 완전히 붕괴하며, 논문 심사에서 100% 리젝됩니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="callout callout-success">
+      <div class="callout-icon">🎯</div>
+      <div class="callout-text">
+        <h4>본 연구의 진정한 학술적 기여 (Core Contribution)</h4>
+        <p>
+          1) 실제 하드웨어 제약과 로깅 결함을 입증하고 <strong>10분 무누출 버퍼(Leakage-Free Isolation)</strong>를 수립한 점,<br>
+          2) 하드웨어 노화와 워크로드 변화에 적응하는 <strong>비동차 포아송 과정 기반 동적 슬라이딩 학습(ADST)</strong>을 설계한 점,<br>
+          3) Blox 스케줄러의 정비 예산 제약($K$) 하에서 <strong>실제 작업 손실(Lost GPU-Hours)을 최소화하는 랭킹 신뢰성</strong>을 확보한 점이 핵심입니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Prior Literature Deep-Dive -->
+  <section class="section-card">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">핵심 선행연구 분석 및 본 연구 매핑 (Prior Literature Grounding)</div>
+    </div>
+
+    <p style="font-size: 0.95rem; color: #475569;">
+      지도 박사님께 보고드리고 논문 <em>Related Work</em> 및 <em>Methodology</em> 섹션에 직접 배치할 정통 시스템 신뢰성 공학 선행연구 2편입니다.
+    </p>
+
+    <div class="paper-grid">
+      <!-- Paper 1: Schroeder & Gibson -->
+      <div class="paper-box paper-1">
+        <div class="paper-venue">FAST '06 / IEEE TDSC '10 (인용 2,000+회)</div>
+        <div class="paper-title">A large-scale study of failures in high-performance computing systems</div>
+        <div class="paper-authors">Bianca Schroeder & Garth A. Gibson (Carnegie Mellon Univ.)</div>
+        
+        <div class="paper-summary">
+          <strong>핵심 연구 요약:</strong><br>
+          대규모 HPC 시스템 수만 대의 장기 고장 데이터를 전수 분석하여, 고장 발생 간격이 단순 포아송(Homogeneous Poisson)의 지수분포를 따르지 않음을 규명. 
+          하드웨어 노화와 열적 환경 변화에 따라 고장 강도 $\lambda(t)$가 시시각각 변화하는 <strong>비동차 포아송 과정(NHPP) 및 와이블/감마 확률과정</strong>을 실증함.
+        </div>
+
+        <div class="paper-application">
+          <h4>💡 본 논문 적용점 (Application)</h4>
+          고장 강도 $\lambda(t)$가 시간에 따라 변하는 NHPP의 수학적 특성을 수용하여, 
+          <strong>"고정된 과거 전체를 학습하는 정적 모델이 아닌, 최신 열화 트렌드에 적응하는 3일 주기 가변 슬라이딩 윈도우(ADST)를 채택해야 하는 이론적 정당성"</strong>을 제공합니다.
+        </div>
+      </div>
+
+      <!-- Paper 2: Guan et al. -->
+      <div class="paper-box paper-2">
+        <div class="paper-venue">IEEE TPDS '13 / DSN</div>
+        <div class="paper-title">Failure Prediction in HPC Systems and Proactive Fault Tolerance</div>
+        <div class="paper-authors">Guan, Fu, Zheng, & Desell</div>
+        
+        <div class="paper-summary">
+          <strong>핵심 연구 요약:</strong><br>
+          고장을 초 단위로 맞히는 '점 예측'의 비현실성을 수학적으로 지적하고, 사전 대응 스케줄링을 위해 고장 예측 문제를 
+          <strong>선행 경고 시간(Lead Time, $\Delta t_{lead}$)</strong>과 <strong>예측 관측 창(Prediction Horizon, $\Delta t_{horizon}$)</strong>으로 분리하여 정식화함.
+        </div>
+
+        <div class="paper-application green-box">
+          <h4>💡 본 논문 적용점 (Application)</h4>
+          우리가 설계한 <strong>10분 사전 버퍼 마스킹</strong>이 선행연구의 $\Delta t_{lead} \ge 10\text{min}$ (체크포인트 저장 및 작업 마이그레이션 골든타임 확보)에 정확히 대응하며, 
+          <strong>24시간 타깃 구간</strong>이 $\Delta t_{horizon} = 24\text{h}$ (누적 위험 강도 확보 및 일일 정비 교대 주기)에 1:1 대응함을 증명합니다.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: The 7 Rubrics -->
+  <section class="section-card">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">7대 방법론 세부 평가 루브릭 (Methodology Rubric Breakdown)</div>
+    </div>
+
+    <!-- Rubric 1 -->
+    <div class="rubric-card">
+      <div class="rubric-header">
+        <div class="rubric-name">루브릭 1. 원시 텔레메트리 전처리 및 공간 편차 추출</div>
+        <div class="rubric-tag">Data Preprocessing</div>
+      </div>
+      <div class="rubric-content">
+        <div class="rubric-block">
+          <h4>📌 구현 세부사항 (Implementation)</h4>
+          <ul>
+            <li>15초 단위 원시 텔레메트리(Util, Temp, Power, FB)를 <strong>5분 단위로 리샘플링</strong>하여 평균, 표준편차, 최댓값, 델타($\Delta_{5m}$) 산출.</li>
+            <li>`DRAM_ACTIVE` 등 미수집 센서는 임의 대치(Imputation)하지 않고 <strong>Missing Mask 지시자</strong> 유지.</li>
+            <li>동일 8-GPU 노드 내 다른 7개 GPU 평균과의 상대 편차인 <span class="highlight-badge">diff_node</span> 피처 계산.</li>
+          </ul>
+        </div>
+        <div class="rubric-block">
+          <h4>🛡️ 학술적 디펜스 논리 (Defense Justification)</h4>
+          <ul>
+            <li><strong>노이즈 억제 & 의사결정 주기 일치</strong>: 15초 원시 데이터의 센서 진동을 완화하고, Blox 스케줄러의 의사결정 에포크(5분)와 시간 해상도를 1:1로 일치시킴.</li>
+            <li><strong>상대적 이상(Relative Anomaly) 포착</strong>: 동일 Gang-job을 수행 중인 서버 내에서 특정 GPU 혼자 쿨링 효율이 저하되거나 전력이 튀는 물리적 결함을 정밀 분리.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rubric 2 -->
+    <div class="rubric-card">
+      <div class="rubric-header">
+        <div class="rubric-name">루브릭 2. 고장 에피소드 Onset 클러스터링 및 타깃 정의</div>
+        <div class="rubric-tag">Target Formulation</div>
+      </div>
+      <div class="rubric-content">
+        <div class="rubric-block">
+          <h4>📌 구현 세부사항 (Implementation)</h4>
+          <ul>
+            <li>동일 GPU에서 30초 이내 연속 발생한 XID 에러를 <strong>단일 에피소드로 병합</strong>하고 <strong>최초 발생 시각($t_{onset}$)</strong>만 추출.</li>
+            <li>원시 로그 845만 행에서 총 <strong>2,408건의 Onset</strong>(XID 43: 1,624건, XID 31: 784건) 도출.</li>
+            <li>타깃 라벨: 시점 $t$ 기준 <strong>향후 24시간 내 Onset 발생 여부 ($y \in \{0, 1\}$)</strong>.</li>
+          </ul>
+        </div>
+        <div class="rubric-block">
+          <h4>🛡️ 학술적 디펜스 논리 (Defense Justification)</h4>
+          <ul>
+            <li><strong>중복 왜곡 차단</strong>: 15초마다 연속 찍히는 수만 건의 중복 에러에 모델 가중치가 편향되는 문제를 원천 차단.</li>
+            <li><strong>비동차 포아송 과정(NHPP) 정합성</strong>: 단일 시점 발생 확률($P=0$)의 수학적 모순을 피하고, 24시간 누적 위험 강도($\Lambda$)를 추정하여 통계적 학습 확률 질량(양성률 1.15%) 확보.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rubric 3 -->
+    <div class="rubric-card">
+      <div class="rubric-header">
+        <div class="rubric-name">루브릭 3. 무누출 시계열 마스킹 및 리드타임 보장</div>
+        <div class="rubric-tag">Leakage-Free Masking</div>
+      </div>
+      <div class="rubric-content">
+        <div class="rubric-block">
+          <h4>📌 구현 세부사항 (Implementation)</h4>
+          <ul>
+            <li>예측 시점 $t$ 직전 10분 구간 <span class="highlight-badge">[t-10min, t]</span> (Lag 1, 2) 완전 차단.</li>
+            <li>오직 정상 동작 구간 <span class="highlight-badge">[t-40min, t-10min]</span> (Lag 3~8, 30분간 6스텝) 텔레메트리만 피처로 추출.</li>
+          </ul>
+        </div>
+        <div class="rubric-block">
+          <h4>🛡️ 학술적 디펜스 논리 (Defense Justification)</h4>
+          <ul>
+            <li><strong>로깅 지연(Logging Delay) 누출 차단</strong>: XID 43 직전 10분은 이미 GPU 연산이 중단되어 사용률 0%로 떨어진 '사후 결과'임. 이를 가리지 않으면 모델이 고장 전조가 아닌 '사망 확인'을 학습함.</li>
+            <li><strong>물리적 골든타임(Lead Time) 보장</strong>: 고장 최소 10분 전에 알람을 발생시켜, LLM 작업의 메모리 체크포인트 저장(5~10분)과 마이그레이션을 안전하게 수행할 수 있는 실무적 대응 시간을 확보.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rubric 4 -->
+    <div class="rubric-card">
+      <div class="rubric-header">
+        <div class="rubric-name">루브릭 4. 시계열 분할 및 ADST(적응형 동적 슬라이딩 학습)</div>
+        <div class="rubric-tag">Temporal ADST Partitioning</div>
+      </div>
+      <div class="rubric-content">
+        <div class="rubric-block">
+          <h4>📌 구현 세부사항 (Implementation)</h4>
+          <ul>
+            <li>초기 30일(05/16~06/15)은 평가 제외, 과거 고장 이력 축적용 <strong>웜업 구간</strong>으로 설정.</li>
+            <li>시간 순차 분할: <strong>Walk-Forward Rolling 검증</strong> (미래 데이터를 과거에 절대 섞지 않음).</li>
+            <li>3일 주기 재학습 루프: $L_{train} \in \{7, 14, 30\}$일 후보 중 직전 3일 검증 성적(Recall@K)이 가장 우수한 최적 윈도우 동적 선택.</li>
+          </ul>
+        </div>
+        <div class="rubric-block">
+          <h4>🛡️ 학술적 디펜스 논리 (Defense Justification)</h4>
+          <ul>
+            <li><strong>시간 역전 누출(Look-ahead Bias) 제로</strong>: 무작위 K-Fold의 오류를 배제하고 실전 배포 환경 재현.</li>
+            <li><strong>Concept Drift 대응</strong>: 너무 오래된 과거 데이터에 모델이 둔감해지는 것을 방지하고, 최근 며칠간 발생한 최신 열화 트렌드에 모델이 능동적으로 적응.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADST Timeline Diagram Box -->
+    <div class="timeline-container">
+      <div class="timeline-title">
+        <span>🔄 Walk-Forward Rolling ADST 검증 구조 (Train vs Test 완전 격리)</span>
+      </div>
+      <div>
+[Cycle 1: 07/01 배포] ── Train: 과거 [07/01 - L_train, 07/01] ──> [Test: 07/01 ~ 07/04 (미지의 3일간 모델 동결 평가)]
+                                                                           │
+[Cycle 2: 07/04 배포] ── Train: 과거 [07/04 - L_train, 07/04] ──> [Test: 07/04 ~ 07/07 (미지의 3일간 모델 동결 평가)]
+                                                                           │
+[Cycle 3: 07/07 배포] ── Train: 과거 [07/07 - L_train, 07/07] ──> [Test: 07/07 ~ 07/10 (미지의 3일간 모델 동결 평가)]
+      </div>
+      <p style="margin-top: 10px; font-size: 0.82rem; color: #94a3b8;">
+        * 배포 시점 이후 3일간의 Test 데이터는 학습에 1%도 쓰이지 않는 순수 Out-of-Fold(OOF) 성적표입니다.
+      </p>
+    </div>
+
+    <!-- Rubric 5 -->
+    <div class="rubric-card">
+      <div class="rubric-header">
+        <div class="rubric-name">루브릭 5. 극단 불균형 다운샘플링 및 Bayes Odds 사전확률 보정</div>
+        <div class="rubric-tag">Imbalance & Calibration</div>
+      </div>
+      <div class="rubric-content">
+        <div class="rubric-block">
+          <h4>📌 구현 세부사항 (Implementation)</h4>
+          <ul>
+            <li><strong>Train 단계</strong>: Positive 전수 + Negative 15:1 다운샘플링 (결정 경계 형성 유도).</li>
+            <li><strong>Test/Val 단계</strong>: 샘플링 없이 <strong>실제 1,992대 GPU 매 5분 전수 평가 (Full-Grid, 총 3,671만 결정)</strong>.</li>
+            <li><strong>확률 복원</strong>: Bayes Odds Ratio 공식을 적용하여 왜곡된 확률값을 실제 클러스터 양성률로 단조 하향 보정.</li>
+          </ul>
+        </div>
+        <div class="rubric-block">
+          <h4>🛡️ 학술적 디펜스 논리 (Defense Justification)</h4>
+          <ul>
+            <li><strong>수학적 확률 보정 공식</strong>:<br>
+              $$\text{Odds Ratio} = \frac{\pi_{\text{true}} / (1 - \pi_{\text{true}})}{\pi_{\text{sample}} / (1 - \pi_{\text{sample}})}$$
+              $$P_{\text{calib}} = \frac{P_{\text{raw}} \cdot \text{Odds Ratio}}{1 - P_{\text{raw}} + P_{\text{raw}} \cdot \text{Odds Ratio}}$$
+            </li>
+            <li>다운샘플링으로 인해 인위적으로 부풀려진 고장 확률을 실전 확률로 정밀 교정하여, Blox 스케줄러의 배치 최적화 목적함수에서 신뢰할 수 있는 실수 비용으로 활용.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rubric 6 -->
+    <div class="rubric-card">
+      <div class="rubric-header">
+        <div class="rubric-name">루브릭 6. 다중 브랜치 융합 아키텍처 (Multi-Branch Fusion)</div>
+        <div class="rubric-tag">Architecture Fusion</div>
+      </div>
+      <div class="rubric-content">
+        <div class="rubric-block">
+          <h4>📌 3대 독립 Branch 구성 (Tri-Branch)</h4>
+          <ul>
+            <li><strong>Branch 1 (시계열 동역학)</strong>: 1D-CNN / Tiny-TCN $\rightarrow$ 4채널 30분 텔레메트리 물리 스파이크 감지.</li>
+            <li><strong>Branch 2 (누적 이력 & 부하)</strong>: LightGBM / GBDT $\rightarrow$ 과거 30일 XID 빈도, 시스템 총 전력, 큐 부하 반영.</li>
+            <li><strong>Branch 3 (관측성 가드)</strong>: Rule-based & Missing Guard $\rightarrow$ 센서 결측, Scrape 지연 GPU에 안전 점수를 주는 오류 방어.</li>
+          </ul>
+        </div>
+        <div class="rubric-block">
+          <h4>🛡️ 학술적 디펜스 논리 (Defense Justification)</h4>
+          <ul>
+            <li><strong>단일 모델의 사각지대 극복</strong>: 텔레메트리만으로는 전조 증상이 미약한 XID 31(메모리 폴트)을 다 잡을 수 없으며, 이력 피처와 결측 가드가 상호보완적으로 결합되어야만 전체 고장 포착률이 극대화됨.</li>
+            <li>독립 캘리브레이션 후 가중치 결합: $\text{Risk}_i(t) = w_1 \hat{p}_1 + w_2 \hat{p}_2 + w_3 \hat{p}_3$.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rubric 7 -->
+    <div class="rubric-card">
+      <div class="rubric-header">
+        <div class="rubric-name">루브릭 7. 산업공학 및 운영 중심 다계층 평가 지표</div>
+        <div class="rubric-tag">Decision-Oriented Evaluation</div>
+      </div>
+      <div class="rubric-content">
+        <div class="rubric-block">
+          <h4>📌 계층별 평가 지표 체계 (Hierarchical Metrics)</h4>
+          <table class="data-table">
+            <tr>
+              <th>지표군</th>
+              <th>평가 지표</th>
+              <th>목적 및 측정 대상</th>
+            </tr>
+            <tr>
+              <td><strong>전체 판별력</strong></td>
+              <td>ROC-AUC</td>
+              <td>학계 표준 비교용 (무작위 0.50 대비 유의미한 물리 신호 검증, 0.61~0.70 달성)</td>
+            </tr>
+            <tr>
+              <td><strong>불균형 정밀도</strong></td>
+              <td>PR-AUC (AP)</td>
+              <td>정상 데이터(TN)에 희석되지 않는 순수 고장 알람 정밀도 측정</td>
+            </tr>
+            <tr>
+              <td><strong>스케줄러 랭킹</strong></td>
+              <td>Recall@100, Lift@100</td>
+              <td>상위 5% GPU 지정 시 실제 고장의 몇 %를 잡아내는가? <strong>(무작위 대비 3.33배 농축도 입증)</strong></td>
+            </tr>
+            <tr>
+              <td><strong>최종 운영 성과</strong></td>
+              <td>Lost GPU-Hours, JCT</td>
+              <td>Blox 시뮬레이션에서 사전 예방정비로 절감된 실제 연산 손실 시간(Hours)</td>
+            </tr>
+          </table>
+        </div>
+        <div class="rubric-block">
+          <h4>🛡️ 학술적 디펜스 논리 (Defense Justification)</h4>
+          <ul>
+            <li>실제 스케줄러 운영자는 클러스터 전체의 0/1 맞히기가 아니라 <strong>"한정된 정비 예산 $K$대 안에서 고장 장비를 얼마나 많이 선별해내는가"</strong>가 승부처임.</li>
+            <li>따라서 <strong>Top-K Recall 및 Lift</strong>와 <strong>Lost GPU-Hours 절감률</strong>이 본 산업공학 논문의 최종 승부처 지표가 됨.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Meeting Briefing Script -->
+  <section class="section-card">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">지도 박사님 미팅 시 핵심 1분 브리핑 가이드 (Executive Briefing Script)</div>
+    </div>
+
+    <div style="background: #f8fafc; border-left: 4px solid var(--primary); padding: 24px; border-radius: 0 12px 12px 0; font-size: 1rem; color: #1e293b; line-height: 1.8;">
+      <p style="margin-bottom: 14px;">
+        <em>"박사님, 본 연구의 핵심은 머신러닝 모델의 단순 비교가 아니라, 
+        <strong>Schroeder & Gibson(FAST)과 Guan et al.(IEEE TPDS)의 정통 신뢰성 공학 이론에 기반한 데이터 엔지니어링 및 ADST 프로세싱</strong>에 있습니다."</em>
+      </p>
+      <p style="margin-bottom: 14px;">
+        <em>"첫째, 고장 사건은 연속 시간 점 과정이므로 점 예측이 불가능하여 <strong>24시간 누적 고장 강도(Integrated Hazard)를 추정하는 호라이즌 예측</strong>으로 문제를 정식화했습니다. 
+        둘째, AcmeTrace 실측 데이터에서 밝혀낸 XID 43의 로깅 지연을 차단하기 위해 <strong>10분 사전 버퍼 마스킹</strong>을 적용하여 완벽한 리드타임($\Delta t_{lead} \ge 10\text{min}$)을 확보했습니다."</em>
+      </p>
+      <p>
+        <em>"셋째, 시계열 노화와 Concept Drift에 적응하기 위해 <strong>3일 주기 가변 윈도우 기반의 Walk-Forward ADST 동적 학습</strong>을 도입했으며, 
+        이로써 산출된 위험 순위를 Blox 스케줄러와 연동하여 <strong>상위 5% 자원에서 3.3배 높은 고장 선별력(Lift)과 유의미한 Lost GPU-Hours 감축</strong>을 실증하고자 합니다."</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 ISEE Conference Research Project. Built for Academic Defense & Lab Meeting Presentation.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
