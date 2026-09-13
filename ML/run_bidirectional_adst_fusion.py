@@ -1,11 +1,11 @@
 """
 [Dual-Branch Bidirectional ADST Fusion Pipeline]
 - Target: All XID Codes Unified (all_xids binary onset target in next 24 hours)
-- Architecture: Orthogonal Dual-Branch (Branch 1 Telemetry + Branch 2 Historical/Context)
+- Architecture: Orthogonal Dual-Branch (Branch 1 Telemetry + Branch 2 History-only)
 - ADST: Bidirectional Dynamic Sliding Grid:
     * Training Window: L_train in {7d, 14d, 21d}
     * Observation Lookback: L_obs in {1h, 6h, 24h} (always with 10-min pre-XID buffer isolation)
-- Fusion: Bayes Prior Calibrated Ensembling (Risk = w1*p1 + w2*p2)
+- Fusion: Validation-selected Lambda binary fusion (Risk = lambda*p1 + (1-lambda)*p2)
 - Output: Blox-ready Out-of-Fold (OOF) Risk Tape & Metric Leaderboard
 """
 
@@ -16,6 +16,7 @@ os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 import argparse
 import json
+import random
 import time
 from pathlib import Path
 from typing import Any
@@ -59,11 +60,39 @@ METRICS = ["util", "temp", "power", "fb"]
 # Bidirectional ADST Grid Search Candidates
 CANDIDATE_L_TRAIN_DAYS = [7, 14, 21]
 CANDIDATE_L_OBS_HOURS = [1, 6, 24]
+LAMBDA_GRID = np.round(np.arange(0.0, 1.01, 0.1), 1)
+VALIDATION_DAYS = 3
+HELDOUT_TEST_FRACTION = 0.20
 L_OBS_BINS_MAP = {
     1: 12,    # 1 hour = 12 bins of 5 min
     6: 72,    # 6 hours = 72 bins
     24: 288,  # 24 hours = 288 bins
 }
+
+
+def seed_everything(seed: int) -> None:
+    """Keep the GitHub seed contract while making Torch/DataLoader runs repeatable."""
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    try:
+        torch.use_deterministic_algorithms(True, warn_only=True)
+    except TypeError:  # Older Torch versions do not accept warn_only.
+        torch.use_deterministic_algorithms(True)
+
+
+def safe_average_precision(labels: np.ndarray, scores: np.ndarray) -> float:
+    if len(labels) == 0 or not np.asarray(labels, dtype=bool).any():
+        return 0.0
+    return float(average_precision_score(labels, scores))
+
+
+def safe_roc_auc(labels: np.ndarray, scores: np.ndarray) -> float:
+    if len(labels) == 0 or np.unique(labels).size < 2:
+        return 0.5
+    return float(roc_auc_score(labels, scores))
 
 
 def find_data_dir() -> Path:
@@ -276,9 +305,9 @@ class UnifiedDataEngine:
         self, bins: np.ndarray, gpus: np.ndarray, history_map: dict[int, np.ndarray]
     ) -> pd.DataFrame:
         """
-        Extracts Branch 2 features:
-        - XID Cumulative History: count_30d, days_since_xid
-        - System Context: hour_of_day, day_of_week, is_weekend
+        Extracts Branch 2 history-only features.  Calendar and telemetry
+        context are intentionally excluded so that Branch 2 remains
+        orthogonal to Branch 1.
         """
         n_samples = len(bins)
         cutoff_ns = self.bin_start_ns[bins] - 10 * MINUTE_NS
@@ -302,17 +331,9 @@ class UnifiedDataEngine:
                 diff_days = (gpu_cutoffs[has_prev] - prev_time) / DAY_NS
                 days_since[pos[has_prev]] = np.minimum(diff_days, 90.0)
 
-        dt_series = pd.to_datetime(self.bin_start_ns[bins], unit="ns", utc=True)
-        hour = np.asarray(dt_series.hour, dtype=np.float32)
-        day_of_week = np.asarray(dt_series.dayofweek, dtype=np.float32)
-        is_weekend = (day_of_week >= 5).astype(np.float32)
-
         b2_df = pd.DataFrame({
             "xid_count_30d": count_30d,
             "days_since_xid": days_since,
-            "hour_of_day": hour,
-            "day_of_week": day_of_week,
-            "is_weekend": is_weekend,
         })
         return b2_df
 
