@@ -1,0 +1,117 @@
+{
+  "runner": "run_branch1_diversified_parallel_cascade.py",
+  "base_runner": "ML/run_bidirectional_adst_fusion.py",
+  "reference_runner": "ML/run_sliding_adst_v2_branch_specific.py",
+  "experiment_scope": "Branch1_only",
+  "branch1_only": true,
+  "branch2_executed": false,
+  "lambda_fusion_executed": false,
+  "target": "all_xids",
+  "horizon_hours": 24,
+  "error_before_onset_exclusion_minutes": 10,
+  "branch1_input_hours": [
+    1,
+    6,
+    24
+  ],
+  "model_families": [
+    "logistic",
+    "extra_trees",
+    "hist_gradient_boosting",
+    "cnn"
+  ],
+  "parallel_ensemble": true,
+  "cascade": "soft_residual_hardness_gated",
+  "cascade_alpha_grid": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "training_windows_days": [
+    7,
+    14,
+    21
+  ],
+  "recency_half_life_days": [
+    3,
+    7,
+    14
+  ],
+  "validation_blocks": 3,
+  "validation_block_days": 3,
+  "purge_hours": 36,
+  "retrain_cadence_hours": 24,
+  "negative_ratio": 10,
+  "test_stride_bins": 6,
+  "seed": 20260905,
+  "heldout_test_fraction": 0.2,
+  "warmup_start_time": "2023-06-15T09:40:00+00:00",
+  "test_start_time": "2023-08-05T06:45:00+00:00",
+  "test_end_time": "2023-08-18T00:00:00+00:00",
+  "development_origin_count": 18,
+  "pooled_validation_origin_count": 6,
+  "selected": {
+    "selection_role": "branch1_proxy_pooled",
+    "selection_stage": "heldout_preselection",
+    "selection_origin_count": 6,
+    "candidate_input_hours": "all_1_6_24",
+    "val_pr_auc_mean": 0.15313661525793923,
+    "val_pr_auc_median": 0.13057450176781862,
+    "val_pr_auc_q25": 0.12411217914562178,
+    "val_pr_auc_std": 0.04064528563009161,
+    "val_pr_auc_min": 0.11559343430166867,
+    "val_roc_auc_mean": 0.5299330462866577,
+    "selection_origin_idx": 23040,
+    "selection_origin_time": "2023-08-04T09:40:00+00:00",
+    "selected_train_days": 21,
+    "selected_half_life_days": 7,
+    "selected_input_hours": [
+      1,
+      6,
+      24
+    ],
+    "validation_origin_count": 6,
+    "validation_block_count": 3,
+    "purge_hours": 36,
+    "adst_action": "pooled_latest_development_origins",
+    "candidate_count": 9,
+    "selected_family_weights": {
+      "logistic": 0.25328083953653496,
+      "extra_trees": 0.24680154834701845,
+      "hist_gradient_boosting": 0.2537440301842503,
+      "cnn": 0.24617358193219627
+    },
+    "selected_input_weights": {
+      "1": 0.3377397545511509,
+      "6": 0.3243151448626051,
+      "24": 0.337945100586244
+    },
+    "selected_cascade_alpha": 1.0,
+    "cascade_validation_pr_auc": 0.7381827553501961
+  },
+  "command": "ML\\run_branch1_diversified_parallel_cascade.py --cadence-hours 24 --negative-ratio 10 --test-stride-bins 6 --output-dir experiments\\2026-09-15_All-XID_Branch1_Diversified_Parallel_Cascade_01 --resume",
+  "selected_family_weights": {
+    "logistic": 0.25328083953653496,
+    "extra_trees": 0.24680154834701845,
+    "hist_gradient_boosting": 0.2537440301842503,
+    "cnn": 0.24617358193219627
+  },
+  "selected_input_weights": {
+    "1": 0.3377397545511509,
+    "6": 0.3243151448626051,
+    "24": 0.337945100586244
+  },
+  "cascade_metadata": {
+    "stage2_true_prior": 0.01451362072303836,
+    "stage2_sample_prior": 0.11563653004604868,
+    "selected_cascade_alpha": 1.0,
+    "stage2_training_record_count": 18,
+    "stage2_alpha_selection_record_count": 6,
+    "stage2_alpha_validation_pr_auc": 0.7381827553501961
+  },
+  "completed_cycle_count": 13,
+  "mean_pr_auc_parallel": 0.02279009756480591,
+  "mean_pr_auc_cascade": 0.025035527502144803
+}
