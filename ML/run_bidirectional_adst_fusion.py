@@ -65,6 +65,35 @@ L_OBS_BINS_MAP = {
     24: 288,  # 24 hours = 288 bins
 }
 
+# ADST Skip-Retrain: hold same combo if stable for N consecutive cycles
+SKIP_CONSECUTIVE = 3       # skip full search after this many same-combo cycles
+SKIP_PERF_DROP_PCT = 0.15  # re-trigger full search if val AP drops > 15%
+
+
+def pareto_lambda(
+    xid_counts: np.ndarray, alpha: float, x_min: float = 1.0,
+) -> np.ndarray:
+    """Pareto CDF-based per-GPU λ: more history → lower λ (trust B2 more).
+
+    λ(gpu) = 1 - F_pareto(count + x_min)  where F(x) = 1 - (x_min/x)^α
+           = (x_min / (count + x_min))^α
+    Returns array in (0, 1] — 1.0 for count=0 (pure B1), near 0 for heavy repeaters.
+    """
+    x = np.maximum(xid_counts.astype(np.float64), 0.0) + x_min
+    return np.clip((x_min / x) ** alpha, 0.05, 1.0).astype(np.float32)
+
+
+def pareto_alpha_mle(xid_counts: np.ndarray, x_min: float = 1.0) -> float:
+    """MLE estimate of Pareto shape α from positive failure counts.
+
+    α = n / Σ ln(x_i / x_min)  for x_i > 0.
+    Falls back to 1.0 if too few positives.
+    """
+    x = xid_counts[xid_counts > 0].astype(np.float64) + x_min
+    if len(x) < 5:
+        return 1.0  # ponytail: not enough data, safe default
+    return float(len(x) / np.sum(np.log(x / x_min)))
+
 
 def find_data_dir() -> Path:
     candidates = [
@@ -406,6 +435,11 @@ class BidirectionalADSTPipeline:
 
         rng = np.random.default_rng(self.seed)
 
+        # ADST Skip-Retrain state
+        _prev_combo: tuple[int, int] | None = None
+        _prev_score: float = 0.0
+        _consecutive_same: int = 0
+
         for origin_idx, origin_bin in enumerate(rolling_origins):
             origin_time = pd.to_datetime(self.engine.bin_start_ns[origin_bin], unit="ns", utc=True)
             test_cycle_end = min(origin_bin + cadence_bins, test_end_bin)
@@ -425,37 +459,81 @@ class BidirectionalADSTPipeline:
             best_score = -np.inf
             best_l_train, best_l_obs = 14, 6
 
-            # 2D Grid Search over (L_train x L_obs)
-            for l_train_days in CANDIDATE_L_TRAIN_DAYS:
-                tr_bins_len = int(l_train_days * 24 * 60 / STEP_MINUTES)
-                tr_start_bin = max(0, val_start_bin - tr_bins_len)
-                tr_end_bin = val_start_bin
+            # ── ADST Skip-Retrain: check if we can skip full grid search ──
+            _do_full_search = True
+            adst_action = "full_search"
 
-                tr_bins, tr_gpus, tr_labels = self.sample_indices(tr_start_bin, tr_end_bin, rng)
-                tr_b2_df = self.engine.extract_branch2_features(tr_bins, tr_gpus, self.history_map)
+            if _prev_combo is not None and _consecutive_same >= SKIP_CONSECUTIVE:
+                # Quick-validate: check only the previous best combo
+                prev_lt, prev_lo = _prev_combo
+                _qv_tr_len = int(prev_lt * 24 * 60 / STEP_MINUTES)
+                _qv_tr_start = max(0, val_start_bin - _qv_tr_len)
+                _qv_bins, _qv_gpus, _qv_labels = self.sample_indices(_qv_tr_start, val_start_bin, rng)
 
-                # Fit quick Branch 2 selector (Historical Logistic)
-                b2_lr = make_pipeline(StandardScaler(), LogisticRegression(max_iter=200, class_weight="balanced", random_state=self.seed))
-                b2_lr.fit(tr_b2_df, tr_labels)
-                v_b2_probs = b2_lr.predict_proba(v_b2_df)[:, 1]
+                _qv_b2 = self.engine.extract_branch2_features(_qv_bins, _qv_gpus, self.history_map)
+                _qv_b2_lr = make_pipeline(StandardScaler(), LogisticRegression(max_iter=200, class_weight="balanced", random_state=self.seed))
+                _qv_b2_lr.fit(_qv_b2, _qv_labels)
+                _qv_b2_probs = _qv_b2_lr.predict_proba(v_b2_df)[:, 1]
 
-                for l_obs_hours in CANDIDATE_L_OBS_HOURS:
-                    tr_b1_df, _ = self.engine.extract_branch1_features(tr_bins, tr_gpus, l_obs_hours)
-                    v_b1_df, _ = self.engine.extract_branch1_features(v_bins, v_gpus, l_obs_hours)
+                _qv_b1, _ = self.engine.extract_branch1_features(_qv_bins, _qv_gpus, prev_lo)
+                _qv_v1, _ = self.engine.extract_branch1_features(v_bins, v_gpus, prev_lo)
+                _qv_b1_lr = make_pipeline(StandardScaler(), LogisticRegression(max_iter=200, class_weight="balanced", random_state=self.seed))
+                _qv_b1_lr.fit(_qv_b1, _qv_labels)
+                _qv_val_ap = float(average_precision_score(v_labels, 0.5 * _qv_b1_lr.predict_proba(_qv_v1)[:, 1] + 0.5 * _qv_b2_probs))
 
-                    b1_lr = make_pipeline(StandardScaler(), LogisticRegression(max_iter=200, class_weight="balanced", random_state=self.seed))
-                    b1_lr.fit(tr_b1_df, tr_labels)
-                    v_b1_probs = b1_lr.predict_proba(v_b1_df)[:, 1]
+                perf_drop = (_prev_score - _qv_val_ap) / max(_prev_score, 1e-9)
+                if perf_drop <= SKIP_PERF_DROP_PCT:
+                    # Hold: performance stable, skip full search
+                    best_l_train, best_l_obs = prev_lt, prev_lo
+                    best_score = _qv_val_ap
+                    _do_full_search = False
+                    adst_action = "skip_hold"
+                    print(f"  [ADST Skip] Holding ({prev_lt}d, {prev_lo}h), quick-val AP={_qv_val_ap:.4f} (drop={perf_drop:.1%})", flush=True)
+                else:
+                    adst_action = "trigger_rescan"
+                    print(f"  [ADST Trigger] Perf drop {perf_drop:.1%} > {SKIP_PERF_DROP_PCT:.0%}, re-scanning full grid", flush=True)
 
-                    fused_val_score = 0.5 * v_b1_probs + 0.5 * v_b2_probs
-                    val_ap = float(average_precision_score(v_labels, fused_val_score))
+            if _do_full_search:
+                # 2D Grid Search over (L_train x L_obs)
+                for l_train_days in CANDIDATE_L_TRAIN_DAYS:
+                    tr_bins_len = int(l_train_days * 24 * 60 / STEP_MINUTES)
+                    tr_start_bin = max(0, val_start_bin - tr_bins_len)
+                    tr_end_bin = val_start_bin
 
-                    if val_ap > best_score:
-                        best_score = val_ap
-                        best_l_train = l_train_days
-                        best_l_obs = l_obs_hours
+                    tr_bins, tr_gpus, tr_labels = self.sample_indices(tr_start_bin, tr_end_bin, rng)
+                    tr_b2_df = self.engine.extract_branch2_features(tr_bins, tr_gpus, self.history_map)
 
-            print(f"  ==> Selected (L_train*={best_l_train}d, L_obs*={best_l_obs}h) with Val PR-AUC: {best_score:.4f}", flush=True)
+                    # Fit quick Branch 2 selector (Historical Logistic)
+                    b2_lr = make_pipeline(StandardScaler(), LogisticRegression(max_iter=200, class_weight="balanced", random_state=self.seed))
+                    b2_lr.fit(tr_b2_df, tr_labels)
+                    v_b2_probs = b2_lr.predict_proba(v_b2_df)[:, 1]
+
+                    for l_obs_hours in CANDIDATE_L_OBS_HOURS:
+                        tr_b1_df, _ = self.engine.extract_branch1_features(tr_bins, tr_gpus, l_obs_hours)
+                        v_b1_df, _ = self.engine.extract_branch1_features(v_bins, v_gpus, l_obs_hours)
+
+                        b1_lr = make_pipeline(StandardScaler(), LogisticRegression(max_iter=200, class_weight="balanced", random_state=self.seed))
+                        b1_lr.fit(tr_b1_df, tr_labels)
+                        v_b1_probs = b1_lr.predict_proba(v_b1_df)[:, 1]
+
+                        fused_val_score = 0.5 * v_b1_probs + 0.5 * v_b2_probs
+                        val_ap = float(average_precision_score(v_labels, fused_val_score))
+
+                        if val_ap > best_score:
+                            best_score = val_ap
+                            best_l_train = l_train_days
+                            best_l_obs = l_obs_hours
+
+            # Update skip-retrain state
+            current_combo = (best_l_train, best_l_obs)
+            if current_combo == _prev_combo:
+                _consecutive_same += 1
+            else:
+                _consecutive_same = 1
+            _prev_combo = current_combo
+            _prev_score = best_score
+
+            print(f"  ==> Selected (L_train*={best_l_train}d, L_obs*={best_l_obs}h) Val PR-AUC: {best_score:.4f} [{adst_action}]", flush=True)
 
             # Train Final Dual-Branch Models using Best (L_train*, L_obs*)
             final_tr_start = max(0, origin_bin - int(best_l_train * 24 * 60 / STEP_MINUTES))
