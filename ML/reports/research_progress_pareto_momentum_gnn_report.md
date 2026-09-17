@@ -1,8 +1,7 @@
 # [연구 진행 보고서] Pareto 동적 융합, 모멘텀 ADST 최적화, 및 Branch 1 Node-GNN 고도화
 
-- **작성일자**: 2026-09-17
-- **연구자**: 재한 (Antigravity Senior Dev Mode 협업)
-- **연구 주제**: HPC 데이터센터 GPU 결함 예측을 위한 All-XID 통합, 양방향 ADST, 파레토 동적 가중치 융합 및 노드 공간 그래프(GNN) 텔레메트리 모델 고도화
+- **연구자**: 지한유 (Antigravity Senior Dev Mode 협업)
+- **연구 주제**: HPC 데이터센터 GPU 결함 예측을 위한 All-XID 통합, 양방향 ADST에 Momentum 추가, 파레토 동적 가중치 융합 및 노드 공간 그래프 텔레메트리 모델 고도화
 
 ---
 
