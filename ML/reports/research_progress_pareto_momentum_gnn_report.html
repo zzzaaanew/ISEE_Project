@@ -550,16 +550,9 @@
     <div class="meta-grid">
       <div class="meta-item">
         <span class="label">보고자</span>
-        <span class="value">재한 (석사과정)</span>
+        <span class="value">지한유 </span>
       </div>
-      <div class="meta-item">
-        <span class="label">보고 대상</span>
-        <span class="value">지도 박사님</span>
-      </div>
-      <div class="meta-item">
-        <span class="label">보고 일시</span>
-        <span class="value">2026년 9월 17일</span>
-      </div>
+
       <div class="meta-item">
         <span class="label">실증 데이터셋</span>
         <span class="value">AcmeTrace (Seren) 93.6일 / 1,992 GPU</span>
@@ -655,10 +648,10 @@
     </div>
 
     <div class="callout green">
-      <h4>💡 박사님 보고용 핵심 물리적/통계적 인사이트</h4>
+      <h4> 핵심 통계적 인사이트</h4>
       <ul>
-        <li><strong>이력이 없는 클린 GPU (16만 건)</strong>: 과거 발생 빈도가 0이므로 Branch 2의 변별력이 약해집니다. 이때 Branch 1(텔레메트리)이 실질적인 조기 열화 전조를 포착하여 <strong>융합 모델(0.0276)이 B1 단독(0.0242)과 B2 단독(0.0228)을 모두 제치고 시너지</strong>를 냅니다.</li>
-        <li><strong>반복 결함 GPU (14만 건)</strong>: 과거 30일 발생 빈도(B2)의 예측력(0.1143)이 센서 노이즈(0.0398)보다 압도적입니다. 여기에 텔레메트리를 50%나 무차별 혼합하면 오히려 순수 이력 성능을 갉아먹게 됩니다.</li>
+        <li><strong>이력이 없는 클린 GPU (16만 건)</strong>: 과거 발생 빈도가 0이므로 Branch 2의 변별력이 약해집니다. 이때 Branch 1이 실질적인 조기 열화 전조를 포착하여 <strong>50:50 융합 모델(0.0276)이 B1 단독(0.0242)과 B2 단독(0.0228)을 모두 제치고 시너지</strong>를 냅니다.</li>
+        <li><strong>반복 결함 GPU (14만 건)</strong>: 과거 30일 발생 빈도(B2)의 예측력(0.1143)이 센서 노이즈(0.0398)보다 압도적입니다. 여기에 텔레메트리를 50% 균등하게 융합하면 오히려 성능이 하락하게 됩니다.</li>
       </ul>
     </div>
 
@@ -719,10 +712,15 @@
   <div class="section-card">
     <div class="section-header">
       <div class="section-num purple">2</div>
-      <div class="section-title">ADST 계산 비용 최적화: 모멘텀(Momentum) Skip-Retrain</div>
+      <div class="section-title">ADST 계산 비용 최적화:Momentum Skip-Retrain</div>
     </div>
 
-    <h3>2.1 연구 배경: 매일 9개 그리드 전수 탐색의 문제점</h3>
+    <h3>2.1 연구 배경: 양방향 ADST 시간 및 비용 감소 목적</h3>
+    <p>
+      Gradient Descent에서 Momentum Optimazation 기법은 관성의 개념을 통해 진동을 줄이고 학습 속도를 높이는 방법이다. 
+      오류가 많이 없는 데이터 특성 상, 대부분의 상황에선 오류가 지속되지 않을 것 임으로 학습 주기를 낮추고 특이한 상황이 발생했을 때 재학습하는 방법을 고려함 
+    </p>
+    <h4>2.2 준호 방법에서의 고찰</h4>
     <p>
       준호 님의 최신 v2.1 연구에서 93.6일간 실측 데이터 상 유의미한 급격한 개념 표류(Concept Drift)가 발생하지 않았음(ADWIN Effective Trigger: 0회)이 확인되었습니다.
       그럼에도 불구하고 매일 24시간 주기마다 $3 \times L_{train} \times 3 \times L_{obs} = 9$가지 조합을 무조건 처음부터 다시 학습하는 것은 극심한 자원 낭비입니다.
@@ -732,6 +730,7 @@
       <li>학습 윈도우 $L_{train}$은 <strong>48.4%</strong>, 관측 윈도우 $L_{obs}$는 <strong>51.6%</strong>의 일 단위 연속 유지율을 보였습니다.</li>
       <li>특히 $L_{train}=21\text{d}$는 1~2주간 연속으로 최적 상태를 유지하는 강한 관성(Inertia)을 나타냈습니다.</li>
       <li>그러나 3일치의 작은 일일 검증 표본으로 인한 <strong>샘플링 노이즈(Jitter)</strong>로 최적 윈도우가 6h $\leftrightarrow$ 24h 사이를 요동치는 탐색 지터 현상이 확인되었습니다.</li>
+
     </ul>
 
     <h3>2.2 모멘텀(Momentum) 기반 적응 상태 머신</h3>
@@ -770,10 +769,84 @@
       </div>
     </div>
 
+    <h3>2.3 실측 데이터 기반 정밀 시뮬레이션: 단순 튜플 vs 분리형 2차원 모멘텀</h3>
+    <p>
+      63개 롤링 오리진의 실제 선택 궤적을 전수 시뮬레이션하여 계산 비용 절감률을 정밀 검증했습니다.
+      단순 2D 튜플 <code>(L_train, L_obs)</code>을 하나의 묶음으로 볼 경우 일일 샘플 노이즈로 인해 절감률이 제한되지만, 
+      <strong>$L_{train}$과 $L_{obs}$의 모멘텀을 독립적으로 추적하는 분리형(Decoupled) 2차원 모멘텀</strong>을 적용하면 40%를 상회하는 <strong>47.6% ~ 56.8%</strong>의 연산 절감이 달성됩니다.
+    </p>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>전략 및 모멘텀 구성</th>
+            <th>전체 9회 탐색</th>
+            <th>부분 3회 탐색</th>
+            <th>완전 1회 스킵</th>
+            <th>총 모델 학습 횟수</th>
+            <th>실측 계산 절감률</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>베이스라인 (매일 전수 9개 탐색)</strong></td>
+            <td>63회</td>
+            <td>0회</td>
+            <td>0회</td>
+            <td>567회</td>
+            <td>기준점 (0.0%)</td>
+          </tr>
+          <tr>
+            <td>단순 2D 튜플 연속 스킵 (N=3)</td>
+            <td>62회</td>
+            <td>-</td>
+            <td>1회</td>
+            <td>559회</td>
+            <td>+1.4% (지터로 연속성 단절)</td>
+          </tr>
+          <tr>
+            <td>단순 2D 튜플 일치 오라클 (Oracle)</td>
+            <td>46회</td>
+            <td>-</td>
+            <td>17회</td>
+            <td>431회</td>
+            <td>+24.0% (튜플 일치 상한선)</td>
+          </tr>
+          <tr>
+            <td><strong>⭐ 분리형 모멘텀 ($\beta=0.7, \tau=0.6$)</strong></td>
+            <td>23회</td>
+            <td>25회</td>
+            <td>15회</td>
+            <td><strong>297회</strong></td>
+            <td><strong style="color: var(--accent);">+47.6% 절감</strong></td>
+          </tr>
+          <tr>
+            <td><strong>⭐ 분리형 모멘텀 ($\beta=0.6, \tau=0.6$)</strong></td>
+            <td>17회</td>
+            <td>23회</td>
+            <td>23회</td>
+            <td><strong>245회</strong></td>
+            <td><strong style="color: var(--accent);">+56.8% 절감</strong></td>
+          </tr>
+          <tr>
+            <td>분리형 계층 탐색 오라클 (Oracle)</td>
+            <td>17회</td>
+            <td>28회</td>
+            <td>17회</td>
+            <td><strong>263회</strong></td>
+            <td><strong>+53.6% (이론적 최적 한계)</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="callout blue">
-      <h4>🎯 정량적 기대 효과</h4>
-      전체 63개 사이클 동안 발생하는 총 모델 피팅 횟수 567회 중 약 40%를 안전하게 스킵하여, 
-      <strong>총 피팅 횟수를 약 340회로 단축 (~40% 연산 비용 절감)</strong>하면서도 성능 드리프트에 대한 안전성을 100% 보존합니다.
+      <h4>🎯 박사님 디펜스용 핵심 답변 요약</h4>
+      <ul>
+        <li><strong>단순 결합 튜플의 한계</strong>: $L_{train}$과 $L_{obs}$를 한 묶음으로 보면, 하나만 살짝 튀어도(예: 21d는 유지되는데 관측창이 6h $\to$ 24h로 변동) 9개 전체를 다시 돌려 절감률이 1.4%~24%에 머뭅니다.</li>
+        <li><strong>분리형 2차원 모멘텀의 위력</strong>: $L_{train}$ 모멘텀이 안정적(48.4% 확률)이면 학습창을 21d로 고정하고 관측창만 3개 탐색하여 <strong>66% 절감(9회 $\to$ 3회)</strong>합니다. 둘 다 안정적(27.4% 확률)이면 1회만 학습합니다. 이를 통해 <strong>실제 실측 절감률은 47.6% ~ 56.8%로 약 절반의 연산 비용이 영구 절감</strong>됩니다.</li>
+      </ul>
     </div>
   </div>
 
