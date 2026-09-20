@@ -1,0 +1,52 @@
+{
+  "best": {
+    "selection_role": "branch1_proxy",
+    "selection_stage": "development",
+    "selection_origin_idx": 20160,
+    "selection_origin_time": "2023-07-25T09:40:00+00:00",
+    "candidate_input_hours": "all_1_6_24",
+    "validation_block_count": 3,
+    "validation_block_days": 3,
+    "purge_hours": 36,
+    "val_pr_auc_mean": 0.35225536431948695,
+    "val_pr_auc_median": 0.3881463321087553,
+    "val_pr_auc_q25": 0.28126621225219955,
+    "val_pr_auc_std": 0.1128779490056346,
+    "val_pr_auc_min": 0.17438609239564382,
+    "val_roc_auc_mean": 0.7882610094118375,
+    "selected_train_days": 7,
+    "selected_half_life_days": 3,
+    "selected_input_hours": [
+      1,
+      6,
+      24
+    ],
+    "adst_action": "momentum_skip_hold",
+    "previous_val_pr_auc_mean": 0.2791192824842099,
+    "val_pr_auc_delta": 0.0527723089008128,
+    "candidate_count": 3,
+    "momentum_fit_plan": "quick_validate_only",
+    "momentum_train_confidence": 0.8688524751,
+    "momentum_half_confidence": 0.959646393
+  },
+  "candidates": [
+    {
+      "selection_role": "branch1_proxy",
+      "selection_stage": "development",
+      "selection_origin_idx": 20736,
+      "selection_origin_time": "2023-07-27T09:40:00+00:00",
+      "candidate_train_days": 7,
+      "candidate_half_life_days": 3,
+      "candidate_input_hours": "all_1_6_24",
+      "validation_block_count": 3,
+      "validation_block_days": 3,
+      "purge_hours": 36,
+      "val_pr_auc_mean": 0.35225536431948695,
+      "val_pr_auc_median": 0.35225536431948695,
+      "val_pr_auc_q25": 0.35225536431948695,
+      "val_pr_auc_std": 0.0,
+      "val_pr_auc_min": 0.35225536431948695,
+      "val_roc_auc_mean": NaN
+    }
+  ]
+}
