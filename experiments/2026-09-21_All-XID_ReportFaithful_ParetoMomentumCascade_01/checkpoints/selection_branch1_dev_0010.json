@@ -1,0 +1,55 @@
+{
+  "best": {
+    "selection_role": "branch1_proxy",
+    "selection_stage": "development",
+    "selection_origin_idx": 20160,
+    "selection_origin_time": "2023-07-25T09:40:00+00:00",
+    "candidate_input_hours": "all_1_6_24",
+    "validation_block_count": 3,
+    "validation_block_days": 3,
+    "purge_hours": 36,
+    "val_pr_auc_mean": 0.39067293778555473,
+    "val_pr_auc_median": 0.39067293778555473,
+    "val_pr_auc_q25": 0.39067293778555473,
+    "val_pr_auc_std": 0.0,
+    "val_pr_auc_min": 0.39067293778555473,
+    "val_roc_auc_mean": 0.7882610094118375,
+    "selected_train_days": 7,
+    "selected_half_life_days": 3,
+    "selected_input_hours": [
+      1,
+      6,
+      24
+    ],
+    "adst_action": "momentum_skip_hold",
+    "previous_val_pr_auc_mean": 0.35225536431948695,
+    "val_pr_auc_delta": 0.03841757346606778,
+    "candidate_count": 1,
+    "momentum_pair_confidence": 0.8997224751,
+    "momentum_value": 0.024549247654190694,
+    "quick_validation_pr_auc": 0.39067293778555473,
+    "performance_drop": -0.10906171305662214,
+    "momentum_fit_plan": "single_selected_config"
+  },
+  "candidates": [
+    {
+      "selection_role": "branch1_proxy",
+      "selection_stage": "development",
+      "selection_origin_idx": 21024,
+      "selection_origin_time": "2023-07-28T09:40:00+00:00",
+      "candidate_train_days": 7,
+      "candidate_half_life_days": 3,
+      "candidate_input_hours": "all_1_6_24",
+      "validation_block_count": 3,
+      "validation_block_days": 3,
+      "purge_hours": 36,
+      "val_pr_auc_mean": 0.39067293778555473,
+      "val_pr_auc_median": 0.39067293778555473,
+      "val_pr_auc_q25": 0.39067293778555473,
+      "val_pr_auc_std": 0.0,
+      "val_pr_auc_min": 0.39067293778555473,
+      "val_roc_auc_mean": NaN,
+      "candidate_count": 1
+    }
+  ]
+}
