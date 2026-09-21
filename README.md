@@ -244,13 +244,21 @@ pip install -r requirements.txt
 
 ### ML 모델 실행 및 벤치마크
 ```bash
-# 1. Branch 1 단일 파이프라인 실행 (4-Fold OOF 학습 & Blox용 Risk Tape 생성)
+# 0. [통합 최적화] Stateful Momentum ADST + Pure MLE Pareto Dual-Branch Fusion
+python ML/run_unified_adst_fusion.py --cadence-hours 24
+# (체크포인트 복구 시: python ML/run_unified_adst_fusion.py --cadence-hours 24 --resume)
+# (자가 검증 테스트: python ML/run_unified_adst_fusion.py --self-check)
+
+# 1. Branch 1 Enhanced (Cross-Metric + 8-GPU Node GNN) 4-Fold OOF 실행
+python ML/run_branch1_cross_gnn.py
+
+# 2. Branch 1 베이스라인 단일 파이프라인 실행
 python ML/run_branch1.py
 
-# 2. 트리 및 선형 6종 모델 비교 벤치마크
+# 3. 트리 및 선형 6종 모델 비교 벤치마크
 python ML/run_model_comparison.py
 
-# 3. TCN / 1D-CNN / LSTM / GRU 시계열 딥러닝 4종 벤치마크 및 10개 모델 통합 리포트
+# 4. TCN / 1D-CNN / LSTM / GRU 시계열 딥러닝 4종 벤치마크 및 10개 모델 통합 리포트
 python ML/run_dl_comparison.py
 ```
 
