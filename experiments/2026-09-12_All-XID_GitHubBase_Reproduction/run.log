@@ -1,0 +1,36 @@
+[DataEngine] Scanning GPU IDs and timestamps from telemetry parquets...
+[DataEngine] Generating 2D matrix for util...
+[DataEngine] util built in 16.6s.
+[DataEngine] Generating 2D matrix for temp...
+[DataEngine] temp built in 16.0s.
+[DataEngine] Generating 2D matrix for power...
+[DataEngine] power built in 16.5s.
+[DataEngine] Generating 2D matrix for fb...
+[DataEngine] fb built in 16.3s.
+[DataEngine] Loaded all XID onsets: 2,425 events across codes [np.int64(13), np.int64(31), np.int64(43), np.int64(45), np.int64(94)]
+
+=================================================================
+ [Bidirectional ADST Pipeline] Starting Dual-Branch Execution
+ Cadence: 24h | L_train: [7, 14, 21]d | L_obs: [1, 6, 24]h
+=================================================================
+
+[ADST] Generated 63 rolling retraining origins across period.
+
+--- [Origin 1/63] 2023-06-15 09:40 ---
+  ==> Selected (L_train*=7d, L_obs*=6h) with Val PR-AUC: 0.2914
+  [Cycle Test] PR-AUC: Fused=0.0193 (B1=0.0104, B2=0.0233) | ROC-AUC: 0.3881 | R@100: 4.8% (Lift: 0.96x)
+
+--- [Origin 2/63] 2023-06-16 09:40 ---
+  ==> Selected (L_train*=14d, L_obs*=6h) with Val PR-AUC: 0.3035
+  [Cycle Test] PR-AUC: Fused=0.0063 (B1=0.0052, B2=0.0079) | ROC-AUC: 0.4393 | R@100: 8.9% (Lift: 1.77x)
+
+--- [Origin 3/63] 2023-06-17 09:40 ---
+  ==> Selected (L_train*=21d, L_obs*=6h) with Val PR-AUC: 0.2168
+  [Cycle Test] PR-AUC: Fused=0.0106 (B1=0.0112, B2=0.0042) | ROC-AUC: 0.7658 | R@100: 11.4% (Lift: 2.27x)
+
+--- [Origin 4/63] 2023-06-18 09:40 ---
+  ==> Selected (L_train*=21d, L_obs*=24h) with Val PR-AUC: 0.1495
+  [Cycle Test] PR-AUC: Fused=0.0177 (B1=0.0184, B2=0.0129) | ROC-AUC: 0.4437 | R@100: 14.6% (Lift: 2.90x)
+
+--- [Origin 5/63] 2023-06-19 09:40 ---
+  ==> Selected (L_train*=21d, L_obs*=6h) with Val PR-AUC: 0.1107

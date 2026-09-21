@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\ML\run_sliding_pareto_enhanced_fusion.py", line 13, in <module>
+    runner.main()
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\ML\run_pareto_momentum_enhanced_fusion.py", line 524, in main
+    pipeline.run()
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\ML\run_pareto_momentum_enhanced_fusion.py", line 436, in run
+    metrics, tape = super().run()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\ML\run_fusion_diversified_b1_history_b2.py", line 619, in run
+    metrics, tape = self._predict_fusion_cycle(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\ML\run_pareto_momentum_enhanced_fusion.py", line 324, in _predict_fusion_cycle
+    lambdas = base.pareto_lambda(counts, alpha=self.pareto_alpha)
+              ^^^^^^^^^^^^^^^^^^
+AttributeError: module 'run_bidirectional_adst_fusion' has no attribute 'pareto_lambda'

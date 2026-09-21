@@ -1,0 +1,48 @@
+{
+  "selection_role": "branch1_proxy_pooled",
+  "selection_stage": "heldout_preselection",
+  "selection_origin_count": 6,
+  "candidate_input_hours": "all_1_6_24",
+  "val_pr_auc_mean": 0.2065046570158989,
+  "val_pr_auc_median": 0.14131235184379057,
+  "val_pr_auc_q25": 0.13268893578154378,
+  "val_pr_auc_std": 0.11177049147939046,
+  "val_pr_auc_min": 0.12475178381470313,
+  "val_roc_auc_mean": NaN,
+  "selection_origin_idx": 23040,
+  "selection_origin_time": "2023-08-04T09:40:00+00:00",
+  "selected_train_days": 7,
+  "selected_half_life_days": 3,
+  "selected_input_hours": [
+    1,
+    6,
+    24
+  ],
+  "validation_origin_count": 6,
+  "validation_block_count": 3,
+  "purge_hours": 36,
+  "adst_action": "pooled_latest_development_origins",
+  "candidate_count": 9,
+  "selected_family_weights": {
+    "logistic": 0.2585759070433415,
+    "extra_trees": 0.24690586542167822,
+    "hist_gradient_boosting": 0.24918189075993377,
+    "cnn": 0.24533633677504657
+  },
+  "selected_input_weights": {
+    "1": 0.33534246262854184,
+    "6": 0.3303071688553383,
+    "24": 0.3343503685161199
+  },
+  "selected_cascade_alpha": 1.0,
+  "selected_cascade_validation_pr_auc": 0.6329523692323101,
+  "selected_b2_train_days": 7,
+  "selected_b2_half_life_days": 0,
+  "selected_lambda": 1.0,
+  "fusion_validation_pr_auc": NaN,
+  "fusion_validation_roc_auc": NaN,
+  "paired_validation_block_count": 18,
+  "pool_origin_count": 6,
+  "pool_validation_block_count": 18,
+  "prediction_population": "all_gpus_before_top100"
+}

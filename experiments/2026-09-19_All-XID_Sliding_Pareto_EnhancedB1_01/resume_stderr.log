@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\ML\run_sliding_pareto_enhanced_fusion.py", line 13, in <module>
+    runner.main()
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\ML\run_pareto_momentum_enhanced_fusion.py", line 521, in main
+    pipeline.run()
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\ML\run_pareto_momentum_enhanced_fusion.py", line 433, in run
+    metrics, tape = super().run()
+                    ^^^^^^^^^^^^^
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\ML\run_fusion_diversified_b1_history_b2.py", line 576, in run
+    "paired_validation_block_count": int(lambda_best["paired_validation_block_count"]),
+                                         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'paired_validation_block_count'

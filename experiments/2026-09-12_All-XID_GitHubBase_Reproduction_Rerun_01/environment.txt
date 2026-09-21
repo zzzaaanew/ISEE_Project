@@ -1,0 +1,6 @@
+Captured: 2026-09-13
+Git commit: a8cb41a96db04496f088b6ee1c73ecd062a8ffa0
+Git branch: migration/all-xid-github-base
+Python: Python 3.12.14
+Parameters: cadence=24h; negative_ratio=10; test_stride_bins=6; seed=20260905
+Target: All-XID; loaded codes=[13,31,43,45,94]

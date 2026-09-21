@@ -1,0 +1,80 @@
+{
+  "method": "platt_logistic_sigmoid",
+  "fit_scope": "pooled_development_validation_oof_only",
+  "heldout_used_for_fit": false,
+  "branch1_score": "cascade_probability",
+  "branch2_score": "prior_adjusted_history_only_probability",
+  "selected_b2_train_days": 7,
+  "branch1_raw": {
+    "brier": 0.07890308094163273,
+    "log_loss": 0.2910969032981424,
+    "ece_10": 0.06451428659668863,
+    "pr_auc": 0.6533645546571016,
+    "roc_auc": 0.8417522955185514,
+    "prevalence": 0.11563653004604868,
+    "samples": 2587262,
+    "positives": 299182
+  },
+  "branch1_platt": {
+    "brier": 0.06353771628057969,
+    "log_loss": 0.2483942952842766,
+    "ece_10": 0.02647102630730731,
+    "pr_auc": 0.6533645514793082,
+    "roc_auc": 0.8417522954827614,
+    "prevalence": 0.11563653004604868,
+    "samples": 2587262,
+    "positives": 299182
+  },
+  "branch2_raw": {
+    "brier": 0.10800053614705685,
+    "log_loss": 0.45384635498126713,
+    "ece_10": 0.08349183956831226,
+    "pr_auc": 0.1647876776183329,
+    "roc_auc": 0.572255000451079,
+    "prevalence": 0.11563653004604868,
+    "samples": 2587262,
+    "positives": 299182
+  },
+  "branch2_platt": {
+    "brier": 0.10134370626780823,
+    "log_loss": 0.354111621099188,
+    "ece_10": 0.014138545813702287,
+    "pr_auc": 0.1647876776183329,
+    "roc_auc": 0.572255000451079,
+    "prevalence": 0.11563653004604868,
+    "samples": 2587262,
+    "positives": 299182
+  },
+  "branch1_calibrator": {
+    "method": "platt_logistic_sigmoid",
+    "feature": "logit(raw_probability)",
+    "C": 1000000.0,
+    "solver": "lbfgs",
+    "max_iter": 2000,
+    "seed": 21360906,
+    "fit_count": 2587262,
+    "positive_count": 299182,
+    "coef": [
+      1.151169473484946
+    ],
+    "intercept": [
+      1.5624926714173502
+    ]
+  },
+  "branch2_calibrator": {
+    "method": "platt_logistic_sigmoid",
+    "feature": "logit(raw_probability)",
+    "C": 1000000.0,
+    "solver": "lbfgs",
+    "max_iter": 2000,
+    "seed": 21360907,
+    "fit_count": 2587262,
+    "positive_count": 299182,
+    "coef": [
+      0.28563723777323846
+    ],
+    "intercept": [
+      -0.958130481015705
+    ]
+  }
+}

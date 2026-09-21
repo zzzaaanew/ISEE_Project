@@ -1,0 +1,150 @@
+{
+  "runner": "run_fusion_diversified_b1_history_b2.py",
+  "base_runner": "ML/run_bidirectional_adst_fusion.py",
+  "branch1_runner": "ML/run_branch1_diversified_parallel_cascade.py",
+  "branch2_runner": "ML/run_sliding_adst_v2_1_pooled_adwin.py",
+  "experiment_scope": "integrated_full_gpu_fusion",
+  "target": "all_xids",
+  "horizon_hours": 24,
+  "error_before_onset_exclusion_minutes": 10,
+  "branch1_model_families": [
+    "logistic",
+    "extra_trees",
+    "hist_gradient_boosting",
+    "cnn"
+  ],
+  "branch1_input_hours": [
+    1,
+    6,
+    24
+  ],
+  "branch1_cascade": "soft_residual_hardness_gated",
+  "branch2_contract": "history_only_2026_09_10",
+  "branch2_features": [
+    "xid_count_30d",
+    "days_since_xid"
+  ],
+  "branch2_model": "historical_logistic",
+  "branch2_recency": "none",
+  "fusion": "lambda_binary_weighted_full_gpu_before_top100",
+  "lambda_grid": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "training_windows_days": [
+    7,
+    14,
+    21
+  ],
+  "recency_half_life_days": [
+    3,
+    7,
+    14
+  ],
+  "validation_blocks": 3,
+  "validation_block_days": 3,
+  "pooled_origin_count": 6,
+  "purge_hours": 36,
+  "retrain_cadence_hours": 24,
+  "negative_ratio": 10,
+  "test_stride_bins": 6,
+  "seed": 20260905,
+  "heldout_test_fraction": 0.2,
+  "warmup_start_time": "2023-06-15T09:40:00+00:00",
+  "test_start_time": "2023-08-05T06:45:00+00:00",
+  "test_end_time": "2023-08-18T00:00:00+00:00",
+  "development_origin_count": 18,
+  "selected": {
+    "selection_role": "branch1_proxy_pooled",
+    "selection_stage": "heldout_preselection",
+    "selection_origin_count": 6,
+    "candidate_input_hours": "all_1_6_24",
+    "val_pr_auc_mean": 0.16878460127397266,
+    "val_pr_auc_median": 0.14203683143995058,
+    "val_pr_auc_q25": 0.1336876493278214,
+    "val_pr_auc_std": 0.046832914621228225,
+    "val_pr_auc_min": 0.12762517762898548,
+    "val_roc_auc_mean": 0.5673069764212623,
+    "selection_origin_idx": 23040,
+    "selection_origin_time": "2023-08-04T09:40:00+00:00",
+    "selected_train_days": 21,
+    "selected_half_life_days": 3,
+    "selected_input_hours": [
+      1,
+      6,
+      24
+    ],
+    "validation_origin_count": 6,
+    "validation_block_count": 3,
+    "purge_hours": 36,
+    "adst_action": "pooled_latest_development_origins",
+    "candidate_count": 9,
+    "selected_family_weights": {
+      "logistic": 0.2589842586973467,
+      "extra_trees": 0.2450390757023496,
+      "hist_gradient_boosting": 0.24831416506413503,
+      "cnn": 0.2476625005361686
+    },
+    "selected_input_weights": {
+      "1": 0.3363784174671437,
+      "6": 0.32584207979590973,
+      "24": 0.3377795027369465
+    },
+    "selected_cascade_alpha": 1.0,
+    "selected_cascade_validation_pr_auc": 0.6965344639251468,
+    "selected_b2_train_days": 7,
+    "selected_b2_half_life_days": 0,
+    "selected_lambda": 1.0,
+    "fusion_validation_pr_auc": NaN,
+    "fusion_validation_roc_auc": NaN,
+    "paired_validation_block_count": 18,
+    "pool_origin_count": 6,
+    "pool_validation_block_count": 18,
+    "prediction_population": "all_gpus_before_top100",
+    "completed_cycle_count": 13
+  },
+  "completed_cycle_count": 13,
+  "command": "ML\\run_adst_momentum_pareto_enhanced_fusion.py --policy adst --output-dir experiments\\2026-09-20_All-XID_ADST_Momentum_Pareto_EnhancedB1_02 --cadence-hours 24 --negative-ratio 10 --test-stride-bins 6 --pareto-alpha 1.0 --resume",
+  "policy": "adst",
+  "pareto": {
+    "formula": "clip((1/(count_30d+1))^alpha, 0.05, 1.0)",
+    "alpha": 1.0,
+    "population": "all_gpu_time_before_top100",
+    "history_cutoff": "decision_time_minus_10min"
+  },
+  "adst": {
+    "method": "decoupled_momentum",
+    "adwin_used": false,
+    "beta": 0.7,
+    "confidence_threshold": 0.6,
+    "performance_drop_trigger": 0.15
+  },
+  "branch1_enhanced": {
+    "branch1_feature_contract": "telemetry_only",
+    "cross_metric_features": [
+      "thermal_efficiency",
+      "power_temp_ratio",
+      "util_fb_coupling",
+      "power_per_util",
+      "temp_fb_divergence",
+      "thermal_headroom",
+      "power_headroom"
+    ],
+    "topology_features": [],
+    "topology_source": "disabled",
+    "history_features_excluded_from_branch1": [
+      "xid_count_30d",
+      "days_since_xid"
+    ],
+    "cnn_input": "base_telemetry_sequence_unchanged; enhanced features feed tabular families"
+  }
+}

@@ -1,0 +1,64 @@
+[DataEngine] Loaded all XID onsets: 2,425 events across codes [np.int64(13), np.int64(31), np.int64(43), np.int64(45), np.int64(94)]
+[1/7] Selecting diversified Branch 1 configuration
+  [1/18] B1 L=7d half=7d val_PR_AUC=0.1418
+  [2/18] B1 L=7d half=3d val_PR_AUC=0.1568
+  [3/18] B1 L=7d half=3d val_PR_AUC=0.1968
+  [4/18] B1 L=7d half=3d val_PR_AUC=0.1903
+  [5/18] B1 L=7d half=3d val_PR_AUC=0.2261
+  [6/18] B1 L=7d half=3d val_PR_AUC=0.2345
+  [7/18] B1 L=14d half=3d val_PR_AUC=0.2791
+  [8/18] B1 L=7d half=3d val_PR_AUC=0.3319
+  [9/18] B1 L=7d half=3d val_PR_AUC=0.2394
+  [10/18] B1 L=21d half=3d val_PR_AUC=0.2975
+  [11/18] B1 L=7d half=3d val_PR_AUC=0.3393
+  [12/18] B1 L=7d half=3d val_PR_AUC=0.1950
+  [13/18] B1 L=21d half=3d val_PR_AUC=0.2282
+  [14/18] B1 L=21d half=7d val_PR_AUC=0.2417
+  [15/18] B1 L=21d half=3d val_PR_AUC=0.1463
+  [16/18] B1 L=21d half=3d val_PR_AUC=0.1276
+  [17/18] B1 L=14d half=3d val_PR_AUC=0.1326
+  [18/18] B1 L=21d half=7d val_PR_AUC=0.1384
+[2/7] Fitting pooled diversified Branch 1 OOF models
+    pooled OOF origin=21600 block=0 n=160,083
+    pooled OOF origin=21600 block=1 n=230,101
+    pooled OOF origin=21600 block=2 n=26,334
+    pooled OOF origin=21888 block=0 n=106,106
+    pooled OOF origin=21888 block=1 n=235,334
+    pooled OOF origin=21888 block=2 n=38,324
+    pooled OOF origin=22176 block=0 n=66,935
+    pooled OOF origin=22176 block=1 n=229,752
+    pooled OOF origin=22176 block=2 n=161,623
+    pooled OOF origin=22464 block=0 n=77,627
+    pooled OOF origin=22464 block=1 n=160,083
+    pooled OOF origin=22464 block=2 n=230,101
+    pooled OOF origin=22752 block=0 n=104,126
+    pooled OOF origin=22752 block=1 n=106,106
+    pooled OOF origin=22752 block=2 n=235,334
+    pooled OOF origin=23040 block=0 n=122,606
+    pooled OOF origin=23040 block=1 n=66,935
+    pooled OOF origin=23040 block=2 n=229,752
+  family_weights={'logistic': 0.2589842586973467, 'extra_trees': 0.2450390757023496, 'hist_gradient_boosting': 0.24831416506413503, 'cnn': 0.2476625005361686}; input_weights={'1': 0.3363784174671437, '6': 0.32584207979590973, '24': 0.3377795027369465}
+[3/7] Fitting Branch 1 soft residual cascade
+[4/7] Selecting Branch 2 History-only window
+    B2 validation origin=21600 block=0 n=160,083
+    B2 validation origin=21600 block=1 n=230,101
+    B2 validation origin=21600 block=2 n=26,334
+    B2 validation origin=21888 block=0 n=106,106
+    B2 validation origin=21888 block=1 n=235,334
+    B2 validation origin=21888 block=2 n=38,324
+    B2 validation origin=22176 block=0 n=66,935
+    B2 validation origin=22176 block=1 n=229,752
+    B2 validation origin=22176 block=2 n=161,623
+    B2 validation origin=22464 block=0 n=77,627
+    B2 validation origin=22464 block=1 n=160,083
+    B2 validation origin=22464 block=2 n=230,101
+    B2 validation origin=22752 block=0 n=104,126
+    B2 validation origin=22752 block=1 n=106,106
+    B2 validation origin=22752 block=2 n=235,334
+    B2 validation origin=23040 block=0 n=122,606
+    B2 validation origin=23040 block=1 n=66,935
+    B2 validation origin=23040 block=2 n=229,752
+  B2 L=7d val_PR_AUC=0.1548
+[5/7] Selecting Lambda on paired full-GPU validation blocks
+[6/7] Fitting final Branch 1 and Branch 2 models
+[7/7] Evaluating 13 full-GPU held-out cycles before Top-100 tape

@@ -1,0 +1,11 @@
+Captured: 2026-09-12
+Git commit: a8cb41a96db04496f088b6ee1c73ecd062a8ffa0
+Git branch: migration/all-xid-github-base
+Git status: ?? experiments/2026-09-12_All-XID_GitHubBase_Reproduction/
+Python: Python 3.12.14
+matplotlib: 3.11.2
+numpy: 2.3.5
+pandas: 3.0.1
+pyarrow: 25.0.1
+scikit-learn: 1.9.1
+torch: 2.14.0+cpu

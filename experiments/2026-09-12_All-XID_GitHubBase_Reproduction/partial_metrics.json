@@ -1,0 +1,110 @@
+{
+  "status": "partial_timeout",
+  "total_origins": 63,
+  "completed_origins": 4,
+  "incomplete_origin": 5,
+  "command": "python ML/run_bidirectional_adst_fusion.py --cadence-hours 24 --negative-ratio 10 --test-stride-bins 6 --output-dir experiments/2026-09-12_All-XID_GitHubBase_Reproduction/results",
+  "target": "All-XID",
+  "seed": 20260905,
+  "candidates_L_train_days": [
+    7,
+    14,
+    21
+  ],
+  "candidates_L_obs_hours": [
+    1,
+    6,
+    24
+  ],
+  "metrics": {
+    "val_pr_auc": {
+      "mean": 0.24029999999999999,
+      "min": 0.1495,
+      "max": 0.3035
+    },
+    "pr_auc_fused": {
+      "mean": 0.013475,
+      "min": 0.0063,
+      "max": 0.0193
+    },
+    "pr_auc_b1": {
+      "mean": 0.0113,
+      "min": 0.0052,
+      "max": 0.0184
+    },
+    "pr_auc_b2": {
+      "mean": 0.012075,
+      "min": 0.0042,
+      "max": 0.0233
+    },
+    "roc_auc_fused": {
+      "mean": 0.509225,
+      "min": 0.3881,
+      "max": 0.7658
+    },
+    "recall_at_100": {
+      "mean": 0.09925,
+      "min": 0.048,
+      "max": 0.146
+    },
+    "lift_at_100": {
+      "mean": 1.975,
+      "min": 0.96,
+      "max": 2.9
+    }
+  },
+  "rows": [
+    {
+      "origin_idx": 1,
+      "origin_time": "2023-06-15 09:40",
+      "selected_L_train_days": 7,
+      "selected_L_obs_hours": 6,
+      "val_pr_auc": 0.2914,
+      "pr_auc_fused": 0.0193,
+      "pr_auc_b1": 0.0104,
+      "pr_auc_b2": 0.0233,
+      "roc_auc_fused": 0.3881,
+      "recall_at_100": 0.048,
+      "lift_at_100": 0.96
+    },
+    {
+      "origin_idx": 2,
+      "origin_time": "2023-06-16 09:40",
+      "selected_L_train_days": 14,
+      "selected_L_obs_hours": 6,
+      "val_pr_auc": 0.3035,
+      "pr_auc_fused": 0.0063,
+      "pr_auc_b1": 0.0052,
+      "pr_auc_b2": 0.0079,
+      "roc_auc_fused": 0.4393,
+      "recall_at_100": 0.08900000000000001,
+      "lift_at_100": 1.77
+    },
+    {
+      "origin_idx": 3,
+      "origin_time": "2023-06-17 09:40",
+      "selected_L_train_days": 21,
+      "selected_L_obs_hours": 6,
+      "val_pr_auc": 0.2168,
+      "pr_auc_fused": 0.0106,
+      "pr_auc_b1": 0.0112,
+      "pr_auc_b2": 0.0042,
+      "roc_auc_fused": 0.7658,
+      "recall_at_100": 0.114,
+      "lift_at_100": 2.27
+    },
+    {
+      "origin_idx": 4,
+      "origin_time": "2023-06-18 09:40",
+      "selected_L_train_days": 21,
+      "selected_L_obs_hours": 24,
+      "val_pr_auc": 0.1495,
+      "pr_auc_fused": 0.0177,
+      "pr_auc_b1": 0.0184,
+      "pr_auc_b2": 0.0129,
+      "roc_auc_fused": 0.4437,
+      "recall_at_100": 0.146,
+      "lift_at_100": 2.9
+    }
+  ]
+}
