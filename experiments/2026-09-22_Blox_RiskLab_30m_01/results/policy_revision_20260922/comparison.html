@@ -1,0 +1,46 @@
+<!doctype html><meta charset="utf-8"><title>Risk preference comparison</title><style>body{font:15px system-ui;margin:40px;color:#183442}table{border-collapse:collapse}td,th{padding:12px;border:1px solid #ddd}p{line-height:1.7;max-width:1000px}</style><h1>위험 선호 정책 · 탐색적 비교</h1><p>동일 100 GPU·16,560개 작업·30분 판단·LAS·seed 17. 99% mask의 전면 차단을 해소했다. 미사용 정책 대비 완료 수는 같고, 장애 작업 손실은 285초 감소했지만 선점 비용은 1,080초 증가했다. GPU 초와 작업 초는 별도로 해석한다. 이미 확인한 평가 구간의 탐색적 결과다.</p><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>policy</th>
+      <th>completed</th>
+      <th>job_failure_seconds</th>
+      <th>reactive_gpu_seconds</th>
+      <th>scheduling_seconds</th>
+      <th>avg_queue_seconds</th>
+      <th>p95_queue_seconds</th>
+      <th>preventive_gpu_seconds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>risk_blind_packed</td>
+      <td>16194</td>
+      <td>1,305.00</td>
+      <td>178,170.00</td>
+      <td>2,878,920.00</td>
+      <td>63,832.02</td>
+      <td>205,961.95</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>risk_mask_packed</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>187,110.00</td>
+      <td>0.00</td>
+      <td>574,104.34</td>
+      <td>1,067,526.00</td>
+      <td>108,475,440.00</td>
+    </tr>
+    <tr>
+      <td>risk_prefer_packed</td>
+      <td>16194</td>
+      <td>1,020.00</td>
+      <td>178,170.00</td>
+      <td>2,880,000.00</td>
+      <td>63,844.11</td>
+      <td>205,961.95</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>

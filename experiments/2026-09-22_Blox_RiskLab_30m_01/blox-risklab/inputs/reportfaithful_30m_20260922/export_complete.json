@@ -1,0 +1,41 @@
+{
+  "status": "completed",
+  "source_sha256": "7096d564bf9e5684de32da4ed1f29a86b5b5dbc4c839c1a94ccac03918323d3d",
+  "seed": 20260905,
+  "decision_interval_seconds": 1800,
+  "cohort_size": 100,
+  "version": 1,
+  "rows": 61100,
+  "timestamps": 611,
+  "gpu_count": 100,
+  "start": "2023-08-05 06:45:00+00:00",
+  "end_exclusive": "2023-08-18T00:00:00+00:00",
+  "model_state": "regenerated using frozen source settings; original learned weights were not saved",
+  "python": "C:\\Users\\Public\\Documents\\ESTsoft\\CreatorTemp\\iisee_b1_adst_venv\\Scripts\\python.exe",
+  "source_experiment": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-09-21_All-XID_ReportFaithful_ParetoMomentumCascade_01",
+  "selected": {
+    "selected_train_days": 7,
+    "selected_half_life_days": 3,
+    "selected_input_hours": [
+      1,
+      6,
+      24
+    ],
+    "selected_family_weights": {
+      "logistic": 0.2585759070433415,
+      "extra_trees": 0.24690586542167822,
+      "hist_gradient_boosting": 0.24918189075993377,
+      "cnn": 0.24533633677504657
+    },
+    "selected_input_weights": {
+      "1": 0.33534246262854184,
+      "6": 0.3303071688553383,
+      "24": 0.3343503685161199
+    },
+    "selected_cascade_alpha": 1.0,
+    "selected_cascade_validation_pr_auc": 0.6329523688470421,
+    "selected_b2_train_days": 7,
+    "selected_b2_half_life_days": 0,
+    "selected_lambda": 1.0
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "policies": {
+    "risk_blind_packed": {
+      "checks": {
+        "completed": true,
+        "decision_rows": true,
+        "xid_episodes": true,
+        "gpu_time_conservation": true,
+        "job_queue_integral": true,
+        "no_excluded_allocations": true,
+        "input_checksums_unchanged": true
+      },
+      "event_counts": {
+        "risk_mask_change": 100,
+        "risk_snapshot": 611,
+        "job_admitted": 16560,
+        "job_launch": 16560,
+        "job_complete": 16194,
+        "job_no_fit": 600,
+        "scheduler_preemption": 7997,
+        "gang_checkpoint": 7997,
+        "job_recovered": 8001,
+        "job_relaunch": 7651,
+        "xid_episode": 31,
+        "gang_failure": 4,
+        "gpu_failed": 31,
+        "maintenance_start": 31,
+        "maintenance_complete": 31,
+        "cooldown_start": 31,
+        "cooldown_complete": 31
+      },
+      "gpu_seconds": 109890000.0,
+      "queue_seconds": 1057058309.0,
+      "performance": {
+        "elapsed_seconds": 25.496205300005386,
+        "simulation_seconds": 23.888744099996984,
+        "input_setup_seconds": 0.5589182999974582,
+        "artifact_seconds": 1.0485438000177965,
+        "max_decision_seconds": 0.06344749999698251,
+        "process_peak_working_set_bytes": 243707904
+      }
+    },
+    "risk_mask_packed": {
+      "checks": {
+        "completed": true,
+        "decision_rows": true,
+        "xid_episodes": true,
+        "gpu_time_conservation": true,
+        "job_queue_integral": true,
+        "no_excluded_allocations": true,
+        "input_checksums_unchanged": true
+      },
+      "event_counts": {
+        "risk_mask_change": 100,
+        "gpu_drained": 1318,
+        "maintenance_start": 1222,
+        "risk_snapshot": 611,
+        "job_admitted": 16560,
+        "maintenance_complete": 1220,
+        "cooldown_start": 1220,
+        "cooldown_complete": 1220,
+        "job_no_fit": 610,
+        "xid_episode": 31,
+        "gpu_failed": 31
+      },
+      "gpu_seconds": 109890000.0,
+      "queue_seconds": 9507167834.0,
+      "performance": {
+        "elapsed_seconds": 27.150247900019167,
+        "simulation_seconds": 26.02625320001971,
+        "input_setup_seconds": 0.6723403999931179,
+        "artifact_seconds": 0.4516548999818042,
+        "max_decision_seconds": 0.16583370001171716,
+        "process_peak_working_set_bytes": 243707904
+      }
+    },
+    "risk_mask_random": {
+      "checks": {
+        "completed": true,
+        "decision_rows": true,
+        "xid_episodes": true,
+        "gpu_time_conservation": true,
+        "job_queue_integral": true,
+        "no_excluded_allocations": true,
+        "input_checksums_unchanged": true
+      },
+      "event_counts": {
+        "risk_mask_change": 100,
+        "gpu_drained": 1318,
+        "maintenance_start": 1222,
+        "risk_snapshot": 611,
+        "job_admitted": 16560,
+        "maintenance_complete": 1220,
+        "cooldown_start": 1220,
+        "cooldown_complete": 1220,
+        "job_no_fit": 610,
+        "xid_episode": 31,
+        "gpu_failed": 31
+      },
+      "gpu_seconds": 109890000.0,
+      "queue_seconds": 9507167834.0,
+      "performance": {
+        "elapsed_seconds": 23.022924600023543,
+        "simulation_seconds": 22.301045600004727,
+        "input_setup_seconds": 0.4245834000175819,
+        "artifact_seconds": 0.2972958999744151,
+        "max_decision_seconds": 0.1414082999981474,
+        "process_peak_working_set_bytes": 243707904
+      }
+    },
+    "risk_mask_packed_nonsticky": {
+      "checks": {
+        "completed": true,
+        "decision_rows": true,
+        "xid_episodes": true,
+        "gpu_time_conservation": true,
+        "job_queue_integral": true,
+        "no_excluded_allocations": true,
+        "input_checksums_unchanged": true
+      },
+      "event_counts": {
+        "risk_mask_change": 100,
+        "gpu_drained": 1318,
+        "maintenance_start": 1222,
+        "risk_snapshot": 611,
+        "job_admitted": 16560,
+        "maintenance_complete": 1220,
+        "cooldown_start": 1220,
+        "cooldown_complete": 1220,
+        "job_no_fit": 610,
+        "xid_episode": 31,
+        "gpu_failed": 31
+      },
+      "gpu_seconds": 109890000.0,
+      "queue_seconds": 9507167834.0,
+      "performance": {
+        "elapsed_seconds": 22.926107700011926,
+        "simulation_seconds": 22.240585899999132,
+        "input_setup_seconds": 0.3398792000079993,
+        "artifact_seconds": 0.34564339998178184,
+        "max_decision_seconds": 0.12377269999706186,
+        "process_peak_working_set_bytes": 243707904
+      }
+    }
+  },
+  "dashboard_cli_parity": {
+    "events.jsonl": true,
+    "decisions.jsonl": true,
+    "summary.json": true
+  },
+  "repeat_parity": {
+    "decisions.jsonl": true,
+    "events.jsonl": true,
+    "summary.json": true
+  }
+}

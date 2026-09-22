@@ -1,0 +1,7 @@
+{
+  "source_sha256": "7096d564bf9e5684de32da4ed1f29a86b5b5dbc4c839c1a94ccac03918323d3d",
+  "seed": 20260905,
+  "decision_interval_seconds": 1800,
+  "cohort_size": 100,
+  "version": 1
+}

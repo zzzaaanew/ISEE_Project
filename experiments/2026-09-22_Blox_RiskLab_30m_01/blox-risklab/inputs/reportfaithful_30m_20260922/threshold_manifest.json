@@ -1,0 +1,32 @@
+{
+  "model_version": "2026-09-21_All-XID_ReportFaithful_ParetoMomentumCascade_01",
+  "prediction_horizon": "24h",
+  "decision_interval_seconds": 1800,
+  "selection_split": "validation_only",
+  "target_recall": 0.99,
+  "threshold": 0.022169783968252598,
+  "threshold_rule": "highest_threshold_with_validation_recall_at_least_target",
+  "sensitivity": {
+    "0.9": {
+      "threshold": 0.02643723932476668,
+      "recall": 0.9000538309707519
+    },
+    "0.95": {
+      "threshold": 0.023826234899742164,
+      "recall": 0.9500269154853759
+    },
+    "0.99": {
+      "threshold": 0.022169783968252598,
+      "recall": 0.9900412704109097
+    }
+  },
+  "validation_start": "2023-07-30 21:40:00+00:00",
+  "validation_end": "2023-08-02 21:35:00+00:00",
+  "validation_samples": 122606,
+  "validation_positives": 11146,
+  "validation_population": "source negative-sampled development block; all positive examples retained",
+  "cascade_validation": "chronological earlier OOF records with 36h purge; separately fitted cascade",
+  "cascade_training_max_time": "2023-07-28 21:35:00+00:00",
+  "heldout_used_for_selection": false,
+  "source_manifest_sha256": "7096d564bf9e5684de32da4ed1f29a86b5b5dbc4c839c1a94ccac03918323d3d"
+}

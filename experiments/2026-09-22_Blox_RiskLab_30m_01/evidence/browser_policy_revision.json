@@ -1,0 +1,15 @@
+{
+  "run_id": "run_20260922_001513_7edac07b",
+  "http_status": 202,
+  "launch_response_ms": 126,
+  "status": "completed",
+  "completed_jobs": 16194,
+  "servers": 13,
+  "utc": "데이터 시각 · 2023-08-18 00:00:00 UTC",
+  "kst": "데이터 시각 · 2023-08-18 09:00:00 KST",
+  "gpu_tiles": 100,
+  "report_visible": true,
+  "report_http_status": 200,
+  "mobile_overflow": false,
+  "javascript_errors": []
+}

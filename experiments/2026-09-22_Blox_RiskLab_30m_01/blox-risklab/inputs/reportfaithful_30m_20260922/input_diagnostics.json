@@ -1,0 +1,16 @@
+{
+  "rows": 61100,
+  "timestamps": 611,
+  "cohort_size": 100,
+  "server_count": 13,
+  "probability_min": 0.023385562732999247,
+  "probability_max": 0.3663630256630933,
+  "eligible_gpus_mean": 0.0,
+  "eligible_gpus_min": 0,
+  "eligible_gpus_max": 0,
+  "source_overlap_rows": 7678,
+  "source_overlap_mean_abs_difference": 0.01660349252363923,
+  "source_overlap_max_abs_difference": 0.23301454245775036,
+  "original_weights_saved": false,
+  "overlap_note": "Diagnostic only; regenerated learned weights, frozen source settings. Original tape is dynamic Top-100."
+}

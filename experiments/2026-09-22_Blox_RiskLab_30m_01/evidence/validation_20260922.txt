@@ -1,0 +1,27 @@
+test_atomic_failure_and_queue_separation (test_actual_replay.ReplayTests.test_atomic_failure_and_queue_separation) ... ok
+test_background_worker_and_cursor (test_actual_replay.ReplayTests.test_background_worker_and_cursor) ... ok
+test_causal_provider (test_actual_replay.ReplayTests.test_causal_provider) ... ok
+test_deterministic_cli_engine_100_gpu (test_actual_replay.ReplayTests.test_deterministic_cli_engine_100_gpu) ... ok
+test_duplicate_loss_rejected (test_actual_replay.ReplayTests.test_duplicate_loss_rejected) ... ok
+test_exact_packing_and_seed (test_actual_replay.ReplayTests.test_exact_packing_and_seed) ... ok
+test_group_migration_separate (test_actual_replay.ReplayTests.test_group_migration_separate) ... ok
+test_idle_failure_no_job_loss (test_actual_replay.ReplayTests.test_idle_failure_no_job_loss) ... ok
+test_invalid_feeds (test_actual_replay.ReplayTests.test_invalid_feeds) ... ok
+test_no_fit_no_fallback (test_actual_replay.ReplayTests.test_no_fit_no_fallback) ... ok
+test_recovery_censored_at_end (test_actual_replay.ReplayTests.test_recovery_censored_at_end) ... ok
+test_true_completion_time (test_actual_replay.ReplayTests.test_true_completion_time) ... ok
+test_persistent_permission_failure_is_not_silenced (test_atomic_status.AtomicStatusTests.test_persistent_permission_failure_is_not_silenced) ... ok
+test_status_reader_does_not_crash_writer (test_atomic_status.AtomicStatusTests.test_status_reader_does_not_crash_writer) ... ok
+test_episode_gap_and_persistent_observations (test_replay_edges.EdgeTests.test_episode_gap_and_persistent_observations) ... ok
+test_probability_tiebreak_is_sensitivity_only (test_replay_edges.EdgeTests.test_probability_tiebreak_is_sensitivity_only) ... ok
+test_real_scheduler_order (test_replay_edges.EdgeTests.test_real_scheduler_order) ... ok
+test_scheduler_preemption_is_not_failure_loss (test_replay_edges.EdgeTests.test_scheduler_preemption_is_not_failure_loss) ... ok
+test_stop_and_failed_artifacts (test_replay_edges.EdgeTests.test_stop_and_failed_artifacts) ... ok
+test_threshold_highest_and_no_test_access (test_replay_edges.EdgeTests.test_threshold_highest_and_no_test_access) ... ok
+test_worker_crash_is_reported (test_replay_edges.EdgeTests.test_worker_crash_is_reported) ... ok
+test_gpu_time_conservation_and_queue_integral (test_replay_timeline.TimelineTests.test_gpu_time_conservation_and_queue_integral) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 21.971s
+
+OK

@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "start_time": "2023-08-05T06:45:00+00:00",
+  "end_time": "2023-08-18T00:00:00+00:00",
+  "cohort_size": 100,
+  "decision_interval_seconds": 1800,
+  "random_seed": 17,
+  "scheduler": "Las",
+  "placement_policy": "risk_mask_packed",
+  "preemption": true,
+  "blox_source_root": "../../../blox-main",
+  "server_correlated_failure": false,
+  "inputs": {
+    "probability_tape": {
+      "path": "probability_tape.parquet",
+      "sha256": "5f34694dfafeaa8df7302578077200608ebaa8757468a79a474a22b4162db699"
+    },
+    "failure_tape": {
+      "path": "failure_tape.parquet",
+      "sha256": "298991a71d1e30ecf90d53f96f813684d017bf43472e1b97651224c10d18a9e2"
+    },
+    "gpu_manifest": {
+      "path": "gpu_manifest.parquet",
+      "sha256": "acbc0e863efa9add08023cc4220756811e576418cebb9d775fa5c36b8ad52ae3"
+    },
+    "job_trace": {
+      "path": "job_trace.parquet",
+      "sha256": "117d39ca098732720a051072e85826bd4ea71b378b26bd08cf79e297975ddcb1"
+    },
+    "threshold_manifest": {
+      "path": "threshold_manifest.json",
+      "sha256": "f9a12755ce9d72153b6c50f40a3ba74c12ea3c2e8c4ae66d04224d5c541e6f8d"
+    }
+  },
+  "recovery": {
+    "checkpoint_interval_seconds": 300,
+    "checkpoint_cost_seconds": 60,
+    "relaunch_seconds": 300
+  },
+  "maintenance": {
+    "capacity": 1,
+    "duration_seconds": 900,
+    "cooldown_seconds": 300
+  },
+  "assumptions": {
+    "workload": "All completed GPU jobs arriving in the replay interval with 1..100 GPU demand; no resampling or time compression. This replays cluster-wide arrivals on a smaller cohort, not a measured production load for these 100 GPUs.",
+    "duration": "Observed completed-job execution seconds treated as useful work; original unsuccessful/cancelled durations are censored and excluded.",
+    "initial_state": "Empty job queue and initially healthy GPUs at replay start; no carry-in reconstruction.",
+    "job_arrivals_in_interval": 55104,
+    "included_jobs": 16560,
+    "excluded_jobs": 38544,
+    "trace_last_arrival": "2023-08-16 15:59:42+00:00",
+    "failure_episodes": 31,
+    "checkpoint_source": "fixed_default; job trace has no checkpoint field",
+    "recovery_parameters": "Checkpoint interval 300s, preventive/scheduler checkpoint cost 60s, relaunch 300s; assumptions, not observed durations.",
+    "maintenance_parameters": "One concurrent GPU, 900s maintenance, 300s cooldown; assumptions.",
+    "episode_rule": "Merge nonzero five-minute buckets with gap <=600s. Gap rule takes precedence over transient clean observations; timestamp preserves first raw observation.",
+    "unavailability": "Reactive downtime and preventive maintenance are disjoint GPU-second components; queue time is separate.",
+    "cohort": "First 100 lexical GPU IDs in original telemetry grid; server prefix verified against node telemetry header.",
+    "risk_probability": "Raw source model score; calibration quality is not asserted. Failure generation uses observed XID only."
+  },
+  "source_data": {
+    "job_trace_sha256": "747854c73ce8b3263b764aa9ff8d866d89903705d31fcd0e0520c33dd14af9a1",
+    "raw_xid_sha256": "c27189959db8e0c7e8ec9c736fd73539f6400488058584c1b855a8e94c60b7b0",
+    "node_telemetry_header_sha256": "2f2a6fcce0cb23db199dc10201d6019fb2f936054c7ffd4f85b89352310bdf83"
+  }
+}

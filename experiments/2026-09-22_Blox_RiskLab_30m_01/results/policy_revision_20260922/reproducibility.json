@@ -1,0 +1,5 @@
+{
+  "events.jsonl": true,
+  "decisions.jsonl": true,
+  "summary.json": true
+}

@@ -1,0 +1,6 @@
+!*.parquet
+!*.csv
+__pycache__/
+*.py[cod]
+/blox-risklab/runs_actual/
+*.log

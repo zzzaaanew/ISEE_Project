@@ -1,0 +1,25 @@
+{
+  "python": "3.13.5",
+  "packages": {
+    "torch": "2.14.0",
+    "scikit-learn": "1.9.0",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "pyarrow": "25.0.1",
+    "threadpoolctl": "3.6.0"
+  },
+  "source_files_sha256": {
+    "export_risklab_30m.py": "81951d2c3a70846364b3878914680530d9e8ad80192a9a9ebb4c635a4c304328",
+    "run_bidirectional_adst_fusion.py": "c20380294f7c7e6b1543fe48454d8540580eb8ed72cca233a2e1385b50143856",
+    "run_fusion_diversified_b1_history_b2.py": "2eaf69b3df4ebc08661fe3c1504763550e588d0cd1deab128d1dd03e6687f1ce",
+    "branch1_enhanced_features.py": "2aae665034cfd2ec2a2292ef3f4bf1e46912e21671acd7a2e5e4592334830a55",
+    "run_report_faithful_pareto_momentum_fusion.py": "97f5495d004a4fb1b1e280150010baf099a0eda096b7cc704878bbfe08c31e84",
+    "run_pareto_momentum_enhanced_fusion.py": "4992948739e27d2a728e5b26c80507eaf05c6e71e501ae322beb98d497249fe6"
+  },
+  "saved_final_models_sha256": {
+    "final_b1.pkl": "5fdaea99ac9c204c95cc4c44cee7733591ecf3f685f0206034bb53702e5da099",
+    "final_b2.pkl": "62fab719c83b6677543df7bfefc6bce6880ca2ed78cf6b6173b53dea3ecb331e",
+    "final_cascade.pkl": "23b46b1f4aeb6d72416fb7ab2e141d58881d4df6927e4f9cb3d6573fbcace3f8"
+  },
+  "note": "Post-export environment/source snapshot. Final regenerated weights are preserved; these are not the original missing learned weights. The shared threshold selector replaces equivalent inline order-statistic logic."
+}

@@ -1,0 +1,110 @@
+{
+  "dashboard_cli_parity": {
+    "events.jsonl": true,
+    "decisions.jsonl": true,
+    "summary.json": true
+  },
+  "repeat": {
+    "events.jsonl": true,
+    "decisions.jsonl": true,
+    "summary.json": true
+  },
+  "policies": {
+    "risk_blind_packed": {
+      "checks": {
+        "gpu_time_conserved": true,
+        "queue_integral": true,
+        "xid_31": true,
+        "rounds_611": true,
+        "input_checksums": true
+      },
+      "events": {
+        "risk_snapshot": 611,
+        "job_admitted": 16560,
+        "job_launch": 16560,
+        "job_complete": 16194,
+        "job_no_fit": 600,
+        "scheduler_preemption": 7997,
+        "gang_checkpoint": 7997,
+        "job_recovered": 8001,
+        "job_relaunch": 7651,
+        "xid_episode": 31,
+        "gang_failure": 4,
+        "gpu_failed": 31,
+        "maintenance_start": 31,
+        "maintenance_complete": 31,
+        "cooldown_start": 31,
+        "cooldown_complete": 31
+      }
+    },
+    "risk_mask_packed": {
+      "checks": {
+        "gpu_time_conserved": true,
+        "queue_integral": true,
+        "xid_31": true,
+        "rounds_611": true,
+        "input_checksums": true
+      },
+      "events": {
+        "risk_mask_change": 100,
+        "gpu_drained": 1318,
+        "maintenance_start": 1222,
+        "risk_snapshot": 611,
+        "job_admitted": 16560,
+        "maintenance_complete": 1220,
+        "cooldown_start": 1220,
+        "cooldown_complete": 1220,
+        "job_no_fit": 610,
+        "xid_episode": 31,
+        "gpu_failed": 31
+      }
+    },
+    "risk_prefer_packed": {
+      "checks": {
+        "gpu_time_conserved": true,
+        "queue_integral": true,
+        "xid_31": true,
+        "rounds_611": true,
+        "input_checksums": true
+      },
+      "events": {
+        "risk_snapshot": 611,
+        "job_admitted": 16560,
+        "job_launch": 16560,
+        "job_complete": 16194,
+        "job_no_fit": 600,
+        "scheduler_preemption": 8000,
+        "gang_checkpoint": 8000,
+        "job_recovered": 8003,
+        "job_relaunch": 7653,
+        "xid_episode": 31,
+        "gang_failure": 3,
+        "gpu_failed": 31,
+        "maintenance_start": 31,
+        "maintenance_complete": 31,
+        "cooldown_start": 31,
+        "cooldown_complete": 31
+      }
+    }
+  },
+  "tests": {
+    "passed": 26,
+    "failed": 0,
+    "elapsed_seconds": 17.772
+  },
+  "browser": {
+    "run_id": "run_20260922_001513_7edac07b",
+    "http_status": 202,
+    "launch_response_ms": 126,
+    "status": "completed",
+    "completed_jobs": 16194,
+    "servers": 13,
+    "utc": "데이터 시각 · 2023-08-18 00:00:00 UTC",
+    "kst": "데이터 시각 · 2023-08-18 09:00:00 KST",
+    "gpu_tiles": 100,
+    "report_visible": true,
+    "report_http_status": 200,
+    "mobile_overflow": false,
+    "javascript_errors": []
+  }
+}
