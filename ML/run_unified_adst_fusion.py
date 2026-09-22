@@ -6,7 +6,7 @@ Integrates:
   - 김준호: _safe_ratio(), stateful momentum checkpoint, 2-origin cooldown, +5% guard
 
 Architecture:
-  Branch 1: Telemetry (ExtraTrees + 1D-CNN) with ADST window selection
+  Branch 1: Telemetry (Single GBDT on 45 Enhanced Features: Base 30 + Cross-Metric 7 + Node GNN 8) with ADST
   Branch 2: History-only (Logistic + GBDT) — unchanged
   Fusion:   Per-GPU Pareto λ weighting from MLE α, dynamic via momentum ADST
 
@@ -33,8 +33,9 @@ if str(_ML_DIR) not in sys.path:
 
 import numpy as np
 import pandas as pd
+from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import average_precision_score
+from sklearn.metrics import average_precision_score, roc_auc_score
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
@@ -76,18 +77,56 @@ def _combo_key(l_train: int, l_obs: int) -> str:
 
 
 # =====================================================================
-# Unified ADST Pipeline with Stateful Momentum
+# Enhanced Branch 1 Feature Definitions (45 Features)
+# =====================================================================
+BASE_TELEMETRY_FEATURES = [
+    *[
+        f"{m}_{stat}"
+        for m in base.METRICS
+        for stat in ["last", "mean", "max", "min", "std", "delta"]
+    ],
+    "util_node_mean", "temp_node_mean", "power_node_mean",
+    "util_diff_node", "temp_diff_node", "power_diff_node",
+]
+
+CROSS_METRIC_FEATURES = [
+    "thermal_efficiency",     # temp_mean / util_mean
+    "power_temp_ratio",       # power_std / temp_std
+    "util_fb_coupling",       # util_delta * fb_delta
+    "power_per_util",         # power_mean / util_mean
+    "temp_fb_divergence",     # abs(temp_delta - fb_delta)
+    "thermal_headroom",       # temp_max - temp_mean
+    "power_headroom",         # power_max - power_mean
+]
+
+GNN_SPATIAL_FEATURES = [
+    "gnn_neighbor_temp_max",   # max temp among 7 sibling GPUs (thermal spillover)
+    "gnn_neighbor_temp_mean",  # mean temp among 7 sibling GPUs
+    "gnn_node_temp_std",       # temp std across 8 GPUs in chassis
+    "gnn_temp_spatial_diff",   # self temp - neighbor temp mean
+    "gnn_neighbor_power_max",  # max power among 7 sibling GPUs
+    "gnn_neighbor_power_mean", # mean power among 7 sibling GPUs
+    "gnn_power_spatial_diff",  # self power - neighbor power mean
+    "gnn_neighbor_util_mean",  # mean util among 7 sibling GPUs
+]
+
+BRANCH1_ENHANCED_FEATURES = BASE_TELEMETRY_FEATURES + CROSS_METRIC_FEATURES + GNN_SPATIAL_FEATURES
+
+
+# =====================================================================
+# Unified ADST Pipeline with Stateful Momentum + Single GBDT Branch 1
 # =====================================================================
 class UnifiedADSTPipeline(base.BidirectionalADSTPipeline):
-    """Extends base ADST pipeline with stateful EMA momentum and Pareto fusion.
+    """Extends base ADST pipeline with stateful EMA momentum, single GBDT B1, and Pareto fusion.
 
-    Changes from base:
-    1. Skip-retrain uses EMA confidence per (L_train, L_obs) pair
-       instead of simple consecutive-count threshold.
-    2. Momentum state persists to disk (momentum_state.json) for --resume.
-    3. 2-origin cooldown before first skip-hold is allowed.
-    4. +5% relative gain guard for short-window promotion.
-    5. Per-GPU Pareto λ from MLE α applied to fusion weights.
+    Changes:
+    1. Branch 1 uses single HistGradientBoostingClassifier on 45 Enhanced Features
+       (Base 30 + Cross-Metric 7 + Node GNN 8) instead of ExtraTrees + 1D-CNN.
+    2. Skip-retrain uses EMA confidence per (L_train, L_obs) pair.
+    3. Momentum state persists to disk (momentum_state.json) for --resume.
+    4. 2-origin cooldown before first skip-hold is allowed.
+    5. +5% relative gain guard for short-window promotion.
+    6. Per-GPU Pareto λ from MLE α applied to fusion weights (pure, no cap).
     """
 
     def __init__(
@@ -160,6 +199,112 @@ class UnifiedADSTPipeline(base.BidirectionalADSTPipeline):
                 + (1.0 - self.momentum_beta) * indicator
             )
         return self._state["confidence"][selected_key]
+
+    # ── Enhanced Branch 1 Feature Extraction (45 Features) ──
+
+    def extract_enhanced_branch1_features(
+        self, bins: np.ndarray, gpus: np.ndarray, l_obs_hours: int = 1,
+    ) -> pd.DataFrame:
+        """Extracts 45 Enhanced Branch 1 features:
+        - 30 Base Telemetry Statistics (mean, last, max, min, std, delta + node context)
+        - 7 Cross-Metric Interaction Features (via _safe_ratio)
+        - 8 Node Topology GNN Spatial Features (intra-node 8-GPU complete graph)
+        """
+        n_samples = len(bins)
+        n_bins = base.L_OBS_BINS_MAP[l_obs_hours]
+        lags = np.arange(base.BUFFER_MASK_BINS + 1, base.BUFFER_MASK_BINS + n_bins + 1)
+        feature_dict: dict[str, np.ndarray] = {}
+
+        # 1. Base 30 Telemetry Summary Statistics
+        for m in base.METRICS:
+            mat = self.engine.matrices[m]
+            window = np.column_stack([mat[bins - lag, gpus] for lag in lags])
+            last = window[:, 0].astype(np.float32)
+            valid = np.isfinite(window)
+            cnt = valid.sum(axis=1)
+            tot = np.where(valid, window, 0.0).sum(axis=1)
+            mean = np.divide(tot, cnt, out=np.full(n_samples, np.nan, dtype=np.float32), where=cnt > 0)
+
+            max_val = np.full(n_samples, np.nan, dtype=np.float32)
+            min_val = np.full(n_samples, np.nan, dtype=np.float32)
+            std_val = np.zeros(n_samples, dtype=np.float32)
+
+            has_valid = cnt > 0
+            if has_valid.any():
+                sub = np.where(valid[has_valid], window[has_valid], np.nan)
+                with np.errstate(all="ignore"):
+                    max_val[has_valid] = np.nanmax(sub, axis=1)
+                    min_val[has_valid] = np.nanmin(sub, axis=1)
+                    std_val[has_valid] = np.nanstd(sub, axis=1)
+
+            feature_dict[f"{m}_last"] = last
+            feature_dict[f"{m}_mean"] = mean
+            feature_dict[f"{m}_max"] = max_val
+            feature_dict[f"{m}_min"] = min_val
+            feature_dict[f"{m}_std"] = std_val
+            feature_dict[f"{m}_delta"] = last - mean
+
+        # Node context relative diffs
+        node_idx = gpus // 8
+        gpu_slots = gpus % 8
+        sample_indices = np.arange(n_samples)
+        last_lag_bin = bins - (base.BUFFER_MASK_BINS + 1)
+
+        for m in ["util", "temp", "power"]:
+            node_mat = self.engine.node_matrices[m]
+            node_last = node_mat[last_lag_bin, node_idx].astype(np.float32)
+            feature_dict[f"{m}_node_mean"] = node_last
+            feature_dict[f"{m}_diff_node"] = feature_dict[f"{m}_last"] - node_last
+
+        # 2. Cross-Metric Interaction Features (7 features) with _safe_ratio
+        feature_dict["thermal_efficiency"] = _safe_ratio(feature_dict["temp_mean"], feature_dict["util_mean"])
+        feature_dict["power_temp_ratio"] = _safe_ratio(feature_dict["power_std"], feature_dict["temp_std"])
+        feature_dict["util_fb_coupling"] = (feature_dict["util_delta"] * feature_dict["fb_delta"]).astype(np.float32)
+        feature_dict["power_per_util"] = _safe_ratio(feature_dict["power_mean"], feature_dict["util_mean"])
+        feature_dict["temp_fb_divergence"] = np.abs(feature_dict["temp_delta"] - feature_dict["fb_delta"]).astype(np.float32)
+        feature_dict["thermal_headroom"] = (feature_dict["temp_max"] - feature_dict["temp_mean"]).astype(np.float32)
+        feature_dict["power_headroom"] = (feature_dict["power_max"] - feature_dict["power_mean"]).astype(np.float32)
+
+        # 3. Node Topology GNN Spatial Features (8 features)
+        # Temp GNN
+        temp_3d = self.engine.matrices["temp"].reshape(self.engine.num_bins, self.engine.num_nodes, 8)
+        temp_vecs = temp_3d[last_lag_bin, node_idx, :].copy()
+        self_temp = temp_vecs[sample_indices, gpu_slots]
+        node_temp_sum = np.sum(np.nan_to_num(temp_vecs, nan=0.0), axis=1)
+        neighbor_temp_mean = (node_temp_sum - np.nan_to_num(self_temp, nan=0.0)) / 7.0
+        node_temp_std = np.nanstd(temp_vecs, axis=1)
+        temp_vecs[sample_indices, gpu_slots] = -np.inf
+        neighbor_temp_max = np.nanmax(temp_vecs, axis=1)
+        neighbor_temp_max = np.where(np.isfinite(neighbor_temp_max), neighbor_temp_max, self_temp)
+
+        feature_dict["gnn_neighbor_temp_max"] = neighbor_temp_max.astype(np.float32)
+        feature_dict["gnn_neighbor_temp_mean"] = neighbor_temp_mean.astype(np.float32)
+        feature_dict["gnn_node_temp_std"] = np.nan_to_num(node_temp_std, nan=0.0).astype(np.float32)
+        feature_dict["gnn_temp_spatial_diff"] = (self_temp - neighbor_temp_mean).astype(np.float32)
+
+        # Power GNN
+        power_3d = self.engine.matrices["power"].reshape(self.engine.num_bins, self.engine.num_nodes, 8)
+        power_vecs = power_3d[last_lag_bin, node_idx, :].copy()
+        self_power = power_vecs[sample_indices, gpu_slots]
+        node_power_sum = np.sum(np.nan_to_num(power_vecs, nan=0.0), axis=1)
+        neighbor_power_mean = (node_power_sum - np.nan_to_num(self_power, nan=0.0)) / 7.0
+        power_vecs[sample_indices, gpu_slots] = -np.inf
+        neighbor_power_max = np.nanmax(power_vecs, axis=1)
+        neighbor_power_max = np.where(np.isfinite(neighbor_power_max), neighbor_power_max, self_power)
+
+        feature_dict["gnn_neighbor_power_max"] = neighbor_power_max.astype(np.float32)
+        feature_dict["gnn_neighbor_power_mean"] = neighbor_power_mean.astype(np.float32)
+        feature_dict["gnn_power_spatial_diff"] = (self_power - neighbor_power_mean).astype(np.float32)
+
+        # Util GNN
+        util_3d = self.engine.matrices["util"].reshape(self.engine.num_bins, self.engine.num_nodes, 8)
+        util_vecs = util_3d[last_lag_bin, node_idx, :]
+        self_util = util_vecs[sample_indices, gpu_slots]
+        node_util_sum = np.sum(np.nan_to_num(util_vecs, nan=0.0), axis=1)
+        neighbor_util_mean = (node_util_sum - np.nan_to_num(self_util, nan=0.0)) / 7.0
+        feature_dict["gnn_neighbor_util_mean"] = neighbor_util_mean.astype(np.float32)
+
+        return pd.DataFrame(feature_dict, columns=BRANCH1_ENHANCED_FEATURES).fillna(0.0)
 
     # ── Override: ADST with Stateful Momentum ──
 
@@ -289,10 +434,10 @@ class UnifiedADSTPipeline(base.BidirectionalADSTPipeline):
                     v_b2_probs = b2_lr.predict_proba(v_b2_df)[:, 1]
 
                     for l_obs_hours in base.CANDIDATE_L_OBS_HOURS:
-                        tr_b1_df, _ = self.engine.extract_branch1_features(
+                        tr_b1_df = self.extract_enhanced_branch1_features(
                             tr_bins, tr_gpus, l_obs_hours,
                         )
-                        v_b1_df, _ = self.engine.extract_branch1_features(
+                        v_b1_df = self.extract_enhanced_branch1_features(
                             v_bins, v_gpus, l_obs_hours,
                         )
 
@@ -393,8 +538,8 @@ class UnifiedADSTPipeline(base.BidirectionalADSTPipeline):
         b2_lr.fit(qv_b2, qv_labels)
         v_b2_probs = b2_lr.predict_proba(v_b2_df)[:, 1]
 
-        qv_b1, _ = self.engine.extract_branch1_features(qv_bins, qv_gpus, l_obs)
-        v_b1, _ = self.engine.extract_branch1_features(v_bins, v_gpus, l_obs)
+        qv_b1 = self.extract_enhanced_branch1_features(qv_bins, qv_gpus, l_obs)
+        v_b1 = self.extract_enhanced_branch1_features(v_bins, v_gpus, l_obs)
 
         b1_lr = make_pipeline(
             StandardScaler(),
@@ -414,11 +559,6 @@ class UnifiedADSTPipeline(base.BidirectionalADSTPipeline):
         best_l_train: int, best_l_obs: int, adst_action: str,
         rng: np.random.Generator,
     ) -> tuple[dict, pd.DataFrame | None]:
-        """Train final models and evaluate one test cycle with Pareto λ fusion."""
-        import torch
-        from sklearn.ensemble import ExtraTreesClassifier, HistGradientBoostingClassifier
-        from sklearn.metrics import roc_auc_score
-
         origin_time = pd.to_datetime(
             self.engine.bin_start_ns[origin_bin], unit="ns", utc=True,
         )
@@ -431,37 +571,25 @@ class UnifiedADSTPipeline(base.BidirectionalADSTPipeline):
             final_tr_start, origin_bin, rng,
         )
 
-        b1_train_df, b1_train_tensor = self.engine.extract_branch1_features(
+        b1_train_df = self.extract_enhanced_branch1_features(
             final_tr_bins, final_tr_gpus, best_l_obs,
         )
         b2_train_df = self.engine.extract_branch2_features(
             final_tr_bins, final_tr_gpus, self.history_map,
         )
 
-        # Branch 1: ExtraTrees + 1D-CNN
-        b1_tree = ExtraTreesClassifier(
-            n_estimators=100, max_depth=12, min_samples_leaf=20,
-            class_weight="balanced", n_jobs=-1, random_state=self.seed,
+        # Branch 1: Single GBDT on 45 Enhanced Features (Base 30 + Cross-Metric 7 + Node GNN 8)
+        b1_gbdt = HistGradientBoostingClassifier(
+            loss="log_loss",
+            learning_rate=0.06,
+            max_iter=150,
+            max_leaf_nodes=31,
+            min_samples_leaf=40,
+            l2_regularization=1.5,
+            class_weight="balanced",
+            random_state=self.seed,
         )
-        b1_tree.fit(b1_train_df, final_tr_labels)
-
-        b1_cnn = base.TemporalCNN1D(in_channels=7, hidden_channels=32, dropout=0.2)
-        opt = torch.optim.AdamW(b1_cnn.parameters(), lr=0.005, weight_decay=1e-4)
-        pos_w = max(1.0, (final_tr_labels == 0).sum() / max(1, (final_tr_labels == 1).sum()))
-        crit = torch.nn.BCEWithLogitsLoss(pos_weight=torch.tensor([pos_w]))
-
-        x_tr_t = torch.tensor(b1_train_tensor, dtype=torch.float32)
-        y_tr_t = torch.tensor(final_tr_labels, dtype=torch.float32)
-        b1_cnn.train()
-        ds = torch.utils.data.TensorDataset(x_tr_t, y_tr_t)
-        loader = torch.utils.data.DataLoader(ds, batch_size=4096, shuffle=True)
-        for _ in range(5):
-            for bx, by in loader:
-                opt.zero_grad()
-                out = b1_cnn(bx)
-                crit(out, by).backward()
-                opt.step()
-        b1_cnn.eval()
+        b1_gbdt.fit(b1_train_df, final_tr_labels)
 
         # Branch 2: Logistic + GBDT
         b2_lr = make_pipeline(
@@ -513,19 +641,14 @@ class UnifiedADSTPipeline(base.BidirectionalADSTPipeline):
             all_g = np.arange(self.engine.num_gpus, dtype=np.int32)
             cur_bins = np.full(self.engine.num_gpus, curr_bin, dtype=np.int32)
 
-            b1_t_df, b1_t_tensor = self.engine.extract_branch1_features(
+            b1_t_df = self.extract_enhanced_branch1_features(
                 cur_bins, all_g, best_l_obs,
             )
             b2_t_df = self.engine.extract_branch2_features(
                 cur_bins, all_g, self.history_map,
             )
 
-            p_b1_tree = b1_tree.predict_proba(b1_t_df)[:, 1]
-            with torch.no_grad():
-                p_b1_cnn = torch.sigmoid(
-                    b1_cnn(torch.tensor(b1_t_tensor, dtype=torch.float32))
-                ).cpu().numpy()
-            p_b1 = 0.5 * p_b1_tree + 0.5 * p_b1_cnn
+            p_b1 = b1_gbdt.predict_proba(b1_t_df)[:, 1]
 
             p_b2_lr = b2_lr.predict_proba(b2_t_df)[:, 1]
             p_b2_gbdt = b2_gbdt.predict_proba(b2_t_df)[:, 1]
@@ -644,7 +767,29 @@ def run_self_check() -> None:
     conf = beta * 0.0 + (1.0 - beta) * 1.0  # single hit
     assert np.isclose(conf, 0.30), f"Expected 0.30, got {conf}"
 
-    print("[Self-Check] ALL 5 verification checks passed successfully!", flush=True)
+    # 6. Branch 1 Enhanced Features definition count (45 features)
+    assert len(BRANCH1_ENHANCED_FEATURES) == 45, f"Expected 45 features, got {len(BRANCH1_ENHANCED_FEATURES)}"
+    assert len(BASE_TELEMETRY_FEATURES) == 30, f"Expected 30 base features, got {len(BASE_TELEMETRY_FEATURES)}"
+    assert len(CROSS_METRIC_FEATURES) == 7, f"Expected 7 cross features, got {len(CROSS_METRIC_FEATURES)}"
+    assert len(GNN_SPATIAL_FEATURES) == 8, f"Expected 8 GNN features, got {len(GNN_SPATIAL_FEATURES)}"
+
+    # 7. Single GBDT synthetic fit on 45 features
+    mock_X = pd.DataFrame(
+        np.random.randn(100, 45).astype(np.float32),
+        columns=BRANCH1_ENHANCED_FEATURES,
+    )
+    mock_y = np.array([0] * 90 + [1] * 10, dtype=np.int32)
+    clf = HistGradientBoostingClassifier(
+        loss="log_loss", learning_rate=0.06, max_iter=10,
+        max_leaf_nodes=15, min_samples_leaf=5, class_weight="balanced",
+        random_state=42,
+    )
+    clf.fit(mock_X, mock_y)
+    preds = clf.predict_proba(mock_X)[:, 1]
+    assert len(preds) == 100
+    assert np.all((preds >= 0.0) & (preds <= 1.0))
+
+    print("[Self-Check] ALL 7 verification checks passed successfully!", flush=True)
 
 
 # =====================================================================
@@ -679,7 +824,7 @@ def main() -> None:
 
     data_dir = base.find_data_dir()
     cache_dir = base.PROJECT_ROOT / "outputs" / "branch1" / "cache"
-    if not cache_dir.exists():
+    if not (cache_dir / "telemetry_temp_5m.npy").exists():
         cache_dir = base.PARENT_ROOT / "outputs" / "branch1" / "cache"
     output_dir = base.PROJECT_ROOT / args.output_dir
 
