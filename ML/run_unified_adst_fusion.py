@@ -1,14 +1,14 @@
 """
-[Unified ADST Fusion Pipeline — Stateful Momentum + Pure MLE Pareto]
+[Unified ADST Fusion Pipeline — Stateful Momentum + Optimal Capped Pareto (Cap 0.60, α=1.0)]
 
 Integrates:
-  - 지한유: BidirectionalADSTPipeline base engine, pure MLE Pareto λ (no cap)
-  - 김준호: _safe_ratio(), stateful momentum checkpoint, 2-origin cooldown, +5% guard
+  - 지한유: BidirectionalADSTPipeline base engine, 45 enhanced features GBDT, Pareto decay
+  - 김준호: _safe_ratio(), stateful momentum checkpoint, 2-origin cooldown, Cap 0.60 regularization
 
 Architecture:
   Branch 1: Telemetry (Single GBDT on 45 Enhanced Features: Base 30 + Cross-Metric 7 + Node GNN 8) with ADST
   Branch 2: History-only (Logistic + GBDT) — unchanged
-  Fusion:   Per-GPU Pareto λ weighting from MLE α, dynamic via momentum ADST
+  Fusion:   Optimal Capped Pareto λ weighting: min(0.60, (1/(k+1))^1.0), dynamic via momentum ADST
 
 Usage:
   python ML/run_unified_adst_fusion.py --cadence-hours 24
@@ -615,7 +615,7 @@ class UnifiedADSTPipeline(base.BidirectionalADSTPipeline):
         true_prior = true_tr_pos / max(true_tr_tot, 1)
         sample_prior = int(final_tr_labels.sum()) / max(len(final_tr_labels), 1)
 
-        # ── Per-GPU Pareto λ from MLE α (pure, no cap) ──
+        # ── Per-GPU Pareto λ (Optimal Cap 0.60 + Zipf α=1.0) ──
         # Count XID events up to this origin for all GPUs
         origin_ns = int(self.engine.bin_start_ns[origin_bin])
         cutoff_ns = origin_ns - base.BUFFER_MASK_BINS * base.STEP_NS
