@@ -136,6 +136,8 @@ class UnifiedADSTPipeline(base.BidirectionalADSTPipeline):
         momentum_beta: float = MOMENTUM_BETA,
         momentum_threshold: float = MOMENTUM_THRESHOLD,
         momentum_drop_pct: float = MOMENTUM_DROP_PCT,
+        pareto_cap: float = 0.60,
+        pareto_alpha: str = "1.0",
         **kwargs: Any,
     ) -> None:
         super().__init__(*args, **kwargs)
@@ -143,6 +145,8 @@ class UnifiedADSTPipeline(base.BidirectionalADSTPipeline):
         self.momentum_beta = momentum_beta
         self.momentum_threshold = momentum_threshold
         self.momentum_drop_pct = momentum_drop_pct
+        self.pareto_cap = pareto_cap
+        self.pareto_alpha = str(pareto_alpha)
         self.state_path = self.output_dir / "momentum_state.json"
         self._state = self._load_momentum_state()
 
@@ -626,7 +630,8 @@ class UnifiedADSTPipeline(base.BidirectionalADSTPipeline):
             xid_counts[gpu] = max(0, right - left)
 
         alpha_mle = base.pareto_alpha_mle(xid_counts)
-        pareto_lam = base.pareto_lambda(xid_counts, alpha_mle)  # per-GPU, no cap
+        alpha_used = alpha_mle if self.pareto_alpha.lower() == "mle" else float(self.pareto_alpha)
+        pareto_lam = base.pareto_lambda(xid_counts, alpha_used, cap=self.pareto_cap)
 
         # Test Inference
         test_bins_range = np.arange(
@@ -745,13 +750,17 @@ def run_self_check() -> None:
     assert res[2] == 0.0, "Den < 1e-4 should return 0.0"
     assert np.isclose(res[3], 100.0), f"Expected 100.0, got {res[3]}"
 
-    # 2. Pure MLE Pareto lambda
+    # 2. Pareto lambda with Cap 0.60 and alpha=1.0 (Optimal Production Architecture)
     counts = np.array([0, 1, 5, 20], dtype=np.float64)
-    alpha = 1.2
-    lambdas = base.pareto_lambda(counts, alpha)
-    assert np.isclose(lambdas[0], 1.0), "Count 0 must yield lambda=1.0 (pure B1)"
-    assert lambdas[0] > lambdas[1] > lambdas[2] > lambdas[3], "Lambda must decrease monotonically"
-    assert lambdas[3] >= 0.05, "Lambda must be bounded by minimum 0.05"
+    lams_pure = base.pareto_lambda(counts, alpha=1.0, cap=1.0)
+    assert np.isclose(lams_pure[0], 1.0), "Count 0 must yield lambda=1.0 without cap"
+    assert lams_pure[0] > lams_pure[1] > lams_pure[2] > lams_pure[3], "Lambda must decrease monotonically"
+
+    lams_capped = base.pareto_lambda(counts, alpha=1.0, cap=0.60)
+    assert np.isclose(lams_capped[0], 0.60), "Count 0 must yield lambda=0.60 with cap"
+    assert np.isclose(lams_capped[1], 0.50), "Count 1 must yield lambda=0.50 (1/2)"
+    assert np.isclose(lams_capped[2], 1.0 / 6.0), f"Expected 1/6, got {lams_capped[2]}"
+    assert lams_capped[3] >= 0.05, "Lambda must be bounded by minimum 0.05"
 
     # 3. Pareto alpha MLE
     pos_counts = np.array([1, 2, 4, 3, 2, 5, 1], dtype=np.float64)
@@ -816,6 +825,10 @@ def main() -> None:
                         help=f"EMA decay for momentum (default {MOMENTUM_BETA})")
     parser.add_argument("--momentum-threshold", type=float, default=MOMENTUM_THRESHOLD,
                         help=f"Confidence threshold to skip (default {MOMENTUM_THRESHOLD})")
+    parser.add_argument("--pareto-cap", type=float, default=0.60,
+                        help="Upper cap for B1 Pareto weight (default: 0.60, optimal hybrid)")
+    parser.add_argument("--pareto-alpha", type=str, default="1.0",
+                        help="Pareto decay alpha: '1.0' (default Zipf, optimal with cap) or 'mle'")
     args = parser.parse_args()
 
     if args.self_check:
@@ -842,6 +855,8 @@ def main() -> None:
         resume=args.resume,
         momentum_beta=args.momentum_beta,
         momentum_threshold=args.momentum_threshold,
+        pareto_cap=args.pareto_cap,
+        pareto_alpha=args.pareto_alpha,
     )
     pipeline.run_bidirectional_adst()
 

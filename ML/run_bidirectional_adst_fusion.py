@@ -71,16 +71,18 @@ SKIP_PERF_DROP_PCT = 0.15  # re-trigger full search if val AP drops > 15%
 
 
 def pareto_lambda(
-    xid_counts: np.ndarray, alpha: float, x_min: float = 1.0,
+    xid_counts: np.ndarray, alpha: float, x_min: float = 1.0, cap: float = 1.0,
 ) -> np.ndarray:
     """Pareto CDF-based per-GPU λ: more history → lower λ (trust B2 more).
 
-    λ(gpu) = 1 - F_pareto(count + x_min)  where F(x) = 1 - (x_min/x)^α
-           = (x_min / (count + x_min))^α
-    Returns array in (0, 1] — 1.0 for count=0 (pure B1), near 0 for heavy repeaters.
+    λ(gpu) = min(cap, (x_min / (count + x_min))^α)
+    Returns array in [0.05, cap] — cap for count=0, near 0.05 for heavy repeaters.
     """
     x = np.maximum(xid_counts.astype(np.float64), 0.0) + x_min
-    return np.clip((x_min / x) ** alpha, 0.05, 1.0).astype(np.float32)
+    lam = (x_min / x) ** alpha
+    if cap < 1.0:
+        lam = np.minimum(cap, lam)
+    return np.clip(lam, 0.05, 1.0).astype(np.float32)
 
 
 def pareto_alpha_mle(xid_counts: np.ndarray, x_min: float = 1.0) -> float:
