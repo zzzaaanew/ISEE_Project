@@ -1,0 +1,130 @@
+{
+  "goal_ids": [
+    "G-007",
+    "G-008"
+  ],
+  "seed": 20260905,
+  "source_contract": {
+    "target": "all_xids",
+    "warmup_days": 30,
+    "purge_hours": 36,
+    "horizon_hours": 24,
+    "feature_cutoff_minutes": 10,
+    "decision_interval_seconds": 1800,
+    "gpu_count": 1992,
+    "origin_count": 64
+  },
+  "selection": {
+    "feedback_cutoff": "score timestamp <= current origin - 36 hours; 24-hour label mature",
+    "split": "last 14 eligible days, earlier 7 train and later 7 validation; each at least 250 queries",
+    "grid": {
+      "M": [
+        150,
+        250,
+        400
+      ],
+      "N": [
+        50,
+        100,
+        200
+      ],
+      "max_swaps": [
+        0,
+        5,
+        10
+      ],
+      "risk_ratio": [
+        1.0,
+        1.2
+      ]
+    },
+    "objective": "validation hits@100 strictly above B2 and NDCG sum non-inferior; otherwise K=0",
+    "meta_features": [
+      "B1 rank percentile",
+      "B2 rank percentile",
+      "B1 logit score",
+      "B2 logit score",
+      "rank percentile gap"
+    ],
+    "meta_model": "standardized L2 logistic regression",
+    "fallback": "B2 exact when insufficient mature OOF or no validated gain"
+  },
+  "rank_score": "B2 probability values reassigned by reranked within-query ordering; ranking score, not calibrated probability",
+  "oracle": "union positive coverage and best possible Top-100 hits within union are ex-post diagnostics only",
+  "label_caveat": "GPU-time 24-hour onset labels repeat episodes; not episode recall",
+  "base_score_caveat": "Source B1 ADST feedback may be non-causal; this saved-score replay is exploratory, not final prospective evidence.",
+  "sha256": {
+    "source_manifest": "903897f62992b8c9e6827f0abccdb230985df8d03818c853d857f3338618649d",
+    "part_manifest": "f79f68e98ebb01349dc2448e2c10c9b88c4978aaca8c0dbc32a6e9f120133103",
+    "reference_metrics": "217201943bf517442e33d52159405eeb7da87c44d16d3ebd16e60da417c189f1",
+    "grid_meta": "a0172297f00956324c16974f82f6425210b1f2233c08d381b9bb3dab873a3397",
+    "onset_ledger": "1e1350b40ff93c76c8594626f926247f76276dcd3e14650beba8e4c931da1b2c",
+    "code": "eaccb7f0b1e165b5ebbae30d858a4343e3369431dcd318daf27df1d6e2b53122",
+    "score_parts": {
+      "score_part_0000.parquet": "e32aaed99cbb28883e4ee55ee1f7f7bfd4b2e6b30f84bc5660b6f2bd74d7b11f",
+      "score_part_0001.parquet": "e49bd0f968e1b083fdff78f705817d375717c2b9f60707944e5715776a9f1d72",
+      "score_part_0002.parquet": "2884b13f02bb665bf9b54e508b782f0f33e44f1be72ac751686f44c2ba1a3482",
+      "score_part_0003.parquet": "d7e3a6a0515edb881fed324ee50cd2a06ae62066a8ab790c16b992618dc992a6",
+      "score_part_0004.parquet": "dd6ce491da0952a87b1a92e9e6dfa6e19b8fc169012061d60eaa82aa3da24102",
+      "score_part_0005.parquet": "8b8c5510e09ea67b7450b5f29596f9ea5e6669e0d1c62a46d5919044ecf07a72",
+      "score_part_0006.parquet": "9d8ee0904166e96127f804b0f34e73f66571c7f6676270218c39c2396897c031",
+      "score_part_0007.parquet": "49840c648164308bf690693ec2fd8879f6f9661cdcd15d12845863dd5171d62a",
+      "score_part_0008.parquet": "d3b9c26720abeb1d1ca2b12efe311e961b4a9afb7792b225a2452511cf3f9210",
+      "score_part_0009.parquet": "91eb422b237e08c18ded9a56f0460e185e0cfaedce9b257e5f938c3a4ed0a149",
+      "score_part_0010.parquet": "b425c1797a6f468d68242ec99a009b85cd432ee5cacd8e32f849c7e7ef07053f",
+      "score_part_0011.parquet": "29cb30961cd60fb653cf5d792afd580240618f80f97a99ce6f1251bfa6517051",
+      "score_part_0012.parquet": "48fab2623d1f07cbf3af9200f7ce4198b6ede1faf9aa77b2e31150d188e09523",
+      "score_part_0013.parquet": "77218f4dd108b451a2c2ffb071c0ab0354b071a2e23a0a8062ebc492395fb091",
+      "score_part_0014.parquet": "f3b5666dc1e63ea1bfdec9c3596f42b170718f6bfc518c706a69fe73a4b5798c",
+      "score_part_0015.parquet": "ce839984cfd301fb5dbe2371032eacb156992d3fbbb06a74f27c9b213649497d",
+      "score_part_0016.parquet": "154ee61f19ea16a5a5c9b7bfeae9627e149cf20965740d2d7d4f39e7553cfaf9",
+      "score_part_0017.parquet": "c723c21123afc4e4da4e0bbf029bca2c62f4fe89b72f80c8910ef1fd3ae8322a",
+      "score_part_0018.parquet": "75f8bf09b47c5811adf6bb707254e3eeac040991b3fe9ea0970deded0e6004b8",
+      "score_part_0019.parquet": "2bf019371ff41e911d699ffa4fa80ac13a17aa6e76b7504279d9d05e167c832e",
+      "score_part_0020.parquet": "07a86f0fd75a7519b687f7f564fd12c7de8c3e10ae966f10473dc8436b0e113d",
+      "score_part_0021.parquet": "1d2951925808db55c66b5f52bd5b8fb8b428f41d96fd7efde0fc546346a21bf7",
+      "score_part_0022.parquet": "fe0e928fc457ec266d7d794e8da4f1c86aa27c0b0f52e41bbdee118ee0684740",
+      "score_part_0023.parquet": "cf9c59b825e5bbd0bb7ac25972a350e6a91e72e38257c419fde3a4d233dba239",
+      "score_part_0024.parquet": "d4ccde4bfa6b58a0331cc89ac610f354599fb3b5de467f479a7b735a842b37ef",
+      "score_part_0025.parquet": "8076a91c6d8f2fa98e8284f3769ea0ae419fb2a394943d03ac778de2082be67d",
+      "score_part_0026.parquet": "2a56b62bf77b2846a1e6ba979d6e050a36673e5b9b6058666d4bdebca8e645d7",
+      "score_part_0027.parquet": "3a7b5029b35c4b2ffde4c96290737e0970592c0746217d364399f137991b00ee",
+      "score_part_0028.parquet": "6f0cf5e6a5cc49123c280e6d37fb81177ad375465925d63cf3d6e65420edd19f",
+      "score_part_0029.parquet": "932a129eb27e9022bc4a838403a71d6a176f42a9f68dfb5b06f8d7225eeffd69",
+      "score_part_0030.parquet": "112fdb674e6bac09cb558d2da04c265ceea68c98a517f92c51776bf6ae8cc313",
+      "score_part_0031.parquet": "7428a507be55a821bdc998ea3fc658b44438fb781b5afcc7d0af306dd017c6ee",
+      "score_part_0032.parquet": "4a6a31ab8ab45adb0a2a5839d0453343e92307c968079a9845aab359e6a7e8bc",
+      "score_part_0033.parquet": "51b2624200db6a29a8349d57bb92642b6a3407d1e974070cd3ba2da08eda863a",
+      "score_part_0034.parquet": "7b184f9d23f5240118829aa5b60ab985c85f3e00be67cf8d0228f82036168c78",
+      "score_part_0035.parquet": "fc53d05fde5ef603dd58d18b71b61ce80e950d911e4f264a600408f5824eb59a",
+      "score_part_0036.parquet": "7ea7b69abeda91723d259d8f9a5da0a5fee00ed123c6198b219c73ad5d54566f",
+      "score_part_0037.parquet": "12ca8eea58d824c73d39c3b096044cefb8e2e6a7c50cf151f33eca63ed440a46",
+      "score_part_0038.parquet": "fcaa9564d2d9c3b8c4eb8c141eca863b493862e7543dd891429f9e34049a8a53",
+      "score_part_0039.parquet": "1779f061f50c3b57a7bc4fcb21bf08bcb17974de6b0deaa479852d54cfb98a1d",
+      "score_part_0040.parquet": "52ab84d96e00c1a76d144d87425b25bcdc2c98b8a6003a0ecfb78f5f6d0040f0",
+      "score_part_0041.parquet": "bfe7663680add8af1a4e4cb6af7cccc8739dbf5f5ecea02c261b0a613a978075",
+      "score_part_0042.parquet": "efd2195b6e5d449eacbd04dccee70ab3dd666e1a0740f406f00061f0570f3c7e",
+      "score_part_0043.parquet": "78adace40252a17e473d2d71a552eda14f5cb1ce404805ec6ebe1f8ee895c581",
+      "score_part_0044.parquet": "aa3ae1e82fd3288068af7a9b35194eef0d0b770b4405e0bd93e133243e36b3bf",
+      "score_part_0045.parquet": "dd352662a5ebf025baffffd4a5094227db77d869cda314e7f88630e0c0ff3e6a",
+      "score_part_0046.parquet": "160430ae6de5a49b26bba011255f8d5010055f4b9d3be9c932dd13353ccf22ff",
+      "score_part_0047.parquet": "10f329df88b521fc3f5d7bf541b2486f0e97145577f912bd4d6c9c1296827df2",
+      "score_part_0048.parquet": "b8f43a7b7130ead1ae3c277ab66d8f372fc3fee2bd370f10592adf7a387cdff9",
+      "score_part_0049.parquet": "e7ec503136c367f4ec31b681dfd9faffd46225d56180374e1f0b4be26e777047",
+      "score_part_0050.parquet": "39c6083ef3b05cf7371ce37662e96473373fc514cf2e0cdb420b130a36a1bb0f",
+      "score_part_0051.parquet": "0626f41e4c025d98592edc89a54ab9eaff385a7ae2aa5a5160057d2cab416664",
+      "score_part_0052.parquet": "9f3b622c4e67ba0dcb3a6c65f0c61f74f2eb61400cffd5fa0a95842c45fceeea",
+      "score_part_0053.parquet": "6f5436f439b1bea631294644bf2815440fe987f127be0f4a2c25dece25f2d57f",
+      "score_part_0054.parquet": "2d570de8fb440b74e80bcd559955d8baaf13d46fa961d0019a283a2464841abf",
+      "score_part_0055.parquet": "54a627d6950c7a32d82748465754e41c1b9461110fce31d4a8dbda0194a62a84",
+      "score_part_0056.parquet": "7371372616029ebf25ce5f146121961c55473d3f44c30a99f294580551eecbcf",
+      "score_part_0057.parquet": "708dbd2f0aee8e8f10cc8655ec8a7ab7697ce859d0620a55189c89b97956c9c5",
+      "score_part_0058.parquet": "d9d6e21bd4a5f1d262b61f45c21cd0df27d92d21574fc01bc5b6249218e497ae",
+      "score_part_0059.parquet": "e6d172beef44f5b4263c0b5b34a3f95cce744deb7dd31b55cddd78797755e06b",
+      "score_part_0060.parquet": "313498c478271a7042dcd3aaa59bba08e57dbd18788c07a1c214c1cdceb2270e",
+      "score_part_0061.parquet": "f6b815d8c9e18c9664efab71c452ed37eb85ab346bb89fd917cd6254d1242a2e",
+      "score_part_0062.parquet": "5bbf56bd8f79d7911cd59ee35752382d6ed1ca906f1492f8293a1ab2cd47c409",
+      "score_part_0063.parquet": "36247bf48e135289f519a2f1f1df4aaa2290640a34c8bf01410055257d265d2b"
+    }
+  }
+}

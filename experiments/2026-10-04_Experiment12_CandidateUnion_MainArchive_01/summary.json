@@ -1,0 +1,118 @@
+{
+  "status": "EXPLORATORY_COMPLETED",
+  "source_experiment": "2026-09-29_All-XID_HanADST_B1LightCascade_B2Sliding_TemporalMoE_01",
+  "origin_count": 64,
+  "score_rows": 6081576,
+  "decision_time_count": 3053,
+  "gpu_count": 1992,
+  "gpu_time_positives": 52945,
+  "positive_queries": 2788,
+  "new_model": {
+    "macro_origin_recall_at_100": 0.12678801538450873,
+    "pooled_gpu_time_recall_at_100": 0.15886297100764946,
+    "macro_origin_ndcg_at_100": 0.08107206980444215,
+    "pooled_positive_query_ndcg_at_100": 0.0801903555141627,
+    "macro_origin_pr_auc": 0.03158998090894882,
+    "hits_at_100": 8411,
+    "total_swaps": 12936,
+    "active_origins": 36
+  },
+  "b2": {
+    "hits_at_100": 8335,
+    "pooled_gpu_time_recall_at_100": 0.15742751912361885,
+    "macro_origin_recall_at_100": 0.12498629730010556,
+    "pooled_positive_query_ndcg_at_100": 0.07981986746840569
+  },
+  "pooled_oracle_grid": [
+    {
+      "M": 150,
+      "N": 50,
+      "positives": 52945,
+      "union_positive_gpu_times": 12463,
+      "oracle_top100_hits": 12463,
+      "union_capture": 0.23539522145622815,
+      "oracle_top100_recall": 0.23539522145622815
+    },
+    {
+      "M": 150,
+      "N": 100,
+      "positives": 52945,
+      "union_positive_gpu_times": 14511,
+      "oracle_top100_hits": 14511,
+      "union_capture": 0.2740768722258948,
+      "oracle_top100_recall": 0.2740768722258948
+    },
+    {
+      "M": 150,
+      "N": 200,
+      "positives": 52945,
+      "union_positive_gpu_times": 18345,
+      "oracle_top100_hits": 18345,
+      "union_capture": 0.34649164227028045,
+      "oracle_top100_recall": 0.34649164227028045
+    },
+    {
+      "M": 250,
+      "N": 50,
+      "positives": 52945,
+      "union_positive_gpu_times": 14910,
+      "oracle_top100_hits": 14524,
+      "union_capture": 0.2816129946170554,
+      "oracle_top100_recall": 0.2743224100481632
+    },
+    {
+      "M": 250,
+      "N": 100,
+      "positives": 52945,
+      "union_positive_gpu_times": 16804,
+      "oracle_top100_hits": 16418,
+      "union_capture": 0.31738596656908113,
+      "oracle_top100_recall": 0.3100953820001889
+    },
+    {
+      "M": 250,
+      "N": 200,
+      "positives": 52945,
+      "union_positive_gpu_times": 20407,
+      "oracle_top100_hits": 20021,
+      "union_capture": 0.38543771838700536,
+      "oracle_top100_recall": 0.37814713381811316
+    },
+    {
+      "M": 400,
+      "N": 50,
+      "positives": 52945,
+      "union_positive_gpu_times": 18175,
+      "oracle_top100_hits": 17704,
+      "union_capture": 0.3432807630560015,
+      "oracle_top100_recall": 0.3343847388799698
+    },
+    {
+      "M": 400,
+      "N": 100,
+      "positives": 52945,
+      "union_positive_gpu_times": 19933,
+      "oracle_top100_hits": 19462,
+      "union_capture": 0.376485031636604,
+      "oracle_top100_recall": 0.36758900746057227
+    },
+    {
+      "M": 400,
+      "N": 200,
+      "positives": 52945,
+      "union_positive_gpu_times": 23235,
+      "oracle_top100_hits": 22764,
+      "union_capture": 0.43885163849277553,
+      "oracle_top100_recall": 0.4299556143167438
+    }
+  ],
+  "caveat": "Source B1 ADST feedback may be non-causal; this saved-score replay is exploratory, not final prospective evidence.",
+  "new_minus_b2": {
+    "pooled_hit_delta": 76,
+    "macro_origin_recall_delta": 0.0018017180844031727,
+    "pooled_recall_delta": 0.001435451884030603,
+    "origin_wins": 15,
+    "origin_ties": 46,
+    "origin_losses": 3
+  }
+}
