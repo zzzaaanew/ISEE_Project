@@ -1,0 +1,7 @@
+# Experiment 19 archival bundle
+
+- Scope: All-XID, 1,992 GPUs, 30-minute rolling decisions after 30-day warm-up, 24-hour horizon, 36-hour purge; Experiment 14 B1/B2 scores are fixed inputs. Goals G-004 and G-007.
+- `ML/` contains the Experiment 19 runner, verifier, onset evaluator, and their imported Top-100 helper. The only changes to the copied scripts are archive-relative `PROJECT` and default output/result paths. The original runner SHA-256 in `results/experiment_manifest.json` identifies the pre-archive script, so it does **not** equal the hash of the relocated runner.
+- `results/` contains the eight original compact outputs, including the `COMPLETED` manifest and `VERIFIED` audit. B2 PR-AUC is 0.031576; its Recall@100 is 0.157428. Dual-inertia Fusion PR-AUC is 0.033064 and Recall@100 is 0.160638. These are exploratory development-period results, not independent generalization evidence.
+- Full-population score Parquets (64 parts, 6,081,576 rows), Experiment 14 source scores, telemetry, and smoke runs are **not** in this Git bundle. Their hashes are recorded in the manifest/input hash list. A full rerun or independent score-tape audit requires those local inputs and the onset ledger; syntax/self-test checks do not reproduce the full result.
+- The runner defaults to an archive-local `rerun/` output to avoid overwriting `results/`. Run with `--source` and `--output` to select explicit external inputs and destinations.
