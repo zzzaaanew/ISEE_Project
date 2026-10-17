@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blox + RiskLab 차세대 위험인지 GPU 클러스터 최적화 시뮬레이터 마스터 계획서 및 벤치마크 보고서</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #0f172a;
+    --muted: #475569;
+    --primary: #1d4ed8;
+    --primary-light: #eff6ff;
+    --success: #047857;
+    --success-bg: #ecfdf5;
+    --warn: #b45309;
+    --warn-bg: #fffbeb;
+    --border: #e2e8f0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    margin: 0;
+    padding: 36px 20px;
+  }
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    background: var(--card);
+    padding: 44px 52px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    border: 1px solid var(--border);
+  }
+  h1 {
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #0f172a;
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 14px;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 14.5px;
+    margin-bottom: 28px;
+  }
+  h2 {
+    font-size: 20px;
+    margin-top: 38px;
+    margin-bottom: 14px;
+    color: #1e3a8a;
+    border-left: 5px solid var(--primary);
+    padding-left: 12px;
+  }
+  h3 {
+    font-size: 16.5px;
+    margin-top: 24px;
+    margin-bottom: 10px;
+    color: #1e293b;
+  }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .kpi-card {
+    background: var(--primary-light);
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .kpi-card.green {
+    background: var(--success-bg);
+    border-color: #a7f3d0;
+  }
+  .kpi-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .kpi-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .kpi-card.green .kpi-value {
+    color: var(--success);
+  }
+  .kpi-sub {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.2px;
+    margin: 18px 0 26px 0;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 9px 11px;
+    text-align: center;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  td.left { text-align: left; }
+  tr.highlight {
+    background: #ecfdf5;
+    font-weight: 600;
+  }
+  tr.highlight-blue {
+    background: #eff6ff;
+    font-weight: 600;
+  }
+  tr.danger {
+    background: #fef2f2;
+    color: #991b1b;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 700;
+  }
+  .badge-green { background: #d1fae5; color: #065f46; }
+  .badge-blue { background: #dbeafe; color: #1e40af; }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .formula-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #2563eb;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: 'Cambria Math', 'Consolas', monospace;
+    font-size: 14px;
+  }
+  @media print {
+    body { padding: 0; background: #fff; }
+    .container { box-shadow: none; border: none; padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Blox + RiskLab 차세대 위험인지(Risk-Aware) GPU 클러스터 최적화 시뮬레이터<br/>마스터 계획서 및 17종 실증 벤치마크 완료 보고서</h1>
+  <div class="subtitle">
+    <strong>작성일:</strong> 2026-10-17 &nbsp;|&nbsp;
+    <strong>대상:</strong> IISE 컨퍼런스 (Falcon-45 + Optimal Capped Pareto Dual-Branch ML &amp; Vulnerability-Weighted Co-Optimization) &nbsp;|&nbsp;
+    <strong>실험 규모:</strong> 611 Decision Steps (30분 주기), 100-GPU Cohort (15 Servers), 16,560 Real Cluster Jobs, 17 Benchmark Runs
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card green">
+      <div class="kpi-title">작업 실패 손실 (JobFailLoss)</div>
+      <div class="kpi-value">1,305s → 0s (-100%)</div>
+      <div class="kpi-sub">해법 A + 취약도 DP / 메타휴리스틱 배치로 31건의 XID 장애 전부를 유휴 GPU로 완벽 회피</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-title">취약도 가중 위험 노출 (VulnRiskExp)</div>
+      <div class="kpi-value">-75.4% 감축</div>
+      <div class="kpi-sub">준호 E19 (98.46B) → Warm-Start 2-Opt + SA 메타휴리스틱 (24.23B, 최저 달성)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-title">스케줄링 선점 오버헤드 (PreemptCost)</div>
+      <div class="kpi-value">-25.6% 감축</div>
+      <div class="kpi-sub">비용-편익 선점 가드로 2,880,000s → 2,144,160s (204.4 GPU-시간 낭비 절감)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-title">평균 JCT 및 P95 꼬리 대기시간</div>
+      <div class="kpi-value">JCT -930s / P95 -6.2h</div>
+      <div class="kpi-sub">기아 현상(Starvation) 0% 보장 및 모든 베이스라인 대비 파레토 우위 달성</div>
+    </div>
+  </div>
+
+  <h2>1. 기존 Blox 연동 보고서 5종 진단 및 실측 워크로드 편중성 근거</h2>
+  <ul>
+    <li><strong>병목 ① (고정 임계값 마스킹의 100% 기아 현상):</strong> 준호의 <code>risk_mask_packed</code>(99% 재현율 임계값 &tau;=0.002975)는 가용 GPU 부족을 유발하여 16,560개 작업 중 <strong>완료 작업 0개(100% Starvation)</strong>로 귀결됨.</li>
+    <li><strong>병목 ② (작업 크기·길이를 무시한 단일 작업 순차 Greedy DP):</strong> 기존 <code>risk_prefer_packed</code>는 한 번에 작업 1개만 보고 배치하며, 1-GPU 단기 작업과 8-GPU 장기 분산 학습(Gang-Scheduling) 작업을 동일 가중치로 취급함.</li>
+    <li><strong>병목 ③ (과도한 LAS 선점 폭풍 방치):</strong> 매 300초마다 근소한 서비스 시간 차이로 대형 작업을 강제 선점하여, 선점 오버헤드(<code>2,880,000s</code>)가 장애 손실(<code>1,020s</code>)의 2,800배에 달함.</li>
+    <li><strong>실측 워크로드 편중성 검증 (<code>job_trace.parquet</code>, 16,560개 작업):</strong> 작업 수 기준으로는 1-GPU 작업이 75.04%이나, <strong>클러스터 총 GPU-Hours의 84.2%는 8-GPU 이상 대형 Gang-Job이 소비하며 상위 10% 장기 작업이 전체 GPU-Hours의 91.90%를 점유</strong>함. 즉, 대형·장기 Gang-Job의 취약도(V<sub>j</sub>)에 비례해 저위험 서버를 우선 배정하는 다중 작업 공최적화(Co-Optimization)가 필수적임.</li>
+  </ul>
+
+  <h2>2. 양대 해법(해법 A &amp; 해법 B) 및 수리모형·메타휴리스틱 설계</h2>
+  <h3>2.1 [해법 A] ML 재학습 없는 Dual-Branch 실효 위험도 + 작업 취약도(V<sub>j</sub>) + 예산 제약형 Top-K 격리</h3>
+  <div class="formula-box">
+    • <strong>Dual-Branch 실효 위험도:</strong> r<sub>i,t</sub><sup>eff</sup> = p<sub>i,t</sub><sup>(fuse)</sup> + 0.25 &middot; p<sub>i,t</sub><sup>(B1)</sup> &middot; I(p<sub>i,t</sub><sup>(B2)</sup> &gt; Q<sub>0.75</sub>(p<sub>t</sub><sup>(B2)</sup>))<br/>
+    • <strong>작업 취약도 가중치:</strong> V<sub>j</sub> = &omega;<sub>j</sub> &middot; g<sub>j</sub><sup>1.25</sup> &middot; (D<sub>rec</sub> + min(I<sub>ckpt</sub>, u<sub>j</sub> + &Delta;H)) &middot; (1 + min(r<sub>j</sub>, 4&Delta;H) / &Delta;H)<br/>
+    • <strong>다중 작업 배치 목적함수 (BILP):</strong> min &Sigma;<sub>j,s</sub> &alpha;<sub>pack</sub> y<sub>j,s</sub> + &Sigma;<sub>j,i</sub> &beta;<sub>risk</sub> V<sub>j</sub> r<sub>i,t</sub><sup>eff</sup> x<sub>j,i</sub> + &Sigma;<sub>j</sub> &gamma;<sub>hot</sub> V<sub>j</sub> max<sub>i:x<sub>j,i</sub>=1</sub> r<sub>i,t</sub><sup>eff</sup>
+  </div>
+  <ul>
+    <li><strong>Warm-Start 2-Opt + Simulated Annealing 메타휴리스틱 (<code>metaheuristic_packed</code>):</strong> 취약도 내림차순 Exact DP로 초기해(Warm-Start)를 생성한 후, 서버 단편화(&Sigma; y<sub>j,s</sub>)를 악화시키지 않는 제약 하에 다중 작업 간 및 유휴 GPU 간 2-Opt Swap 국소 탐색과 SA를 수행하여 전역 위험 노출을 최소화함.</li>
+    <li><strong>비용-편익 선점 가드 (<code>full_co_optimized</code>):</strong> 서비스 시간 마진(&Delta;<sub>margin</sub> = 300s), 완료 임박 작업 보호(잔여시간 r<sub>p</sub> &le; 180s 선점 금지), Best-Fit 희생양 선택을 결합하여 불필요한 선점 낭비를 25.6% 제거함.</li>
+  </ul>
+
+  <h3>2.2 [해법 B] NVIDIA 공식 문서 기반 XID 31(하드웨어 결함) vs XID 43(소프트 리셋) 충격량 이원화</h3>
+  <ul>
+    <li><strong>Hard Fault (XID 31/48/63/64/74/79):</strong> MMU/하드웨어 페이지 결함이므로 작업 즉시 중단 및 <code>recovery_end</code>까지 장기 노드 격리 적용.</li>
+    <li><strong>Soft Fault (XID 43 단독):</strong> 사용자 앱/컨텍스트 종료 이벤트이므로 확률 &rho;<sub>43</sub> &isin; {0.5, 1.0}로 작업을 중단하되, 수 시간의 하드웨어 격리 대신 <strong>60초 소프트 컨텍스트 리셋(<code>soft_xid_reset_seconds</code>)</strong>만 부과 후 즉시 클러스터에 복귀.</li>
+  </ul>
+
+  <h2>3. [Track 1] 준호 09-22 베이스라인과 1:1 동일 조건 비교 (uniform_hardware 모드, 8종)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Run ID</th>
+        <th>실험 구성 (ML 테이프 + 최적화 정책)</th>
+        <th>완료 작업</th>
+        <th>작업 실패 손실<br/>(JobFailLoss)</th>
+        <th>장애 중단<br/>(유휴회피/활성)</th>
+        <th>선점 오버헤드<br/>(PreemptCost)</th>
+        <th>누적 위험 노출<br/>(RiskExp)</th>
+        <th>취약도 가중 위험<br/>(VulnRiskExp)</th>
+        <th>평균 대기<br/>(AvgWait)</th>
+        <th>P95 대기<br/>(P95Wait)</th>
+        <th>평균 완료시간<br/>(AvgJCT)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>01_baseline_blind</code></td>
+        <td class="left">Baseline 1: 위험도 미사용 (<code>risk_blind_packed</code>)</td>
+        <td>16,194</td>
+        <td>1,305s</td>
+        <td>27 / <strong>4회</strong></td>
+        <td>2,878,920s</td>
+        <td>3,168,592</td>
+        <td>100.15B</td>
+        <td>63,832.0s</td>
+        <td>205,962s</td>
+        <td>51,445.8s</td>
+      </tr>
+      <tr class="danger">
+        <td><code>02_junho_mask99</code></td>
+        <td class="left">Baseline 2: 준호 99% 하드 마스킹 (<code>risk_mask_packed</code>)</td>
+        <td><strong>0 (기아)</strong></td>
+        <td>0s</td>
+        <td>31 / 0회</td>
+        <td>0s</td>
+        <td>0</td>
+        <td>0</td>
+        <td>574,104.3s</td>
+        <td>1,067,526s</td>
+        <td>N/A (전멸)</td>
+      </tr>
+      <tr>
+        <td><code>03_junho_prefer_e19</code></td>
+        <td class="left">Baseline 3: 준호 E19 + 단일작업 DP (<code>risk_prefer_packed</code>)</td>
+        <td>16,194</td>
+        <td>1,020s (-21.8%)</td>
+        <td>28 / <strong>3회</strong></td>
+        <td>2,880,000s</td>
+        <td>3,197,932</td>
+        <td>98.46B</td>
+        <td>63,844.1s</td>
+        <td>205,962s</td>
+        <td>51,458.1s</td>
+      </tr>
+      <tr>
+        <td><code>04_solA_falcon_prefer</code></td>
+        <td class="left"><strong>해법 A (ML 교체):</strong> Falcon-45+Pareto + 단일작업 DP</td>
+        <td>16,193</td>
+        <td><strong>720s (-44.8%)</strong></td>
+        <td>29 / <strong>2회</strong></td>
+        <td>2,880,360s</td>
+        <td>1,087,620</td>
+        <td>43.07B</td>
+        <td>63,814.5s</td>
+        <td>205,962s</td>
+        <td>51,422.1s</td>
+      </tr>
+      <tr class="highlight">
+        <td><code>05_solA_vuln_weighted_dp</code></td>
+        <td class="left"><strong>해법 A + 수리모형 1:</strong> 취약도 가중 다중작업 Exact DP</td>
+        <td>16,193</td>
+        <td><span class="badge badge-green">0s (-100.0%)</span></td>
+        <td><strong>31 / 0회</strong></td>
+        <td>2,881,080s</td>
+        <td>836,663</td>
+        <td>26.84B</td>
+        <td>63,814.0s</td>
+        <td>205,962s</td>
+        <td>51,421.7s</td>
+      </tr>
+      <tr class="highlight">
+        <td><code>06_solA_metaheuristic</code></td>
+        <td class="left"><strong>해법 A + 수리모형 2: Warm-Start 메타휴리스틱 (2-Opt+SA)</strong></td>
+        <td>16,193</td>
+        <td><span class="badge badge-green">0s (-100.0%)</span></td>
+        <td><strong>31 / 0회</strong></td>
+        <td>2,881,080s</td>
+        <td><strong>830,788 (-74.0%)</strong></td>
+        <td><strong>24.23B (-75.4%)</strong></td>
+        <td>63,814.0s</td>
+        <td>205,962s</td>
+        <td>51,421.7s</td>
+      </tr>
+      <tr class="highlight">
+        <td><code>07_solA_topk_quarantine</code></td>
+        <td class="left"><strong>해법 A + 수리모형 3:</strong> 예산 제약 Top-K 격리 + 취약도 DP</td>
+        <td>16,193</td>
+        <td><span class="badge badge-green">0s (-100.0%)</span></td>
+        <td><strong>31 / 0회</strong></td>
+        <td>2,881,080s</td>
+        <td>836,668</td>
+        <td>26.84B</td>
+        <td>63,814.0s</td>
+        <td>205,962s</td>
+        <td>51,421.7s</td>
+      </tr>
+      <tr class="highlight-blue">
+        <td><code>08_solA_full_co_opt</code></td>
+        <td class="left"><strong>해법 A + 최종 통합: 메타휴리스틱 배치 + 선점 가드</strong></td>
+        <td>16,191</td>
+        <td><span class="badge badge-blue">345s (-73.6%)</span></td>
+        <td>30 / <strong>1회</strong></td>
+        <td><strong>2,144,160s (-25.6%)</strong></td>
+        <td>865,482 (-72.9%)</td>
+        <td>32.20B (-67.3%)</td>
+        <td><strong>63,109.7s (-734s)</strong></td>
+        <td><strong>183,760s (-6.2h)</strong></td>
+        <td><strong>50,527.7s (-930s)</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4. [Track 2 &amp; Track 3] 해법 B (XID 43 소프트 리셋 및 XID 31+43 혼합 시나리오, 9종)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Run ID</th>
+        <th>트랙 및 시나리오</th>
+        <th>최적화 정책</th>
+        <th>완료 작업</th>
+        <th>작업 실패 손실<br/>(JobFailLoss)</th>
+        <th>하드웨어 격리<br/>(Unavail)</th>
+        <th>소프트 리셋<br/>(SoftReset)</th>
+        <th>선점 오버헤드<br/>(PreemptCost)</th>
+        <th>취약도 위험<br/>(VulnRiskExp)</th>
+        <th>평균 대기<br/>(AvgWait)</th>
+        <th>P95 대기<br/>(P95Wait)</th>
+        <th>평균 완료시간<br/>(AvgJCT)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>09_solB_blind_diff10</code></td>
+        <td class="left">Track 2: XID43 소프트리셋 (&rho;<sub>43</sub>=1.0)</td>
+        <td><code>risk_blind_packed</code></td>
+        <td>16,201</td>
+        <td>1,020s (3회)</td>
+        <td>0s</td>
+        <td>1,860s</td>
+        <td>2,878,560s</td>
+        <td>46.45B</td>
+        <td>63,704.4s</td>
+        <td>206,954s</td>
+        <td>51,713.4s</td>
+      </tr>
+      <tr>
+        <td><code>10_solB_junho_prefer_diff10</code></td>
+        <td class="left">Track 2: XID43 소프트리셋 (&rho;<sub>43</sub>=1.0)</td>
+        <td><code>risk_prefer_packed</code> (E19)</td>
+        <td>16,201</td>
+        <td>1,020s (3회)</td>
+        <td>0s</td>
+        <td>1,860s</td>
+        <td>2,877,840s</td>
+        <td>98.42B</td>
+        <td>63,696.1s</td>
+        <td>208,057s</td>
+        <td>51,705.1s</td>
+      </tr>
+      <tr class="highlight">
+        <td><code>11_solAB_metaheuristic_diff10</code></td>
+        <td class="left"><strong>Track 2: 해법 A+B 통합 (&rho;<sub>43</sub>=1.0)</strong></td>
+        <td><strong><code>metaheuristic_packed</code></strong></td>
+        <td>16,201</td>
+        <td><span class="badge badge-green">0s (-100%)</span></td>
+        <td>0s</td>
+        <td>1,860s</td>
+        <td>2,880,720s</td>
+        <td><strong>24.05B (-75.6%)</strong></td>
+        <td>63,675.8s</td>
+        <td>206,954s</td>
+        <td>51,684.6s</td>
+      </tr>
+      <tr class="highlight-blue">
+        <td><code>12_solAB_full_co_opt_diff10</code></td>
+        <td class="left"><strong>Track 2: 해법 A+B 통합 (&rho;<sub>43</sub>=1.0)</strong></td>
+        <td><strong><code>full_co_optimized</code></strong></td>
+        <td>16,198</td>
+        <td><span class="badge badge-blue">345s (-66.2%)</span></td>
+        <td>0s</td>
+        <td>1,860s</td>
+        <td><strong>2,149,200s (-25.3%)</strong></td>
+        <td>26.00B (-73.6%)</td>
+        <td><strong>62,916.6s (-788s)</strong></td>
+        <td><strong>182,163s (-7.2h)</strong></td>
+        <td><strong>50,696.4s (-1,009s)</strong></td>
+      </tr>
+      <tr class="highlight-blue">
+        <td><code>13_solAB_full_co_opt_diff05</code></td>
+        <td class="left"><strong>Track 2: 해법 A+B 민감도 (&rho;<sub>43</sub>=0.5)</strong></td>
+        <td><strong><code>full_co_optimized</code></strong></td>
+        <td>16,198</td>
+        <td><span class="badge badge-blue">345s (-66.2%)</span></td>
+        <td>0s</td>
+        <td>1,740s</td>
+        <td><strong>2,149,200s (-25.3%)</strong></td>
+        <td>26.00B (-73.6%)</td>
+        <td><strong>62,916.6s (-788s)</strong></td>
+        <td><strong>182,163s (-7.2h)</strong></td>
+        <td><strong>50,696.4s (-1,009s)</strong></td>
+      </tr>
+      <tr>
+        <td><code>14_mixed31_43_blind</code></td>
+        <td class="left">Track 3: 혼합 XID 31(8건)+43(23건)</td>
+        <td><code>risk_blind_packed</code></td>
+        <td>16,200</td>
+        <td>1,620s (5회)</td>
+        <td>34,590s</td>
+        <td>1,380s</td>
+        <td>2,876,040s</td>
+        <td>44.25B</td>
+        <td>63,739.6s</td>
+        <td>206,954s</td>
+        <td>51,743.4s</td>
+      </tr>
+      <tr>
+        <td><code>15_mixed31_43_junho_prefer</code></td>
+        <td class="left">Track 3: 혼합 XID 31(8건)+43(23건)</td>
+        <td><code>risk_prefer_packed</code></td>
+        <td>16,201</td>
+        <td>375s (1회)</td>
+        <td>34,590s</td>
+        <td>1,380s</td>
+        <td>2,877,120s</td>
+        <td>39.92B</td>
+        <td>63,721.8s</td>
+        <td>206,954s</td>
+        <td>51,731.3s</td>
+      </tr>
+      <tr class="highlight">
+        <td><code>16_mixed31_43_metaheuristic</code></td>
+        <td class="left"><strong>Track 3: 혼합 시나리오 + 메타휴리스틱</strong></td>
+        <td><strong><code>metaheuristic_packed</code></strong></td>
+        <td>16,201</td>
+        <td><span class="badge badge-green">0s (-100%)</span></td>
+        <td>34,590s</td>
+        <td>1,380s</td>
+        <td>2,877,840s</td>
+        <td><strong>24.51B (-44.6%)</strong></td>
+        <td>63,721.2s</td>
+        <td>206,954s</td>
+        <td>51,730.7s</td>
+      </tr>
+      <tr class="highlight-blue">
+        <td><code>17_mixed31_43_full_co_opt</code></td>
+        <td class="left"><strong>Track 3: 혼합 시나리오 + 최종 통합</strong></td>
+        <td><strong><code>full_co_optimized</code></strong></td>
+        <td>16,197</td>
+        <td><span class="badge badge-blue">345s (-78.7%)</span></td>
+        <td>34,590s</td>
+        <td>1,380s</td>
+        <td><strong>2,148,480s (-25.3%)</strong></td>
+        <td>29.30B (-33.8%)</td>
+        <td><strong>62,942.6s (-797s)</strong></td>
+        <td><strong>182,163s (-6.9h)</strong></td>
+        <td><strong>50,710.8s (-1,033s)</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

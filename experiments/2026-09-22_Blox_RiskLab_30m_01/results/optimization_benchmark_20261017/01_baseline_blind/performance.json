@@ -1,0 +1,8 @@
+{
+  "elapsed_seconds": 29.919454799965024,
+  "simulation_seconds": 27.13251239998499,
+  "input_setup_seconds": 1.0283205999876373,
+  "artifact_seconds": 1.7586241000099108,
+  "max_decision_seconds": 0.07359049998922274,
+  "process_peak_working_set_bytes": 341073920
+}

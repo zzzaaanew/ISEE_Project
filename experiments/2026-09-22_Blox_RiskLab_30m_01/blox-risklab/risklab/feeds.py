@@ -37,30 +37,38 @@ class RiskTapeProvider:
     def __init__(self,path,topology,interval=1800):
         self.path=Path(path); self.ids=set(topology.ids); self.interval=interval
         self.times=[]
-        for t, values in self._groups():
+        for t, values, _, _ in self._groups():
             if set(values)!=self.ids: raise ValueError(f'Missing/unknown GPU at {t}')
             if self.times and abs(t-self.times[-1]-interval)>1e-6: raise ValueError('Missing decision time or incorrect cadence')
             if t%300: raise ValueError('Timestamp is not on a 5-minute source grid')
             self.times.append(t)
         if not self.times: raise ValueError('Empty probability tape')
-        self._iterator=iter(self._groups()); self._next=next(self._iterator,None); self.current=None; self.at=None
+        self._iterator=iter(self._groups()); self._next=next(self._iterator,None)
+        self.current=None; self.current_b1=None; self.current_b2=None; self.at=None
 
     def _groups(self):
         with pq.ParquetFile(self.path) as f:
-            if not {'timestamp','gpu_uid','probability'}.issubset(f.schema_arrow.names): raise ValueError('Probability tape schema mismatch')
-            current=None; values={}
-            for batch in f.iter_batches(batch_size=8192,columns=['timestamp','gpu_uid','probability']):
-                for timestamp,uid,p in batch.to_pandas().itertuples(index=False,name=None):
+            names=set(f.schema_arrow.names)
+            if not {'timestamp','gpu_uid','probability'}.issubset(names): raise ValueError('Probability tape schema mismatch')
+            has_branches={'b1_probability','b2_probability'}.issubset(names)
+            cols=['timestamp','gpu_uid','probability']+(['b1_probability','b2_probability'] if has_branches else [])
+            current=None; values={}; b1_vals={}; b2_vals={}
+            for batch in f.iter_batches(batch_size=8192,columns=cols):
+                for row in batch.to_pandas().itertuples(index=False,name=None):
+                    timestamp,uid,p=row[0],row[1],row[2]
                     t=seconds(timestamp); p=float(p)
                     if not np.isfinite(p) or not 0<=p<=1: raise ValueError('Invalid probability')
+                    p1=float(row[3]) if has_branches else p
+                    p2=float(row[4]) if has_branches else p
                     if current is not None and t!=current:
                         if t<current: raise ValueError('Probability tape is not chronological')
-                        yield current,values
-                        values={}
+                        yield current,values,b1_vals,b2_vals
+                        values={}; b1_vals={}; b2_vals={}
                     current=t
-                    if uid in values: raise ValueError('Duplicate GPU/time probability')
-                    values[str(uid)]=p
-            if current is not None: yield current,values
+                    suid=str(uid)
+                    if suid in values: raise ValueError('Duplicate GPU/time probability')
+                    values[suid]=p; b1_vals[suid]=p1; b2_vals[suid]=p2
+            if current is not None: yield current,values,b1_vals,b2_vals
 
     def close(self):
         self._iterator.close()
@@ -68,10 +76,29 @@ class RiskTapeProvider:
     def snapshot(self,at_time):
         if self.at is not None and at_time<self.at: raise ValueError('Risk provider cannot travel backwards')
         while self._next is not None and self._next[0]<=at_time:
-            self.at,self.current=self._next; self._next=next(self._iterator,None)
+            self.at,self.current,self.current_b1,self.current_b2=self._next
+            self._next=next(self._iterator,None)
         if self.current is None: raise ValueError('No risk observation available yet')
         if at_time-self.at>=self.interval: raise ValueError('Stale risk snapshot')
         return dict(self.current)
+
+    def branch_snapshot(self,at_time):
+        self.snapshot(at_time)
+        return dict(self.current),dict(self.current_b1),dict(self.current_b2)
+
+
+def _parse_xid_codes(raw_val):
+    if isinstance(raw_val,(list,tuple,set,np.ndarray)):
+        return [int(x) for x in raw_val]
+    if isinstance(raw_val,str):
+        s=raw_val.strip()
+        if s.startswith('['):
+            try: return [int(x) for x in json.loads(s)]
+            except Exception: pass
+        return [int(x) for x in s.replace('[','').replace(']','').split(',') if x.strip().isdigit()]
+    if pd.notna(raw_val):
+        return [int(raw_val)]
+    return []
 
 
 class FailureTapeProvider:
@@ -85,6 +112,7 @@ class FailureTapeProvider:
         for r in df.sort_values(['timestamp','gpu_uid','episode_id']).to_dict('records'):
             r['time']=seconds(r['timestamp'])
             if r['time']!=seconds(r['episode_start']) or seconds(r['episode_end'])<r['time']: raise ValueError('Invalid XID episode interval')
+            r['parsed_xid_codes']=_parse_xid_codes(r['xid_codes'])
             self.events.append(r)
         self.index=0
 

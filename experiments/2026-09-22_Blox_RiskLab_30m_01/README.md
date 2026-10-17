@@ -37,3 +37,47 @@ python -B start_risklab_actual.py --port 8115 --no-browser
 - 정비/복구 시간은 가정이며 원본 모델 가중치가 없어 frozen 설정에서 재생성한 예측이다.
 
 원본 telemetry, 모델 캐시, 분할 예측 중간파일, 대용량 events/decisions/timelines는 제외했다. 원본 실험과 작업 디렉터리는 변경하지 않았다.
+
+---
+
+## 2026-10-17 업데이트 · 다중 작업 배치 공동 최적화(Co-Optimization) 및 인터랙티브 시뮬레이션 대시보드
+
+Falcon-45 (Branch 1 급성 센서 텔레메트리) + 만성 정비 이력 (Branch 2) + Capped Pareto 결합 확률(`probability`, `b1_probability`, `b2_probability`)을 모두 활용한 **다중 작업 배치 공동 최적화 시뮬레이터(`full_co_optimized`)** 및 **단독 실행형 HTML 플레이어/대시보드**가 추가되었다.
+
+### 1. 새로 추가된 핵심 HTML 대시보드 및 문서 (`docs/`)
+서버 구동 없이 브라우저에서 즉시 열어볼 수 있는 단독(Standalone) HTML 파일 및 계획서:
+- `docs/BLOX_실시간_시뮬레이션_플레이어_2026-10-17.html`: **611개 전체 의사결정 스텝(30분 단위, 12.7일)이 내장된 인터랙티브 시뮬레이션 플레이어** (정책 전환, 재생/일시정지/배속, 13개 서버 × 100대 GPU 실시간 상태·확률·XID 충돌 비교).
+- `docs/BLOX_아키텍처_및_최적화_시각화_대시보드_2026-10-17.html`: 시뮬레이터 아키텍처 다이어그램, 수리모형, Track 1·2·3 벤치마크 결과 및 차트 대시보드.
+- `docs/BLOX_최적화_시뮬레이터_마스터_계획서_2026-10-17.md` (`.html`): 4대 구조적 병목 진단 및 Solution A (배치 최적화) + Solution B (XID 31/43 차등 페널티) 마스터 계획서.
+- `blox-risklab/risklab/web/replay.html`: 로컬 웹 서버(`http://127.0.0.1:8115`) 연동 실시간 리플레이 및 새 시뮬레이션 런처 UI.
+
+### 2. 빠른 실행 가이드 (`blox-risklab/`)
+
+```powershell
+cd experiments/2026-09-22_Blox_RiskLab_30m_01/blox-risklab
+
+# 1) 단위 및 최적화 정책 회귀 테스트 실행
+python -B -m unittest discover -s tests -v
+
+# 2) 로컬 인터랙티브 웹 시뮬레이터 서버 실행 (http://127.0.0.1:8115)
+python -B -m risklab.replay_web --port 8115
+
+# 3) 17개 시나리오(Track 1: 정책 Ablation, Track 2: 스케줄러 호환성, Track 3: XID 31/43 차등 모델링) 전체 벤치마크 재현
+python -B run_comprehensive_optimization_benchmark.py
+
+# 4) 벤치마크 시각화 차트 및 단독 HTML 플레이어 재생성
+python -B visualize_optimization_results.py
+python -B build_standalone_player_html.py
+```
+
+### 3. 주요 최적화 성과 요약 (`results/optimization_benchmark_20261017/`)
+- **Track 1 (동일 하드웨어 조건, Las 스케줄러, 16,560개 작업)**:
+  - `risk_blind_packed` 대비 **`full_co_optimized`** 적용 시:
+    - **실행 중 XID 작업 피격 횟수**: `20회 → 14회` (**-30.0% 감소**)
+    - **유휴 상태 XID 회피 성공**: `11회 → 17회` (**+54.5% 증가**)
+    - **작업 측 총 유효 손실(`job_side_loss_seconds`)**: `35,685s → 7,680s` (**-78.5% 감소**)
+    - **선점 오버헤드(`scheduler_preemption_seconds`)**: `33,240s → 5,640s` (**-83.0% 감소**)
+- **Track 3 (XID 31 치명적 HW 결함 8건 vs XID 43 소프트 채널 리셋 23건 차등 모델링)**:
+  - GPU 비가용 손실: `178,170 GPU-s → 34,590 GPU-s` (**-80.6% 감소**)
+  - 총 시스템 손실(`total_loss_seconds`): `213,855s → 42,270s` (**-80.2% 감소**)
+

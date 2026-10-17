@@ -12,6 +12,7 @@ import traceback
 from pathlib import Path
 import pandas as pd
 from .feeds import load_inputs,sha256
+from .placement_policy import POLICIES
 from .replay_engine import ActualRiskLabSimulation,NativeScheduler
 
 
@@ -51,7 +52,7 @@ class ArtifactWriter:
         for f in self.files.values():f.close()
 
 
-def execute(manifest_path,out,policy=None,scheduler_name=None):
+def execute(manifest_path,out,policy=None,scheduler_name=None,xid_severity_mode=None,xid43_interrupt_prob=None,opt_overrides=None):
     out=Path(out).resolve();out.mkdir(parents=True,exist_ok=True)
     if (out/'manifest.json').exists():raise FileExistsError('Output already has a run; choose a new directory')
     start=time.perf_counter();writer=None;risk=None
@@ -60,6 +61,10 @@ def execute(manifest_path,out,policy=None,scheduler_name=None):
         m,top,risk,failures,jobs,threshold=load_inputs(manifest_path)
         if policy:m['placement_policy']=policy
         if scheduler_name:m['scheduler']=scheduler_name
+        if xid_severity_mode is not None:m['xid_severity_mode']=xid_severity_mode
+        if xid43_interrupt_prob is not None:m['xid43_interrupt_prob']=float(xid43_interrupt_prob)
+        if opt_overrides:
+            m['optimization']={**m.get('optimization',{}),**opt_overrides}
         source=Path(m['blox_source_root'])
         if not source.is_absolute():source=(Path(manifest_path).resolve().parent/source).resolve()
         native=NativeScheduler(source,m['scheduler'])
@@ -69,7 +74,6 @@ def execute(manifest_path,out,policy=None,scheduler_name=None):
         from importlib.metadata import version
         m['dependencies']={name:version(name) for name in ['pandas','numpy','pyarrow']}
         atomic_json(out/'manifest.json',m);writer=ArtifactWriter(out)
-        last_update=[0.]
         def update(snapshot):
             writer.flush()
             atomic_json(out/'status.json',{'timestamp':snapshot['timestamp'],'start_timestamp':snapshot['start_timestamp'],'placement_policy':snapshot['placement_policy'],'status':'running','progress':snapshot['progress'],'time':snapshot['time'],'jobs':snapshot['jobs'],'gpus':snapshot['gpus'],'decisions':snapshot['decisions'],'pid':os.getpid()})
@@ -109,9 +113,11 @@ def execute(manifest_path,out,policy=None,scheduler_name=None):
 def main():
     p=argparse.ArgumentParser(description='Actual-data Blox/RiskLab replay')
     p.add_argument('--manifest',required=True,type=Path);p.add_argument('--output',required=True,type=Path)
-    p.add_argument('--policy',choices=['risk_prefer_packed','risk_blind_packed','risk_mask_packed','risk_mask_random','risk_mask_packed_nonsticky','risk_mask_probability_tiebreak'])
+    p.add_argument('--policy',choices=list(POLICIES))
     p.add_argument('--scheduler',choices=['Fifo','Las','Tiresias2Q'])
-    a=p.parse_args();print(json.dumps(execute(a.manifest,a.output,a.policy,a.scheduler),ensure_ascii=False))
+    p.add_argument('--xid-severity-mode',choices=['uniform_hardware','differentiated_43_31'],default=None)
+    p.add_argument('--xid43-interrupt-prob',type=float,default=None)
+    a=p.parse_args();print(json.dumps(execute(a.manifest,a.output,a.policy,a.scheduler,a.xid_severity_mode,a.xid43_interrupt_prob),ensure_ascii=False))
 
 
 if __name__=='__main__':main()
