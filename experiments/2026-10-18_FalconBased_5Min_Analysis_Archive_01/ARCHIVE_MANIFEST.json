@@ -1,0 +1,90 @@
+{
+  "archive": "2026-10-18_FalconBased_5Min_Analysis_Archive_01",
+  "repository": "zzzaaanew/ISEE_Project",
+  "branch": "main",
+  "prior_execution_archive_commit": "42b099af6a09e03ca6ca0e06d82819822ca9c2a5",
+  "scope": "Frozen five-minute B1 replay result analysis; no training, score edits, raw data or learned checkpoints published.",
+  "analysis_script": "ML/analyze_5m.py",
+  "analysis_status": "FIVE_MINUTE_COMPARISON_ANALYZED",
+  "source_audit_hashes": {
+    "source_5m_audit_sha256": "27d833a29c4c10ae1d34dfc3cab4a4c71d14a64e4c7024896c5cbbeb61384fe2",
+    "source_30m_audit_sha256": "6467c96211c63d87b2562b61837647b173fc50420f1ef1404c825b3e3412a11c",
+    "onset_sha256": "1e1350b40ff93c76c8594626f926247f76276dcd3e14650beba8e4c931da1b2c",
+    "script_sha256": "fcce72660e9b36c377211f7272cb67b808523011c1d81b7d058ebb8cb102a38b"
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 9,
+      "sha256": "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 41,
+      "sha256": "c353edbebd531d32f9a6521d919611fbf023254a3b984ae2beb0afed16f00b78"
+    },
+    {
+      "path": "ML/analyze_5m.py",
+      "bytes": 11197,
+      "sha256": "fcce72660e9b36c377211f7272cb67b808523011c1d81b7d058ebb8cb102a38b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7087,
+      "sha256": "3fe33961ab879dc721980e0ec382eb0ee27ed07a7a36786a24b15883f4f508b6"
+    },
+    {
+      "path": "RESEARCH_NOTE.md",
+      "bytes": 2516,
+      "sha256": "9b5c8efe1ae4356d3aba41277085e1ac190536dcac6abd2cd820748e80a858cc"
+    },
+    {
+      "path": "results/5m_metrics_by_origin.csv",
+      "bytes": 23695,
+      "sha256": "a56e65cf63f39e69b865203ac2b7783a26401152ec3922e86a0e81126eb6c0bc"
+    },
+    {
+      "path": "results/analysis.json",
+      "bytes": 24231,
+      "sha256": "c5eae318163babfd88737ff88609bbb4ef6f29162b26d1f42e5fa2e65756be01"
+    },
+    {
+      "path": "results/comparisons_by_origin.csv",
+      "bytes": 40896,
+      "sha256": "230576bede82101b8336ba17e87477caf8a993661d00a692014559c4a4ff819c"
+    },
+    {
+      "path": "results/source_30m_audit.json",
+      "bytes": 20267,
+      "sha256": "6467c96211c63d87b2562b61837647b173fc50420f1ef1404c825b3e3412a11c"
+    },
+    {
+      "path": "results/source_5m_audit.json",
+      "bytes": 10379,
+      "sha256": "27d833a29c4c10ae1d34dfc3cab4a4c71d14a64e4c7024896c5cbbeb61384fe2"
+    },
+    {
+      "path": "results/source_5m_final_status.json",
+      "bytes": 5802,
+      "sha256": "3e3532dd41f7ed011d55b058f6d613b518cc351a0735c30e1367e09779700abe"
+    },
+    {
+      "path": "vendor/analyze_comparisons.py",
+      "bytes": 10438,
+      "sha256": "ee01da82db438ba27eb260fa82705d5c952364b2652aab07b908731fe212d44a"
+    },
+    {
+      "path": "vendor/record_run.py",
+      "bytes": 24227,
+      "sha256": "eef01196d98e158a6ffb175293bef96da52963baa8ca7aa45b3846eb7f3a185d"
+    }
+  ],
+  "checks": [
+    "All 64+64 score-part hashes matched original audits",
+    "Common timestamp/GPU/label identity",
+    "Recomputed full metrics match five-minute independent audit",
+    "384 paired metric rows",
+    "Python AST parsing",
+    "Credential literal scan"
+  ]
+}
