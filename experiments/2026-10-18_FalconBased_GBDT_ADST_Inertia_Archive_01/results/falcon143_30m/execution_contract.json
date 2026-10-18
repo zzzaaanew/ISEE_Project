@@ -1,0 +1,41 @@
+{
+  "source_sha256": "c8cf852c5a98e34354de42cb1e5b22c41891bbaabb4f81f19377da5d8ced5356",
+  "config": {
+    "data_directory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\runtime\\migration\\data",
+    "grid_meta": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\runtime\\migration\\e19-reproduction-gpu-opt\\outputs\\branch1\\cache\\grid_meta.npz",
+    "data_inventory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\data_inventory.json",
+    "reference_directory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\migrate_full_20261017\\migration\\e19-reproduction\\experiments\\2026-10-05_Experiment19_DualInertiaFusion_01\\full_population",
+    "backends": {
+      "xgboost": "cuda",
+      "catboost": "cuda",
+      "lightgbm": "gpu",
+      "random_forest": "cpu",
+      "isolation_forest": "cpu"
+    }
+  },
+  "classification": "Falcon-AcmeTrace-ST-Top100 adaptation; not original typed-ticket reproduction",
+  "feature_fusion": "concatenate dense and hazard features before one selected learner",
+  "selection": "one chronological 3-day validation block before first evaluation origin; frozen thereafter",
+  "sampling": "all positive 5m rows; negative min(10*positive,200000); inverse sampling weights",
+  "imputation": "within-lookback interpolation; training-only median for remaining missing values",
+  "event_policy": "kernel implemented, not tuned/executed; Top100 uses unfiltered risk",
+  "deviations": [
+    "All-XID instead of typed tickets",
+    "24h instead of 6h target",
+    "5m instead of 1m telemetry",
+    "21d ST instead of original offline split",
+    "AP-based learner selection instead of event-level F1",
+    "missing host/task peer and ECC/remap",
+    "no multi-horizon fusion; exact paper hyperparameters unavailable"
+  ],
+  "material_passport": {
+    "type": "code_experiment",
+    "goal_ids": [
+      "G-004",
+      "G-007",
+      "G-008"
+    ],
+    "approval": "user approved design and requested execution",
+    "seed": 20260905
+  }
+}

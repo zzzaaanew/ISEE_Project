@@ -1,0 +1,26 @@
+{
+  "util": {
+    "finite_mean_zero_obs": 0,
+    "nonfinite_mean_positive_obs": 0,
+    "obs_outside_0_1": 0,
+    "nonfinite_mean": 597332
+  },
+  "temp": {
+    "finite_mean_zero_obs": 0,
+    "nonfinite_mean_positive_obs": 0,
+    "obs_outside_0_1": 0,
+    "nonfinite_mean": 597332
+  },
+  "power": {
+    "finite_mean_zero_obs": 0,
+    "nonfinite_mean_positive_obs": 0,
+    "obs_outside_0_1": 0,
+    "nonfinite_mean": 597503
+  },
+  "fb": {
+    "finite_mean_zero_obs": 0,
+    "nonfinite_mean_positive_obs": 0,
+    "obs_outside_0_1": 0,
+    "nonfinite_mean": 597332
+  }
+}

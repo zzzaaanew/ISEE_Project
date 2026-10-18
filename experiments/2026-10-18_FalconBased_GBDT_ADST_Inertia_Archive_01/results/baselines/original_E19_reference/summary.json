@@ -1,0 +1,44 @@
+{
+  "B1": {
+    "hits_at_100": 6100,
+    "pooled_recall_at_100": 0.11521390121824535,
+    "pooled_positive_query_ndcg_at_100": 0.06543528491590099,
+    "origin_mean_pr_auc": 0.017886577905490763
+  },
+  "B2": {
+    "hits_at_100": 8335,
+    "pooled_recall_at_100": 0.15742751912361885,
+    "pooled_positive_query_ndcg_at_100": 0.07981986746840569,
+    "origin_mean_pr_auc": 0.031575797074807246
+  },
+  "Experiment14_Fusion": {
+    "hits_at_100": 7431,
+    "pooled_recall_at_100": 0.1403531967135707,
+    "pooled_positive_query_ndcg_at_100": 0.07559827756590067,
+    "origin_mean_pr_auc": 0.023030324271795573
+  },
+  "no_inertia": {
+    "hits_at_100": 8419,
+    "pooled_recall_at_100": 0.15901407120596847,
+    "pooled_positive_query_ndcg_at_100": 0.08070216996405204,
+    "origin_mean_pr_auc": 0.0324645787773602
+  },
+  "b1_inertia": {
+    "hits_at_100": 8505,
+    "pooled_recall_at_100": 0.1606383983378978,
+    "pooled_positive_query_ndcg_at_100": 0.08165677216587951,
+    "origin_mean_pr_auc": 0.03304705871271951
+  },
+  "b2_inertia": {
+    "hits_at_100": 8422,
+    "pooled_recall_at_100": 0.1590707337803381,
+    "pooled_positive_query_ndcg_at_100": 0.08081994590903703,
+    "origin_mean_pr_auc": 0.03248390739761715
+  },
+  "dual_inertia": {
+    "hits_at_100": 8505,
+    "pooled_recall_at_100": 0.1606383983378978,
+    "pooled_positive_query_ndcg_at_100": 0.08172190597162234,
+    "origin_mean_pr_auc": 0.03306413788249122
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PREFLIGHT_PASSED",
+  "queries_5m": 18313,
+  "rows_5m": 36479496,
+  "common_time_raw_score_max_difference": 1.7874066809975275e-10,
+  "regular_5m_rho": 0.9715319411536059,
+  "diagnostic_rows": 16,
+  "diagnostic_device": "cpu",
+  "production_device": "cuda",
+  "conditional_gate_not_bypassed": true,
+  "verified_utc": "2026-10-18T03:13:16.307603+00:00",
+  "source_sha256": {
+    "ML/run_5m.py": "80256f0af256a4cb4fdad979d299ea268aa70ff27547c90feb84d5dcd6d78c07",
+    "tools/audit_5m.py": "fb715a4e639f6c3216a9d6c88a22c99c0bfafc1864cf5ab3779c6314be27558e",
+    "tools/conditional_5m.py": "eabc8bd974e6cc2b34f509beae48862b1233169c177323bfd93132d983914c97"
+  }
+}

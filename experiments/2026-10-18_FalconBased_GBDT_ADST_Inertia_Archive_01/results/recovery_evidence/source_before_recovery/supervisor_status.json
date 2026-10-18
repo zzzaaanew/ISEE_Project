@@ -1,0 +1,50 @@
+{
+  "status": "RUNNING",
+  "supervisor_pid": 22224,
+  "created_utc": "2026-10-17T14:59:53.614542+00:00",
+  "origin_target": 64,
+  "config": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\config.json",
+  "output": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01",
+  "max_seconds": 43200.0,
+  "retries": 0,
+  "wait_pid": 11820,
+  "wait_identity": null,
+  "wait_result": "PID absent at initial identity check",
+  "updated_utc": "2026-10-17T17:07:54.699294+00:00",
+  "started_utc": "2026-10-17T14:59:53.615540+00:00",
+  "pilot_first": true,
+  "command": [
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\.venv\\Scripts\\python.exe",
+    "-u",
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\ML\\run_experiment.py",
+    "--config",
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\config.json",
+    "--output",
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01",
+    "--limit-origins",
+    "64",
+    "--resume"
+  ],
+  "phase": "RUNNING",
+  "pipeline_identity": {
+    "pid": 22984,
+    "create_time": 1792249393.663692,
+    "command": [
+      "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\.venv\\Scripts\\python.exe",
+      "-u",
+      "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\ML\\run_experiment.py",
+      "--config",
+      "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\config.json",
+      "--output",
+      "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01",
+      "--limit-origins",
+      "64",
+      "--resume"
+    ]
+  },
+  "elapsed_seconds": 7681.702999999994,
+  "last_phase": "PILOT_AUDITING",
+  "last_exit_code": 0,
+  "pilot_verified_utc": "2026-10-17T15:03:13.660613+00:00",
+  "pilot_audit_exit_code": 0
+}

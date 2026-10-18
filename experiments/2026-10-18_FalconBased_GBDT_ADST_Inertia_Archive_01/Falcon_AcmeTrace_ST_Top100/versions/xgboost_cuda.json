@@ -1,0 +1,124 @@
+{
+  "status": "FIT_AND_PREDICT_CONFIRMED",
+  "seconds": 20.412682700000005,
+  "rows": 512,
+  "features": 16,
+  "detail": {
+    "config": {
+      "learner": {
+        "generic_param": {
+          "device": "cuda:0",
+          "fail_on_invalid_gpu_id": "0",
+          "n_jobs": "2",
+          "nthread": "2",
+          "random_state": "20260905",
+          "seed": "20260905",
+          "seed_per_iteration": "0",
+          "validate_parameters": "1"
+        },
+        "gradient_booster": {
+          "gbtree_model_param": {
+            "num_parallel_tree": "1",
+            "num_trees": "5"
+          },
+          "gbtree_train_param": {
+            "process_type": "default",
+            "tree_method": "hist",
+            "updater": "grow_gpu_hist",
+            "updater_seq": "grow_gpu_hist"
+          },
+          "name": "gbtree",
+          "specified_updater": false,
+          "tree_train_param": {
+            "alpha": "0",
+            "cache_opt": "1",
+            "colsample_bylevel": "1",
+            "colsample_bynode": "1",
+            "colsample_bytree": "1",
+            "eta": "0.300000012",
+            "gamma": "0",
+            "grow_policy": "depthwise",
+            "interaction_constraints": "",
+            "lambda": "1",
+            "learning_rate": "0.300000012",
+            "max_bin": "32",
+            "max_cat_threshold": "64",
+            "max_cat_to_onehot": "4",
+            "max_delta_step": "0",
+            "max_depth": "3",
+            "max_leaves": "0",
+            "min_child_weight": "1",
+            "min_split_loss": "0",
+            "monotone_constraints": "()",
+            "refresh_leaf": "1",
+            "reg_alpha": "0",
+            "reg_lambda": "1",
+            "sampling_method": "uniform",
+            "sketch_ratio": "2",
+            "sparse_threshold": "0.20000000000000001",
+            "subsample": "1"
+          },
+          "updater": [
+            {
+              "hist_train_param": {
+                "debug_synchronize": "0",
+                "max_cached_hist_node": "65536"
+              },
+              "name": "grow_gpu_hist"
+            }
+          ]
+        },
+        "learner_model_param": {
+          "base_score": "4.9609387E-1",
+          "boost_from_average": "1",
+          "num_class": "0",
+          "num_feature": "16",
+          "num_target": "1"
+        },
+        "learner_train_param": {
+          "booster": "gbtree",
+          "disable_default_eval_metric": "0",
+          "multi_strategy": "one_output_per_tree",
+          "objective": "binary:logistic"
+        },
+        "metrics": [
+          {
+            "name": "logloss"
+          }
+        ],
+        "objective": {
+          "name": "binary:logistic",
+          "reg_loss_param": {
+            "scale_pos_weight": "1"
+          }
+        }
+      },
+      "version": [
+        2,
+        1,
+        4
+      ]
+    },
+    "build": {
+      "BUILTIN_PREFETCH_PRESENT": false,
+      "CUDA_VERSION": [
+        12,
+        4
+      ],
+      "DEBUG": false,
+      "MM_PREFETCH_PRESENT": true,
+      "THRUST_VERSION": [
+        2,
+        3,
+        2
+      ],
+      "USE_CUDA": true,
+      "USE_DLOPEN_NCCL": false,
+      "USE_FEDERATED": false,
+      "USE_NCCL": false,
+      "USE_OPENMP": true,
+      "USE_RMM": false,
+      "libxgboost": "C:\\Users\\junho\\OneDrive\\\ubb38\uc11c\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\.venv\\Lib\\site-packages\\xgboost\\lib\\xgboost.dll"
+    }
+  }
+}

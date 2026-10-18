@@ -1,0 +1,354 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "C:\\Users\\junho\\OneDrive\\\ubb38\uc11c\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "packages": {
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "pyarrow": "20.0.0",
+    "scikit-learn": "1.6.1",
+    "xgboost": "2.1.4",
+    "catboost": "1.2.8",
+    "lightgbm": "4.6.0",
+    "psutil": "7.0.0",
+    "threadpoolctl": "3.6.0",
+    "scipy": "1.18.1",
+    "joblib": "1.6.0"
+  },
+  "gpu_before": "NVIDIA GeForce GTX 1060 3GB, 560.94, 3072, 2810, 99",
+  "seed": 20260905,
+  "synthetic_preflight_only": true,
+  "existing_environments_modified": false,
+  "fits": {
+    "xgboost_cuda": {
+      "status": "FIT_AND_PREDICT_CONFIRMED",
+      "seconds": 20.412682700000005,
+      "rows": 512,
+      "features": 16,
+      "detail": {
+        "config": {
+          "learner": {
+            "generic_param": {
+              "device": "cuda:0",
+              "fail_on_invalid_gpu_id": "0",
+              "n_jobs": "2",
+              "nthread": "2",
+              "random_state": "20260905",
+              "seed": "20260905",
+              "seed_per_iteration": "0",
+              "validate_parameters": "1"
+            },
+            "gradient_booster": {
+              "gbtree_model_param": {
+                "num_parallel_tree": "1",
+                "num_trees": "5"
+              },
+              "gbtree_train_param": {
+                "process_type": "default",
+                "tree_method": "hist",
+                "updater": "grow_gpu_hist",
+                "updater_seq": "grow_gpu_hist"
+              },
+              "name": "gbtree",
+              "specified_updater": false,
+              "tree_train_param": {
+                "alpha": "0",
+                "cache_opt": "1",
+                "colsample_bylevel": "1",
+                "colsample_bynode": "1",
+                "colsample_bytree": "1",
+                "eta": "0.300000012",
+                "gamma": "0",
+                "grow_policy": "depthwise",
+                "interaction_constraints": "",
+                "lambda": "1",
+                "learning_rate": "0.300000012",
+                "max_bin": "32",
+                "max_cat_threshold": "64",
+                "max_cat_to_onehot": "4",
+                "max_delta_step": "0",
+                "max_depth": "3",
+                "max_leaves": "0",
+                "min_child_weight": "1",
+                "min_split_loss": "0",
+                "monotone_constraints": "()",
+                "refresh_leaf": "1",
+                "reg_alpha": "0",
+                "reg_lambda": "1",
+                "sampling_method": "uniform",
+                "sketch_ratio": "2",
+                "sparse_threshold": "0.20000000000000001",
+                "subsample": "1"
+              },
+              "updater": [
+                {
+                  "hist_train_param": {
+                    "debug_synchronize": "0",
+                    "max_cached_hist_node": "65536"
+                  },
+                  "name": "grow_gpu_hist"
+                }
+              ]
+            },
+            "learner_model_param": {
+              "base_score": "4.9609387E-1",
+              "boost_from_average": "1",
+              "num_class": "0",
+              "num_feature": "16",
+              "num_target": "1"
+            },
+            "learner_train_param": {
+              "booster": "gbtree",
+              "disable_default_eval_metric": "0",
+              "multi_strategy": "one_output_per_tree",
+              "objective": "binary:logistic"
+            },
+            "metrics": [
+              {
+                "name": "logloss"
+              }
+            ],
+            "objective": {
+              "name": "binary:logistic",
+              "reg_loss_param": {
+                "scale_pos_weight": "1"
+              }
+            }
+          },
+          "version": [
+            2,
+            1,
+            4
+          ]
+        },
+        "build": {
+          "BUILTIN_PREFETCH_PRESENT": false,
+          "CUDA_VERSION": [
+            12,
+            4
+          ],
+          "DEBUG": false,
+          "MM_PREFETCH_PRESENT": true,
+          "THRUST_VERSION": [
+            2,
+            3,
+            2
+          ],
+          "USE_CUDA": true,
+          "USE_DLOPEN_NCCL": false,
+          "USE_FEDERATED": false,
+          "USE_NCCL": false,
+          "USE_OPENMP": true,
+          "USE_RMM": false,
+          "libxgboost": "C:\\Users\\junho\\OneDrive\\\ubb38\uc11c\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\.venv\\Lib\\site-packages\\xgboost\\lib\\xgboost.dll"
+        }
+      },
+      "returncode": 0,
+      "wall_seconds": 22.558013199995912,
+      "stdout": "{\"backend\": \"xgboost_cuda\", \"status\": \"FIT_AND_PREDICT_CONFIRMED\"}\n",
+      "stderr": ""
+    },
+    "catboost_gpu": {
+      "status": "FIT_AND_PREDICT_CONFIRMED",
+      "seconds": 2.168937599999481,
+      "rows": 512,
+      "features": 16,
+      "detail": {
+        "parameters": {
+          "nan_mode": "Min",
+          "gpu_ram_part": 0.1,
+          "eval_metric": "Logloss",
+          "iterations": 5,
+          "leaf_estimation_method": "Newton",
+          "observations_to_bootstrap": "TestOnly",
+          "random_score_type": "NormalWithModelSizeDecrease",
+          "grow_policy": "SymmetricTree",
+          "penalties_coefficient": 1,
+          "boosting_type": "Plain",
+          "feature_border_type": "GreedyLogSum",
+          "bayesian_matrix_reg": 0.10000000149011612,
+          "devices": "0",
+          "eval_fraction": 0,
+          "pinned_memory_bytes": "104857600",
+          "force_unit_auto_pair_weights": false,
+          "l2_leaf_reg": 3,
+          "random_strength": 1,
+          "rsm": 1,
+          "boost_from_average": false,
+          "gpu_cat_features_storage": "GpuRam",
+          "fold_size_loss_normalization": false,
+          "model_size_reg": 0.5,
+          "pool_metainfo_options": {
+            "tags": {}
+          },
+          "use_best_model": false,
+          "meta_l2_frequency": 0,
+          "class_names": [
+            0,
+            1
+          ],
+          "random_seed": 20260905,
+          "depth": 3,
+          "border_count": 32,
+          "min_fold_size": 100,
+          "data_partition": "DocParallel",
+          "bagging_temperature": 1,
+          "classes_count": 0,
+          "auto_class_weights": "None",
+          "leaf_estimation_backtracking": "AnyImprovement",
+          "best_model_min_trees": 1,
+          "min_data_in_leaf": 1,
+          "add_ridge_penalty_to_loss_function": false,
+          "loss_function": "Logloss",
+          "learning_rate": 0.5,
+          "meta_l2_exponent": 1,
+          "score_function": "Cosine",
+          "task_type": "GPU",
+          "leaf_estimation_iterations": 1,
+          "bootstrap_type": "Bayesian",
+          "max_leaves": 8
+        }
+      },
+      "returncode": 0,
+      "wall_seconds": 2.731465000004391,
+      "stdout": "{\"backend\": \"catboost_gpu\", \"status\": \"FIT_AND_PREDICT_CONFIRMED\"}\n",
+      "stderr": "Warning: less than 75% GPU memory available for training. Free: 2238.296875 Total: 3071.75\n"
+    },
+    "lightgbm_opencl": {
+      "status": "FIT_AND_PREDICT_CONFIRMED",
+      "seconds": 9.429582099997788,
+      "rows": 512,
+      "features": 16,
+      "detail": {
+        "parameters": {
+          "boosting_type": "gbdt",
+          "class_weight": null,
+          "colsample_bytree": 1.0,
+          "importance_type": "split",
+          "learning_rate": 0.1,
+          "max_depth": 3,
+          "min_child_samples": 20,
+          "min_child_weight": 0.001,
+          "min_split_gain": 0.0,
+          "n_estimators": 5,
+          "n_jobs": 2,
+          "num_leaves": 7,
+          "objective": null,
+          "random_state": 20260905,
+          "reg_alpha": 0.0,
+          "reg_lambda": 0.0,
+          "subsample": 1.0,
+          "subsample_for_bin": 200000,
+          "subsample_freq": 0,
+          "max_bin": 31,
+          "device_type": "gpu",
+          "verbosity": 1
+        }
+      },
+      "returncode": 0,
+      "wall_seconds": 10.053018400001747,
+      "stdout": "[LightGBM] [Info] Number of positive: 254, number of negative: 258\n[LightGBM] [Info] This is the GPU trainer!!\n[LightGBM] [Info] Total Bins 496\n[LightGBM] [Info] Number of data points in the train set: 512, number of used features: 16\n[LightGBM] [Info] Using GPU Device: NVIDIA GeForce GTX 1060 3GB, Vendor: NVIDIA Corporation\n[LightGBM] [Info] Compiling OpenCL Kernel with 64 bins...\n[LightGBM] [Info] GPU programs have been built\n[LightGBM] [Info] Size of histogram bin entry: 8\n[LightGBM] [Info] 16 dense feature groups (0.01 MB) transferred to GPU in 0.022283 secs. 0 sparse feature groups\n[LightGBM] [Info] [binary:BoostFromScore]: pavg=0.496094 -> initscore=-0.015625\n[LightGBM] [Info] Start training from score -0.015625\n{\"backend\": \"lightgbm_opencl\", \"status\": \"FIT_AND_PREDICT_CONFIRMED\"}\n",
+      "stderr": "1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\n1 warning generated.\nC:\\Users\\junho\\OneDrive\\\ufffd\ufffd\ufffd\ufffd\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\.venv\\Lib\\site-packages\\sklearn\\utils\\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names\n  warnings.warn(\n"
+    },
+    "lightgbm_cpu": {
+      "status": "FIT_AND_PREDICT_CONFIRMED",
+      "seconds": 2.7286209000012605,
+      "rows": 512,
+      "features": 16,
+      "detail": {
+        "parameters": {
+          "boosting_type": "gbdt",
+          "class_weight": null,
+          "colsample_bytree": 1.0,
+          "importance_type": "split",
+          "learning_rate": 0.1,
+          "max_depth": 3,
+          "min_child_samples": 20,
+          "min_child_weight": 0.001,
+          "min_split_gain": 0.0,
+          "n_estimators": 5,
+          "n_jobs": 2,
+          "num_leaves": 7,
+          "objective": null,
+          "random_state": 20260905,
+          "reg_alpha": 0.0,
+          "reg_lambda": 0.0,
+          "subsample": 1.0,
+          "subsample_for_bin": 200000,
+          "subsample_freq": 0,
+          "max_bin": 31,
+          "device_type": "cpu",
+          "verbosity": 1
+        }
+      },
+      "returncode": 0,
+      "wall_seconds": 3.2912852999943425,
+      "stdout": "[LightGBM] [Info] Number of positive: 254, number of negative: 258\n[LightGBM] [Info] Auto-choosing row-wise multi-threading, the overhead of testing was 0.000080 seconds.\nYou can set `force_row_wise=true` to remove the overhead.\nAnd if memory is not enough, you can set `force_col_wise=true`.\n[LightGBM] [Info] Total Bins 496\n[LightGBM] [Info] Number of data points in the train set: 512, number of used features: 16\n[LightGBM] [Info] [binary:BoostFromScore]: pavg=0.496094 -> initscore=-0.015625\n[LightGBM] [Info] Start training from score -0.015625\n{\"backend\": \"lightgbm_cpu\", \"status\": \"FIT_AND_PREDICT_CONFIRMED\"}\n",
+      "stderr": "C:\\Users\\junho\\OneDrive\\\ufffd\ufffd\ufffd\ufffd\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\.venv\\Lib\\site-packages\\sklearn\\utils\\validation.py:2739: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names\n  warnings.warn(\n"
+    },
+    "random_forest_cpu": {
+      "status": "FIT_AND_PREDICT_CONFIRMED",
+      "seconds": 3.1919534000044223,
+      "rows": 512,
+      "features": 16,
+      "detail": {
+        "parameters": {
+          "bootstrap": true,
+          "ccp_alpha": 0.0,
+          "class_weight": null,
+          "criterion": "gini",
+          "max_depth": 3,
+          "max_features": "sqrt",
+          "max_leaf_nodes": null,
+          "max_samples": null,
+          "min_impurity_decrease": 0.0,
+          "min_samples_leaf": 1,
+          "min_samples_split": 2,
+          "min_weight_fraction_leaf": 0.0,
+          "monotonic_cst": null,
+          "n_estimators": 5,
+          "n_jobs": 2,
+          "oob_score": false,
+          "random_state": 20260905,
+          "verbose": 0,
+          "warm_start": false
+        }
+      },
+      "returncode": 0,
+      "wall_seconds": 3.7671254000015324,
+      "stdout": "{\"backend\": \"random_forest_cpu\", \"status\": \"FIT_AND_PREDICT_CONFIRMED\"}\n",
+      "stderr": ""
+    },
+    "isolation_forest_cpu": {
+      "status": "FIT_AND_PREDICT_CONFIRMED",
+      "seconds": 2.525491799999145,
+      "rows": 512,
+      "features": 16,
+      "detail": {
+        "parameters": {
+          "bootstrap": false,
+          "contamination": "auto",
+          "max_features": 1.0,
+          "max_samples": 128,
+          "n_estimators": 5,
+          "n_jobs": 2,
+          "random_state": 20260905,
+          "verbose": 0,
+          "warm_start": false
+        },
+        "direction": "negative score_samples: larger risk"
+      },
+      "returncode": 0,
+      "wall_seconds": 3.095055499994487,
+      "stdout": "{\"backend\": \"isolation_forest_cpu\", \"status\": \"FIT_AND_PREDICT_CONFIRMED\"}\n",
+      "stderr": ""
+    }
+  },
+  "backend_timeout_seconds": 120,
+  "gpu_after": "NVIDIA GeForce GTX 1060 3GB, 560.94, 3072, 2722, 100",
+  "limitations": [
+    "Tiny synthetic fits confirm backend capability, not full-data VRAM or speed.",
+    "GPU remains shared with desktop processes; no external process was terminated.",
+    "CPU-only sklearn families are retained as original algorithms."
+  ]
+}

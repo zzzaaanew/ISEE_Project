@@ -1,0 +1,199 @@
+{
+  "status": "OPERATIONAL_DESCRIPTIVE_METRICS",
+  "decision_times": 3053,
+  "evaluation_start_utc": "2023-06-15T09:40:00+00:00",
+  "evaluation_end_utc": "2023-08-17T23:40:00+00:00",
+  "dense_30min_evaluation": true,
+  "excluded_gap_transitions": 0,
+  "raw_xid_rows": 2425,
+  "deduplicated_gpu_onsets": 2424,
+  "eligible_unique_onsets": 1402,
+  "event_definition": "Unique (gpu_id,onset_time) across all XID codes; not confirmed hardware failure episodes",
+  "warning_window": "[onset_time-24h,onset_time); full continuous 24h window must lie inside evaluated timestamp range; onset itself excluded",
+  "lead_definition": "onset_time minus earliest Top100 selection inside the warning window, conditional on capture",
+  "turnover_definition": "Fraction of 100 recommendations replaced since immediately preceding 30min query; gaps excluded",
+  "cautions": [
+    "More repeated prediction opportunities can increase any-event capture.",
+    "This onset metric is newly defined and is not claimed identical to earlier E19 operational metrics.",
+    "GPU-time hits and unique onset captures have different denominators.",
+    "No maintenance intervention/counterfactual failure reduction is measured."
+  ],
+  "arms": {
+    "S7_0_P": {
+      "mean_top100_turnover": 0.36412844036697173,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1984,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 836,
+      "onset_capture_rate": 0.5962910128388017,
+      "mean_earliest_selection_lead_hours": 15.691586921850082,
+      "median_earliest_selection_lead_hours": 18.791666666666664
+    },
+    "S7_0_E": {
+      "mean_top100_turnover": 0.048194626474442774,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1466,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 391,
+      "onset_capture_rate": 0.2788873038516405,
+      "mean_earliest_selection_lead_hours": 15.845268542199488,
+      "median_earliest_selection_lead_hours": 21.583333333333332
+    },
+    "S7_I_P": {
+      "mean_top100_turnover": 0.16443971166448157,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1951,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 516,
+      "onset_capture_rate": 0.3680456490727532,
+      "mean_earliest_selection_lead_hours": 16.021640826873384,
+      "median_earliest_selection_lead_hours": 21.166666666666668
+    },
+    "S7_I_E": {
+      "mean_top100_turnover": 0.029577326343381966,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1271,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 355,
+      "onset_capture_rate": 0.25320970042796004,
+      "mean_earliest_selection_lead_hours": 15.193427230046948,
+      "median_earliest_selection_lead_hours": 23.583333333333332
+    },
+    "S14_0_P": {
+      "mean_top100_turnover": 0.3921756225425965,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1987,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 855,
+      "onset_capture_rate": 0.6098430813124108,
+      "mean_earliest_selection_lead_hours": 15.848830409356726,
+      "median_earliest_selection_lead_hours": 18.75
+    },
+    "S14_0_E": {
+      "mean_top100_turnover": 0.06177916120576696,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1512,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 367,
+      "onset_capture_rate": 0.26176890156918686,
+      "mean_earliest_selection_lead_hours": 15.903950953678475,
+      "median_earliest_selection_lead_hours": 23.5
+    },
+    "S14_I_P": {
+      "mean_top100_turnover": 0.18555373525556876,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1945,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 586,
+      "onset_capture_rate": 0.41797432239657634,
+      "mean_earliest_selection_lead_hours": 16.967150170648463,
+      "median_earliest_selection_lead_hours": 20.5
+    },
+    "S14_I_E": {
+      "mean_top100_turnover": 0.037768676277851174,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1317,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 349,
+      "onset_capture_rate": 0.24893009985734665,
+      "mean_earliest_selection_lead_hours": 15.958691499522446,
+      "median_earliest_selection_lead_hours": 23.75
+    },
+    "S21_0_P": {
+      "mean_top100_turnover": 0.4003374836173018,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1990,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 799,
+      "onset_capture_rate": 0.5699001426533523,
+      "mean_earliest_selection_lead_hours": 14.932311222361287,
+      "median_earliest_selection_lead_hours": 17.416666666666668
+    },
+    "S21_0_E": {
+      "mean_top100_turnover": 0.0625557011795545,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1510,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 363,
+      "onset_capture_rate": 0.25891583452211125,
+      "mean_earliest_selection_lead_hours": 15.132460973370065,
+      "median_earliest_selection_lead_hours": 22.75
+    },
+    "S21_I_P": {
+      "mean_top100_turnover": 0.19159895150720804,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1957,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 520,
+      "onset_capture_rate": 0.37089871611982883,
+      "mean_earliest_selection_lead_hours": 16.242948717948714,
+      "median_earliest_selection_lead_hours": 19.708333333333332
+    },
+    "S21_I_E": {
+      "mean_top100_turnover": 0.03831585845347377,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1305,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 338,
+      "onset_capture_rate": 0.24108416547788872,
+      "mean_earliest_selection_lead_hours": 15.21646942800789,
+      "median_earliest_selection_lead_hours": 23.5
+    },
+    "A_0_P": {
+      "mean_top100_turnover": 0.3752424639580602,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1987,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 821,
+      "onset_capture_rate": 0.5855920114122682,
+      "mean_earliest_selection_lead_hours": 15.436561104344294,
+      "median_earliest_selection_lead_hours": 18.083333333333332
+    },
+    "A_0_E": {
+      "mean_top100_turnover": 0.05590432503276539,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1544,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 378,
+      "onset_capture_rate": 0.26961483594864477,
+      "mean_earliest_selection_lead_hours": 16.04563492063492,
+      "median_earliest_selection_lead_hours": 22.375
+    },
+    "A_I_P": {
+      "mean_top100_turnover": 0.1709239842726074,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1949,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 515,
+      "onset_capture_rate": 0.3673323823109843,
+      "mean_earliest_selection_lead_hours": 15.769417475728156,
+      "median_earliest_selection_lead_hours": 19.833333333333332
+    },
+    "A_I_E": {
+      "mean_top100_turnover": 0.03410878112713022,
+      "turnover_transitions": 3052,
+      "unique_recommended_gpus": 1353,
+      "total_top100_recommendations": 305300,
+      "eligible_unique_onsets": 1402,
+      "captured_unique_onsets": 340,
+      "onset_capture_rate": 0.24251069900142652,
+      "mean_earliest_selection_lead_hours": 15.366911764705883,
+      "median_earliest_selection_lead_hours": 23.666666666666668
+    }
+  }
+}

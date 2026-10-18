@@ -1,0 +1,19 @@
+{
+  "status": "RUNNING",
+  "supervisor_pid": 23556,
+  "pipeline_pid": 11820,
+  "command": [
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\.venv\\Scripts\\python.exe",
+    "-u",
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\ML\\run_falcon_acmetrace_st_top100.py",
+    "--config",
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\config.json",
+    "--output",
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\runs\\full_01",
+    "--limit-origins",
+    "64",
+    "--resume"
+  ],
+  "max_seconds": 14400,
+  "origin_target": 64
+}

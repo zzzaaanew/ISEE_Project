@@ -1,0 +1,63 @@
+{
+  "origin": 1,
+  "origin_bin": 8928,
+  "adst_days": 14,
+  "adst_state": {
+    "days": 14,
+    "stable": 0,
+    "processed": [],
+    "values": [],
+    "updates": []
+  },
+  "feedback": {
+    "id": 1,
+    "latest_bin": 9210,
+    "query_mean_ap": 0.008371161443472663,
+    "prevalence": 0.005522088353413655
+  },
+  "fit_info": [
+    {
+      "component": "B1",
+      "origin": 1,
+      "days": 7,
+      "actual_backend": "cuda:0",
+      "rows": 261204,
+      "natural_prior": 0.015240525594441258,
+      "training_start_bin": 6480,
+      "training_end_bin_exclusive": 8496,
+      "origin_bin": 8928,
+      "seconds": 50.03897639999923,
+      "tree_count": 150
+    },
+    {
+      "component": "B1",
+      "origin": 1,
+      "days": 14,
+      "actual_backend": "cuda:0",
+      "rows": 287721,
+      "natural_prior": 0.010921787347803915,
+      "training_start_bin": 4464,
+      "training_end_bin_exclusive": 8496,
+      "origin_bin": 8928,
+      "seconds": 55.39775340000051,
+      "tree_count": 150
+    },
+    {
+      "component": "B1",
+      "origin": 1,
+      "days": 21,
+      "actual_backend": "cuda:0",
+      "rows": 371362,
+      "natural_prior": 0.01422372691825503,
+      "training_start_bin": 2448,
+      "training_end_bin_exclusive": 8496,
+      "origin_bin": 8928,
+      "seconds": 58.79799639999692,
+      "tree_count": 150
+    }
+  ],
+  "score_sha256": "c55dcc2ff113c81d0696480d90a977a2e75b13c91757fd90abc1a6ad18d8da15",
+  "rows": 95616,
+  "label_sha256": "8def8f05b09caddeb555193986303618ea9199ac3bb43656cdfe1cc9ca964931",
+  "seconds": 166.8912597999879
+}

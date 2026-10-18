@@ -1,0 +1,63 @@
+{
+  "origin": 0,
+  "origin_bin": 8640,
+  "adst_days": 14,
+  "adst_state": {
+    "days": 14,
+    "stable": 0,
+    "processed": [],
+    "values": [],
+    "updates": []
+  },
+  "feedback": {
+    "id": 0,
+    "latest_bin": 8922,
+    "query_mean_ap": 0.024575689468440864,
+    "prevalence": 0.016472138554216868
+  },
+  "fit_info": [
+    {
+      "component": "B1",
+      "origin": 0,
+      "days": 7,
+      "actual_backend": "cuda:0",
+      "rows": 224891,
+      "natural_prior": 0.0061981557181105375,
+      "training_start_bin": 6192,
+      "training_end_bin_exclusive": 8208,
+      "origin_bin": 8640,
+      "seconds": 56.10137580000446,
+      "tree_count": 150
+    },
+    {
+      "component": "B1",
+      "origin": 0,
+      "days": 14,
+      "actual_backend": "cuda:0",
+      "rows": 274001,
+      "natural_prior": 0.009213565571811053,
+      "training_start_bin": 4176,
+      "training_end_bin_exclusive": 8208,
+      "origin_bin": 8640,
+      "seconds": 56.47083279999788,
+      "tree_count": 150
+    },
+    {
+      "component": "B1",
+      "origin": 0,
+      "days": 21,
+      "actual_backend": "cuda:0",
+      "rows": 333513,
+      "natural_prior": 0.011082109522747073,
+      "training_start_bin": 2160,
+      "training_end_bin_exclusive": 8208,
+      "origin_bin": 8640,
+      "seconds": 56.79113110000617,
+      "tree_count": 150
+    }
+  ],
+  "score_sha256": "d8110d7fccde28849cbb86d5e3ca5d677ffd14bbd6415373ef1c626cc047a741",
+  "rows": 95616,
+  "label_sha256": "9d3354ffb56ec0a0d3f75a520fe140625c9ee441160c4665b2f649b1469c8d37",
+  "seconds": 172.82390529999975
+}

@@ -1,0 +1,115 @@
+{
+  "created": {
+    "utc": "2026-10-18T03:15:51.621843+00:00",
+    "kst": "2026-10-18T12:15:51.621843+09:00"
+  },
+  "files": [
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\supervisor_status.json",
+      "snapshot": "source_before_recovery/supervisor_status.json",
+      "sha256": "f43b18d96c1c2e5dd5880712613cf4d79eb070d0cb9888acd8e7435f31b7ae60",
+      "bytes": 2145,
+      "source_mtime_utc": "2026-10-17T17:07:54.700287+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\supervisor_status.json.22224.tmp",
+      "snapshot": "source_before_recovery/supervisor_status.json.22224.tmp",
+      "sha256": "e012a8fb60706f89cdb36acbcae9999ff1ac45afba98f5002a2b902cb003f5a4",
+      "bytes": 2549,
+      "source_mtime_utc": "2026-10-17T17:08:04.704921+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\supervisor_stderr.log",
+      "snapshot": "source_before_recovery/supervisor_stderr.log",
+      "sha256": "4a698146b8213b83ba29971381a638bbcd9d7d753513a169cd3b323e9bfec48c",
+      "bytes": 2639,
+      "source_mtime_utc": "2026-10-17T17:08:04.835366+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\supervisor_stdout.log",
+      "snapshot": "source_before_recovery/supervisor_stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "source_mtime_utc": "2026-10-17T14:59:53.411193+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\status.json",
+      "snapshot": "source_before_recovery/status.json",
+      "sha256": "622666a30348205b2c0754579b94555c9951c174356283e2fcf8d1d95d876e1d",
+      "bytes": 4411,
+      "source_mtime_utc": "2026-10-17T18:22:04.802598+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\stdout.log",
+      "snapshot": "source_before_recovery/stdout.log",
+      "sha256": "4e74a93930262ea58fb14533d31c56e83dbf315633ddd0c3eac5ec05632c46fe",
+      "bytes": 1521374,
+      "source_mtime_utc": "2026-10-17T18:22:04.798630+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\stderr.log",
+      "snapshot": "source_before_recovery/stderr.log",
+      "sha256": "c7f291d8dfcd46e2b920daf5b74cd7e27fd029baebd3c2fad8388632d9696d25",
+      "bytes": 15734,
+      "source_mtime_utc": "2026-10-17T18:07:49.526267+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\summary.json",
+      "snapshot": "source_before_recovery/summary.json",
+      "sha256": "622666a30348205b2c0754579b94555c9951c174356283e2fcf8d1d95d876e1d",
+      "bytes": 4411,
+      "source_mtime_utc": "2026-10-17T18:22:04.788214+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\fidelity_audit.json",
+      "snapshot": "source_before_recovery/fidelity_audit.json",
+      "sha256": "2673fa99a56af8853c7492ffad9f73c86c49f6817e4d9f9a4fd38d99e36c0663",
+      "bytes": 5181,
+      "source_mtime_utc": "2026-10-17T18:22:04.857159+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\independent_audit.json",
+      "snapshot": "source_before_recovery/independent_audit.json",
+      "sha256": "67ed447b4d9f55e22de5e578c84bae72805ccd61be3c8b5f701b130795806a85",
+      "bytes": 14036,
+      "source_mtime_utc": "2026-10-17T15:03:07.480162+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\execution_contract.json",
+      "snapshot": "source_before_recovery/execution_contract.json",
+      "sha256": "de3b613062520f61b7efa237f6590f70594b0ac5c95840b03075a18a260d1e45",
+      "bytes": 1855,
+      "source_mtime_utc": "2026-10-17T14:59:56.944059+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\feature_manifest.json",
+      "snapshot": "source_before_recovery/feature_manifest.json",
+      "sha256": "6f7f3e127a5af1daa965da4472dfe90f326137b189b3993b62e1a72db5724c2f",
+      "bytes": 3334,
+      "source_mtime_utc": "2026-10-17T15:03:22.637040+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\conditional_5m_01\\watcher_status.json",
+      "snapshot": "stopped_watcher/watcher_status.json",
+      "sha256": "5bbce6ef7faa9b20aaab557a3786aa10fa306454ce7fad6d05b3944c3e9819d5",
+      "bytes": 1768,
+      "source_mtime_utc": "2026-10-17T17:08:14.717489+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\conditional_5m_01\\watcher_stderr.log",
+      "snapshot": "stopped_watcher/watcher_stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "source_mtime_utc": "2026-10-17T16:34:47.973373+00:00"
+    },
+    {
+      "original": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\conditional_5m_01\\watcher_stdout.log",
+      "snapshot": "stopped_watcher/watcher_stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "source_mtime_utc": "2026-10-17T16:34:47.972877+00:00"
+    }
+  ],
+  "reason": "Original supervisor terminated on PermissionError during status temp.replace; completed training persisted independently.",
+  "root_cause": "PermissionError is observed. External locking or the responsible application is not confirmed."
+}

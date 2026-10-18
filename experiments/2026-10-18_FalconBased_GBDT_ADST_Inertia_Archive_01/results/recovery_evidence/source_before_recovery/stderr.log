@@ -1,0 +1,144 @@
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\xgboost\core.py:158: UserWarning: [00:01:00] WARNING: C:\buildkite-agent\builds\buildkite-windows-cpu-autoscaling-group-i-08cbc0333d8d4aae1-1\xgboost\xgboost-ci-windows\src\common\error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  warnings.warn(smsg, UserWarning)
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\xgboost\core.py:158: UserWarning: [00:04:14] WARNING: C:\buildkite-agent\builds\buildkite-windows-cpu-autoscaling-group-i-08cbc0333d8d4aae1-1\xgboost\xgboost-ci-windows\src\common\error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  warnings.warn(smsg, UserWarning)
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(

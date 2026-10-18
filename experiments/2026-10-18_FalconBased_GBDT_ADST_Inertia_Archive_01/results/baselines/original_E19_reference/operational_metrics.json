@@ -1,0 +1,109 @@
+{
+  "status": "COMPLETED",
+  "source_experiment": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-10-05_Experiment19_DualInertiaFusion_01",
+  "rows": 6081576,
+  "decision_times": 3053,
+  "positive_labels": 52945,
+  "label_metadata": {
+    "onset_rows": 2425,
+    "matched_onset_rows": 2425,
+    "label_rule": "onset_bin-288 through onset_bin inclusive on original 5-minute grid"
+  },
+  "onset_definition": "Unique (gpu_id,onset_time); full preceding 24h scored; alert no later than onset-10min; not reconstructed failure episodes",
+  "eligible_onset_events": 1402,
+  "raw_onset_rows": 2425,
+  "unique_onsets": 2424,
+  "models": {
+    "B1": {
+      "brier_score": 0.010438247902849362,
+      "log_loss": 0.06205651526056039,
+      "mean_predicted_probability": 0.029295351905043156,
+      "observed_prevalence": 0.008705802574858885,
+      "captured_onset_events": 894,
+      "onset_event_capture_rate": 0.637660485021398,
+      "captured_event_first_warning_lead_hours": {
+        "median": 18.125,
+        "p10": 4.333333333333333,
+        "p90": 23.666666666666668
+      }
+    },
+    "B2": {
+      "brier_score": 0.008670758073174021,
+      "log_loss": 0.05125376541805186,
+      "mean_predicted_probability": 0.016088732388798103,
+      "observed_prevalence": 0.008705802574858885,
+      "captured_onset_events": 299,
+      "onset_event_capture_rate": 0.21326676176890158,
+      "captured_event_first_warning_lead_hours": {
+        "median": 23.75,
+        "p10": 0.8333333333333334,
+        "p90": 24.0
+      }
+    },
+    "Experiment14_Fusion": {
+      "brier_score": 0.00919017064792543,
+      "log_loss": 0.055683511553655314,
+      "mean_predicted_probability": 0.023277945660402827,
+      "observed_prevalence": 0.008705802574858885,
+      "captured_onset_events": 850,
+      "onset_event_capture_rate": 0.6062767475035663,
+      "captured_event_first_warning_lead_hours": {
+        "median": 18.0,
+        "p10": 2.9083333333333337,
+        "p90": 23.833333333333332
+      }
+    },
+    "no_inertia": {
+      "brier_score": 0.008649673563021067,
+      "log_loss": 0.050709152512905024,
+      "mean_predicted_probability": 0.010259856095058677,
+      "observed_prevalence": 0.008705802574858885,
+      "captured_onset_events": 360,
+      "onset_event_capture_rate": 0.25677603423680456,
+      "captured_event_first_warning_lead_hours": {
+        "median": 23.458333333333336,
+        "p10": 1.65,
+        "p90": 24.0
+      }
+    },
+    "b1_inertia": {
+      "brier_score": 0.00864895536041625,
+      "log_loss": 0.05062785782848103,
+      "mean_predicted_probability": 0.010252908867615824,
+      "observed_prevalence": 0.008705802574858885,
+      "captured_onset_events": 351,
+      "onset_event_capture_rate": 0.25035663338088443,
+      "captured_event_first_warning_lead_hours": {
+        "median": 23.75,
+        "p10": 1.4166666666666667,
+        "p90": 24.0
+      }
+    },
+    "b2_inertia": {
+      "brier_score": 0.008649822353663062,
+      "log_loss": 0.050711476611931636,
+      "mean_predicted_probability": 0.010264011922835225,
+      "observed_prevalence": 0.008705802574858885,
+      "captured_onset_events": 357,
+      "onset_event_capture_rate": 0.25463623395149787,
+      "captured_event_first_warning_lead_hours": {
+        "median": 23.5,
+        "p10": 1.7166666666666668,
+        "p90": 24.0
+      }
+    },
+    "dual_inertia": {
+      "brier_score": 0.008649105026595064,
+      "log_loss": 0.05063073803640544,
+      "mean_predicted_probability": 0.01025724247818245,
+      "observed_prevalence": 0.008705802574858885,
+      "captured_onset_events": 351,
+      "onset_event_capture_rate": 0.25035663338088443,
+      "captured_event_first_warning_lead_hours": {
+        "median": 23.75,
+        "p10": 1.4166666666666667,
+        "p90": 24.0
+      }
+    }
+  }
+}

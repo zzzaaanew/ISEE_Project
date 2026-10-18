@@ -1,0 +1,84 @@
+{
+  "selected": {
+    "family": "xgboost",
+    "backend": "cuda",
+    "pr_auc": 0.03230877852112883,
+    "hits_at_100": 313,
+    "positives": 2041,
+    "recall_at_100": 0.1533561979421852,
+    "precision_at_100": 0.021736111111111112,
+    "decision_times": 144,
+    "gpu_count": 1992,
+    "positive_queries": 140,
+    "ndcg_at_100": 0.10596236201253921
+  },
+  "candidates": [
+    {
+      "family": "xgboost",
+      "backend": "cuda",
+      "pr_auc": 0.03230877852112883,
+      "hits_at_100": 313,
+      "positives": 2041,
+      "recall_at_100": 0.1533561979421852,
+      "precision_at_100": 0.021736111111111112,
+      "decision_times": 144,
+      "gpu_count": 1992,
+      "positive_queries": 140,
+      "ndcg_at_100": 0.10596236201253921
+    },
+    {
+      "family": "catboost",
+      "backend": "cuda",
+      "pr_auc": 0.02472793288857504,
+      "hits_at_100": 298,
+      "positives": 2041,
+      "recall_at_100": 0.14600685938265556,
+      "precision_at_100": 0.020694444444444446,
+      "decision_times": 144,
+      "gpu_count": 1992,
+      "positive_queries": 140,
+      "ndcg_at_100": 0.10446768701408164
+    },
+    {
+      "family": "lightgbm",
+      "backend": "gpu",
+      "pr_auc": 0.017712817013209647,
+      "hits_at_100": 300,
+      "positives": 2041,
+      "recall_at_100": 0.14698677119059284,
+      "precision_at_100": 0.020833333333333332,
+      "decision_times": 144,
+      "gpu_count": 1992,
+      "positive_queries": 140,
+      "ndcg_at_100": 0.0760823647666931
+    },
+    {
+      "family": "random_forest",
+      "backend": "cpu",
+      "pr_auc": 0.020049835613072196,
+      "hits_at_100": 460,
+      "positives": 2041,
+      "recall_at_100": 0.2253797158255757,
+      "precision_at_100": 0.03194444444444444,
+      "decision_times": 144,
+      "gpu_count": 1992,
+      "positive_queries": 140,
+      "ndcg_at_100": 0.12058564583397349
+    },
+    {
+      "family": "isolation_forest",
+      "backend": "cpu",
+      "pr_auc": 0.012854206865738214,
+      "hits_at_100": 348,
+      "positives": 2041,
+      "recall_at_100": 0.1705046545810877,
+      "precision_at_100": 0.024166666666666666,
+      "decision_times": 144,
+      "gpu_count": 1992,
+      "positive_queries": 140,
+      "ndcg_at_100": 0.092474267354088
+    }
+  ],
+  "validation_latest_score_bin": 8202,
+  "evaluation_first_bin": 8640
+}

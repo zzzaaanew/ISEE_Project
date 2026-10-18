@@ -1,0 +1,301 @@
+{
+  "status": "COMPLETED",
+  "runner": "run_experiment19_30m_dual_inertia_fusion.py",
+  "runner_sha256": "a29f1836cc2677ffb5f9ff265c71170117eadb5a1710c7642877e786e7624b21",
+  "source": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-10-04_Experiment14_MaturedADST_TemporalMoE_01",
+  "source_manifest_sha256": "99b5c294f9ded2e232f37480e7faae702d3fe83ad766f0864b47cc54da3583ba",
+  "source_full_population_manifest_sha256": "f79f68e98ebb01349dc2448e2c10c9b88c4978aaca8c0dbc32a6e9f120133103",
+  "source_parts": [
+    {
+      "part": "score_part_0000.parquet",
+      "sha256": "44592644a5d2b50ffc99f8a2a74a1d535dc0bd39705d4014d2fcad2f4eebd60d"
+    },
+    {
+      "part": "score_part_0001.parquet",
+      "sha256": "e175d8ed0fb36cdf1268f49d5c5c7b7f8d5683277abbd5862088ebd06914b7ed"
+    },
+    {
+      "part": "score_part_0002.parquet",
+      "sha256": "e04ddd4ece2a0cc55f31cbbce3efede46b7b62741b77e8b2fc43f1291751266f"
+    },
+    {
+      "part": "score_part_0003.parquet",
+      "sha256": "43075c3d238ee06dfc044deef734c7e25819c2048d3ab0760238ce5e5f2e1c0e"
+    },
+    {
+      "part": "score_part_0004.parquet",
+      "sha256": "cc0afb489a81136ebf23791bf9a0895195751d018795191e780f1160c4c67396"
+    },
+    {
+      "part": "score_part_0005.parquet",
+      "sha256": "6a02b67b9814f7561027326c27acfc1e5d1b1d69a9b77c99862e87eb0b9b91bc"
+    },
+    {
+      "part": "score_part_0006.parquet",
+      "sha256": "0986795c7cbfc416b387a1975c733e014444d7eef6477b58e09befcbbc9919e6"
+    },
+    {
+      "part": "score_part_0007.parquet",
+      "sha256": "864d554dad886d3e0534d4023cfb5bc3f3ae574217d301f626797cc933c0e061"
+    },
+    {
+      "part": "score_part_0008.parquet",
+      "sha256": "bd146db76150d900b3e1ee1b56240698714f98f753e40ce7da85b928a0d9149d"
+    },
+    {
+      "part": "score_part_0009.parquet",
+      "sha256": "f65a31416cb3ee237b611cca6419b43ffa1ebb87216b946fc58098db5be98cd2"
+    },
+    {
+      "part": "score_part_0010.parquet",
+      "sha256": "b6131a20679d47ac25e9013db3001c65d51580f18e582440432bac556f9abc47"
+    },
+    {
+      "part": "score_part_0011.parquet",
+      "sha256": "257ebbeb0a20b98e82450e68eb8f47f5e7ceeba44ee6bc65baadb9c92832bee7"
+    },
+    {
+      "part": "score_part_0012.parquet",
+      "sha256": "1c94f73ed9b6b75d23dc8e64ecd90d54a712bbcfd935616ae73ec2d2ea76ad5c"
+    },
+    {
+      "part": "score_part_0013.parquet",
+      "sha256": "b467c0abcc8afc10bf685a9d66161d12d709f489ea8e4821c34313e9a182d123"
+    },
+    {
+      "part": "score_part_0014.parquet",
+      "sha256": "129ab7dbcd11a0fd392df29efebee1ece3ac4034687e1f97bba8e43bb5d6159e"
+    },
+    {
+      "part": "score_part_0015.parquet",
+      "sha256": "a8a5c7b8391ef746ec91577d5468713cd85cbd079014b18986008d2292e10660"
+    },
+    {
+      "part": "score_part_0016.parquet",
+      "sha256": "408680ab9c7290080847d9aeb580d1745b05b8e805cdf3aa480fc936883aab19"
+    },
+    {
+      "part": "score_part_0017.parquet",
+      "sha256": "66f61dd713820cebe3641c4d8f95286dc2cb29b4ddaa3f0cacb28e379328b35f"
+    },
+    {
+      "part": "score_part_0018.parquet",
+      "sha256": "4d33897e3ef71b205e91c285f579799ff0b8d86d0a4d623c75e872bc7ebbe588"
+    },
+    {
+      "part": "score_part_0019.parquet",
+      "sha256": "e09cf4daa3038b955e16d0349c4c3d1c93635478488e0e42ebdebfee6f6a538d"
+    },
+    {
+      "part": "score_part_0020.parquet",
+      "sha256": "988976a08bb9f77bc0fc3355437f5594182fc40a1bbd3cb3b333cbebadbfe89e"
+    },
+    {
+      "part": "score_part_0021.parquet",
+      "sha256": "ca2329fb5360717c7edee00449aaa58121190f7a912c2dae44b70ee16b58de46"
+    },
+    {
+      "part": "score_part_0022.parquet",
+      "sha256": "03a2baec68e33783cda83ce5dc3d05e1b38678a92f5f7b9b678420c98aab0703"
+    },
+    {
+      "part": "score_part_0023.parquet",
+      "sha256": "3f021c9b50aaff1009a1e38a0ea8f602230b2687873c53e751edfc1c8b3bc045"
+    },
+    {
+      "part": "score_part_0024.parquet",
+      "sha256": "50570d4b4e0d5e02c65e8bb53651e80f10aee5c011be735852e63cd31e370ca5"
+    },
+    {
+      "part": "score_part_0025.parquet",
+      "sha256": "980ea1c32980a95c442fcfe21d20e5f11015c6c089c715a7f8a99bea5323db8e"
+    },
+    {
+      "part": "score_part_0026.parquet",
+      "sha256": "ae91fda6fd4fb4d0cbe02e44084273219b5882fa749274dda0fa938c5e4fab57"
+    },
+    {
+      "part": "score_part_0027.parquet",
+      "sha256": "1f2016be0a64bf6ef113dfed612143635363ee0acde453b01c4aa18c363b75ad"
+    },
+    {
+      "part": "score_part_0028.parquet",
+      "sha256": "026c41d5f144fe8dc847c603cb3250fac923e3fd85e106079cffc540ce60aafc"
+    },
+    {
+      "part": "score_part_0029.parquet",
+      "sha256": "ca3ddd42224d778cee8b0601e0732da295df8e99ae1a2a3d53071a4de4e63d1c"
+    },
+    {
+      "part": "score_part_0030.parquet",
+      "sha256": "de2d5c440af63a04315ed57baf71f5b655a0845dbe5997d023ee090d407fa30b"
+    },
+    {
+      "part": "score_part_0031.parquet",
+      "sha256": "ca5af7a1553897c6941f15230fae2e85d126f320058ca9317b3825275f2f9cd8"
+    },
+    {
+      "part": "score_part_0032.parquet",
+      "sha256": "74f913baf4106b6baa193fca00acccbbf6c36569b92b05409cd1a494af9d8096"
+    },
+    {
+      "part": "score_part_0033.parquet",
+      "sha256": "67f410bb876ea1265dea61a84f0d13fd66ac281c52e6668972ae9933594830ce"
+    },
+    {
+      "part": "score_part_0034.parquet",
+      "sha256": "332af2c6b36b939ebb734bab8dcc1ad56a116b74c2e9746adcccd3bda8eac823"
+    },
+    {
+      "part": "score_part_0035.parquet",
+      "sha256": "1cdcf2595674b96bcbe0727d8fa739995c396d89b865ede1ffa558d98e97b3bd"
+    },
+    {
+      "part": "score_part_0036.parquet",
+      "sha256": "3d2989538b8d5ef66fb532952285fb27c25492adcf82a747ada87e86607a5638"
+    },
+    {
+      "part": "score_part_0037.parquet",
+      "sha256": "b78b60e75afa69cdac7374bedd4d6f7898766efd9284c16e660448dad1328810"
+    },
+    {
+      "part": "score_part_0038.parquet",
+      "sha256": "0247a8d96aae4eddb25cd214daa17ced8dbe0362478f6bf755077b15e4c172ad"
+    },
+    {
+      "part": "score_part_0039.parquet",
+      "sha256": "6f5178bb383c0e094225565dbea38bc2adb78bd0d1956f9bc11dc5ec92368303"
+    },
+    {
+      "part": "score_part_0040.parquet",
+      "sha256": "e19b4d24001312b0caa8cb169d3b16351c341266f0d1b92aac44efef34411e2e"
+    },
+    {
+      "part": "score_part_0041.parquet",
+      "sha256": "a1a401793e667a0da8b7c45db326c108d8358019a80dfd94cfd3983e9a6d204e"
+    },
+    {
+      "part": "score_part_0042.parquet",
+      "sha256": "7daca72f719ccd10f3107b1e5583f31202120a15b48b45ed092e2c4531a66b57"
+    },
+    {
+      "part": "score_part_0043.parquet",
+      "sha256": "d6ddd7f4c89e34d9cbcccfd33a7c5e92f158e2fcc7c19e14db8c99c6cb4927a4"
+    },
+    {
+      "part": "score_part_0044.parquet",
+      "sha256": "33621611ab72c1f62ca18b28ec9f87e31f7163d4f5c05cdeb259f99de8f9ae98"
+    },
+    {
+      "part": "score_part_0045.parquet",
+      "sha256": "603c69cbf096a52b7f3fee53fb619a05bf7746655f15dcd3d8657d2f5c97b8ee"
+    },
+    {
+      "part": "score_part_0046.parquet",
+      "sha256": "5c48d996bf19e1d1a982e71e763a9eb3ce90cf1b5d34667f0f0e3a23e3d15986"
+    },
+    {
+      "part": "score_part_0047.parquet",
+      "sha256": "9beda0ede3347098fa55278627529efda6d520e207ff2b34de8f4fb4a1991855"
+    },
+    {
+      "part": "score_part_0048.parquet",
+      "sha256": "497244275a31f2079cf68ecd034ef115544fc57c7b9a4e30b2a4863e5b419475"
+    },
+    {
+      "part": "score_part_0049.parquet",
+      "sha256": "f257e351d5e69b5eedc446378da428051ad9cde26275bf3638af20cd2fb9d862"
+    },
+    {
+      "part": "score_part_0050.parquet",
+      "sha256": "073b79b1a449989410c1aae38e8deff530842ee89991a48d8adfc7fb4f22f7cc"
+    },
+    {
+      "part": "score_part_0051.parquet",
+      "sha256": "d4799e557ac4f1e021290dae5f3bf394b1753d54fcb03b2e8b373b9f6467d2a9"
+    },
+    {
+      "part": "score_part_0052.parquet",
+      "sha256": "d34b9110bc988036f15ab44e79feca12d1ab7ab7341ab05842c68524899ea76e"
+    },
+    {
+      "part": "score_part_0053.parquet",
+      "sha256": "c952695eb6bf34ad6ed4ac0d16ef5dfa35f3089bfbd7353210fb1b35b3776a42"
+    },
+    {
+      "part": "score_part_0054.parquet",
+      "sha256": "f862f1b18cf82dd4f5376e8a59cd62fe11f6ddd30ed72fd6b7961f78b3f36d44"
+    },
+    {
+      "part": "score_part_0055.parquet",
+      "sha256": "876f3f0f4bacb36ea9faaa6c1e3c4baf72aa67453a6cf1c06de4ac0c98ebcbcc"
+    },
+    {
+      "part": "score_part_0056.parquet",
+      "sha256": "ab449a0f29413484dc282054eaed8d419c744f32d75ca8e85e9cddcacd4e0787"
+    },
+    {
+      "part": "score_part_0057.parquet",
+      "sha256": "bae6b7773fd8bff5dcd6bbf28ed14a5fb0eaf963d6cc72de86aca6b6fe96362b"
+    },
+    {
+      "part": "score_part_0058.parquet",
+      "sha256": "322928fd48f9c2ce7fa025db0b0c2e5dd52f2fcb1670ba2fcedb45055ce84136"
+    },
+    {
+      "part": "score_part_0059.parquet",
+      "sha256": "d11f2dfdcbbc414fa946c59a93ee8561a9f479dd3dfe6f7c988e80f703765cc9"
+    },
+    {
+      "part": "score_part_0060.parquet",
+      "sha256": "82c08b1943fcab54c76af50787aee88e42514941780965ef7fb91fc511d0aa09"
+    },
+    {
+      "part": "score_part_0061.parquet",
+      "sha256": "28e4db2e020f0f12034009fb3a02c80596f9834c35941cbacb59768578c2a642"
+    },
+    {
+      "part": "score_part_0062.parquet",
+      "sha256": "35e1341feaa8edf52b628bb17352b870b57cf79331304f394922158a0d058a40"
+    },
+    {
+      "part": "score_part_0063.parquet",
+      "sha256": "376d7c20a7816d6b1d35ceae6153bc920ba40185a10ec83e635f1548b9ee982b"
+    }
+  ],
+  "target": "all_xids",
+  "horizon_hours": 24,
+  "purge_hours": 36,
+  "feature_cutoff_minutes": 10,
+  "warmup_days": 30,
+  "origin_count": 64,
+  "decision_time_count": 3053,
+  "score_rows": 6081576,
+  "gpu_count": 1992,
+  "decision_interval_seconds": 1800,
+  "branch1_branch2": "immutable_Experiment14_fitted_scores",
+  "newly_fitted": "four_probability_residual_fusion_arms_and_four_calibrators_per_eligible_origin",
+  "fusion_fit_origin_count": 48,
+  "fusion_fit_count": 192,
+  "calibration_fit_count": 192,
+  "inertia_half_life_hours": {
+    "b1": 2.0,
+    "b2": 6.0
+  },
+  "inertia_uses_current_score": false,
+  "calibration_window_days": 7,
+  "fusion_window_days": 7,
+  "calibration_then_fusion_disjoint": true,
+  "regularization": 0.01,
+  "minimum_positives_per_window": 20,
+  "negative_sampling": false,
+  "seed": 20260905,
+  "label_info": {
+    "onset_rows": 2425,
+    "matched_onset_rows": 2425,
+    "label_rule": "onset_bin-288 through onset_bin inclusive on original 5-minute grid"
+  },
+  "terminal_heldout_used": false,
+  "disagreement_feature_used": false,
+  "blox_used": false
+}

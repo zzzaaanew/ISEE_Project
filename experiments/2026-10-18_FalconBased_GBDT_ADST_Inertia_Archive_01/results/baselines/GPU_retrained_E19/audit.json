@@ -1,0 +1,59 @@
+{
+  "status": "VERIFIED",
+  "origin_count": 64,
+  "score_rows": 6081576,
+  "decision_time_count": 3053,
+  "memory_rows_checked": 6081576,
+  "fusion_fit_count": 192,
+  "fusion_changed_origin_count": 48,
+  "feedback_cutoff_violations": 0,
+  "memory_lag_violations": 0,
+  "source_score_differences": 0,
+  "metric_mismatches": 0,
+  "baseline_summary_sha256": "d5add928d48ad9fc20b7bf23004f78d65757d208c11f1374d523ace3624812c2",
+  "models": {
+    "B1": {
+      "hits_at_100": 5409,
+      "pooled_recall_at_100": 0.10216262158844083,
+      "pooled_positive_query_ndcg_at_100": 0.05991847376807797,
+      "origin_mean_pr_auc": 0.017043640050702278
+    },
+    "B2": {
+      "hits_at_100": 8335,
+      "pooled_recall_at_100": 0.15742751912361885,
+      "pooled_positive_query_ndcg_at_100": 0.07981986746840569,
+      "origin_mean_pr_auc": 0.031575797074807246
+    },
+    "Experiment14_Fusion": {
+      "hits_at_100": 6705,
+      "pooled_recall_at_100": 0.1266408537161205,
+      "pooled_positive_query_ndcg_at_100": 0.06820515713978119,
+      "origin_mean_pr_auc": 0.02101532830015205
+    },
+    "no_inertia": {
+      "hits_at_100": 8302,
+      "pooled_recall_at_100": 0.15680423080555292,
+      "pooled_positive_query_ndcg_at_100": 0.0797321384466967,
+      "origin_mean_pr_auc": 0.032414503961133226
+    },
+    "b1_inertia": {
+      "hits_at_100": 8383,
+      "pooled_recall_at_100": 0.15833412031353292,
+      "pooled_positive_query_ndcg_at_100": 0.08162330362706692,
+      "origin_mean_pr_auc": 0.032652412243754245
+    },
+    "b2_inertia": {
+      "hits_at_100": 8291,
+      "pooled_recall_at_100": 0.15659646803286428,
+      "pooled_positive_query_ndcg_at_100": 0.0797864142472158,
+      "origin_mean_pr_auc": 0.03242761434747528
+    },
+    "dual_inertia": {
+      "hits_at_100": 8374,
+      "pooled_recall_at_100": 0.15816413259042403,
+      "pooled_positive_query_ndcg_at_100": 0.08161703849881623,
+      "origin_mean_pr_auc": 0.03266892992350873
+    }
+  },
+  "interpretation": "Development-period exploratory comparison, not independent generalization proof"
+}

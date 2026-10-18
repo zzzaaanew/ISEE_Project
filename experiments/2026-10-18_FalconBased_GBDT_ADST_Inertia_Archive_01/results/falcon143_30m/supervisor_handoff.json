@@ -1,0 +1,21 @@
+{
+  "old_supervisor_pid": 23556,
+  "old_supervisor_create_time": 1792237142.5436969,
+  "pipeline_pid": 11820,
+  "pipeline_create_time": 1792237145.1731744,
+  "pipeline_children_before": [
+    {
+      "pid": 23236,
+      "create_time": 1792237145.18144
+    },
+    {
+      "pid": 27292,
+      "create_time": 1792237145.2060905
+    }
+  ],
+  "original_start_epoch": 1792237142.5436969,
+  "previous_max_seconds": 14400,
+  "max_seconds": 28800,
+  "requested_at_utc": "2026-10-17T12:19:18.213760+00:00",
+  "source_of_authorization": "User asked to extend execution limit; training remains unchanged"
+}

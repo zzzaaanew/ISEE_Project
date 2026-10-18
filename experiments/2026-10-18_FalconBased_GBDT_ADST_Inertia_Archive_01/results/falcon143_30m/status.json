@@ -1,0 +1,29 @@
+{
+  "status": "FULL_PIPELINE_VERIFIED",
+  "origins_completed": 64,
+  "expected_full_origins": 64,
+  "score_rows": 6081576,
+  "decision_times": 3053,
+  "selected_learner": "xgboost",
+  "backend": "cuda",
+  "origin_mean_pr_auc": 0.01975591121861566,
+  "hits_at_100": 5554,
+  "pooled_recall_at_100": 0.1049013126829729,
+  "elapsed_seconds": 12793.840754399993,
+  "pilot_seconds": 902.1294856000022,
+  "continuation_seconds": 11891.71126879999,
+  "timing_scope": "pilot plus resumed process; excludes idle handoff, environment setup and report repair",
+  "report_repaired": true,
+  "training_rerun": false,
+  "aggregation_policy": "64-origin macro; undefined zero-positive metrics zero-filled, matching original E19",
+  "reference_origin_mean_pr_auc": {
+    "b1_probability": 0.017886577905490763,
+    "b2_probability": 0.031575797074807246,
+    "experiment14_fusion_probability": 0.023030324271795577,
+    "fusion_no_inertia": 0.032464578777360205,
+    "fusion_b1_inertia": 0.03304705871271951,
+    "fusion_b2_inertia": 0.03248390739761715,
+    "fusion_dual_inertia": 0.033064137882491226
+  },
+  "fidelity": "All-XID/24h/ST/Top100 adaptation, not full original Falcon"
+}

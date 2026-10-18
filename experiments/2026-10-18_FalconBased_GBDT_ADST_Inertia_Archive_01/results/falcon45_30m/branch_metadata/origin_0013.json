@@ -1,0 +1,220 @@
+{
+  "origin": 13,
+  "origin_bin": 12384,
+  "adst_days": 7,
+  "adst_state": {
+    "days": 7,
+    "stable": 0,
+    "processed": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "values": [
+      0.008239269299714398,
+      0.002864893283895782,
+      0.002391128601343339,
+      0.005803872476975767,
+      0.008240785063750866,
+      0.050997419133872804,
+      0.015615773730011301,
+      0.03149906138036798,
+      0.0,
+      0.026157058730242756,
+      0.004468588597242433
+    ],
+    "updates": [
+      {
+        "origin_bin": 9504,
+        "feedback_id": 0,
+        "latest_feedback_bin": 8922,
+        "cutoff_bin": 9072,
+        "label_maturity_latest_bin": 9210,
+        "before_days": 14,
+        "after_days": 14,
+        "norm_ap": 0.008239269299714398,
+        "drop": 0.0,
+        "action": "hold"
+      },
+      {
+        "origin_bin": 9792,
+        "feedback_id": 1,
+        "latest_feedback_bin": 9210,
+        "cutoff_bin": 9360,
+        "label_maturity_latest_bin": 9498,
+        "before_days": 14,
+        "after_days": 14,
+        "norm_ap": 0.002864893283895782,
+        "drop": 0.0,
+        "action": "hold"
+      },
+      {
+        "origin_bin": 10080,
+        "feedback_id": 2,
+        "latest_feedback_bin": 9498,
+        "cutoff_bin": 9648,
+        "label_maturity_latest_bin": 9786,
+        "before_days": 14,
+        "after_days": 21,
+        "norm_ap": 0.002391128601343339,
+        "drop": 0.0,
+        "action": "expand"
+      },
+      {
+        "origin_bin": 10368,
+        "feedback_id": 3,
+        "latest_feedback_bin": 9786,
+        "cutoff_bin": 9936,
+        "label_maturity_latest_bin": 10074,
+        "before_days": 21,
+        "after_days": 21,
+        "norm_ap": 0.005803872476975767,
+        "drop": 0.0,
+        "action": "hold"
+      },
+      {
+        "origin_bin": 10656,
+        "feedback_id": 4,
+        "latest_feedback_bin": 10074,
+        "cutoff_bin": 10224,
+        "label_maturity_latest_bin": 10362,
+        "before_days": 21,
+        "after_days": 14,
+        "norm_ap": 0.008240785063750866,
+        "drop": 0.41436920181032366,
+        "action": "shrink"
+      },
+      {
+        "origin_bin": 10944,
+        "feedback_id": 5,
+        "latest_feedback_bin": 10362,
+        "cutoff_bin": 10512,
+        "label_maturity_latest_bin": 10650,
+        "before_days": 14,
+        "after_days": 14,
+        "norm_ap": 0.050997419133872804,
+        "drop": 0.0,
+        "action": "hold"
+      },
+      {
+        "origin_bin": 11232,
+        "feedback_id": 6,
+        "latest_feedback_bin": 10650,
+        "cutoff_bin": 10800,
+        "label_maturity_latest_bin": 10938,
+        "before_days": 14,
+        "after_days": 14,
+        "norm_ap": 0.015615773730011301,
+        "drop": 0.0,
+        "action": "hold"
+      },
+      {
+        "origin_bin": 11520,
+        "feedback_id": 7,
+        "latest_feedback_bin": 10938,
+        "cutoff_bin": 11088,
+        "label_maturity_latest_bin": 11226,
+        "before_days": 14,
+        "after_days": 21,
+        "norm_ap": 0.03149906138036798,
+        "drop": 0.0,
+        "action": "expand"
+      },
+      {
+        "origin_bin": 11808,
+        "feedback_id": 8,
+        "latest_feedback_bin": 11226,
+        "cutoff_bin": 11376,
+        "label_maturity_latest_bin": 11514,
+        "before_days": 21,
+        "after_days": 21,
+        "norm_ap": 0.0,
+        "drop": 0.0,
+        "action": "hold"
+      },
+      {
+        "origin_bin": 12096,
+        "feedback_id": 9,
+        "latest_feedback_bin": 11514,
+        "cutoff_bin": 11664,
+        "label_maturity_latest_bin": 11802,
+        "before_days": 21,
+        "after_days": 14,
+        "norm_ap": 0.026157058730242756,
+        "drop": 0.15510200181035402,
+        "action": "shrink"
+      },
+      {
+        "origin_bin": 12384,
+        "feedback_id": 10,
+        "latest_feedback_bin": 11802,
+        "cutoff_bin": 11952,
+        "label_maturity_latest_bin": 12090,
+        "before_days": 14,
+        "after_days": 7,
+        "norm_ap": 0.004468588597242433,
+        "drop": 0.37754100956486053,
+        "action": "shrink"
+      }
+    ]
+  },
+  "feedback": {
+    "id": 13,
+    "latest_bin": 12666,
+    "query_mean_ap": 0.018280604199034243,
+    "prevalence": 0.007843875502008033
+  },
+  "fit_info": [
+    {
+      "component": "B1",
+      "origin": 13,
+      "days": 7,
+      "actual_backend": "cuda:0",
+      "rows": 251071,
+      "natural_prior": 0.012717287802001657,
+      "training_start_bin": 9936,
+      "training_end_bin_exclusive": 11952,
+      "origin_bin": 12384,
+      "seconds": 57.335390199994436,
+      "tree_count": 150
+    },
+    {
+      "component": "B1",
+      "origin": 13,
+      "days": 14,
+      "actual_backend": "cuda:0",
+      "rows": 360738,
+      "natural_prior": 0.020012839054631224,
+      "training_start_bin": 7920,
+      "training_end_bin_exclusive": 11952,
+      "origin_bin": 12384,
+      "seconds": 60.6048826000042,
+      "tree_count": 150
+    },
+    {
+      "component": "B1",
+      "origin": 13,
+      "days": 21,
+      "actual_backend": "cuda:0",
+      "rows": 379132,
+      "natural_prior": 0.01486866779286458,
+      "training_start_bin": 5904,
+      "training_end_bin_exclusive": 11952,
+      "origin_bin": 12384,
+      "seconds": 61.04748969999491,
+      "tree_count": 150
+    }
+  ],
+  "score_sha256": "6b0a48aca14fa3b59aa43101394131921258ee8777cb68a6541d3fb12541ef0c",
+  "rows": 95616,
+  "label_sha256": "9db761022558d79a938111fff88a9f7e5de100ed5c6b12dc5600ff44ace9a352",
+  "seconds": 182.85169089998817
+}

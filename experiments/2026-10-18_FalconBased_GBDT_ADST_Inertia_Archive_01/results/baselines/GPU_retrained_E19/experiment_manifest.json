@@ -1,0 +1,301 @@
+{
+  "status": "COMPLETED",
+  "runner": "run_experiment19_30m_dual_inertia_fusion.py",
+  "runner_sha256": "a29f1836cc2677ffb5f9ff265c71170117eadb5a1710c7642877e786e7624b21",
+  "source": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\runtime\\migration\\e19-reproduction-gpu-opt\\experiments\\2026-10-17_E14ToE19_GPU_Optimized_Rerun_01\\e14",
+  "source_manifest_sha256": "6097924c62db5df60add19bf5b288898f996ffb830010362d78f40b8d43fa5a3",
+  "source_full_population_manifest_sha256": "f79f68e98ebb01349dc2448e2c10c9b88c4978aaca8c0dbc32a6e9f120133103",
+  "source_parts": [
+    {
+      "part": "score_part_0000.parquet",
+      "sha256": "1b00e1df7a8b35c24ff6b36b35e72d68a441b1e7815eb1745ced696f9f577bea"
+    },
+    {
+      "part": "score_part_0001.parquet",
+      "sha256": "e47e5c4f2b17145bf7abbe5547b5d8056d4ba362663734de9088a1673e460d74"
+    },
+    {
+      "part": "score_part_0002.parquet",
+      "sha256": "43493f86c68a8510856002f453db3bf7aa22f43ab003c3320205fcb19736bfbd"
+    },
+    {
+      "part": "score_part_0003.parquet",
+      "sha256": "3b3159fc804cff90b27796ede1a33412c0bb99e44e6fa5728d9638f643bebea4"
+    },
+    {
+      "part": "score_part_0004.parquet",
+      "sha256": "f39c993bab4ab84afee25f00c77f748f8758bd3ae6518c18fc4609123d154ee2"
+    },
+    {
+      "part": "score_part_0005.parquet",
+      "sha256": "7410fdc3343e0e952e285f9acb337c2cbdb675c4ffc2c3db351e9605ba573c15"
+    },
+    {
+      "part": "score_part_0006.parquet",
+      "sha256": "85b4931c4f2c847471cefdfc95deaec6d49bcfdac4723e6fc90e681efd0cb279"
+    },
+    {
+      "part": "score_part_0007.parquet",
+      "sha256": "7e48fd9a7b9f7e90d66ba1107134e854373fe46e3f8afc0d6df83fa1b223d7b7"
+    },
+    {
+      "part": "score_part_0008.parquet",
+      "sha256": "33d91c1b6f6ade5b13e62d8367573fbddcaba81e0ca9be7ce72d637217e43c2b"
+    },
+    {
+      "part": "score_part_0009.parquet",
+      "sha256": "99d6a011b079b1f4c162a6044a69f28f12080379a2df940d62e2279df91546a5"
+    },
+    {
+      "part": "score_part_0010.parquet",
+      "sha256": "b4048313b88816e95c60ee341bd199bed60ea74b471c3617df9ed7eb7f21adf3"
+    },
+    {
+      "part": "score_part_0011.parquet",
+      "sha256": "207afe4b8c832f1f9851907c9abba5b48fe3d1628854a910edff0993ebca4462"
+    },
+    {
+      "part": "score_part_0012.parquet",
+      "sha256": "a5cd76d10ea57bdd75f7315d71a71d3c38ad43f18b9a9d942b1e582b475767c9"
+    },
+    {
+      "part": "score_part_0013.parquet",
+      "sha256": "186cfd8599fd83f7b14eaa0da8100fe98620ff1c69ec522a5479513023e2b74d"
+    },
+    {
+      "part": "score_part_0014.parquet",
+      "sha256": "ca97c8c56cbe8fbc8351bbae17a120ba544d9f9aa9ea7039c6475a7b97b98382"
+    },
+    {
+      "part": "score_part_0015.parquet",
+      "sha256": "7de98fdc7e63fb8394e507cae393007e83ab1be214803610c9d872833c83a662"
+    },
+    {
+      "part": "score_part_0016.parquet",
+      "sha256": "7bc9dcb3178f7faffc6051872103a62b4228f67927e604bade6dd42fea700b8b"
+    },
+    {
+      "part": "score_part_0017.parquet",
+      "sha256": "c1be078cb29b922e6f61a55b0f2311e7caa90b5ea33dfc31282f0603fc2b9734"
+    },
+    {
+      "part": "score_part_0018.parquet",
+      "sha256": "3a711c203b5f40e05998854caeec425ad908d2ad17541ad486efc6e35be76c13"
+    },
+    {
+      "part": "score_part_0019.parquet",
+      "sha256": "98f30fc2acbaabe36f4426e7d717cb966bcd840d0b8372eed5ebbac9612aae6f"
+    },
+    {
+      "part": "score_part_0020.parquet",
+      "sha256": "3c1510cbbd281340b2cd966a25ef81966f0733e46cc44ee4b82a7fa0343069c7"
+    },
+    {
+      "part": "score_part_0021.parquet",
+      "sha256": "600ec474506fb971052af14ad3ce8d29246c76c087858b9ccc9b3d06406bc2b3"
+    },
+    {
+      "part": "score_part_0022.parquet",
+      "sha256": "03415d31e090e159b786f8d6dadae6fc3819f763de538cb3d71db9efa896e453"
+    },
+    {
+      "part": "score_part_0023.parquet",
+      "sha256": "e1dd5319957dff4e39c02fde369990ed11682837ebe4dc9a85b0e57d37259b8a"
+    },
+    {
+      "part": "score_part_0024.parquet",
+      "sha256": "3a5b3ebef5d907320558e5425da4ca701e93f75393641d903bccc97e61864eff"
+    },
+    {
+      "part": "score_part_0025.parquet",
+      "sha256": "095c86ff537240222e4f42cda110f60829c89cf386b7c55f3ec534a69de39a36"
+    },
+    {
+      "part": "score_part_0026.parquet",
+      "sha256": "bd7a22dc5561209c619cd1440746e4d56eb9874dddd293c7e1bcbea75e0345c4"
+    },
+    {
+      "part": "score_part_0027.parquet",
+      "sha256": "8e36a848a2ed772ad6366953ea1e589a3445e3ba5eb409f6d69639a3a0331a9e"
+    },
+    {
+      "part": "score_part_0028.parquet",
+      "sha256": "918214b45bc364a2479262c71057c035dca0c51bd3b6c81a21fdd55e561664ce"
+    },
+    {
+      "part": "score_part_0029.parquet",
+      "sha256": "afeae37317cc1fcfb0d267777b905e813f9101247e29bc092999cf63156de486"
+    },
+    {
+      "part": "score_part_0030.parquet",
+      "sha256": "aa294a9df43bac28c3bb88b3c8134d1b262d47b60bb25b0d3ef280971c3011e2"
+    },
+    {
+      "part": "score_part_0031.parquet",
+      "sha256": "ba0681f06983c9ced4a48753121eac384835cc4f9add1f941ba43448eff3a990"
+    },
+    {
+      "part": "score_part_0032.parquet",
+      "sha256": "e2c74d597791c07e4a7d11caf70fd828bbb12f75a8bd6c3397a34521403f6893"
+    },
+    {
+      "part": "score_part_0033.parquet",
+      "sha256": "b6c36177452337b1c434fee63884f37044ce23d273f0b7939f048eeae7acfb58"
+    },
+    {
+      "part": "score_part_0034.parquet",
+      "sha256": "678b6818fcf9c451ff8f097c2e956bcaafa9839f1582607fc3ad3aaf34e39c38"
+    },
+    {
+      "part": "score_part_0035.parquet",
+      "sha256": "c3ada0cc13bc4e8bcfb1f98ee0eb7d7d99cbeed0e1093de48241bb5b43157211"
+    },
+    {
+      "part": "score_part_0036.parquet",
+      "sha256": "c0f1b26a2b978c89fbff02df822bcad2c6ce0b99ec25eb020a161e0a22de47d9"
+    },
+    {
+      "part": "score_part_0037.parquet",
+      "sha256": "751e55a1d47b73c3fd6236f732e49198fac57852003f9ae7a6aabd23d6196cbd"
+    },
+    {
+      "part": "score_part_0038.parquet",
+      "sha256": "97525bb3587b5f8891564056b57e9ff373e733f47ac17252f3b6bcb9e2c0de1e"
+    },
+    {
+      "part": "score_part_0039.parquet",
+      "sha256": "c93e048ec463d0d296c1c76b684cea89074c393fb2c59b1c17b2aaf26cb3a341"
+    },
+    {
+      "part": "score_part_0040.parquet",
+      "sha256": "00c6d5fa581143ebd0f81a9761f9a02396650ef95e4f3b34169489cf3f6dde26"
+    },
+    {
+      "part": "score_part_0041.parquet",
+      "sha256": "30644e176661e6b6cce82295af4fcb055d972ff5be08e39d90c7a146b4edaa92"
+    },
+    {
+      "part": "score_part_0042.parquet",
+      "sha256": "e98fdd53f8a037d5403aa72d410241846af1baedc0d7380690d81b0045dc40fa"
+    },
+    {
+      "part": "score_part_0043.parquet",
+      "sha256": "f10b37f8225d4824cf11ffd5a6517db92f0c03fdc45c60f1a917aa059b565ea1"
+    },
+    {
+      "part": "score_part_0044.parquet",
+      "sha256": "3a687d37ff0d89ba3f7aa2ac2c8246c259e0ec1b2682fd77b352405babcf07d8"
+    },
+    {
+      "part": "score_part_0045.parquet",
+      "sha256": "975b7d9da48714108cb7100bbcbff8fa9b2cdab15d1b1f6e04f746b27eca5895"
+    },
+    {
+      "part": "score_part_0046.parquet",
+      "sha256": "539dab22c2ea707d0653780328c551dda9d2879f343f04ed54a451af07cc878c"
+    },
+    {
+      "part": "score_part_0047.parquet",
+      "sha256": "7f63dcdd8fbc463dc12af54394f0a2a366b7149f4b4611cd57c7971378dc0648"
+    },
+    {
+      "part": "score_part_0048.parquet",
+      "sha256": "4955a32b209909baac3e4d60ff4a8088c82e3535378f863d9890871941586c6c"
+    },
+    {
+      "part": "score_part_0049.parquet",
+      "sha256": "de4aec1ca2b936930120a04376fe39532cda5522e8a88116c3ee639c07d278e5"
+    },
+    {
+      "part": "score_part_0050.parquet",
+      "sha256": "84790f92ea91f5034847657e1533e1a922cf14bd779f6f9259498c1e4b06a9f5"
+    },
+    {
+      "part": "score_part_0051.parquet",
+      "sha256": "c1b8304466f9c5906300dab289863dd02a2db8437af4df9ea8125935c6ce0095"
+    },
+    {
+      "part": "score_part_0052.parquet",
+      "sha256": "99227fe0a20f10dce33ded89fbfdbbbdb0405f40576aa3794ccb7a0f060660b2"
+    },
+    {
+      "part": "score_part_0053.parquet",
+      "sha256": "5b794579d9c326fb9ee1471a549d2f1102ac117f97bd3e5ef8dbc1ac583e7bd5"
+    },
+    {
+      "part": "score_part_0054.parquet",
+      "sha256": "d581ecbe85fc6bed1c9112d6a678cfca81891c3ba4d437288361f2d512972057"
+    },
+    {
+      "part": "score_part_0055.parquet",
+      "sha256": "5aeff7a6b412a345141e8710c5bfb8920e3d1d8ecb4d9154d296c74ef61ad6c9"
+    },
+    {
+      "part": "score_part_0056.parquet",
+      "sha256": "764d8fbc65bcb2fe1690c8332c99d9a122ab74079100fab1e64d3851a6a48292"
+    },
+    {
+      "part": "score_part_0057.parquet",
+      "sha256": "aa50b00b5e6f8d8bc4dc1981732f1766903a0111386828b392f9d08da63cc3ce"
+    },
+    {
+      "part": "score_part_0058.parquet",
+      "sha256": "653892bf2862a5fcfc2a0820c4767e68c2fac261e735b90909ae324dee247337"
+    },
+    {
+      "part": "score_part_0059.parquet",
+      "sha256": "b914220faeaf456afe7b4e70cca820fe86ffb5e8c920d186836a7b9946f28527"
+    },
+    {
+      "part": "score_part_0060.parquet",
+      "sha256": "aa784a1ca8779d6455c2fa567e3fbc9b83e697ebcbba00285f4fd45b9d994395"
+    },
+    {
+      "part": "score_part_0061.parquet",
+      "sha256": "626c6884d8cf0d6a172bf7328a3633e2497292cc592d8b94baa7d26a22956525"
+    },
+    {
+      "part": "score_part_0062.parquet",
+      "sha256": "410a7c81fdac984c41799a589d13bf02af0dea034d7761c561d38462d4c12155"
+    },
+    {
+      "part": "score_part_0063.parquet",
+      "sha256": "5b40da434a1243eafe2326fa26f7367abc1abfe8c7d0449c320ec3d4cabd10b2"
+    }
+  ],
+  "target": "all_xids",
+  "horizon_hours": 24,
+  "purge_hours": 36,
+  "feature_cutoff_minutes": 10,
+  "warmup_days": 30,
+  "origin_count": 64,
+  "decision_time_count": 3053,
+  "score_rows": 6081576,
+  "gpu_count": 1992,
+  "decision_interval_seconds": 1800,
+  "branch1_branch2": "immutable_Experiment14_fitted_scores",
+  "newly_fitted": "four_probability_residual_fusion_arms_and_four_calibrators_per_eligible_origin",
+  "fusion_fit_origin_count": 48,
+  "fusion_fit_count": 192,
+  "calibration_fit_count": 192,
+  "inertia_half_life_hours": {
+    "b1": 2.0,
+    "b2": 6.0
+  },
+  "inertia_uses_current_score": false,
+  "calibration_window_days": 7,
+  "fusion_window_days": 7,
+  "calibration_then_fusion_disjoint": true,
+  "regularization": 0.01,
+  "minimum_positives_per_window": 20,
+  "negative_sampling": false,
+  "seed": 20260905,
+  "label_info": {
+    "onset_rows": 2425,
+    "matched_onset_rows": 2425,
+    "label_rule": "onset_bin-288 through onset_bin inclusive on original 5-minute grid"
+  },
+  "terminal_heldout_used": false,
+  "disagreement_feature_used": false,
+  "blox_used": false
+}

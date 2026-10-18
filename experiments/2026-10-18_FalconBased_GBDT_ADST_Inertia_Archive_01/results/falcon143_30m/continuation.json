@@ -1,0 +1,26 @@
+{
+  "continued_from": "C:\\Users\\junho\\OneDrive\\\ubb38\uc11c\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\runs\\pilot_01",
+  "pilot_origins_verified": 1,
+  "source_unchanged": true,
+  "config_unchanged": true,
+  "selection_frozen_before_first_evaluation": true,
+  "estimated_remaining_seconds_from_first_origin": 12013.0624782,
+  "max_wall_seconds": 14400,
+  "warning": "One-origin estimate under shared GPU load; not guaranteed completion time",
+  "active_max_wall_seconds": 28800,
+  "timeout_extension": {
+    "status": "EXTENDED_WITHOUT_TRAINING_RESTART",
+    "previous_hours": 4,
+    "active_hours": 8,
+    "old_supervisor_terminated": 23556,
+    "new_supervisor_pid": 28656,
+    "unchanged_pipeline_pid": 11820,
+    "unchanged_pipeline_creation_time": 1792237145.1731744,
+    "training_children_after": [
+      23236,
+      27292
+    ],
+    "new_deadline_utc": "2026-10-17T19:39:02.543697+00:00",
+    "verified_at_utc": "2026-10-17T12:19:42.378876+00:00"
+  }
+}

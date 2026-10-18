@@ -1,0 +1,30 @@
+{
+  "source_sha256": "6eebcef45bd05bfd46fd67e81ef1583f7551cbcd41f1910052dd3976d157cb0c",
+  "spec_sha256": "a591ef4f282df43f743794118374367114e7a25bb0700320e1b25afdebb68a9c",
+  "config": {
+    "data_directory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\runtime\\migration\\data",
+    "data_inventory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\data_inventory.json",
+    "reference_directory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\migrate_full_20261017\\migration\\e19-reproduction\\experiments\\2026-10-05_Experiment19_DualInertiaFusion_01\\full_population",
+    "cache_directory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\runtime\\migration\\e19-reproduction-gpu-opt\\outputs\\branch1\\cache",
+    "verified_parquet_cache": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\cache",
+    "specification": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\실험 명세\\FalconStyle_GBDT_ADST_Inertia_명세_v1.md",
+    "seed": 20260905,
+    "cpu_threads": 2,
+    "feature_chunk": 2048,
+    "purge_hours": 36,
+    "label_maturity_hours": 24,
+    "inertia_half_life_hours": 2.0,
+    "inertia_gamma": 1.0,
+    "fusion_cap": null,
+    "fusion_floor": null,
+    "fusion_alpha": 1.0,
+    "b2_feature_set": "history2",
+    "b2_train_days": 21,
+    "gbdt_backend": "xgboost_cuda"
+  },
+  "vendor_sha256": {
+    "branch1_enhanced_features.py": "65b2b4667353e90feaa7c850b56d2906bfb60f1b145249df8e41e4b59e7323fd",
+    "run_bidirectional_adst_fusion.py": "a51321819d197d1642245c9ce7ae6962abe9ca28cb0c906c951d0ba86c735dfb",
+    "run_experiment19_30m_dual_inertia_fusion.py": "a29f1836cc2677ffb5f9ff265c71170117eadb5a1710c7642877e786e7624b21"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "data_directory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\runtime\\migration\\data",
+  "data_inventory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\data_inventory.json",
+  "reference_directory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\migrate_full_20261017\\migration\\e19-reproduction\\experiments\\2026-10-05_Experiment19_DualInertiaFusion_01\\full_population",
+  "cache_directory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\runtime\\migration\\e19-reproduction-gpu-opt\\outputs\\branch1\\cache",
+  "verified_parquet_cache": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\cache",
+  "specification": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\실험 명세\\FalconStyle_GBDT_ADST_Inertia_명세_v1.md",
+  "seed": 20260905,
+  "cpu_threads": 2,
+  "feature_chunk": 2048,
+  "purge_hours": 36,
+  "label_maturity_hours": 24,
+  "inertia_half_life_hours": 2.0,
+  "inertia_gamma": 1.0,
+  "fusion_cap": null,
+  "fusion_floor": null,
+  "fusion_alpha": 1.0,
+  "b2_feature_set": "history2",
+  "b2_train_days": 21,
+  "gbdt_backend": "xgboost_cuda"
+}

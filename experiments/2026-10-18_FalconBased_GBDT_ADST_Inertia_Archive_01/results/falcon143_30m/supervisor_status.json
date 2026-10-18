@@ -1,0 +1,36 @@
+{
+  "status": "COMPLETED_AND_AUDITED_AFTER_REPORT_REPAIR",
+  "supervisor_pid": 28656,
+  "pipeline_pid": 11820,
+  "pipeline_create_time": 1792237145.1731744,
+  "command": [
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\.venv\\Scripts\\python.exe",
+    "-u",
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\ML\\run_falcon_acmetrace_st_top100.py",
+    "--config",
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\config.json",
+    "--output",
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\runs\\full_01",
+    "--limit-origins",
+    "64",
+    "--resume"
+  ],
+  "max_seconds": 28800,
+  "origin_target": 64,
+  "attached_existing_pipeline": true,
+  "original_start_epoch": 1792237142.5436969,
+  "deadline_utc": "2026-10-17T19:39:02.543697+00:00",
+  "previous_supervisor_pid": 23556,
+  "exit_code": 1,
+  "elapsed_seconds": 11897.869581699371,
+  "pipeline_status": {
+    "status": "FAILED",
+    "error": "TypeError(\"unsupported operand type(s) for +: 'float' and 'NoneType'\")",
+    "utc": "2026-10-17T14:57:19.537343+00:00"
+  },
+  "original_exit_code": 1,
+  "report_repaired": true,
+  "training_rerun": false,
+  "audit": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\runs\\full_01\\audit.json",
+  "repair_utc": "2026-10-17T15:09:12.733926+00:00"
+}

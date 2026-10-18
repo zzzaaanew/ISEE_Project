@@ -1,0 +1,43 @@
+{
+  "status": "NO_FOLLOWUP_SOURCE_PROCESS_EXITED",
+  "watcher_pid": 25100,
+  "source": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01",
+  "target": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\conditional_5m_01",
+  "source_supervisor_identity": {
+    "pid": 22224,
+    "create_time": 1792249193.474638,
+    "command_sha256": "5777a37cceeeffa678c52176454fac6ac247f771da907c1028e9e807f1d8344d"
+  },
+  "policy_sha256": "60f2587f0cd3109547087d8c8eda4a886291807791faaa422073015de5e31339",
+  "watcher_source_sha256": "eabc8bd974e6cc2b34f509beae48862b1233169c177323bfd93132d983914c97",
+  "max_wait_seconds": 43200.0,
+  "max_run_seconds": 43200.0,
+  "retries": 0,
+  "created": {
+    "utc": "2026-10-17T16:34:51.216602+00:00",
+    "kst": "2026-10-18T01:34:51.216602+09:00"
+  },
+  "updated": {
+    "utc": "2026-10-17T17:08:14.716498+00:00",
+    "kst": "2026-10-18T02:08:14.716498+09:00"
+  },
+  "source_status": "RUNNING",
+  "observed_supervisor": {
+    "pid": 22224,
+    "create_time": 1792249193.474638,
+    "command": [
+      "C:\\Users\\junho\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-u",
+      "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\tools\\supervise.py",
+      "--config",
+      "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\config.json",
+      "--output",
+      "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01",
+      "--wait-pid",
+      "11820",
+      "--max-seconds",
+      "43200",
+      "--pilot-first"
+    ]
+  }
+}

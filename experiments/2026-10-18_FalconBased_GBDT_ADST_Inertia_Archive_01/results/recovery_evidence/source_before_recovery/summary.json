@@ -1,0 +1,140 @@
+{
+  "status": "FULL_PIPELINE_FINISHED_PENDING_INDEPENDENT_AUDIT",
+  "origins_completed": 64,
+  "branch_origins_completed": 64,
+  "arms": [
+    "S7_0_P",
+    "S7_0_E",
+    "S7_I_P",
+    "S7_I_E",
+    "S14_0_P",
+    "S14_0_E",
+    "S14_I_P",
+    "S14_I_E",
+    "S21_0_P",
+    "S21_0_E",
+    "S21_I_P",
+    "S21_I_E",
+    "A_0_P",
+    "A_0_E",
+    "A_I_P",
+    "A_I_E"
+  ],
+  "score_rows": 6081576,
+  "decision_times": 3053,
+  "positive_rows": 52945,
+  "metrics": {
+    "A_0_E": {
+      "origin_mean_pr_auc": 0.03207898145264791,
+      "hits_at_100": 8268,
+      "pooled_recall_at_100": 0.15616205496269714,
+      "origin_mean_recall_at_100": 0.12610512870256957,
+      "trained_e19_origins": 48
+    },
+    "A_0_P": {
+      "origin_mean_pr_auc": 0.02258463095841871,
+      "hits_at_100": 7288,
+      "pooled_recall_at_100": 0.13765228066861837,
+      "origin_mean_recall_at_100": 0.12813506916365258,
+      "trained_e19_origins": 0
+    },
+    "A_I_E": {
+      "origin_mean_pr_auc": 0.032629845571320565,
+      "hits_at_100": 8416,
+      "pooled_recall_at_100": 0.15895740863159882,
+      "origin_mean_recall_at_100": 0.12704051912379824,
+      "trained_e19_origins": 48
+    },
+    "A_I_P": {
+      "origin_mean_pr_auc": 0.02773431858071966,
+      "hits_at_100": 7979,
+      "pooled_recall_at_100": 0.15070356029842288,
+      "origin_mean_recall_at_100": 0.1384661722612318,
+      "trained_e19_origins": 0
+    },
+    "S14_0_E": {
+      "origin_mean_pr_auc": 0.03207112963105885,
+      "hits_at_100": 8368,
+      "pooled_recall_at_100": 0.15805080744168476,
+      "origin_mean_recall_at_100": 0.12854498722030827,
+      "trained_e19_origins": 48
+    },
+    "S14_0_P": {
+      "origin_mean_pr_auc": 0.021691451745772312,
+      "hits_at_100": 7560,
+      "pooled_recall_at_100": 0.14278968741146472,
+      "origin_mean_recall_at_100": 0.13683405616263686,
+      "trained_e19_origins": 0
+    },
+    "S14_I_E": {
+      "origin_mean_pr_auc": 0.032134207371627456,
+      "hits_at_100": 8464,
+      "pooled_recall_at_100": 0.1598640098215129,
+      "origin_mean_recall_at_100": 0.1282616206529314,
+      "trained_e19_origins": 48
+    },
+    "S14_I_P": {
+      "origin_mean_pr_auc": 0.027115463585764294,
+      "hits_at_100": 8359,
+      "pooled_recall_at_100": 0.15788081971857587,
+      "origin_mean_recall_at_100": 0.1438480768526782,
+      "trained_e19_origins": 0
+    },
+    "S21_0_E": {
+      "origin_mean_pr_auc": 0.03217260514430642,
+      "hits_at_100": 8254,
+      "pooled_recall_at_100": 0.15589762961563888,
+      "origin_mean_recall_at_100": 0.12724198416142993,
+      "trained_e19_origins": 48
+    },
+    "S21_0_P": {
+      "origin_mean_pr_auc": 0.021662045059538552,
+      "hits_at_100": 7251,
+      "pooled_recall_at_100": 0.13695344225139294,
+      "origin_mean_recall_at_100": 0.12851264316097166,
+      "trained_e19_origins": 0
+    },
+    "S21_I_E": {
+      "origin_mean_pr_auc": 0.03214440943425993,
+      "hits_at_100": 8233,
+      "pooled_recall_at_100": 0.15550099159505146,
+      "origin_mean_recall_at_100": 0.12623786052346322,
+      "trained_e19_origins": 48
+    },
+    "S21_I_P": {
+      "origin_mean_pr_auc": 0.028495536215203076,
+      "hits_at_100": 7816,
+      "pooled_recall_at_100": 0.14762489375767307,
+      "origin_mean_recall_at_100": 0.13399265275015734,
+      "trained_e19_origins": 0
+    },
+    "S7_0_E": {
+      "origin_mean_pr_auc": 0.03265536319928539,
+      "hits_at_100": 8477,
+      "pooled_recall_at_100": 0.16010954764378127,
+      "origin_mean_recall_at_100": 0.1285660360646091,
+      "trained_e19_origins": 48
+    },
+    "S7_0_P": {
+      "origin_mean_pr_auc": 0.023150443126814583,
+      "hits_at_100": 7585,
+      "pooled_recall_at_100": 0.14326187553121164,
+      "origin_mean_recall_at_100": 0.13544979507714813,
+      "trained_e19_origins": 0
+    },
+    "S7_I_E": {
+      "origin_mean_pr_auc": 0.03275138762181013,
+      "hits_at_100": 8657,
+      "pooled_recall_at_100": 0.16350930210595901,
+      "origin_mean_recall_at_100": 0.13040335371375272,
+      "trained_e19_origins": 48
+    },
+    "S7_I_P": {
+      "origin_mean_pr_auc": 0.028553979258851805,
+      "hits_at_100": 8451,
+      "pooled_recall_at_100": 0.1596184719992445,
+      "origin_mean_recall_at_100": 0.1465115759186486,
+      "trained_e19_origins": 0
+    }
+  }
+}

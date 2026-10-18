@@ -1,0 +1,107 @@
+{
+  "branch1_feature_contract": "telemetry_only",
+  "cross_metric_features": [
+    "thermal_efficiency",
+    "power_temp_ratio",
+    "util_fb_coupling",
+    "power_per_util",
+    "temp_fb_divergence",
+    "thermal_headroom",
+    "power_headroom"
+  ],
+  "topology_features": [
+    "topo_neighbor_temp_max",
+    "topo_neighbor_temp_mean",
+    "topo_node_temp_std",
+    "topo_temp_spatial_diff",
+    "topo_neighbor_power_max",
+    "topo_neighbor_power_mean",
+    "topo_power_spatial_diff",
+    "topo_neighbor_util_mean"
+  ],
+  "peer_relative_features": [
+    "peer_temp_zscore",
+    "peer_power_zscore",
+    "peer_util_zscore",
+    "peer_temp_rank",
+    "peer_power_rank"
+  ],
+  "temporal_dynamics_features": [
+    "temp_slope",
+    "power_slope",
+    "thermal_persistence"
+  ],
+  "topology_source": "contiguous_8_gpu_groups_from_cached_node_matrices",
+  "history_features_excluded_from_branch1": [
+    "xid_count_30d",
+    "days_since_xid"
+  ],
+  "features": [
+    "util_last",
+    "util_mean_1h",
+    "util_std_1h",
+    "util_delta_1h",
+    "temp_last",
+    "temp_mean_1h",
+    "temp_std_1h",
+    "temp_delta_1h",
+    "power_last",
+    "power_mean_1h",
+    "power_std_1h",
+    "power_delta_1h",
+    "fb_last",
+    "fb_mean_1h",
+    "fb_std_1h",
+    "fb_delta_1h",
+    "util_node_last",
+    "util_diff_node",
+    "temp_node_last",
+    "temp_diff_node",
+    "power_node_last",
+    "power_diff_node",
+    "thermal_efficiency",
+    "power_temp_ratio",
+    "util_fb_coupling",
+    "power_per_util",
+    "temp_fb_divergence",
+    "thermal_headroom",
+    "power_headroom",
+    "topo_neighbor_temp_max",
+    "topo_neighbor_temp_mean",
+    "topo_node_temp_std",
+    "topo_temp_spatial_diff",
+    "topo_neighbor_power_max",
+    "topo_neighbor_power_mean",
+    "topo_power_spatial_diff",
+    "topo_neighbor_util_mean",
+    "peer_temp_zscore",
+    "peer_power_zscore",
+    "peer_util_zscore",
+    "peer_temp_rank",
+    "peer_power_rank",
+    "temp_slope",
+    "power_slope",
+    "thermal_persistence"
+  ],
+  "feature_count": 45,
+  "extractor": "frozen_falcon_features.EnhancedTelemetryEngine.extract_branch1_features",
+  "vendor_sha256": {
+    "branch1_enhanced_features.py": "65b2b4667353e90feaa7c850b56d2906bfb60f1b145249df8e41e4b59e7323fd",
+    "run_bidirectional_adst_fusion.py": "a51321819d197d1642245c9ce7ae6962abe9ca28cb0c906c951d0ba86c735dfb",
+    "run_experiment19_30m_dual_inertia_fusion.py": "a29f1836cc2677ffb5f9ff265c71170117eadb5a1710c7642877e786e7624b21"
+  },
+  "input_sha256": {
+    "telemetry_5m_util.parquet": "2277243b3959e7a060c48a9338773f8f2275f8b9ecab44fcd92cf334ea68df1a",
+    "telemetry_5m_temp.parquet": "deb64ef3d2a27ab6588530d615a9ee6163354e68cb30b74dbaa5af74a4410730",
+    "telemetry_5m_power.parquet": "aa268610630e8d69532affbdbb7996b8e468f08762e5b0fd3f223ad9aac205c0",
+    "telemetry_5m_fb.parquet": "1df8a11f07f58f6f7178896fd526e4c7436c3e08fa4db7408aba8c68c700ff49",
+    "xid_onsets_metadata.parquet": "1e1350b40ff93c76c8594626f926247f76276dcd3e14650beba8e4c931da1b2c"
+  },
+  "b2_features": [
+    "xid_count_30d",
+    "days_since_xid"
+  ],
+  "nominal_cutoff_minutes": 10,
+  "actual_latest_telemetry_lag_minutes": 15,
+  "heavy_import_adapter": "original UnifiedDataEngine class AST; no feature-method changes"
+}

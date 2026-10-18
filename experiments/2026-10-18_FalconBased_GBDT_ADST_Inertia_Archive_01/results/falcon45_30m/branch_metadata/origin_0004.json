@@ -1,0 +1,94 @@
+{
+  "origin": 4,
+  "origin_bin": 9792,
+  "adst_days": 14,
+  "adst_state": {
+    "days": 14,
+    "stable": 2,
+    "processed": [
+      0,
+      1
+    ],
+    "values": [
+      0.008239269299714398,
+      0.002864893283895782
+    ],
+    "updates": [
+      {
+        "origin_bin": 9504,
+        "feedback_id": 0,
+        "latest_feedback_bin": 8922,
+        "cutoff_bin": 9072,
+        "label_maturity_latest_bin": 9210,
+        "before_days": 14,
+        "after_days": 14,
+        "norm_ap": 0.008239269299714398,
+        "drop": 0.0,
+        "action": "hold"
+      },
+      {
+        "origin_bin": 9792,
+        "feedback_id": 1,
+        "latest_feedback_bin": 9210,
+        "cutoff_bin": 9360,
+        "label_maturity_latest_bin": 9498,
+        "before_days": 14,
+        "after_days": 14,
+        "norm_ap": 0.002864893283895782,
+        "drop": 0.0,
+        "action": "hold"
+      }
+    ]
+  },
+  "feedback": {
+    "id": 4,
+    "latest_bin": 10074,
+    "query_mean_ap": 0.029255094064972845,
+    "prevalence": 0.02118892235609103
+  },
+  "fit_info": [
+    {
+      "component": "B1",
+      "origin": 4,
+      "days": 7,
+      "actual_backend": "cuda:0",
+      "rows": 300862,
+      "natural_prior": 0.02511584034550902,
+      "training_start_bin": 7344,
+      "training_end_bin_exclusive": 9360,
+      "origin_bin": 9792,
+      "seconds": 56.997089600001345,
+      "tree_count": 150
+    },
+    {
+      "component": "B1",
+      "origin": 4,
+      "days": 14,
+      "actual_backend": "cuda:0",
+      "rows": 320794,
+      "natural_prior": 0.015039572974437433,
+      "training_start_bin": 5328,
+      "training_end_bin_exclusive": 9360,
+      "origin_bin": 9792,
+      "seconds": 57.85897039998963,
+      "tree_count": 150
+    },
+    {
+      "component": "B1",
+      "origin": 4,
+      "days": 21,
+      "actual_backend": "cuda:0",
+      "rows": 399569,
+      "natural_prior": 0.01656502000063747,
+      "training_start_bin": 3312,
+      "training_end_bin_exclusive": 9360,
+      "origin_bin": 9792,
+      "seconds": 59.314733799998066,
+      "tree_count": 150
+    }
+  ],
+  "score_sha256": "1111818f8f11e32fb2011d612c96f2ba2292fc40386b69250d2d219a6ed10f64",
+  "rows": 95616,
+  "label_sha256": "60cf794e00a1f3c58e0c07193997fb70bf7ee6f1fb3f7dfcb6b09e4a533ffb0e",
+  "seconds": 176.85429940000176
+}

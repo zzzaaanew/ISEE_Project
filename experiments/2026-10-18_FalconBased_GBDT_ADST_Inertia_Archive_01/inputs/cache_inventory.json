@@ -1,0 +1,38 @@
+[
+  {
+    "name": "grid_meta.npz",
+    "bytes": 137899
+  },
+  {
+    "name": "telemetry_fb_5m.npy",
+    "bytes": 214793504
+  },
+  {
+    "name": "telemetry_fb_node_5m.npy",
+    "bytes": 26849300
+  },
+  {
+    "name": "telemetry_power_5m.npy",
+    "bytes": 214793504
+  },
+  {
+    "name": "telemetry_power_node_5m.npy",
+    "bytes": 26849300
+  },
+  {
+    "name": "telemetry_temp_5m.npy",
+    "bytes": 214793504
+  },
+  {
+    "name": "telemetry_temp_node_5m.npy",
+    "bytes": 26849300
+  },
+  {
+    "name": "telemetry_util_5m.npy",
+    "bytes": 214793504
+  },
+  {
+    "name": "telemetry_util_node_5m.npy",
+    "bytes": 26849300
+  }
+]

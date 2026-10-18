@@ -1,0 +1,133 @@
+{
+  "status": "SCORE_ARTIFACTS_VERIFIED",
+  "audited_utc": "2026-10-18T03:16:50.190182+00:00",
+  "origins": 64,
+  "score_rows": 6081576,
+  "decision_times": 3053,
+  "positive_rows": 52945,
+  "gpu_count": 1992,
+  "arm_count": 16,
+  "metric_rows_recomputed": 1024,
+  "fit_trace_records": 5468,
+  "cuda_b1_fit_records": 192,
+  "b1_unique_fits": 192,
+  "b2_unique_fits": 64,
+  "inertia_and_fusion_equations_reconstructed": true,
+  "arms": {
+    "S7_0_P": {
+      "origin_mean_pr_auc": 0.023150443126814583,
+      "origin_mean_ndcg_at_100": 0.07008040735429791,
+      "hits_at_100": 7585,
+      "pooled_recall_at_100": 0.14326187553121164,
+      "pooled_precision_at_100": 0.024844415329184407
+    },
+    "S7_0_E": {
+      "origin_mean_pr_auc": 0.03265536319928539,
+      "origin_mean_ndcg_at_100": 0.07949157384604212,
+      "hits_at_100": 8477,
+      "pooled_recall_at_100": 0.16010954764378127,
+      "pooled_precision_at_100": 0.02776613167376351
+    },
+    "S7_I_P": {
+      "origin_mean_pr_auc": 0.028553979258851805,
+      "origin_mean_ndcg_at_100": 0.08310714852069154,
+      "hits_at_100": 8451,
+      "pooled_recall_at_100": 0.1596184719992445,
+      "pooled_precision_at_100": 0.027680969538159187
+    },
+    "S7_I_E": {
+      "origin_mean_pr_auc": 0.03275138762181013,
+      "origin_mean_ndcg_at_100": 0.08131055140490547,
+      "hits_at_100": 8657,
+      "pooled_recall_at_100": 0.16350930210595901,
+      "pooled_precision_at_100": 0.028355715689485753
+    },
+    "S14_0_P": {
+      "origin_mean_pr_auc": 0.021691451745772312,
+      "origin_mean_ndcg_at_100": 0.06881501427584996,
+      "hits_at_100": 7560,
+      "pooled_recall_at_100": 0.14278968741146472,
+      "pooled_precision_at_100": 0.0247625286603341
+    },
+    "S14_0_E": {
+      "origin_mean_pr_auc": 0.03207112963105885,
+      "origin_mean_ndcg_at_100": 0.07851792326952368,
+      "hits_at_100": 8368,
+      "pooled_recall_at_100": 0.15805080744168476,
+      "pooled_precision_at_100": 0.027409105797576154
+    },
+    "S14_I_P": {
+      "origin_mean_pr_auc": 0.027115463585764294,
+      "origin_mean_ndcg_at_100": 0.07959760069027469,
+      "hits_at_100": 8359,
+      "pooled_recall_at_100": 0.15788081971857587,
+      "pooled_precision_at_100": 0.02737962659679004
+    },
+    "S14_I_E": {
+      "origin_mean_pr_auc": 0.032134207371627456,
+      "origin_mean_ndcg_at_100": 0.07896936487137793,
+      "hits_at_100": 8464,
+      "pooled_recall_at_100": 0.1598640098215129,
+      "pooled_precision_at_100": 0.02772355060596135
+    },
+    "S21_0_P": {
+      "origin_mean_pr_auc": 0.021662045059538552,
+      "origin_mean_ndcg_at_100": 0.06705277062462876,
+      "hits_at_100": 7251,
+      "pooled_recall_at_100": 0.13695344225139294,
+      "pooled_precision_at_100": 0.023750409433344253
+    },
+    "S21_0_E": {
+      "origin_mean_pr_auc": 0.03217260514430642,
+      "origin_mean_ndcg_at_100": 0.07790277394807485,
+      "hits_at_100": 8254,
+      "pooled_recall_at_100": 0.15589762961563888,
+      "pooled_precision_at_100": 0.027035702587618737
+    },
+    "S21_I_P": {
+      "origin_mean_pr_auc": 0.028495536215203076,
+      "origin_mean_ndcg_at_100": 0.07574977417119803,
+      "hits_at_100": 7816,
+      "pooled_recall_at_100": 0.14762489375767307,
+      "pooled_precision_at_100": 0.025601048149361285
+    },
+    "S21_I_E": {
+      "origin_mean_pr_auc": 0.03214440943425993,
+      "origin_mean_ndcg_at_100": 0.07785110963169792,
+      "hits_at_100": 8233,
+      "pooled_recall_at_100": 0.15550099159505146,
+      "pooled_precision_at_100": 0.026966917785784476
+    },
+    "A_0_P": {
+      "origin_mean_pr_auc": 0.02258463095841871,
+      "origin_mean_ndcg_at_100": 0.06695131584481433,
+      "hits_at_100": 7288,
+      "pooled_recall_at_100": 0.13765228066861837,
+      "pooled_precision_at_100": 0.023871601703242713
+    },
+    "A_0_E": {
+      "origin_mean_pr_auc": 0.03207898145264791,
+      "origin_mean_ndcg_at_100": 0.07792613933786993,
+      "hits_at_100": 8268,
+      "pooled_recall_at_100": 0.15616205496269714,
+      "pooled_precision_at_100": 0.02708155912217491
+    },
+    "A_I_P": {
+      "origin_mean_pr_auc": 0.02773431858071966,
+      "origin_mean_ndcg_at_100": 0.07735278974937265,
+      "hits_at_100": 7979,
+      "pooled_recall_at_100": 0.15070356029842288,
+      "pooled_precision_at_100": 0.02613494923026531
+    },
+    "A_I_E": {
+      "origin_mean_pr_auc": 0.032629845571320565,
+      "origin_mean_ndcg_at_100": 0.07959537489290526,
+      "hits_at_100": 8416,
+      "pooled_recall_at_100": 0.15895740863159882,
+      "pooled_precision_at_100": 0.027566328201768752
+    }
+  },
+  "execution_contract_sha256": "de3b613062520f61b7efa237f6590f70594b0ac5c95840b03075a18a260d1e45",
+  "main_summary_status": "FULL_PIPELINE_FINISHED_PENDING_INDEPENDENT_AUDIT",
+  "scope": "Independent persisted score/coverage/metric audit; training-time causal audit remains main fidelity_audit.json"
+}

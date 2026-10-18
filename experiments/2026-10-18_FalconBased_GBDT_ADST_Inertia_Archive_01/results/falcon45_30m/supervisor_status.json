@@ -1,0 +1,74 @@
+{
+  "status": "COMPLETED_AND_AUDITED",
+  "supervisor_pid": 22224,
+  "created_utc": "2026-10-17T14:59:53.614542+00:00",
+  "origin_target": 64,
+  "config": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\config.json",
+  "output": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01",
+  "max_seconds": 43200.0,
+  "retries": 0,
+  "wait_pid": 11820,
+  "wait_identity": null,
+  "wait_result": "PID absent at initial identity check",
+  "updated_utc": "2026-10-18T03:17:17.349269+00:00",
+  "started_utc": "2026-10-17T14:59:53.615540+00:00",
+  "pilot_first": true,
+  "command": [
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\.venv\\Scripts\\python.exe",
+    "-u",
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\ML\\run_experiment.py",
+    "--config",
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\config.json",
+    "--output",
+    "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01",
+    "--limit-origins",
+    "64",
+    "--resume"
+  ],
+  "phase": "RUNNING",
+  "pipeline_identity": {
+    "pid": 22984,
+    "create_time": 1792249393.663692,
+    "command": [
+      "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\Falcon_AcmeTrace_ST_Top100\\.venv\\Scripts\\python.exe",
+      "-u",
+      "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\ML\\run_experiment.py",
+      "--config",
+      "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\config.json",
+      "--output",
+      "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01",
+      "--limit-origins",
+      "64",
+      "--resume"
+    ]
+  },
+  "elapsed_seconds": 7681.702999999994,
+  "last_phase": "PILOT_AUDITING",
+  "last_exit_code": 0,
+  "pilot_verified_utc": "2026-10-17T15:03:13.660613+00:00",
+  "pilot_audit_exit_code": 0,
+  "original_supervisor_completed_successfully": false,
+  "original_supervisor_outcome": "Terminated on PermissionError/WinError5 during status replacement",
+  "original_supervisor_status_before_recovery": "RUNNING",
+  "original_supervisor_updated_utc": "2026-10-17T17:07:54.699294+00:00",
+  "completion_provenance": "Original pipeline completed independently; this recovery performed audit, analysis and recording only. No training rerun.",
+  "recovery_pid": 2192,
+  "recovery_identity": {
+    "pid": 2192,
+    "create_time": 1792293347.129354,
+    "command": [
+      "C:\\Users\\junho\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-u",
+      "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\tools\\recover_completed_run.py"
+    ],
+    "command_sha256": "c88a160f80bbd68d1a763b0fcdbf40fd006c9910f24caddf5e5c445567a532b0"
+  },
+  "recovery_completed": {
+    "utc": "2026-10-18T03:17:17.349269+00:00",
+    "kst": "2026-10-18T12:17:17.349269+09:00"
+  },
+  "recovery_evidence_directory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\FalconStyle_GBDT_ADST_Inertia\\runs\\full_01\\recovery_20261018",
+  "audit_exit_code": 0,
+  "analysis_exit_code": 0,
+  "record_exit_code": 0
+}

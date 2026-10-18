@@ -1,0 +1,13 @@
+{
+  "data_directory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\runtime\\migration\\data",
+  "grid_meta": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\runtime\\migration\\e19-reproduction-gpu-opt\\outputs\\branch1\\cache\\grid_meta.npz",
+  "data_inventory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\E14_E19_plan_20261017\\data_inventory.json",
+  "reference_directory": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\migrate_full_20261017\\migration\\e19-reproduction\\experiments\\2026-10-05_Experiment19_DualInertiaFusion_01\\full_population",
+  "backends": {
+    "xgboost": "cuda",
+    "catboost": "cuda",
+    "lightgbm": "gpu",
+    "random_forest": "cpu",
+    "isolation_forest": "cpu"
+  }
+}

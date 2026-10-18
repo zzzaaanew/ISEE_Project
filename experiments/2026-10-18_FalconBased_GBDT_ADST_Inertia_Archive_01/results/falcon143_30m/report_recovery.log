@@ -1,0 +1,219 @@
+Independent raw-ledger / score / reference / checkpoint verification 16/64
+Independent raw-ledger / score / reference / checkpoint verification 32/64
+Independent raw-ledger / score / reference / checkpoint verification 48/64
+Independent raw-ledger / score / reference / checkpoint verification 64/64
+{
+  "scope": "Same 64 development origins, same raw-ledger GT and keys; no independent heldout",
+  "models": {
+    "falcon": {
+      "origin_mean_ap": 0.01975591121861566,
+      "positive_origin_mean_ap": 0.020069497110974638,
+      "hits": 5554,
+      "pooled_recall_at_100": 0.1049013126829729,
+      "top100_precision": 0.018191942351785128
+    },
+    "b1_probability": {
+      "origin_mean_ap": 0.017886577905490763,
+      "positive_origin_mean_ap": 0.018170491840498553,
+      "hits": 6100,
+      "pooled_recall_at_100": 0.11521390121824535,
+      "top100_precision": 0.019980347199475924
+    },
+    "b2_probability": {
+      "origin_mean_ap": 0.031575797074807246,
+      "positive_origin_mean_ap": 0.03207700020297879,
+      "hits": 8335,
+      "pooled_recall_at_100": 0.15742751912361885,
+      "top100_precision": 0.027301015394693744
+    },
+    "experiment14_fusion_probability": {
+      "origin_mean_ap": 0.023030324271795577,
+      "positive_origin_mean_ap": 0.023395884974522493,
+      "hits": 7431,
+      "pooled_recall_at_100": 0.1403531967135707,
+      "top100_precision": 0.024339993449066493
+    },
+    "fusion_no_inertia": {
+      "origin_mean_ap": 0.032464578777360205,
+      "positive_origin_mean_ap": 0.03297988955160401,
+      "hits": 8419,
+      "pooled_recall_at_100": 0.15901407120596847,
+      "top100_precision": 0.02757615460203079
+    },
+    "fusion_b1_inertia": {
+      "origin_mean_ap": 0.03304705871271951,
+      "positive_origin_mean_ap": 0.033571615200223004,
+      "hits": 8505,
+      "pooled_recall_at_100": 0.1606383983378978,
+      "top100_precision": 0.02785784474287586
+    },
+    "fusion_b2_inertia": {
+      "origin_mean_ap": 0.03248390739761715,
+      "positive_origin_mean_ap": 0.032999524975357096,
+      "hits": 8422,
+      "pooled_recall_at_100": 0.1590707337803381,
+      "top100_precision": 0.027585981002292828
+    },
+    "fusion_dual_inertia": {
+      "origin_mean_ap": 0.033064137882491226,
+      "positive_origin_mean_ap": 0.0335889654679276,
+      "hits": 8505,
+      "pooled_recall_at_100": 0.1606383983378978,
+      "top100_precision": 0.02785784474287586
+    }
+  },
+  "timing": {
+    "end_to_end_compute_seconds": 12793.840754399993,
+    "pilot_seconds": 902.1294856000022,
+    "continuation_seconds": 11891.71126879999,
+    "sum64_origin_seconds": 12078.39323099995,
+    "final64_fit_including_imputation_seconds": 6731.764657799955,
+    "final64_feature_seconds": 5259.75556919993,
+    "origin_mean_seconds": 188.72489423437423,
+    "origin_median_seconds": 185.67841180000687,
+    "origin_min_seconds": 88.38478160000523,
+    "origin_max_seconds": 254.63697690000117,
+    "five_candidate_fit_seconds": 531.9450740000029,
+    "candidate_fit_by_family": {
+      "xgboost": 21.90198760000203,
+      "catboost": 31.20402340000146,
+      "lightgbm": 202.64554019999923,
+      "random_forest": 269.99185600000055,
+      "isolation_forest": 6.201666799999657
+    },
+    "note": "fit timer includes CPU median imputation and GPU training; CPU features/serialization/evaluation also present. No matched CPU rerun, so no speedup factor claimed."
+  },
+  "paired_comparison": {
+    "ap_delta_falcon_minus_e19": -0.013308226663875558,
+    "ap_relative_change": -0.40249731328766325,
+    "recall_delta": -0.055737085654924926,
+    "ap_origin_wins": 35,
+    "ap_origin_losses": 28,
+    "ap_origin_ties": 1,
+    "recall_origin_wins": 30,
+    "recall_origin_losses": 28,
+    "recall_origin_ties": 6,
+    "circular_block_bootstrap": {
+      "3": {
+        "replicates": 10000,
+        "ap_delta_percentile95": [
+          -0.031447745711712896,
+          -0.0010732131347221644
+        ],
+        "pooled_recall_delta_percentile95": [
+          -0.1289646637685176,
+          0.004165419710673802
+        ],
+        "scope": "Descriptive development-period uncertainty; overlapping labels and reused dataset preclude independent generalization claim"
+      },
+      "7": {
+        "replicates": 10000,
+        "ap_delta_percentile95": [
+          -0.031424411616161815,
+          -0.0006129470333811836
+        ],
+        "pooled_recall_delta_percentile95": [
+          -0.13322519971480684,
+          0.005779487071027137
+        ],
+        "scope": "Descriptive development-period uncertainty; overlapping labels and reused dataset preclude independent generalization claim"
+      }
+    }
+  },
+  "subsets": {
+    "fallback_first16": {
+      "origins": 16,
+      "positive_rows": 15505,
+      "models": {
+        "falcon": {
+          "origin_mean_ap": 0.012746763670851851,
+          "hits": 838,
+          "pooled_recall_at_100": 0.05404708158658497
+        },
+        "b1_probability": {
+          "origin_mean_ap": 0.01730801287078207,
+          "hits": 1430,
+          "pooled_recall_at_100": 0.09222831344727507
+        },
+        "b2_probability": {
+          "origin_mean_ap": 0.009955028216327228,
+          "hits": 829,
+          "pooled_recall_at_100": 0.05346662366978394
+        },
+        "experiment14_fusion_probability": {
+          "origin_mean_ap": 0.016953726401268805,
+          "hits": 1528,
+          "pooled_recall_at_100": 0.09854885520799742
+        },
+        "fusion_no_inertia": {
+          "origin_mean_ap": 0.009955028216327228,
+          "hits": 829,
+          "pooled_recall_at_100": 0.05346662366978394
+        },
+        "fusion_b1_inertia": {
+          "origin_mean_ap": 0.009955028216327228,
+          "hits": 829,
+          "pooled_recall_at_100": 0.05346662366978394
+        },
+        "fusion_b2_inertia": {
+          "origin_mean_ap": 0.009955028216327228,
+          "hits": 829,
+          "pooled_recall_at_100": 0.05346662366978394
+        },
+        "fusion_dual_inertia": {
+          "origin_mean_ap": 0.009955028216327228,
+          "hits": 829,
+          "pooled_recall_at_100": 0.05346662366978394
+        }
+      }
+    },
+    "trained_last48": {
+      "origins": 48,
+      "positive_rows": 37440,
+      "models": {
+        "falcon": {
+          "origin_mean_ap": 0.022092293734536934,
+          "hits": 4716,
+          "pooled_recall_at_100": 0.12596153846153846
+        },
+        "b1_probability": {
+          "origin_mean_ap": 0.018079432917060326,
+          "hits": 4670,
+          "pooled_recall_at_100": 0.12473290598290598
+        },
+        "b2_probability": {
+          "origin_mean_ap": 0.038782720027633916,
+          "hits": 7506,
+          "pooled_recall_at_100": 0.20048076923076924
+        },
+        "experiment14_fusion_probability": {
+          "origin_mean_ap": 0.025055856895304495,
+          "hits": 5903,
+          "pooled_recall_at_100": 0.15766559829059829
+        },
+        "fusion_no_inertia": {
+          "origin_mean_ap": 0.039967762297704525,
+          "hits": 7590,
+          "pooled_recall_at_100": 0.20272435897435898
+        },
+        "fusion_b1_inertia": {
+          "origin_mean_ap": 0.04074440221151695,
+          "hits": 7676,
+          "pooled_recall_at_100": 0.20502136752136751
+        },
+        "fusion_b2_inertia": {
+          "origin_mean_ap": 0.039993533791380445,
+          "hits": 7593,
+          "pooled_recall_at_100": 0.20280448717948718
+        },
+        "fusion_dual_inertia": {
+          "origin_mean_ap": 0.04076717443787922,
+          "hits": 7676,
+          "pooled_recall_at_100": 0.20502136752136751
+        }
+      }
+    }
+  },
+  "report_repair": "INDEPENDENT_INPUT_GT_KEYS_METRICS_CHECKPOINTS_VERIFIED",
+  "postprocessing_seconds": 25.92221069999505
+}

@@ -1,0 +1,23 @@
+C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\xgboost\core.py:158: UserWarning: [20:43:12] WARNING: C:\buildkite-agent\builds\buildkite-windows-cpu-autoscaling-group-i-08cbc0333d8d4aae1-1\xgboost\xgboost-ci-windows\src\common\error_msg.cc:58: Falling back to prediction using DMatrix due to mismatched devices. This might lead to higher memory usage and slower performance. XGBoost is running on: cuda:0, while the input data is on: cpu.
+Potential solutions:
+- Use a data structure that matches the device ordinal in the booster.
+- Set the device for booster before call to inplace_predict.
+
+This warning will only be shown once.
+
+  warnings.warn(smsg, UserWarning)
+Traceback (most recent call last):
+  File "C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\ML\run_falcon_acmetrace_st_top100.py", line 559, in <module>
+    main()
+  File "C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\ML\run_falcon_acmetrace_st_top100.py", line 551, in main
+    run(config, args.output, args.limit_origins, args.resume)
+  File "C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\ML\run_falcon_acmetrace_st_top100.py", line 525, in run
+    'origin_mean_pr_auc': float(np.mean([r['pr_auc'] for r in rows])),
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\numpy\_core\fromnumeric.py", line 3860, in mean
+    return _methods._mean(a, axis=axis, dtype=dtype,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\junho\OneDrive\문서\ChatGPT\IISE Project\Falcon_AcmeTrace_ST_Top100\.venv\Lib\site-packages\numpy\_core\_methods.py", line 135, in _mean
+    ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported operand type(s) for +: 'float' and 'NoneType'

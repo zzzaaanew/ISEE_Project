@@ -1,0 +1,62 @@
+{
+  "status": "FIT_AND_PREDICT_CONFIRMED",
+  "seconds": 2.168937599999481,
+  "rows": 512,
+  "features": 16,
+  "detail": {
+    "parameters": {
+      "nan_mode": "Min",
+      "gpu_ram_part": 0.1,
+      "eval_metric": "Logloss",
+      "iterations": 5,
+      "leaf_estimation_method": "Newton",
+      "observations_to_bootstrap": "TestOnly",
+      "random_score_type": "NormalWithModelSizeDecrease",
+      "grow_policy": "SymmetricTree",
+      "penalties_coefficient": 1,
+      "boosting_type": "Plain",
+      "feature_border_type": "GreedyLogSum",
+      "bayesian_matrix_reg": 0.10000000149011612,
+      "devices": "0",
+      "eval_fraction": 0,
+      "pinned_memory_bytes": "104857600",
+      "force_unit_auto_pair_weights": false,
+      "l2_leaf_reg": 3,
+      "random_strength": 1,
+      "rsm": 1,
+      "boost_from_average": false,
+      "gpu_cat_features_storage": "GpuRam",
+      "fold_size_loss_normalization": false,
+      "model_size_reg": 0.5,
+      "pool_metainfo_options": {
+        "tags": {}
+      },
+      "use_best_model": false,
+      "meta_l2_frequency": 0,
+      "class_names": [
+        0,
+        1
+      ],
+      "random_seed": 20260905,
+      "depth": 3,
+      "border_count": 32,
+      "min_fold_size": 100,
+      "data_partition": "DocParallel",
+      "bagging_temperature": 1,
+      "classes_count": 0,
+      "auto_class_weights": "None",
+      "leaf_estimation_backtracking": "AnyImprovement",
+      "best_model_min_trees": 1,
+      "min_data_in_leaf": 1,
+      "add_ridge_penalty_to_loss_function": false,
+      "loss_function": "Logloss",
+      "learning_rate": 0.5,
+      "meta_l2_exponent": 1,
+      "score_function": "Cosine",
+      "task_type": "GPU",
+      "leaf_estimation_iterations": 1,
+      "bootstrap_type": "Bayesian",
+      "max_leaves": 8
+    }
+  }
+}

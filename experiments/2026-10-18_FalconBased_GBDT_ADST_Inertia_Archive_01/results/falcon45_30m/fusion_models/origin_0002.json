@@ -1,0 +1,50 @@
+{
+  "S7_0": {
+    "status": "cold_start_b2_fallback",
+    "cutoff_ns": 1686865200000000000,
+    "calibration_start_ns": 1685655600000000000,
+    "fusion_start_ns": 1686260400000000000
+  },
+  "S7_I": {
+    "status": "cold_start_b2_fallback",
+    "cutoff_ns": 1686865200000000000,
+    "calibration_start_ns": 1685655600000000000,
+    "fusion_start_ns": 1686260400000000000
+  },
+  "S14_0": {
+    "status": "cold_start_b2_fallback",
+    "cutoff_ns": 1686865200000000000,
+    "calibration_start_ns": 1685655600000000000,
+    "fusion_start_ns": 1686260400000000000
+  },
+  "S14_I": {
+    "status": "cold_start_b2_fallback",
+    "cutoff_ns": 1686865200000000000,
+    "calibration_start_ns": 1685655600000000000,
+    "fusion_start_ns": 1686260400000000000
+  },
+  "S21_0": {
+    "status": "cold_start_b2_fallback",
+    "cutoff_ns": 1686865200000000000,
+    "calibration_start_ns": 1685655600000000000,
+    "fusion_start_ns": 1686260400000000000
+  },
+  "S21_I": {
+    "status": "cold_start_b2_fallback",
+    "cutoff_ns": 1686865200000000000,
+    "calibration_start_ns": 1685655600000000000,
+    "fusion_start_ns": 1686260400000000000
+  },
+  "A_0": {
+    "status": "cold_start_b2_fallback",
+    "cutoff_ns": 1686865200000000000,
+    "calibration_start_ns": 1685655600000000000,
+    "fusion_start_ns": 1686260400000000000
+  },
+  "A_I": {
+    "status": "cold_start_b2_fallback",
+    "cutoff_ns": 1686865200000000000,
+    "calibration_start_ns": 1685655600000000000,
+    "fusion_start_ns": 1686260400000000000
+  }
+}

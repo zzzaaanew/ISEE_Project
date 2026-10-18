@@ -1,0 +1,11 @@
+# Isolated Falcon adaptation environment; no PyTorch dependency.
+# XGBoost 2.1.4 retains CUDA compatibility with the local 560.94 driver.
+numpy==2.2.6
+pandas==2.2.3
+pyarrow==20.0.0
+scikit-learn==1.6.1
+xgboost==2.1.4
+catboost==1.2.8
+lightgbm==4.6.0
+psutil==7.0.0
+threadpoolctl==3.6.0

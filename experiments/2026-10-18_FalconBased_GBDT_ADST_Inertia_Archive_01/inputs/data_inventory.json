@@ -1,0 +1,724 @@
+{
+  "status": "ALL_LFS_INPUTS_VERIFIED",
+  "repository": "C:\\Users\\junho\\OneDrive\\문서\\ChatGPT\\IISE Project\\migrate_full_20261017",
+  "commit": "f851f9b7297042582fdd5e04ef166a55ec9e897e",
+  "lfs_file_count": 134,
+  "total_lfs_bytes": 1334897451,
+  "telemetry_bytes": 761151155,
+  "training_inputs": [
+    {
+      "file": "telemetry_5m_fb.parquet",
+      "rows": 53101012,
+      "bytes": 184979068,
+      "schema": "Time_5m: timestamp[ns, tz=+08:00]\ngpu_id: string\nfb_mean: double\nfb_min: double\nfb_max: double\nfb_obs: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 802",
+      "required_columns_verified": true
+    },
+    {
+      "file": "telemetry_5m_power.parquet",
+      "rows": 53100841,
+      "bytes": 308259662,
+      "schema": "Time_5m: timestamp[ns, tz=+08:00]\ngpu_id: string\npower_mean: double\npower_min: double\npower_max: double\npower_obs: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 826",
+      "required_columns_verified": true
+    },
+    {
+      "file": "telemetry_5m_temp.parquet",
+      "rows": 53101012,
+      "bytes": 159583360,
+      "schema": "Time_5m: timestamp[ns, tz=+08:00]\ngpu_id: string\ntemp_mean: double\ntemp_min: double\ntemp_max: double\ntemp_obs: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 818",
+      "required_columns_verified": true
+    },
+    {
+      "file": "telemetry_5m_util.parquet",
+      "rows": 53101012,
+      "bytes": 108329065,
+      "schema": "Time_5m: timestamp[ns, tz=+08:00]\ngpu_id: string\nutil_mean: double\nutil_min: double\nutil_max: double\nutil_obs: double\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 818",
+      "required_columns_verified": true
+    },
+    {
+      "file": "xid_onsets_metadata.parquet",
+      "rows": 2425,
+      "bytes": 18778,
+      "schema": "gpu_id: string\nonset_time: timestamp[ns, tz=+08:00]\nxid_code: int64\n-- schema metadata --\npandas: '{\"index_columns\": [], \"column_indexes\": [], \"columns\": [{\"name\":' + 467",
+      "required_columns_verified": true
+    }
+  ],
+  "lfs_objects": [
+    {
+      "path": "migration/data/telemetry_5m_fb.parquet",
+      "bytes": 184979068,
+      "sha256": "1df8a11f07f58f6f7178896fd526e4c7436c3e08fa4db7408aba8c68c700ff49"
+    },
+    {
+      "path": "migration/data/telemetry_5m_power.parquet",
+      "bytes": 308259662,
+      "sha256": "aa268610630e8d69532affbdbb7996b8e468f08762e5b0fd3f223ad9aac205c0"
+    },
+    {
+      "path": "migration/data/telemetry_5m_temp.parquet",
+      "bytes": 159583360,
+      "sha256": "deb64ef3d2a27ab6588530d615a9ee6163354e68cb30b74dbaa5af74a4410730"
+    },
+    {
+      "path": "migration/data/telemetry_5m_util.parquet",
+      "bytes": 108329065,
+      "sha256": "2277243b3959e7a060c48a9338773f8f2275f8b9ecab44fcd92cf334ea68df1a"
+    },
+    {
+      "path": "migration/data/xid_onsets_metadata.parquet",
+      "bytes": 18778,
+      "sha256": "1e1350b40ff93c76c8594626f926247f76276dcd3e14650beba8e4c931da1b2c"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0000.parquet",
+      "bytes": 1147298,
+      "sha256": "44592644a5d2b50ffc99f8a2a74a1d535dc0bd39705d4014d2fcad2f4eebd60d"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0001.parquet",
+      "bytes": 1145666,
+      "sha256": "e175d8ed0fb36cdf1268f49d5c5c7b7f8d5683277abbd5862088ebd06914b7ed"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0002.parquet",
+      "bytes": 1145120,
+      "sha256": "e04ddd4ece2a0cc55f31cbbce3efede46b7b62741b77e8b2fc43f1291751266f"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0003.parquet",
+      "bytes": 2056635,
+      "sha256": "43075c3d238ee06dfc044deef734c7e25819c2048d3ab0760238ce5e5f2e1c0e"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0004.parquet",
+      "bytes": 2066667,
+      "sha256": "cc0afb489a81136ebf23791bf9a0895195751d018795191e780f1160c4c67396"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0005.parquet",
+      "bytes": 2067367,
+      "sha256": "6a02b67b9814f7561027326c27acfc1e5d1b1d69a9b77c99862e87eb0b9b91bc"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0006.parquet",
+      "bytes": 2071299,
+      "sha256": "0986795c7cbfc416b387a1975c733e014444d7eef6477b58e09befcbbc9919e6"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0007.parquet",
+      "bytes": 2074795,
+      "sha256": "864d554dad886d3e0534d4023cfb5bc3f3ae574217d301f626797cc933c0e061"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0008.parquet",
+      "bytes": 2066409,
+      "sha256": "bd146db76150d900b3e1ee1b56240698714f98f753e40ce7da85b928a0d9149d"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0009.parquet",
+      "bytes": 2077575,
+      "sha256": "f65a31416cb3ee237b611cca6419b43ffa1ebb87216b946fc58098db5be98cd2"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0010.parquet",
+      "bytes": 2068055,
+      "sha256": "b6131a20679d47ac25e9013db3001c65d51580f18e582440432bac556f9abc47"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0011.parquet",
+      "bytes": 2078978,
+      "sha256": "257ebbeb0a20b98e82450e68eb8f47f5e7ceeba44ee6bc65baadb9c92832bee7"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0012.parquet",
+      "bytes": 2081174,
+      "sha256": "1c94f73ed9b6b75d23dc8e64ecd90d54a712bbcfd935616ae73ec2d2ea76ad5c"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0013.parquet",
+      "bytes": 2081410,
+      "sha256": "b467c0abcc8afc10bf685a9d66161d12d709f489ea8e4821c34313e9a182d123"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0014.parquet",
+      "bytes": 2079241,
+      "sha256": "129ab7dbcd11a0fd392df29efebee1ece3ac4034687e1f97bba8e43bb5d6159e"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0015.parquet",
+      "bytes": 2082293,
+      "sha256": "a8a5c7b8391ef746ec91577d5468713cd85cbd079014b18986008d2292e10660"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0016.parquet",
+      "bytes": 2080417,
+      "sha256": "408680ab9c7290080847d9aeb580d1745b05b8e805cdf3aa480fc936883aab19"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0017.parquet",
+      "bytes": 2076652,
+      "sha256": "66f61dd713820cebe3641c4d8f95286dc2cb29b4ddaa3f0cacb28e379328b35f"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0018.parquet",
+      "bytes": 2078900,
+      "sha256": "4d33897e3ef71b205e91c285f579799ff0b8d86d0a4d623c75e872bc7ebbe588"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0019.parquet",
+      "bytes": 2080967,
+      "sha256": "e09cf4daa3038b955e16d0349c4c3d1c93635478488e0e42ebdebfee6f6a538d"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0020.parquet",
+      "bytes": 2070295,
+      "sha256": "988976a08bb9f77bc0fc3355437f5594182fc40a1bbd3cb3b333cbebadbfe89e"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0021.parquet",
+      "bytes": 2080656,
+      "sha256": "ca2329fb5360717c7edee00449aaa58121190f7a912c2dae44b70ee16b58de46"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0022.parquet",
+      "bytes": 2079493,
+      "sha256": "03a2baec68e33783cda83ce5dc3d05e1b38678a92f5f7b9b678420c98aab0703"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0023.parquet",
+      "bytes": 2080242,
+      "sha256": "3f021c9b50aaff1009a1e38a0ea8f602230b2687873c53e751edfc1c8b3bc045"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0024.parquet",
+      "bytes": 2078771,
+      "sha256": "50570d4b4e0d5e02c65e8bb53651e80f10aee5c011be735852e63cd31e370ca5"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0025.parquet",
+      "bytes": 2083806,
+      "sha256": "980ea1c32980a95c442fcfe21d20e5f11015c6c089c715a7f8a99bea5323db8e"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0026.parquet",
+      "bytes": 2090918,
+      "sha256": "ae91fda6fd4fb4d0cbe02e44084273219b5882fa749274dda0fa938c5e4fab57"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0027.parquet",
+      "bytes": 2090646,
+      "sha256": "1f2016be0a64bf6ef113dfed612143635363ee0acde453b01c4aa18c363b75ad"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0028.parquet",
+      "bytes": 2082480,
+      "sha256": "026c41d5f144fe8dc847c603cb3250fac923e3fd85e106079cffc540ce60aafc"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0029.parquet",
+      "bytes": 2077979,
+      "sha256": "ca3ddd42224d778cee8b0601e0732da295df8e99ae1a2a3d53071a4de4e63d1c"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0030.parquet",
+      "bytes": 2077177,
+      "sha256": "de2d5c440af63a04315ed57baf71f5b655a0845dbe5997d023ee090d407fa30b"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0031.parquet",
+      "bytes": 2077460,
+      "sha256": "ca5af7a1553897c6941f15230fae2e85d126f320058ca9317b3825275f2f9cd8"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0032.parquet",
+      "bytes": 2082046,
+      "sha256": "74f913baf4106b6baa193fca00acccbbf6c36569b92b05409cd1a494af9d8096"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0033.parquet",
+      "bytes": 2039348,
+      "sha256": "67f410bb876ea1265dea61a84f0d13fd66ac281c52e6668972ae9933594830ce"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0034.parquet",
+      "bytes": 2080165,
+      "sha256": "332af2c6b36b939ebb734bab8dcc1ad56a116b74c2e9746adcccd3bda8eac823"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0035.parquet",
+      "bytes": 2075973,
+      "sha256": "1cdcf2595674b96bcbe0727d8fa739995c396d89b865ede1ffa558d98e97b3bd"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0036.parquet",
+      "bytes": 2079216,
+      "sha256": "3d2989538b8d5ef66fb532952285fb27c25492adcf82a747ada87e86607a5638"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0037.parquet",
+      "bytes": 2079581,
+      "sha256": "b78b60e75afa69cdac7374bedd4d6f7898766efd9284c16e660448dad1328810"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0038.parquet",
+      "bytes": 2082559,
+      "sha256": "0247a8d96aae4eddb25cd214daa17ced8dbe0362478f6bf755077b15e4c172ad"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0039.parquet",
+      "bytes": 2083160,
+      "sha256": "6f5178bb383c0e094225565dbea38bc2adb78bd0d1956f9bc11dc5ec92368303"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0040.parquet",
+      "bytes": 2087404,
+      "sha256": "e19b4d24001312b0caa8cb169d3b16351c341266f0d1b92aac44efef34411e2e"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0041.parquet",
+      "bytes": 2094681,
+      "sha256": "a1a401793e667a0da8b7c45db326c108d8358019a80dfd94cfd3983e9a6d204e"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0042.parquet",
+      "bytes": 2099372,
+      "sha256": "7daca72f719ccd10f3107b1e5583f31202120a15b48b45ed092e2c4531a66b57"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0043.parquet",
+      "bytes": 2098627,
+      "sha256": "d6ddd7f4c89e34d9cbcccfd33a7c5e92f158e2fcc7c19e14db8c99c6cb4927a4"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0044.parquet",
+      "bytes": 2095890,
+      "sha256": "33621611ab72c1f62ca18b28ec9f87e31f7163d4f5c05cdeb259f99de8f9ae98"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0045.parquet",
+      "bytes": 2093550,
+      "sha256": "603c69cbf096a52b7f3fee53fb619a05bf7746655f15dcd3d8657d2f5c97b8ee"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0046.parquet",
+      "bytes": 2098335,
+      "sha256": "5c48d996bf19e1d1a982e71e763a9eb3ce90cf1b5d34667f0f0e3a23e3d15986"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0047.parquet",
+      "bytes": 2107921,
+      "sha256": "9beda0ede3347098fa55278627529efda6d520e207ff2b34de8f4fb4a1991855"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0048.parquet",
+      "bytes": 2112324,
+      "sha256": "497244275a31f2079cf68ecd034ef115544fc57c7b9a4e30b2a4863e5b419475"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0049.parquet",
+      "bytes": 2112783,
+      "sha256": "f257e351d5e69b5eedc446378da428051ad9cde26275bf3638af20cd2fb9d862"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0050.parquet",
+      "bytes": 2107897,
+      "sha256": "073b79b1a449989410c1aae38e8deff530842ee89991a48d8adfc7fb4f22f7cc"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0051.parquet",
+      "bytes": 2112112,
+      "sha256": "d4799e557ac4f1e021290dae5f3bf394b1753d54fcb03b2e8b373b9f6467d2a9"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0052.parquet",
+      "bytes": 2102871,
+      "sha256": "d34b9110bc988036f15ab44e79feca12d1ab7ab7341ab05842c68524899ea76e"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0053.parquet",
+      "bytes": 2113638,
+      "sha256": "c952695eb6bf34ad6ed4ac0d16ef5dfa35f3089bfbd7353210fb1b35b3776a42"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0054.parquet",
+      "bytes": 2116315,
+      "sha256": "f862f1b18cf82dd4f5376e8a59cd62fe11f6ddd30ed72fd6b7961f78b3f36d44"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0055.parquet",
+      "bytes": 2121116,
+      "sha256": "876f3f0f4bacb36ea9faaa6c1e3c4baf72aa67453a6cf1c06de4ac0c98ebcbcc"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0056.parquet",
+      "bytes": 2118919,
+      "sha256": "ab449a0f29413484dc282054eaed8d419c744f32d75ca8e85e9cddcacd4e0787"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0057.parquet",
+      "bytes": 2118826,
+      "sha256": "bae6b7773fd8bff5dcd6bbf28ed14a5fb0eaf963d6cc72de86aca6b6fe96362b"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0058.parquet",
+      "bytes": 2108462,
+      "sha256": "322928fd48f9c2ce7fa025db0b0c2e5dd52f2fcb1670ba2fcedb45055ce84136"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0059.parquet",
+      "bytes": 2107526,
+      "sha256": "d11f2dfdcbbc414fa946c59a93ee8561a9f479dd3dfe6f7c988e80f703765cc9"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0060.parquet",
+      "bytes": 2117490,
+      "sha256": "82c08b1943fcab54c76af50787aee88e42514941780965ef7fb91fc511d0aa09"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0061.parquet",
+      "bytes": 2114269,
+      "sha256": "28e4db2e020f0f12034009fb3a02c80596f9834c35941cbacb59768578c2a642"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0062.parquet",
+      "bytes": 2114792,
+      "sha256": "35e1341feaa8edf52b628bb17352b870b57cf79331304f394922158a0d058a40"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/full_population/score_part_0063.parquet",
+      "bytes": 1274382,
+      "sha256": "376d7c20a7816d6b1d35ceae6153bc920ba40185a10ec83e635f1548b9ee982b"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0000.parquet",
+      "bytes": 2694373,
+      "sha256": "bfb66d328aa7432b0c06f9ae0e251d3d91da9ba888c1f90584fe18fb5d76c8a8"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0001.parquet",
+      "bytes": 2718103,
+      "sha256": "3d2cd964d6a2e903e4468c36ac5a9b55cc9a05ae2062044893fc7e034bb95bd9"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0002.parquet",
+      "bytes": 2723325,
+      "sha256": "de779e7206e2844f099438dcd27b475f74710a58f2f306cb283e39baedb8e09f"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0003.parquet",
+      "bytes": 3559894,
+      "sha256": "2f5250e2bf52a3ad834e1d3a2592de0cce7445ffa742d280ede27798e13162ba"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0004.parquet",
+      "bytes": 3584080,
+      "sha256": "6850b954f0b3a5aa4fe035f907a894c1d5125d10cb0f42810423592f600d9eb2"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0005.parquet",
+      "bytes": 3592079,
+      "sha256": "ea5e99c4d022e050b50119973337c91693576c5a68a174038adeedfd4b9af305"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0006.parquet",
+      "bytes": 3596243,
+      "sha256": "752589aee32aa2af8c4c007c9629d1acac0d257493ce55cfc7c093ad65e14b55"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0007.parquet",
+      "bytes": 3603128,
+      "sha256": "e2e7c2c1b21bb4447ffd0e43d9a8fc89e8b328e9ab1eaa60c956149780a5fb0a"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0008.parquet",
+      "bytes": 3595141,
+      "sha256": "848b53136f6c3ec80d7da70e8b2b567727d8780e264b5ba26dea43f11cdc8fac"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0009.parquet",
+      "bytes": 3612277,
+      "sha256": "7fee15623f73b687efd4c81f827053cad385c32ad4f54f257185ed6a7aba0661"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0010.parquet",
+      "bytes": 3617417,
+      "sha256": "d8396cac11b5f573466083bcf643216b7e4b93151728570cc12689861f078771"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0011.parquet",
+      "bytes": 3619564,
+      "sha256": "1656246eb1bd9c0ca77363ff24080eb7bb8f084af6971eb3a189f29bec86aab1"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0012.parquet",
+      "bytes": 3628920,
+      "sha256": "1311e677245942be16902f1a286846a87e7b8f7cbb913d8355d2c9c71fc5fe6a"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0013.parquet",
+      "bytes": 3626907,
+      "sha256": "253cc2435f9e00698de9af57e16acaa1f1787b64950885fdfdbeed16be1d6d1a"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0014.parquet",
+      "bytes": 3618858,
+      "sha256": "c1f1ac5c7fff583f669f163fe5911608535824cc346fa869e040224ff1e79d71"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0015.parquet",
+      "bytes": 3626583,
+      "sha256": "52fafb6481c5fcbd0f09f01c86a36233b184380ca039372af305327392243c81"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0016.parquet",
+      "bytes": 8121181,
+      "sha256": "015c52a468b5d08968737b0f1e3e7b30cd1a58eb4d56d005c5158dfdbbb2aa6c"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0017.parquet",
+      "bytes": 8118245,
+      "sha256": "311128eae81d9515496764b98d8e7a9d5bedac5bd89653452461729fd7441733"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0018.parquet",
+      "bytes": 8121505,
+      "sha256": "f175db5524f908f6cd3df9a5bd2c8a6b229bc47aab7a79cd15636806ed6f3416"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0019.parquet",
+      "bytes": 8155572,
+      "sha256": "2bb42364eb6059d50fb53674b0fdc5dedb6b099d351645c71ddda2b78e476640"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0020.parquet",
+      "bytes": 8136685,
+      "sha256": "4f845053d78dc583bfc8e40e905cd10445cc2343bd73383fe06f9537abe6c4da"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0021.parquet",
+      "bytes": 8151977,
+      "sha256": "3f0d0409514dbb08c01f38690b35099d760fff1cc4a5241045f9af2882388f93"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0022.parquet",
+      "bytes": 8150092,
+      "sha256": "772308af0e5e235d9c957a71521cd4a6b10b942f7b625006308e6494ddc8a1ff"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0023.parquet",
+      "bytes": 8143350,
+      "sha256": "8e7e29698517cdac1573ee2d0d644088c48537c89dc259fb419556ef5f83148c"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0024.parquet",
+      "bytes": 8137324,
+      "sha256": "30c651fb52180293482f409ac2f28efd8418762f568516d8358bf5bdf3a01b35"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0025.parquet",
+      "bytes": 8135765,
+      "sha256": "26e941c6db93adf90412d5682f90d805ebd6c9624d8c18f8c90065d850b73ce8"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0026.parquet",
+      "bytes": 8133829,
+      "sha256": "103404891e469791671a941464ebab9307b8a3d6142c10d0576ff8d76441e592"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0027.parquet",
+      "bytes": 8130640,
+      "sha256": "31e852bc1d11fb66b02e4f0e608bad13ae9868d5c835244a749a584ac267d02d"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0028.parquet",
+      "bytes": 8120482,
+      "sha256": "326300912766d7b792fb8b9602fbe6e44edb5eb91c1c1c6bd48f43d05583f98e"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0029.parquet",
+      "bytes": 8122044,
+      "sha256": "a8d26da3c6d609526ff07b8d45db4d6c18ab7306025d5c2b3f8c1bfd3f4c4018"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0030.parquet",
+      "bytes": 8123040,
+      "sha256": "99367c5ddefaa7b9fe7548a2f2b1e4743184591acfef7488f23c7ca6ddb3c5c7"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0031.parquet",
+      "bytes": 8122956,
+      "sha256": "cc9d04b1383eedd731ad300e5b97b1f4f69598d22a8877e18968947f8f154b09"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0032.parquet",
+      "bytes": 8122464,
+      "sha256": "bc9271d6cb938266c5af75f246ea7628717f4cf9c3609489104710aab56475ad"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0033.parquet",
+      "bytes": 8046235,
+      "sha256": "1c7d312056d7116ef53e93a893f838beab1b83511effc9b179b556eb75c093d6"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0034.parquet",
+      "bytes": 8119536,
+      "sha256": "019773db8b245a0d7a4f455b9752989cd49e77a5ae14e908f0709830f6b28191"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0035.parquet",
+      "bytes": 8116240,
+      "sha256": "66f2bbda8a22036179321cbc692caa590e37b48c6cbb9dfd23dd6b4c9875cb68"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0036.parquet",
+      "bytes": 8111016,
+      "sha256": "f2f66a17f3e3a8b8de65c21503be0a721fac8ac20da79a96f6b9e2aca0e6f5ed"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0037.parquet",
+      "bytes": 8113756,
+      "sha256": "29db74f708c88932a60b7ef6e2f4a44466e5a36e7f7dd7e684d426d16eb3b0a4"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0038.parquet",
+      "bytes": 8115119,
+      "sha256": "7dd9c0a80cb3622b14abde0629dabd66e21b710db8b96cfd76165084355a9d4d"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0039.parquet",
+      "bytes": 8115686,
+      "sha256": "72d5e0ee9d95182bb67acb57633bf3fdb9de8d2b2bfcfa2daccf6321ff960284"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0040.parquet",
+      "bytes": 8138857,
+      "sha256": "de0bc4518211263eff61ff96921793c45c246ebd90e9b2029b757f26e4e90446"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0041.parquet",
+      "bytes": 8147847,
+      "sha256": "1bc5e1f54a3855424636e40c92e65cf53c6e5120029b4a4ddeaa864eb988d2b7"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0042.parquet",
+      "bytes": 8154438,
+      "sha256": "2d3c85dcad7f4825ff2083b88077f801dbb07a5ce58704a89429f39b15a3519f"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0043.parquet",
+      "bytes": 8159828,
+      "sha256": "be867cfe419311feb3c47e3347367455c444a4dd9ef55f3ff114ef2c0ecb70fd"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0044.parquet",
+      "bytes": 8158079,
+      "sha256": "00f2e3f848df06c96bd0fd6a906aa5e5116f5e524da1a5acf3c39ff7701d842b"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0045.parquet",
+      "bytes": 8152366,
+      "sha256": "0ed8bcdcdf6f86d553dc913a9ffbb29b37a3cc443d7d9823efda6c8cdb279a75"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0046.parquet",
+      "bytes": 8157079,
+      "sha256": "4bfeabd4478724758e13aef79eac6dd1c6ed1ead8ff1bf97a5c04b0ab13eff5f"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0047.parquet",
+      "bytes": 8178300,
+      "sha256": "fa7724254a669539e9ce5dc50bfb05daaf8cf31c5ae584e9e0e259886dd95723"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0048.parquet",
+      "bytes": 8190706,
+      "sha256": "db7ea90d9cf086c1ab73e89eacfaad829db7dc090e62403688e006d4caf871f9"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0049.parquet",
+      "bytes": 8202836,
+      "sha256": "7b14a39880b2c6fbfdaae707f818b208c00c246ec4a77cd0c108ab61c2493af0"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0050.parquet",
+      "bytes": 8205576,
+      "sha256": "1019c9525214eba770001cb7842fb889f395580bff4866687021e87cb5ef553c"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0051.parquet",
+      "bytes": 8214584,
+      "sha256": "445b0809f56ea8eb4b2b50ec2b9e47918a3595c880b190b35662005d924c48d2"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0052.parquet",
+      "bytes": 8215729,
+      "sha256": "704a2fc2034249c9cec129892253285d437712d76bbad7800f2fef31236d33f7"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0053.parquet",
+      "bytes": 8218224,
+      "sha256": "e69915117cea61b5006abde19cea7e38fbd1110763a96c368e0cfaad86b67e55"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0054.parquet",
+      "bytes": 8188528,
+      "sha256": "790413c0554d39a4568f75352ad5ff445b4fd67af7cc826a5e860152b64fcd89"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0055.parquet",
+      "bytes": 8245530,
+      "sha256": "210676f26465f82d2592d0b00ee768ca307a7e77a46da93c51ab6da3bb5567f9"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0056.parquet",
+      "bytes": 8243839,
+      "sha256": "50345c4e49ed52005ac2efb0c9654fbbfdb4ec7a677ddf642622a61b3fb471c4"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0057.parquet",
+      "bytes": 8246720,
+      "sha256": "b91e84cc881e13c60a04e32e82f25672ba4c0bdf51844f6b3e491a8ed375705b"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0058.parquet",
+      "bytes": 8227926,
+      "sha256": "7c4edd6b79c9820333e78f20adfe1ac406f546351b2b37fdb96712ada157e772"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0059.parquet",
+      "bytes": 8243034,
+      "sha256": "c791d52085da5b16d9f42b3ca7f2131d5d267077b6efb97c6a6bec10034aca60"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0060.parquet",
+      "bytes": 8248067,
+      "sha256": "c2c86bca746d8aab23fa04d943e8f895bc7d91d849b42fc6749aef97dcd21fc5"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0061.parquet",
+      "bytes": 8245871,
+      "sha256": "701b9097e8cefcd4cf86b4900c20084fb2e51d36e1ca87c9f7999f827f6beac8"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0062.parquet",
+      "bytes": 8230073,
+      "sha256": "2f6dd2f339028c37e2c1c4c8fdb1223af3c224fcd716040042c0f513dcd020e2"
+    },
+    {
+      "path": "migration/e19-reproduction/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population/score_part_0063.parquet",
+      "bytes": 4945560,
+      "sha256": "68c4268eb90d14972081b40f8035fdb9b22712a550cfe6060d917b7f8f8fb9e1"
+    },
+    {
+      "path": "migration/e19-reproduction/outputs/branch1/cache/grid_meta.npz",
+      "bytes": 137899,
+      "sha256": "a0172297f00956324c16974f82f6425210b1f2233c08d381b9bb3dab873a3397"
+    }
+  ],
+  "grid": {
+    "gpu_count": 1992,
+    "five_minute_bins": 26957,
+    "start_utc": "2023-05-16T09:40:00+00:00",
+    "last_bin_utc": "2023-08-18T00:00:00+00:00"
+  },
+  "training_executed": false
+}

@@ -1,0 +1,31 @@
+{
+  "version": "conditional_5m_v1",
+  "approval": "User authorized automatic 5-minute scoring after the current run if B1 or Fusion improves.",
+  "source_relative_to_workspace": "FalconStyle_GBDT_ADST_Inertia/runs/full_01",
+  "baseline_relative_to_workspace": "E14_E19_plan_20261017/runtime/migration/e19-reproduction-gpu-opt/experiments/2026-10-05_Experiment19_DualInertiaFusion_01/full_population",
+  "source_contract_sha256": "de3b613062520f61b7efa237f6590f70594b0ac5c95840b03075a18a260d1e45",
+  "source_main_sha256": "6eebcef45bd05bfd46fd67e81ef1583f7551cbcd41f1910052dd3976d157cb0c",
+  "supervisor_identity": {
+    "pid": 22224,
+    "create_time": 1792249193.474638,
+    "command_sha256": "5777a37cceeeffa678c52176454fac6ac247f771da907c1028e9e807f1d8344d"
+  },
+  "required_source_supervisor_status": "COMPLETED_AND_AUDITED",
+  "required_independent_audit_status": "SCORE_ARTIFACTS_VERIFIED",
+  "required_origins": 64,
+  "required_score_rows": 6081576,
+  "required_decision_times": 3053,
+  "required_positive_rows": 52945,
+  "required_purge_violations": 0,
+  "required_label_maturity_violations": 0,
+  "baseline_columns": {"B1": "b1_probability", "Fusion": "fusion_dual_inertia"},
+  "b1_candidates": ["q_S7_0", "q_S7_I", "q_S14_0", "q_S14_I", "q_S21_0", "q_S21_I", "q_A_0", "q_A_I"],
+  "fusion_candidates": ["risk_S7_0_P", "risk_S7_0_E", "risk_S7_I_P", "risk_S7_I_E", "risk_S14_0_P", "risk_S14_0_E", "risk_S14_I_P", "risk_S14_I_E", "risk_S21_0_P", "risk_S21_0_E", "risk_S21_I_P", "risk_S21_I_E", "risk_A_0_P", "risk_A_0_E", "risk_A_I_P", "risk_A_I_E"],
+  "gate": {"mean_ap_delta_strictly_greater_than": 1e-12, "pooled_recall_degradation_tolerance": 1e-12, "requires_statistical_significance": false},
+  "selection": {"maximum_promotions": 1, "primary": "maximum origin-mean AP", "ap_tie_tolerance": 1e-12, "secondary": "maximum pooled Recall@100", "final_tie_break": "lexicographic score column"},
+  "scope": "Development-period selection; models/features differ from E19. Differences do not identify an architecture-specific causal effect.",
+  "followup": {"scoring_minutes": 5, "pilot_origins": 1, "full_origins": 64, "retrain_existing_models": false, "purge_hours": 36, "inertia_half_life_hours": 2, "inertia_decay_uses_actual_elapsed_time": true, "reuse_frozen_model_and_policy_history": true},
+  "max_wait_seconds": 43200,
+  "max_run_seconds": 43200,
+  "retries": 0
+}
