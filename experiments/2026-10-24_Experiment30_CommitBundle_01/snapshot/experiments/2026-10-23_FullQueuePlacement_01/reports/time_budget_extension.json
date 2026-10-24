@@ -1,0 +1,117 @@
+{
+  "status": "CHILDREN_EXITED",
+  "approved_change": "Keep current runs; maximum six hours",
+  "original_started_at": "2026-10-23T07:21:19.826366+00:00",
+  "hard_timeout_seconds": 21600,
+  "deadline_utc": "2026-10-23T13:21:19.826366+00:00",
+  "supervisor_pid": 33160,
+  "supervisor_creation": 134372136796678349,
+  "original_timeout_seconds": 7200,
+  "workers_restarted": false,
+  "worker_or_policy_changes": false,
+  "children": {
+    "fifo": {
+      "57920": {
+        "creation": 134372136798299233,
+        "exited": true
+      },
+      "12536": {
+        "creation": 134372136798602536,
+        "exited": true
+      },
+      "progress": {
+        "status": "completed",
+        "progress": 1.0,
+        "timestamp": 1692317100.0,
+        "start_time": 1686822000.0,
+        "end_time": 1692317100.0,
+        "arm": "fifo",
+        "decisions": 18317,
+        "jobs": {
+          "future": 0,
+          "queued": 65934,
+          "running": 26,
+          "recovering": 0,
+          "loading": 0,
+          "checkpointing": 4,
+          "completed": 74822,
+          "failed": 0
+        },
+        "elapsed_seconds": 5979.7029999999795,
+        "pid": 12536,
+        "peak_memory_bytes": 318050304
+      }
+    },
+    "tiresias": {
+      "38940": {
+        "creation": 134372136798430578,
+        "exited": true
+      },
+      "44028": {
+        "creation": 134372136798724544,
+        "exited": true
+      },
+      "progress": {
+        "status": "completed",
+        "progress": 1.0,
+        "timestamp": 1692317100.0,
+        "start_time": 1686822000.0,
+        "end_time": 1692317100.0,
+        "arm": "tiresias",
+        "decisions": 18317,
+        "jobs": {
+          "future": 0,
+          "queued": 65410,
+          "running": 25,
+          "recovering": 10,
+          "loading": 0,
+          "checkpointing": 1,
+          "completed": 75340,
+          "failed": 0
+        },
+        "elapsed_seconds": 6808.156000000017,
+        "pid": 44028,
+        "peak_memory_bytes": 768970752
+      },
+      "progress_read_error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    "joint": {
+      "42004": {
+        "creation": 134372136798528275,
+        "exited": true
+      },
+      "9656": {
+        "creation": 134372136798735583,
+        "exited": true
+      },
+      "progress": {
+        "status": "completed",
+        "progress": 1.0,
+        "timestamp": 1692317100.0,
+        "start_time": 1686822000.0,
+        "end_time": 1692317100.0,
+        "arm": "joint",
+        "decisions": 18317,
+        "jobs": {
+          "future": 0,
+          "queued": 52059,
+          "running": 24,
+          "recovering": 0,
+          "loading": 0,
+          "checkpointing": 6,
+          "completed": 88697,
+          "failed": 0
+        },
+        "elapsed_seconds": 5390.516000000003,
+        "pid": 9656,
+        "peak_memory_bytes": 324165632
+      }
+    }
+  },
+  "created_at": "2026-10-23T08:45:53.063722+00:00",
+  "supervisor_suspended_at": "2026-10-23T08:45:53.105724+00:00",
+  "elapsed_seconds": 6815.332,
+  "updated_at": "2026-10-23T09:14:55.158626+00:00",
+  "supervisor_resumed_at": "2026-10-23T09:14:55.185661+00:00",
+  "supervisor_resume_status": 0
+}

@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "full_replay": true,
+  "arms": {
+    "fifo": {
+      "full_population_and_period": true,
+      "code_inputs_exact": true,
+      "queue_integral": true,
+      "periodic_cost": true,
+      "work_and_rollback": true,
+      "restricted_flow": true,
+      "gpu_capacity_time": true,
+      "simulation_stage_peak_memory_bytes": 296321024,
+      "final_progress_peak_memory_bytes": 318050304,
+      "wall_seconds": 5979.233999999997,
+      "decision_count": 18317
+    },
+    "tiresias": {
+      "full_population_and_period": true,
+      "code_inputs_exact": true,
+      "queue_integral": true,
+      "periodic_cost": true,
+      "work_and_rollback": true,
+      "restricted_flow": true,
+      "gpu_capacity_time": true,
+      "simulation_stage_peak_memory_bytes": 659005440,
+      "final_progress_peak_memory_bytes": 768970752,
+      "wall_seconds": 6807.75,
+      "decision_count": 18317
+    },
+    "joint": {
+      "full_population_and_period": true,
+      "code_inputs_exact": true,
+      "queue_integral": true,
+      "periodic_cost": true,
+      "work_and_rollback": true,
+      "restricted_flow": true,
+      "gpu_capacity_time": true,
+      "simulation_stage_peak_memory_bytes": 299814912,
+      "final_progress_peak_memory_bytes": 324165632,
+      "wall_seconds": 5390.0470000000205,
+      "decision_count": 18317
+    }
+  },
+  "preserved_files": 152,
+  "source_preservation_exact": true,
+  "same_population": true,
+  "same_code": true,
+  "statistical_or_generalization_claim": false,
+  "independent_reproduction_performed": false,
+  "reproducibility_note": "seed17 recorded; PYTHONHASHSEED separately not fixed/recorded; joint tied proposal order can depend on set iteration",
+  "elapsed_seconds": 2.5
+}

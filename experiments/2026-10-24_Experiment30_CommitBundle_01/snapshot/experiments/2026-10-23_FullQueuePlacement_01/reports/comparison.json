@@ -1,0 +1,772 @@
+{
+  "status": "PASS_DESCRIPTIVE_APPROXIMATE_SURROGATE",
+  "note": "Descriptive single frozen-period comparison; joint is an approximate surrogate, not globally optimal. No statistical significance or independent generalization is established.",
+  "horizon": {
+    "start_epoch_utc": 1686822000.0,
+    "end_epoch_utc_exclusive": 1692317100.0,
+    "elapsed_seconds": 5495100.0,
+    "decisions": 18317,
+    "gpus": 100
+  },
+  "definitions": {
+    "restricted_total_flow": "sum(min(completed or T_end,T_end)-arrival) over ALL jobs",
+    "unfinished": "all jobs lacking completion, including terminal failures",
+    "retained_gpu_seconds": "sum(progress*demand), including completed jobs",
+    "remaining_gpu_seconds": "sum((duration-progress)*demand), including unfinished failed jobs",
+    "queue_wait": "engine cumulative queue wait through the common horizon; all jobs",
+    "quantiles": "linear interpolation, pandas quantile(0.95)"
+  },
+  "arms": {
+    "fifo": {
+      "arm": "fifo",
+      "total_jobs": 140786,
+      "completed": 74822,
+      "unfinished": 65964,
+      "failed": 0,
+      "unfinished_nonfailed": 65964,
+      "never_started": 65934,
+      "restricted_total_flow_job_seconds": 257521386913.0,
+      "restricted_mean_flow_seconds": 1829169.0005611354,
+      "completed_jct_mean_seconds": 1879995.996471626,
+      "completed_jct_p95_seconds": 3143798.85,
+      "queue_wait_p95_seconds_all_jobs": 3095616.0,
+      "useful_completed_gpu_seconds": 379810856.0,
+      "retained_gpu_seconds": 387780176.0,
+      "retained_unfinished_gpu_seconds": 7969320.0,
+      "remaining_gpu_seconds": 703636833.0,
+      "interruptions_count": 70,
+      "launches_count": 74922
+    },
+    "tiresias": {
+      "arm": "tiresias",
+      "total_jobs": 140786,
+      "completed": 75340,
+      "unfinished": 65446,
+      "failed": 0,
+      "unfinished_nonfailed": 65446,
+      "never_started": 65329,
+      "restricted_total_flow_job_seconds": 248517773252.0,
+      "restricted_mean_flow_seconds": 1765216.5218984843,
+      "completed_jct_mean_seconds": 1770459.622086541,
+      "completed_jct_p95_seconds": 2964614.15,
+      "queue_wait_p95_seconds_all_jobs": 2964382.75,
+      "useful_completed_gpu_seconds": 377337839.0,
+      "retained_gpu_seconds": 389320499.0,
+      "retained_unfinished_gpu_seconds": 11982660.0,
+      "remaining_gpu_seconds": 702096510.0,
+      "interruptions_count": 113467,
+      "launches_count": 188827
+    },
+    "joint": {
+      "arm": "joint",
+      "total_jobs": 140786,
+      "completed": 88697,
+      "unfinished": 52089,
+      "failed": 0,
+      "unfinished_nonfailed": 52089,
+      "never_started": 52057,
+      "restricted_total_flow_job_seconds": 184732380217.0,
+      "restricted_mean_flow_seconds": 1312150.215341014,
+      "completed_jct_mean_seconds": 1092868.973685694,
+      "completed_jct_p95_seconds": 2054667.5999999999,
+      "queue_wait_p95_seconds_all_jobs": 2405264.0,
+      "useful_completed_gpu_seconds": 409094968.0,
+      "retained_gpu_seconds": 418985908.0,
+      "retained_unfinished_gpu_seconds": 9890940.0,
+      "remaining_gpu_seconds": 672431101.0,
+      "interruptions_count": 694,
+      "launches_count": 89421
+    }
+  },
+  "completion_intersection": 74593,
+  "completion_union": 88918,
+  "all_three_common_completed_jct": {
+    "fifo": {
+      "mean_seconds": 1881055.4297856367,
+      "p95_seconds": 3143715.2
+    },
+    "tiresias": {
+      "mean_seconds": 1761179.3462389233,
+      "p95_seconds": 2959770.4
+    },
+    "joint": {
+      "mean_seconds": 1075113.210810666,
+      "p95_seconds": 2005956.0
+    }
+  },
+  "paired_comparisons": {
+    "tiresias_minus_fifo": {
+      "common_completed": 74811,
+      "completion_union": 75351,
+      "left_only_completed": 11,
+      "right_only_completed": 529,
+      "paired_jct_delta_mean_seconds": -119734.79909371617,
+      "paired_jct_delta_p95_seconds": -3840.0,
+      "paired_jct_faster_count": 73685,
+      "paired_jct_equal_count": 684,
+      "paired_jct_slower_count": 442
+    },
+    "joint_minus_fifo": {
+      "common_completed": 74604,
+      "completion_union": 88915,
+      "left_only_completed": 218,
+      "right_only_completed": 14093,
+      "paired_jct_delta_mean_seconds": -806256.1532893679,
+      "paired_jct_delta_p95_seconds": -4500.0,
+      "paired_jct_faster_count": 73409,
+      "paired_jct_equal_count": 773,
+      "paired_jct_slower_count": 422
+    },
+    "joint_minus_tiresias": {
+      "common_completed": 75119,
+      "completion_union": 88918,
+      "left_only_completed": 221,
+      "right_only_completed": 13578,
+      "paired_jct_delta_mean_seconds": -691901.4797854072,
+      "paired_jct_delta_p95_seconds": -600.0,
+      "paired_jct_faster_count": 72104,
+      "paired_jct_equal_count": 2081,
+      "paired_jct_slower_count": 934
+    }
+  },
+  "overhead": {
+    "fifo": {
+      "by_cause": {
+        "scheduling": {
+          "scheduling_checkpoint_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "scheduling_relaunch_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "scheduling_preemption_overhead_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          }
+        },
+        "failure": {
+          "failure_lost_work_gpu_seconds": {
+            "value": 202620.0,
+            "unit": "GPU-seconds"
+          },
+          "failure_checkpoint_loss_seconds": {
+            "value": 11790.0,
+            "unit": "seconds"
+          },
+          "failure_retry_wait_seconds": {
+            "value": 46200.0,
+            "unit": "seconds"
+          },
+          "failure_recovery_delay_seconds": {
+            "value": 46200.0,
+            "unit": "seconds"
+          },
+          "failure_gpu_unavailable_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "soft_xid_reset_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "failure_checkpoint_load_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "failure_relaunch_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "failure_lost_time_seconds": {
+            "value": 57990.0,
+            "unit": "seconds"
+          },
+          "job_failure_lost_seconds": {
+            "value": 57990.0,
+            "unit": "seconds"
+          },
+          "observed_rollback_gpu_seconds": {
+            "value": 202620.0,
+            "unit": "GPU-seconds"
+          }
+        },
+        "periodic_checkpoint": {
+          "periodic_checkpoint_job_seconds": {
+            "value": 14883900.0,
+            "unit": "job-seconds"
+          },
+          "total_job_interruption_waste_including_periodic_seconds": {
+            "value": 14941890.0,
+            "unit": "seconds"
+          }
+        }
+      },
+      "unclassified_explicit_unit_fields": {
+        "preventive_checkpoint_seconds": {
+          "value": 0.0,
+          "unit": "seconds"
+        },
+        "preventive_overhead_seconds": {
+          "value": 0.0,
+          "unit": "seconds"
+        }
+      },
+      "unavailable_causes": [],
+      "note": "Original counters preserved separately; fields may overlap and are not summed. Missing is not zero."
+    },
+    "tiresias": {
+      "by_cause": {
+        "scheduling": {
+          "scheduling_checkpoint_seconds": {
+            "value": 6803730.0,
+            "unit": "seconds"
+          },
+          "scheduling_relaunch_seconds": {
+            "value": 34017000.0,
+            "unit": "seconds"
+          },
+          "scheduling_preemption_overhead_seconds": {
+            "value": 40820730.0,
+            "unit": "seconds"
+          }
+        },
+        "failure": {
+          "failure_lost_work_gpu_seconds": {
+            "value": 150765.0,
+            "unit": "GPU-seconds"
+          },
+          "failure_checkpoint_loss_seconds": {
+            "value": 10455.0,
+            "unit": "seconds"
+          },
+          "failure_retry_wait_seconds": {
+            "value": 45540.0,
+            "unit": "seconds"
+          },
+          "failure_recovery_delay_seconds": {
+            "value": 45540.0,
+            "unit": "seconds"
+          },
+          "failure_gpu_unavailable_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "soft_xid_reset_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "failure_checkpoint_load_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "failure_relaunch_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "failure_lost_time_seconds": {
+            "value": 55995.0,
+            "unit": "seconds"
+          },
+          "job_failure_lost_seconds": {
+            "value": 55995.0,
+            "unit": "seconds"
+          },
+          "observed_rollback_gpu_seconds": {
+            "value": 150765.0,
+            "unit": "GPU-seconds"
+          }
+        },
+        "periodic_checkpoint": {
+          "periodic_checkpoint_job_seconds": {
+            "value": 10624650.0,
+            "unit": "job-seconds"
+          },
+          "total_job_interruption_waste_including_periodic_seconds": {
+            "value": 51501375.0,
+            "unit": "seconds"
+          }
+        }
+      },
+      "unclassified_explicit_unit_fields": {
+        "preventive_checkpoint_seconds": {
+          "value": 0.0,
+          "unit": "seconds"
+        },
+        "preventive_overhead_seconds": {
+          "value": 0.0,
+          "unit": "seconds"
+        }
+      },
+      "unavailable_causes": [],
+      "note": "Original counters preserved separately; fields may overlap and are not summed. Missing is not zero."
+    },
+    "joint": {
+      "by_cause": {
+        "scheduling": {
+          "scheduling_checkpoint_seconds": {
+            "value": 36720.0,
+            "unit": "seconds"
+          },
+          "scheduling_relaunch_seconds": {
+            "value": 183600.0,
+            "unit": "seconds"
+          },
+          "scheduling_preemption_overhead_seconds": {
+            "value": 220320.0,
+            "unit": "seconds"
+          }
+        },
+        "failure": {
+          "failure_lost_work_gpu_seconds": {
+            "value": 85350.0,
+            "unit": "GPU-seconds"
+          },
+          "failure_checkpoint_loss_seconds": {
+            "value": 14130.0,
+            "unit": "seconds"
+          },
+          "failure_retry_wait_seconds": {
+            "value": 54120.0,
+            "unit": "seconds"
+          },
+          "failure_recovery_delay_seconds": {
+            "value": 54120.0,
+            "unit": "seconds"
+          },
+          "failure_gpu_unavailable_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "soft_xid_reset_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "failure_checkpoint_load_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "failure_relaunch_seconds": {
+            "value": 0.0,
+            "unit": "seconds"
+          },
+          "failure_lost_time_seconds": {
+            "value": 68250.0,
+            "unit": "seconds"
+          },
+          "job_failure_lost_seconds": {
+            "value": 68250.0,
+            "unit": "seconds"
+          },
+          "observed_rollback_gpu_seconds": {
+            "value": 85350.0,
+            "unit": "GPU-seconds"
+          }
+        },
+        "periodic_checkpoint": {
+          "periodic_checkpoint_job_seconds": {
+            "value": 22449630.0,
+            "unit": "job-seconds"
+          },
+          "total_job_interruption_waste_including_periodic_seconds": {
+            "value": 22738200.0,
+            "unit": "seconds"
+          }
+        }
+      },
+      "unclassified_explicit_unit_fields": {
+        "preventive_checkpoint_seconds": {
+          "value": 0.0,
+          "unit": "seconds"
+        },
+        "preventive_overhead_seconds": {
+          "value": 0.0,
+          "unit": "seconds"
+        }
+      },
+      "unavailable_causes": [],
+      "note": "Original counters preserved separately; fields may overlap and are not summed. Missing is not zero."
+    }
+  },
+  "source_summaries": {
+    "fifo": {
+      "risk_exposure_gpu_seconds": 5019512.540507979,
+      "vuln_weighted_risk_exposure": 3901816768.210726,
+      "failure_lost_work_gpu_seconds": 202620.0,
+      "failure_checkpoint_loss_seconds": 11790.0,
+      "failure_retry_wait_seconds": 46200.0,
+      "failure_recovery_delay_seconds": 46200.0,
+      "failure_gpu_unavailable_seconds": 0.0,
+      "preventive_checkpoint_seconds": 0.0,
+      "preventive_relaunch_seconds": 0.0,
+      "maintenance_unavailable_seconds": 0.0,
+      "scheduling_checkpoint_seconds": 0.0,
+      "scheduling_relaunch_seconds": 0.0,
+      "soft_xid_reset_seconds": 0.0,
+      "failure_checkpoint_load_seconds": 0.0,
+      "failure_relaunch_seconds": 0.0,
+      "diagnostic_gpu_unavailable_seconds": 0.0,
+      "unresolved_quarantine_gpu_seconds": 0.0,
+      "failure_lost_time_seconds": 57990.0,
+      "job_failure_lost_seconds": 57990.0,
+      "preventive_overhead_seconds": 0.0,
+      "scheduling_preemption_overhead_seconds": 0.0,
+      "total_job_interruption_waste_seconds": 57990.0,
+      "maintenance_gpu_hours": 0.0,
+      "avoided_xid_episodes_on_idle": 0,
+      "active_xid_job_interruptions": 70,
+      "soft_xid_resets": 0,
+      "hard_xid_maintenances": 0,
+      "soft_xid_ignored_events": 0,
+      "unclassified_incidents": 0,
+      "unmapped_app_incidents": 140,
+      "gpu_local_app_sensitivity_incidents": 140,
+      "diagnostics_requested": 0,
+      "diagnostics_without_duration_evidence": 0,
+      "confirmed_hardware_recoveries": 0,
+      "retry_exhausted_jobs": 0,
+      "xid_episodes_on_idle": 70,
+      "job_interruption_seconds": 57990.0,
+      "gpu_unavailable_seconds": 0.0,
+      "deprecated_mixed_unit_fields": [
+        "failure_lost_time_seconds",
+        "preventive_overhead_seconds"
+      ],
+      "score_exposure_note": "Risk exposure is an uncalibrated score-time surrogate, not expected failure loss. Idle XID count is occupancy, not proof of prevention.",
+      "units_note": "Checkpoint/relaunch: job wall seconds; GPU unavailability: GPU seconds. Component sums are accounting totals, not elapsed makespan.",
+      "status": "completed",
+      "scheduler": "fifo",
+      "scheduler_implementation": "E30 fifo explicit ON controller",
+      "placement_policy": "full_co_optimized",
+      "xid_severity_mode": "evidence_based",
+      "xid43_interrupt_prob": 1.0,
+      "decision_interval_seconds": 300,
+      "cohort_size": 100,
+      "decision_count": 18317,
+      "completed_jobs": 74822,
+      "total_jobs": 140786,
+      "unfinished_jobs": 65964,
+      "starved_jobs": 65934,
+      "avg_queue_wait_seconds": 1828454.3506314547,
+      "p95_queue_wait_seconds": 3095616.0,
+      "max_queue_wait_seconds": 3398767.0,
+      "avg_jct_seconds": 1879995.996471626,
+      "makespan_seconds": 5492277.0,
+      "makespan_censored": true,
+      "migrations": 0,
+      "no_fit_decisions": 0,
+      "excluded_allocations": 0,
+      "event_count": 787146,
+      "replay_seconds": 5495100.0,
+      "risk_interval_seconds": 300,
+      "risk_update_count": 18317,
+      "failed_jobs": 0,
+      "regular_dispatch_count": 18317,
+      "event_fill_count": 0,
+      "busy_gpu_seconds": 460293176.0,
+      "queue_job_seconds": 257420774208.0,
+      "time_weighted_gpu_allocation": 0.8376429473530964,
+      "completed_useful_gpu_seconds": 379810856.0,
+      "retained_useful_gpu_seconds": 387780176.0,
+      "unfinished_remaining_gpu_seconds": 703636833.0,
+      "p95_completed_jct_seconds": 3143798.85,
+      "experiment_status": "RESEARCH_RUN",
+      "arm": "fifo",
+      "start_time": 1686822000.0,
+      "end_time": 1692317100.0,
+      "gpu_count": 100,
+      "risk_on": true,
+      "periodic_checkpoint_job_seconds": 14883900.0,
+      "total_job_interruption_waste_including_periodic_seconds": 14941890.0,
+      "restricted_total_flow_seconds": 257521386913.0,
+      "restricted_mean_flow_seconds": 1829169.0005611354,
+      "progress_conservation": true,
+      "flow_conservation": true,
+      "gpu_time_conservation": true,
+      "executed_gpu_seconds": 387982796.0,
+      "observed_rollback_gpu_seconds": 202620.0,
+      "periodic_checkpoint_jobs": 38401,
+      "checkpoint_lease_contract": "physical_cp60_then_restart300; periodic_pause60",
+      "mean_planning_seconds": 0.3106986594584897,
+      "max_planning_seconds": 4.0543258000398055,
+      "joint_selection_changes": 0,
+      "candidate_truncated_decisions": 0,
+      "pending_committed_starts": 0,
+      "policy_promotions": 8119,
+      "full_replay_run": true,
+      "global_optimality_claim": false,
+      "risk_semantics": "raw_24h_surrogate_not_5m_probability",
+      "duration_oracle_in_planner": false,
+      "elapsed_seconds": 5979.233999999997,
+      "peak_memory_bytes": 296321024,
+      "event_counts": {
+        "job_admitted": 140786,
+        "job_launch": 74852,
+        "job_complete": 74822,
+        "periodic_checkpoint_start": 248067,
+        "periodic_checkpoint_complete": 248059,
+        "xid_episode": 140,
+        "incident_response": 140,
+        "gang_failure": 70,
+        "job_recovery_plan": 70,
+        "job_recovered": 70,
+        "job_relaunch": 70
+      }
+    },
+    "tiresias": {
+      "risk_exposure_gpu_seconds": 4982274.060858373,
+      "vuln_weighted_risk_exposure": 3750113739.1238594,
+      "scheduling_checkpoint_seconds": 6803730.0,
+      "scheduling_relaunch_seconds": 34017000.0,
+      "failure_lost_work_gpu_seconds": 150765.0,
+      "failure_checkpoint_loss_seconds": 10455.0,
+      "failure_retry_wait_seconds": 45540.0,
+      "failure_recovery_delay_seconds": 45540.0,
+      "failure_gpu_unavailable_seconds": 0.0,
+      "preventive_checkpoint_seconds": 0.0,
+      "preventive_relaunch_seconds": 0.0,
+      "maintenance_unavailable_seconds": 0.0,
+      "soft_xid_reset_seconds": 0.0,
+      "failure_checkpoint_load_seconds": 0.0,
+      "failure_relaunch_seconds": 0.0,
+      "diagnostic_gpu_unavailable_seconds": 0.0,
+      "unresolved_quarantine_gpu_seconds": 0.0,
+      "failure_lost_time_seconds": 55995.0,
+      "job_failure_lost_seconds": 55995.0,
+      "preventive_overhead_seconds": 0.0,
+      "scheduling_preemption_overhead_seconds": 40820730.0,
+      "total_job_interruption_waste_seconds": 40876725.0,
+      "maintenance_gpu_hours": 0.0,
+      "avoided_xid_episodes_on_idle": 0,
+      "active_xid_job_interruptions": 69,
+      "soft_xid_resets": 0,
+      "hard_xid_maintenances": 0,
+      "soft_xid_ignored_events": 0,
+      "unclassified_incidents": 0,
+      "unmapped_app_incidents": 140,
+      "gpu_local_app_sensitivity_incidents": 140,
+      "diagnostics_requested": 0,
+      "diagnostics_without_duration_evidence": 0,
+      "confirmed_hardware_recoveries": 0,
+      "retry_exhausted_jobs": 0,
+      "xid_episodes_on_idle": 71,
+      "job_interruption_seconds": 40876725.0,
+      "gpu_unavailable_seconds": 0.0,
+      "deprecated_mixed_unit_fields": [
+        "failure_lost_time_seconds",
+        "preventive_overhead_seconds"
+      ],
+      "score_exposure_note": "Risk exposure is an uncalibrated score-time surrogate, not expected failure loss. Idle XID count is occupancy, not proof of prevention.",
+      "units_note": "Checkpoint/relaunch: job wall seconds; GPU unavailability: GPU seconds. Component sums are accounting totals, not elapsed makespan.",
+      "status": "completed",
+      "scheduler": "tiresias",
+      "scheduler_implementation": "E30 tiresias explicit ON controller",
+      "placement_policy": "full_co_optimized",
+      "xid_severity_mode": "evidence_based",
+      "xid43_interrupt_prob": 1.0,
+      "decision_interval_seconds": 300,
+      "cohort_size": 100,
+      "decision_count": 18317,
+      "completed_jobs": 75340,
+      "total_jobs": 140786,
+      "unfinished_jobs": 65446,
+      "starved_jobs": 65329,
+      "avg_queue_wait_seconds": 1764230.3883056554,
+      "p95_queue_wait_seconds": 2964382.75,
+      "max_queue_wait_seconds": 3423154.0,
+      "avg_jct_seconds": 1770459.622086541,
+      "makespan_seconds": 5494967.0,
+      "makespan_censored": true,
+      "migrations": 0,
+      "no_fit_decisions": 0,
+      "excluded_allocations": 0,
+      "event_count": 1213164,
+      "replay_seconds": 5495100.0,
+      "risk_interval_seconds": 300,
+      "risk_update_count": 18317,
+      "failed_jobs": 0,
+      "regular_dispatch_count": 18317,
+      "event_fill_count": 0,
+      "busy_gpu_seconds": 477096689.0,
+      "queue_job_seconds": 248378939448.0,
+      "time_weighted_gpu_allocation": 0.8682220323560991,
+      "completed_useful_gpu_seconds": 377337839.0,
+      "retained_useful_gpu_seconds": 389320499.0,
+      "unfinished_remaining_gpu_seconds": 702096510.0,
+      "p95_completed_jct_seconds": 2964614.15,
+      "experiment_status": "RESEARCH_RUN",
+      "arm": "tiresias",
+      "start_time": 1686822000.0,
+      "end_time": 1692317100.0,
+      "gpu_count": 100,
+      "risk_on": true,
+      "periodic_checkpoint_job_seconds": 10624650.0,
+      "total_job_interruption_waste_including_periodic_seconds": 51501375.0,
+      "restricted_total_flow_seconds": 248517773252.0,
+      "restricted_mean_flow_seconds": 1765216.5218984843,
+      "progress_conservation": true,
+      "flow_conservation": true,
+      "gpu_time_conservation": true,
+      "executed_gpu_seconds": 389471264.0,
+      "observed_rollback_gpu_seconds": 150765.0,
+      "periodic_checkpoint_jobs": 32066,
+      "checkpoint_lease_contract": "physical_cp60_then_restart300; periodic_pause60",
+      "mean_planning_seconds": 0.3561790501720842,
+      "max_planning_seconds": 4.5242451000376604,
+      "joint_selection_changes": 0,
+      "candidate_truncated_decisions": 0,
+      "pending_committed_starts": 134585,
+      "policy_promotions": 60079,
+      "full_replay_run": true,
+      "global_optimality_claim": false,
+      "risk_semantics": "raw_24h_surrogate_not_5m_probability",
+      "duration_oracle_in_planner": false,
+      "elapsed_seconds": 6807.75,
+      "peak_memory_bytes": 659005440,
+      "event_counts": {
+        "job_admitted": 140786,
+        "job_launch": 75457,
+        "job_complete": 75340,
+        "periodic_checkpoint_start": 177080,
+        "periodic_checkpoint_complete": 177074,
+        "scheduler_preemption": 113398,
+        "gang_checkpoint": 113398,
+        "scheduler_checkpoint_complete": 113392,
+        "job_recovered": 113451,
+        "job_relaunch": 113370,
+        "xid_episode": 140,
+        "incident_response": 140,
+        "gang_failure": 69,
+        "job_recovery_plan": 69
+      }
+    },
+    "joint": {
+      "risk_exposure_gpu_seconds": 5373016.863369951,
+      "vuln_weighted_risk_exposure": 4207519792.1289725,
+      "scheduling_checkpoint_seconds": 36720.0,
+      "scheduling_relaunch_seconds": 183600.0,
+      "failure_lost_work_gpu_seconds": 85350.0,
+      "failure_checkpoint_loss_seconds": 14130.0,
+      "failure_retry_wait_seconds": 54120.0,
+      "failure_recovery_delay_seconds": 54120.0,
+      "failure_gpu_unavailable_seconds": 0.0,
+      "preventive_checkpoint_seconds": 0.0,
+      "preventive_relaunch_seconds": 0.0,
+      "maintenance_unavailable_seconds": 0.0,
+      "soft_xid_reset_seconds": 0.0,
+      "failure_checkpoint_load_seconds": 0.0,
+      "failure_relaunch_seconds": 0.0,
+      "diagnostic_gpu_unavailable_seconds": 0.0,
+      "unresolved_quarantine_gpu_seconds": 0.0,
+      "failure_lost_time_seconds": 68250.0,
+      "job_failure_lost_seconds": 68250.0,
+      "preventive_overhead_seconds": 0.0,
+      "scheduling_preemption_overhead_seconds": 220320.0,
+      "total_job_interruption_waste_seconds": 288570.0,
+      "maintenance_gpu_hours": 0.0,
+      "avoided_xid_episodes_on_idle": 0,
+      "active_xid_job_interruptions": 82,
+      "soft_xid_resets": 0,
+      "hard_xid_maintenances": 0,
+      "soft_xid_ignored_events": 0,
+      "unclassified_incidents": 0,
+      "unmapped_app_incidents": 140,
+      "gpu_local_app_sensitivity_incidents": 140,
+      "diagnostics_requested": 0,
+      "diagnostics_without_duration_evidence": 0,
+      "confirmed_hardware_recoveries": 0,
+      "retry_exhausted_jobs": 0,
+      "xid_episodes_on_idle": 58,
+      "job_interruption_seconds": 288570.0,
+      "gpu_unavailable_seconds": 0.0,
+      "deprecated_mixed_unit_fields": [
+        "failure_lost_time_seconds",
+        "preventive_overhead_seconds"
+      ],
+      "score_exposure_note": "Risk exposure is an uncalibrated score-time surrogate, not expected failure loss. Idle XID count is occupancy, not proof of prevention.",
+      "units_note": "Checkpoint/relaunch: job wall seconds; GPU unavailability: GPU seconds. Component sums are accounting totals, not elapsed makespan.",
+      "status": "completed",
+      "scheduler": "joint",
+      "scheduler_implementation": "E30 joint explicit ON controller",
+      "placement_policy": "full_co_optimized",
+      "xid_severity_mode": "evidence_based",
+      "xid43_interrupt_prob": 1.0,
+      "decision_interval_seconds": 300,
+      "cohort_size": 100,
+      "decision_count": 18317,
+      "completed_jobs": 88697,
+      "total_jobs": 140786,
+      "unfinished_jobs": 52089,
+      "starved_jobs": 52057,
+      "avg_queue_wait_seconds": 1311096.2449249215,
+      "p95_queue_wait_seconds": 2405264.0,
+      "max_queue_wait_seconds": 5297726.0,
+      "avg_jct_seconds": 1092868.973685694,
+      "makespan_seconds": 5495028.0,
+      "makespan_censored": true,
+      "migrations": 0,
+      "no_fit_decisions": 0,
+      "excluded_allocations": 0,
+      "event_count": 1070193,
+      "replay_seconds": 5495100.0,
+      "risk_interval_seconds": 300,
+      "risk_update_count": 18317,
+      "failed_jobs": 0,
+      "regular_dispatch_count": 18317,
+      "event_fill_count": 0,
+      "busy_gpu_seconds": 496836268.0,
+      "queue_job_seconds": 184583995938.0,
+      "time_weighted_gpu_allocation": 0.9041441793597933,
+      "completed_useful_gpu_seconds": 409094968.0,
+      "retained_useful_gpu_seconds": 418985908.0,
+      "unfinished_remaining_gpu_seconds": 672431101.0,
+      "p95_completed_jct_seconds": 2054667.5999999999,
+      "experiment_status": "RESEARCH_RUN",
+      "arm": "joint",
+      "start_time": 1686822000.0,
+      "end_time": 1692317100.0,
+      "gpu_count": 100,
+      "risk_on": true,
+      "periodic_checkpoint_job_seconds": 22449630.0,
+      "total_job_interruption_waste_including_periodic_seconds": 22738200.0,
+      "restricted_total_flow_seconds": 184732380217.0,
+      "restricted_mean_flow_seconds": 1312150.215341014,
+      "progress_conservation": true,
+      "flow_conservation": true,
+      "gpu_time_conservation": true,
+      "executed_gpu_seconds": 419071258.0,
+      "observed_rollback_gpu_seconds": 85350.0,
+      "periodic_checkpoint_jobs": 46802,
+      "checkpoint_lease_contract": "physical_cp60_then_restart300; periodic_pause60",
+      "mean_planning_seconds": 0.2780252334281095,
+      "max_planning_seconds": 2.6302464000182226,
+      "joint_selection_changes": 17046,
+      "candidate_truncated_decisions": 16806,
+      "pending_committed_starts": 4070,
+      "policy_promotions": 11520,
+      "full_replay_run": true,
+      "global_optimality_claim": false,
+      "risk_semantics": "raw_24h_surrogate_not_5m_probability",
+      "duration_oracle_in_planner": false,
+      "elapsed_seconds": 5390.0470000000205,
+      "peak_memory_bytes": 299814912,
+      "event_counts": {
+        "job_admitted": 140786,
+        "job_launch": 88729,
+        "job_complete": 88697,
+        "periodic_checkpoint_start": 374166,
+        "periodic_checkpoint_complete": 374149,
+        "scheduler_preemption": 612,
+        "gang_checkpoint": 612,
+        "scheduler_checkpoint_complete": 612,
+        "job_recovered": 694,
+        "job_relaunch": 692,
+        "xid_episode": 140,
+        "incident_response": 140,
+        "gang_failure": 82,
+        "job_recovery_plan": 82
+      }
+    }
+  }
+}

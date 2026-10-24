@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "start_time": "2023-06-15T09:40:00+00:00",
+  "end_time": "2023-08-18T00:05:00+00:00",
+  "cohort_size": 100,
+  "decision_interval_seconds": 300,
+  "random_seed": 17,
+  "scheduler": "Las",
+  "placement_policy": "full_co_optimized",
+  "preemption": true,
+  "blox_source_root": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-09-22_Blox_RiskLab_30m_01\\blox-main",
+  "server_correlated_failure": false,
+  "inputs": {
+    "probability_tape": {
+      "path": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-22_Causal5m_BLOX_01\\inputs\\probability_tape.parquet",
+      "sha256": "7be9e70f3480f98b48c993c9115a1162c9f58bc75cbcccd65d39c19e30cded1c"
+    },
+    "failure_tape": {
+      "path": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\inputs\\full_period\\failure_tape.parquet",
+      "sha256": "54c182c0c215fbba3be7098e69fb3a8718a0e8f4bbcd9689453544807f8dab12"
+    },
+    "gpu_manifest": {
+      "path": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\inputs\\full_period\\gpu_manifest.parquet",
+      "sha256": "fe1781b45300f396fd6649e329c4bd50861d9498de67fc55159aaa38c238f6a4"
+    },
+    "job_trace": {
+      "path": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\inputs\\full_period\\job_trace.parquet",
+      "sha256": "d75b52f510c6ef0250d0b3ee41ed32a3799ad202a2ae6797dbb8a158180da7f4"
+    },
+    "threshold_manifest": {
+      "path": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-22_Causal5m_BLOX_01\\inputs\\threshold_manifest.json",
+      "sha256": "61dba5ec226034d282dfaa7b93f5ab5ddccc09313fc53ad18362dba14992cc98"
+    }
+  },
+  "recovery": {
+    "checkpoint_interval_seconds": 300,
+    "checkpoint_cost_seconds": 60,
+    "relaunch_seconds": 300
+  },
+  "maintenance": {
+    "capacity": 1,
+    "duration_seconds": 900,
+    "cooldown_seconds": 300
+  },
+  "assumptions": {
+    "workload": "All completed GPU jobs arriving in the replay interval with 1..100 GPU demand; no resampling or time compression. This replays cluster-wide arrivals on a smaller cohort, not a measured production load for these 100 GPUs.",
+    "duration": "Observed completed-job execution seconds treated as useful work; original unsuccessful/cancelled durations are censored and excluded.",
+    "initial_state": "Empty start; actual carry-in not reconstructed; see carry_in_audit",
+    "job_arrivals_in_interval": 547151,
+    "included_jobs": 140786,
+    "excluded_jobs": 406365,
+    "trace_last_arrival": "2023-08-16 15:59:42+00:00",
+    "failure_episodes": 140,
+    "checkpoint_source": "fixed_default; job trace has no checkpoint field",
+    "recovery_parameters": "Checkpoint interval 300s, preventive/scheduler checkpoint cost 60s, relaunch 300s; assumptions, not observed durations.",
+    "maintenance_parameters": "One concurrent GPU, 900s maintenance, 300s cooldown; assumptions.",
+    "episode_rule": "Merge nonzero five-minute buckets with gap <=600s. Gap rule takes precedence over transient clean observations; timestamp preserves first raw observation.",
+    "unavailability": "Reactive downtime and preventive maintenance are disjoint GPU-second components; queue time is separate.",
+    "cohort": "First 100 lexical GPU IDs in original telemetry grid; server prefix verified against node telemetry header.",
+    "risk_probability": "Unmodified fusion_b1_inertia; source cold-start B2 fallback preserved; no extra B1 weight; causal past-only 5m materialization, original score age in score_provenance.parquet"
+  },
+  "source_data": {
+    "job_trace_sha256": "747854c73ce8b3263b764aa9ff8d866d89903705d31fcd0e0520c33dd14af9a1",
+    "raw_xid_sha256": "c27189959db8e0c7e8ec9c736fd73539f6400488058584c1b855a8e94c60b7b0",
+    "node_telemetry_header_sha256": "2f2a6fcce0cb23db199dc10201d6019fb2f936054c7ffd4f85b89352310bdf83"
+  },
+  "source_model": {
+    "experiment": "Experiment19 B1-only inertia (E21 exact replay)",
+    "column": "fusion_b1_inertia",
+    "source_manifest_sha256": "20f1b3f1d4d0439e04d79092264da8f8176880c10c6e1fa21b5f3d30de8e8a93"
+  },
+  "experiment_id": "Experiment25",
+  "preparation_status": "APPROVED_FULL_RUN",
+  "risk_interval_seconds": 300,
+  "xid_severity_mode": "evidence_based",
+  "scope_scenario": "gpu_local_sensitivity: no application/job PID mapping",
+  "optimization": {
+    "risk_enabled": true,
+    "branch_mode": "fused_only",
+    "b1_acute_weight": 0,
+    "top_k_quarantine": 0,
+    "preemption_guard": true,
+    "metaheuristic_iters": 120
+  },
+  "event_fill": false,
+  "recovery_random_seed": 17,
+  "incident_policy": {
+    "unmapped_app_mode": "gpu_local_sensitivity",
+    "max_app_retries": 3,
+    "backoff_multiplier": 1,
+    "max_retry_wait_seconds": 86400,
+    "random_key_version": "job-attempt-v1",
+    "role": "Historical inter-session-gap-only comparator; not full recovery latency",
+    "duration_semantics": "retry_gap_total",
+    "loading_requires_allocation": false,
+    "durations": {
+      "retry_wait": {
+        "kind": "fixed",
+        "seconds": 660,
+        "source": "https://arxiv.org/html/2605.09370 section4.3.3 median11min; includes configured10min delay and teardown/restart overhead"
+      }
+    }
+  },
+  "research_experiment_id": "Experiment27",
+  "experiment_label": "Causal 5m held E19 / 5m dispatch",
+  "engine_contract_id": "Experiment25",
+  "source_score_interval_seconds": 1800,
+  "risk_delivery_semantics": "Causal zero-order hold; original score validity <1800s; not fresh 5m inference",
+  "score_provenance": {
+    "path": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-22_Causal5m_BLOX_01\\inputs\\score_provenance.parquet",
+    "sha256": "75e20c2f2323efa1e41c982900ee62cb1a8ea78361ed4de2b651ed0a1a03aadc"
+  }
+}

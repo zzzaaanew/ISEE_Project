@@ -1,0 +1,38 @@
+{
+  "probability_tape": {
+    "path": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-22_Causal5m_BLOX_01\\inputs\\probability_tape.parquet",
+    "sha256": "7be9e70f3480f98b48c993c9115a1162c9f58bc75cbcccd65d39c19e30cded1c",
+    "bytes": 2866284,
+    "included": false
+  },
+  "failure_tape": {
+    "path": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\inputs\\full_period\\failure_tape.parquet",
+    "sha256": "54c182c0c215fbba3be7098e69fb3a8718a0e8f4bbcd9689453544807f8dab12",
+    "bytes": 7729,
+    "included": false
+  },
+  "gpu_manifest": {
+    "path": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\inputs\\full_period\\gpu_manifest.parquet",
+    "sha256": "fe1781b45300f396fd6649e329c4bd50861d9498de67fc55159aaa38c238f6a4",
+    "bytes": 4857,
+    "included": false
+  },
+  "job_trace": {
+    "path": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\inputs\\full_period\\job_trace.parquet",
+    "sha256": "d75b52f510c6ef0250d0b3ee41ed32a3799ad202a2ae6797dbb8a158180da7f4",
+    "bytes": 2754648,
+    "included": false
+  },
+  "threshold_manifest": {
+    "path": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-22_Causal5m_BLOX_01\\inputs\\threshold_manifest.json",
+    "sha256": "61dba5ec226034d282dfaa7b93f5ab5ddccc09313fc53ad18362dba14992cc98",
+    "bytes": 243,
+    "included": true
+  },
+  "score_provenance": {
+    "path": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-22_Causal5m_BLOX_01\\inputs\\score_provenance.parquet",
+    "sha256": "75e20c2f2323efa1e41c982900ee62cb1a8ea78361ed4de2b651ed0a1a03aadc",
+    "bytes": 6567008,
+    "included": false
+  }
+}

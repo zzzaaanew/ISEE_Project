@@ -1,0 +1,275 @@
+{
+  "status": "COMPLETED",
+  "started_at": "2026-10-23T07:21:19.826366+00:00",
+  "connection": {
+    "status": "PASS",
+    "experiment": 30,
+    "goal": "G-009",
+    "tests": [
+      "fifo: periodic_pause60_and_capacity",
+      "tiresias: periodic_pause60_and_capacity",
+      "joint: periodic_pause60_and_capacity",
+      "failure_during_checkpoint_rollback_and_retry660",
+      "joint_selection_checkpoint_GPU_reserved60_then_commit",
+      "policy_view_no_future_runtime_fields",
+      "40_seed17_DP_capacity_oracle_cases",
+      "100GPU_300readyjobs_and_strictFIFO_HOL"
+    ],
+    "actual_connection": [
+      {
+        "arm": "fifo",
+        "decisions": 72,
+        "jobs": 863,
+        "completed": 574,
+        "mean_planning_seconds": 0.0009189777766651888,
+        "max_planning_seconds": 0.003109699988272041
+      },
+      {
+        "arm": "tiresias",
+        "decisions": 72,
+        "jobs": 863,
+        "completed": 809,
+        "mean_planning_seconds": 0.0026137708312793015,
+        "max_planning_seconds": 0.01828009996097535
+      },
+      {
+        "arm": "joint",
+        "decisions": 72,
+        "jobs": 863,
+        "completed": 818,
+        "mean_planning_seconds": 0.005459262497121624,
+        "max_planning_seconds": 0.03632269997615367
+      }
+    ],
+    "full_run_required_after_pass": true,
+    "seed": 17,
+    "command": [
+      "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\.venv\\Scripts\\python.exe",
+      "-B",
+      "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\connection.py"
+    ],
+    "elapsed_seconds": 45.28100000001723
+  },
+  "free_ram_bytes_at_start": 1597521920,
+  "hard_timeout_seconds": 7200,
+  "poll_seconds": 30,
+  "arms": {
+    "fifo": {
+      "command": [
+        "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\run.py",
+        "--arm",
+        "fifo"
+      ],
+      "cwd": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01",
+      "started_at": "2026-10-23T07:21:19.827863+00:00",
+      "stdout_path": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\fifo.stdout.log",
+      "stderr_path": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\fifo.stderr.log",
+      "pid": 57920,
+      "exit_code": 0,
+      "elapsed_seconds": 6815.343,
+      "status": "COMPLETED",
+      "alive": false,
+      "progress": {
+        "data": {
+          "status": "completed",
+          "progress": 1.0,
+          "timestamp": 1692317100.0,
+          "start_time": 1686822000.0,
+          "end_time": 1692317100.0,
+          "arm": "fifo",
+          "decisions": 18317,
+          "jobs": {
+            "future": 0,
+            "queued": 65934,
+            "running": 26,
+            "recovering": 0,
+            "loading": 0,
+            "checkpointing": 4,
+            "completed": 74822,
+            "failed": 0
+          },
+          "elapsed_seconds": 5979.7029999999795,
+          "pid": 12536,
+          "peak_memory_bytes": 318050304
+        },
+        "mtime_ns": 1792746061493939800
+      },
+      "ended_at": "2026-10-23T09:14:55.198346+00:00",
+      "outputs": {
+        "summary.json": {
+          "exists": true,
+          "bytes": 4747
+        },
+        "jobs.parquet": {
+          "exists": true,
+          "bytes": 3158519
+        },
+        "progress.json": {
+          "exists": true,
+          "bytes": 461
+        },
+        "manifest.json": {
+          "exists": true,
+          "bytes": 9969
+        },
+        "events.jsonl.gz": {
+          "exists": true,
+          "bytes": 10926749
+        },
+        "decisions.jsonl.gz": {
+          "exists": true,
+          "bytes": 1063397
+        }
+      },
+      "stderr_tail": []
+    },
+    "tiresias": {
+      "command": [
+        "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\run.py",
+        "--arm",
+        "tiresias"
+      ],
+      "cwd": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01",
+      "started_at": "2026-10-23T07:21:19.840649+00:00",
+      "stdout_path": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\tiresias.stdout.log",
+      "stderr_path": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\tiresias.stderr.log",
+      "pid": 38940,
+      "exit_code": 0,
+      "elapsed_seconds": 6815.375,
+      "status": "COMPLETED",
+      "alive": false,
+      "progress": {
+        "data": {
+          "status": "completed",
+          "progress": 1.0,
+          "timestamp": 1692317100.0,
+          "start_time": 1686822000.0,
+          "end_time": 1692317100.0,
+          "arm": "tiresias",
+          "decisions": 18317,
+          "jobs": {
+            "future": 0,
+            "queued": 65410,
+            "running": 25,
+            "recovering": 10,
+            "loading": 0,
+            "checkpointing": 1,
+            "completed": 75340,
+            "failed": 0
+          },
+          "elapsed_seconds": 6808.156000000017,
+          "pid": 44028,
+          "peak_memory_bytes": 768970752
+        },
+        "mtime_ns": 1792746889988143400
+      },
+      "ended_at": "2026-10-23T09:14:55.212300+00:00",
+      "outputs": {
+        "summary.json": {
+          "exists": true,
+          "bytes": 4907
+        },
+        "jobs.parquet": {
+          "exists": true,
+          "bytes": 3262710
+        },
+        "progress.json": {
+          "exists": true,
+          "bytes": 465
+        },
+        "manifest.json": {
+          "exists": true,
+          "bytes": 9981
+        },
+        "events.jsonl.gz": {
+          "exists": true,
+          "bytes": 19890462
+        },
+        "decisions.jsonl.gz": {
+          "exists": true,
+          "bytes": 1223627
+        }
+      },
+      "stderr_tail": []
+    },
+    "joint": {
+      "command": [
+        "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\.venv\\Scripts\\python.exe",
+        "-B",
+        "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\run.py",
+        "--arm",
+        "joint"
+      ],
+      "cwd": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01",
+      "started_at": "2026-10-23T07:21:19.850989+00:00",
+      "stdout_path": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\joint.stdout.log",
+      "stderr_path": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\joint.stderr.log",
+      "pid": 42004,
+      "exit_code": 0,
+      "elapsed_seconds": 6815.36,
+      "status": "COMPLETED",
+      "alive": false,
+      "progress": {
+        "data": {
+          "status": "completed",
+          "progress": 1.0,
+          "timestamp": 1692317100.0,
+          "start_time": 1686822000.0,
+          "end_time": 1692317100.0,
+          "arm": "joint",
+          "decisions": 18317,
+          "jobs": {
+            "future": 0,
+            "queued": 52059,
+            "running": 24,
+            "recovering": 0,
+            "loading": 0,
+            "checkpointing": 6,
+            "completed": 88697,
+            "failed": 0
+          },
+          "elapsed_seconds": 5390.516000000003,
+          "pid": 9656,
+          "peak_memory_bytes": 324165632
+        },
+        "mtime_ns": 1792745472387879500
+      },
+      "ended_at": "2026-10-23T09:14:55.208319+00:00",
+      "outputs": {
+        "summary.json": {
+          "exists": true,
+          "bytes": 4894
+        },
+        "jobs.parquet": {
+          "exists": true,
+          "bytes": 3507065
+        },
+        "progress.json": {
+          "exists": true,
+          "bytes": 460
+        },
+        "manifest.json": {
+          "exists": true,
+          "bytes": 9971
+        },
+        "events.jsonl.gz": {
+          "exists": true,
+          "bytes": 14811324
+        },
+        "decisions.jsonl.gz": {
+          "exists": true,
+          "bytes": 1920334
+        }
+      },
+      "stderr_tail": []
+    }
+  },
+  "errors": [],
+  "updated_at": "2026-10-23T09:14:58.276149+00:00",
+  "evaluation_exit_code": 0,
+  "ended_at": "2026-10-23T09:14:58.276149+00:00"
+}

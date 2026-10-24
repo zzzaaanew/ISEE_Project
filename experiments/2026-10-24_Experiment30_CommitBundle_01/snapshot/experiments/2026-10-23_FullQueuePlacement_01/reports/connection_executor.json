@@ -1,0 +1,17 @@
+{
+  "status": "COMPLETED",
+  "command": [
+    "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\.venv\\Scripts\\python.exe",
+    "-B",
+    "connection.py"
+  ],
+  "cwd": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01",
+  "started_at": "2026-10-23T07:20:15.1130828Z",
+  "hard_timeout_seconds": 180,
+  "pid": 46932,
+  "exit_code": 0,
+  "stdout": "ACTUAL_CONNECTION fifo\r\nACTUAL_CONNECTION tiresias\r\nACTUAL_CONNECTION joint\r\n{\"status\": \"PASS\", \"experiment\": 30, \"goal\": \"G-009\", \"tests\": [\"fifo: periodic_pause60_and_capacity\", \"tiresias: periodic_pause60_and_capacity\", \"joint: periodic_pause60_and_capacity\", \"failure_during_checkpoint_rollback_and_retry660\", \"joint_selection_checkpoint_GPU_reserved60_then_commit\", \"policy_view_no_future_runtime_fields\", \"40_seed17_DP_capacity_oracle_cases\", \"100GPU_300readyjobs_and_strictFIFO_HOL\"], \"actual_connection\": [{\"arm\": \"fifo\", \"decisions\": 72, \"jobs\": 863, \"completed\": 574, \"mean_planning_seconds\": 0.0009189777766651888, \"max_planning_seconds\": 0.003109699988272041}, {\"arm\": \"tiresias\", \"decisions\": 72, \"jobs\": 863, \"completed\": 809, \"mean_planning_seconds\": 0.0026137708312793015, \"max_planning_seconds\": 0.01828009996097535}, {\"arm\": \"joint\", \"decisions\": 72, \"jobs\": 863, \"completed\": 818, \"mean_planning_seconds\": 0.005459262497121624, \"max_planning_seconds\": 0.03632269997615367}], \"full_run_required_after_pass\": true, \"seed\": 17, \"command\": [\"C:\\\\Users\\\\\\uc774\\uc900\\ud638\\\\Desktop\\\\Archive\\\\\\uc5f0\\uad6c \\uad00\\ub828 \\ud504\\ub85c\\uc81d\\ud2b8\\\\IISE \\ub17c\\ubb38 \\uc900\\ube44 \\ud504\\ub85c\\uc81d\\ud2b8\\\\BLOX_RiskLab_GitHub_20261017\\\\.venv\\\\Scripts\\\\python.exe\", \"-B\", \"C:\\\\Users\\\\\\uc774\\uc900\\ud638\\\\Desktop\\\\Archive\\\\\\uc5f0\\uad6c \\uad00\\ub828 \\ud504\\ub85c\\uc81d\\ud2b8\\\\IISE \\ub17c\\ubb38 \\uc900\\ube44 \\ud504\\ub85c\\uc81d\\ud2b8\\\\BLOX_RiskLab_GitHub_20261017\\\\experiments\\\\2026-10-23_FullQueuePlacement_01\\\\connection.py\"], \"elapsed_seconds\": 45.28100000001723}\r\n",
+  "stderr": "",
+  "elapsed_seconds": 50.3189237,
+  "ended_at": "2026-10-23T07:21:05.4332409Z"
+}

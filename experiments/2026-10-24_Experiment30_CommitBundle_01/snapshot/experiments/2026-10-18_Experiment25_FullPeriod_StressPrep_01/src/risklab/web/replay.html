@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blox + RiskLab · 인터랙티브 시뮬레이션 플레이어 &amp; 실시간 구동 대시보드</title>
+<style>
+  :root {
+    font-family: 'Pretendard', Inter, -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+    color: #0f172a;
+    background: #f1f5f9;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; }
+  .shell { max-width: 1520px; margin: 0 auto; display: grid; gap: 16px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    padding: 18px 22px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  h1 { font-size: 22px; margin: 4px 0; color: #0f172a; }
+  h2 { font-size: 16px; margin: 0 0 12px 0; color: #0f172a; }
+  .sub { font-size: 13px; color: #475569; margin: 0; }
+  .badge {
+    background: #1d4ed8;
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 12px 16px;
+  }
+  .btn-group { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  button, select {
+    font: inherit;
+    font-size: 13px;
+    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #0f172a;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  button.primary { background: #1d4ed8; color: #ffffff; border-color: #1d4ed8; font-weight: 700; }
+  button.emerald { background: #059669; color: #ffffff; border-color: #059669; font-weight: 700; }
+  button.amber { background: #fffbeb; color: #b45309; border-color: #fcd34d; }
+  button.amber:hover { background: #fef3c7; }
+  button:disabled { opacity: 0.45; cursor: default; }
+  .scrubber-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  input[type="range"] {
+    flex: 1;
+    accent-color: #1d4ed8;
+    height: 8px;
+    cursor: pointer;
+  }
+  .step-pill {
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 13px;
+    font-weight: 700;
+    background: #e2e8f0;
+    padding: 5px 10px;
+    border-radius: 6px;
+    min-width: 240px;
+    text-align: center;
+  }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .compare-grid.single {
+    grid-template-columns: 1fr;
+  }
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin: 10px 0 14px 0;
+  }
+  .kpi-mini {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .kpi-mini small { display: block; font-size: 11px; color: #64748b; }
+  .kpi-mini strong { font-size: 15px; color: #0f172a; }
+  .server-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 10px;
+  }
+  .server {
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 9px 10px;
+  }
+  .server-heading {
+    font-size: 12px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .server-meta { color: #64748b; font-size: 11px; }
+  .server-grid {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 4px;
+  }
+  .gpu {
+    height: 44px;
+    border-radius: 5px;
+    background: #e2e8f0;
+    border: 1.5px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #1e293b;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+  .gpu:hover { transform: scale(1.06); z-index: 2; }
+  .gpu.running { background: #0f766e; color: #ffffff; }
+  .gpu.drained, .gpu.maintenance { background: #dc2626; color: #ffffff; font-weight: 700; animation: pulseRed 1.1s infinite alternate; }
+  .gpu.failed { background: #991b1b; color: #ffffff; font-weight: 700; }
+  .gpu.cooldown { background: #7c3aed; color: #ffffff; }
+  .gpu.diagnosing { background: #b45309; color: #ffffff; }
+  .gpu.quarantined { background: #7f1d1d; color: #ffffff; }
+  .gpu.excluded { border: 2px solid #dc2626; }
+  .gpu.alert:not(.excluded) { border: 2px dashed #d97706; }
+  .gpu small { font-size: 9px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  @keyframes pulseRed {
+    0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); }
+    100% { box-shadow: 0 0 0 5px rgba(220, 38, 38, 0); }
+  }
+  .legend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #475569;
+    margin-top: 10px;
+  }
+  .dot { display: inline-block; width: 10px; height: 10px; margin-right: 5px; border-radius: 3px; vertical-align: middle; }
+  .events {
+    height: 170px;
+    overflow: auto;
+    font: 12px ui-monospace, Consolas, monospace;
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 12px;
+  }
+  .event { padding: 4px 0; border-bottom: 1px solid #1e293b; }
+  .event.fail-ev { color: #f87171; font-weight: 700; background: rgba(239, 68, 68, 0.15); padding: 4px 6px; border-radius: 4px; }
+  .event.launch-ev { color: #34d399; }
+  .event.preempt-ev { color: #fbbf24; }
+  .inspector-bar {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #1e3a8a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  @media (max-width: 1100px) {
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <!-- Header -->
+  <div class="card">
+    <header>
+      <div>
+        <h1>Blox + RiskLab · 인터랙티브 100-GPU 시뮬레이션 플레이어 &amp; 실시간 비교기</h1>
+        <p class="sub">입력에 기록된 GPU·작업 상태를 재생합니다. 작업 연결이 없는 앱 오류의 GPU 위치 재생은 민감도 가정이며, 유휴 XID 수는 인과적 회피 성공이 아닙니다. 과거 실행은 당시 모드를 따릅니다.</p>
+      </div>
+      <span class="badge">입력 manifest 기준 주기 · 작업-초 / GPU-초 별도 집계</span>
+    </header>
+
+    <!-- Player Controls -->
+    <div class="toolbar" style="margin-top:14px;">
+      <div class="btn-group">
+        <button id="btn-play" class="emerald">▶ 재생 (Play)</button>
+        <button id="btn-prev">⏮ -1 스텝</button>
+        <button id="btn-next">⏭ +1 스텝</button>
+        <label style="font-size:12px;font-weight:700;color:#475569;">배속
+          <select id="sel-speed">
+            <option value="900">1x (0.9초/스텝)</option>
+            <option value="350" selected>3x (0.35초/스텝)</option>
+            <option value="120">10x (초고속)</option>
+          </select>
+        </label>
+        <label style="font-size:12px;font-weight:700;color:#475569;">화면 모드
+          <select id="sel-viewmode">
+            <option value="compare" selected>1:1 좌우 동시 비교 (기존 vs 제안)</option>
+            <option value="single">단일 정책 크게 보기</option>
+          </select>
+        </label>
+      </div>
+
+      <!-- Crash Wave Quick Jump Buttons -->
+      <div class="btn-group">
+        <span style="font-size:12px;font-weight:700;color:#b45309;">⚡ 실제 XID 폭발 직전으로 점프:</span>
+        <button class="amber jump-btn" data-step="142">Wave 1 (Step 142 · 서버 137 폭발)</button>
+        <button class="amber jump-btn" data-step="435">Wave 2 (Step 435 · 서버 134 8-GPU 폭발)</button>
+        <button class="amber jump-btn" data-step="444">Wave 3 (Step 444 · 서버 131 폭발)</button>
+        <button class="amber jump-btn" data-step="540">Wave 4 (Step 540 · 서버 131·140 16-GPU 연쇄폭발!)</button>
+      </div>
+    </div>
+
+    <!-- Timeline Slider -->
+    <div class="scrubber-row">
+      <span id="step-label" class="step-pill">Step 540 / 610 · 2023-08-16 12:45 UTC</span>
+      <input type="range" id="step-slider" min="0" max="610" value="540">
+      <select id="timezone" style="width:100px;">
+        <option value="UTC">UTC</option>
+        <option value="Asia/Seoul">KST</option>
+      </select>
+    </div>
+
+    <!-- GPU Click Inspector -->
+    <div id="gpu-inspector" class="inspector-bar" style="margin-top:10px;">
+      <span>💡 <strong>GPU 상세 인스펙터:</strong> 아래 100개 GPU 박스 중 아무 것이나 클릭하면 해당 시각의 <strong>Branch 1(단기 텔레메트리 위험도)</strong>, <strong>Branch 2(만성 이력 위험도)</strong>, <strong>결합 확률</strong> 및 실행 중인 <strong>Job ID</strong>가 여기에 표시됩니다.</span>
+    </div>
+  </div>
+
+  <!-- Side-by-Side Comparison Panels -->
+  <div id="compare-container" class="compare-grid">
+    <!-- LEFT PANEL -->
+    <section class="card" id="panel-left">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+        <h2>🅰️ 비교군 A (좌측 시뮬레이션)</h2>
+        <select id="sel-run-left" style="font-weight:700;"></select>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-mini"><small>현재 완료 작업</small><strong id="l-comp">—</strong></div>
+        <div class="kpi-mini"><small>현재 실행/대기</small><strong id="l-runq">—</strong></div>
+        <div class="kpi-mini"><small>누적 피격 횟수</small><strong id="l-hits" style="color:#dc2626;">—</strong></div>
+        <div class="kpi-mini"><small>최종 작업실패손실</small><strong id="l-floss">—</strong></div>
+        <div class="kpi-mini"><small>최종 평균 JCT</small><strong id="l-jct">—</strong></div>
+      </div>
+      <div id="gpus-left" class="server-list"></div>
+      <div class="events" id="events-left"></div>
+    </section>
+
+    <!-- RIGHT PANEL -->
+    <section class="card" id="panel-right">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+        <h2>🅱️ 제안 모델 B (우측 시뮬레이션)</h2>
+        <select id="sel-run-right" style="font-weight:700;"></select>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-mini"><small>현재 완료 작업</small><strong id="r-comp">—</strong></div>
+        <div class="kpi-mini"><small>현재 실행/대기</small><strong id="r-runq">—</strong></div>
+        <div class="kpi-mini"><small>누적 피격 횟수</small><strong id="r-hits" style="color:#059669;">—</strong></div>
+        <div class="kpi-mini"><small>최종 작업실패손실</small><strong id="r-floss">—</strong></div>
+        <div class="kpi-mini"><small>최종 평균 JCT</small><strong id="r-jct">—</strong></div>
+      </div>
+      <div id="gpus-right" class="server-list"></div>
+      <div class="events" id="events-right"></div>
+    </section>
+  </div>
+
+  <!-- Legend & Live Subprocess Runner -->
+  <div class="card">
+    <div class="legend" style="margin-top:0;margin-bottom:14px;">
+      <span><i class="dot" style="background:#e2e8f0"></i>사용 가능 (Available)</span>
+      <span><i class="dot" style="background:#0f766e"></i>작업 실행 중 (Running · Job ID 표시)</span>
+      <span><i class="dot" style="background:#dc2626"></i>XID 장애 격리/폭발 (Maintenance/Failed)</span>
+      <span><i class="dot" style="background:#7c3aed"></i>소프트 리셋/쿨다운 (Cooldown)</span>
+      <span><strong>점선 테두리:</strong> 고위험 경고 (Risk Alert) &nbsp;|&nbsp; <strong>붉은 실선 테두리:</strong> 배치 격리 제외 (Excluded)</span>
+    </div>
+
+    <details>
+      <summary style="cursor:pointer;font-weight:700;font-size:14px;color:#1d4ed8;">🚀 새로운 조합으로 백엔드 시뮬레이터 직접 실행하기 (Live Subprocess Runner 펼치기)</summary>
+      <div class="toolbar" style="margin-top:12px;">
+        <div class="btn-group">
+          <label style="font-size:12px;">ML 예측 테이프
+            <select id="live-manifest">
+              <option value="falcon_pareto_30m_20261017">해법 A: Falcon-45 + Capped Pareto</option>
+              <option value="reportfaithful_30m_20260922">기존: 09-21 ReportFaithful 재생성 점수</option>
+              <option value="falcon_pareto_mixed_xid31_43_20261017">합성 민감도: 길이로 재지정한 XID 31/43</option>
+            </select>
+          </label>
+          <label style="font-size:12px;">최적화 배치 정책
+            <select id="live-policy">
+              <option value="full_co_optimized">최종 통합: 메타휴리스틱 + 선점 가드 (full_co_optimized)</option>
+              <option value="metaheuristic_packed">해법 A + 수리모형 2: Warm-Start 2-Opt + SA (metaheuristic_packed)</option>
+              <option value="vuln_weighted_packed">취약도 순 배정 + 개별 작업 DP (vuln_weighted_packed)</option>
+              <option value="topk_quarantine_packed">해법 A + 수리모형 3: 예산제약 Top-K 격리 (topk_quarantine_packed)</option>
+              <option value="risk_prefer_packed">기존: 단일작업 Greedy DP (risk_prefer_packed)</option>
+              <option value="risk_blind_packed">베이스라인: 위험도 미사용 (risk_blind_packed)</option>
+              <option value="risk_mask_packed">베이스라인: 99% 하드 마스킹 (risk_mask_packed)</option>
+            </select>
+          </label>
+          <label style="font-size:12px;">장애 충격량 모드 (해법 B)
+            <select id="live-xidmode">
+              <option value="uniform_hardware">Track 1: 동일 하드웨어 장기 격리 (uniform_hardware)</option>
+              <option value="differentiated_43_31">Track 2/3: XID 43 소프트 리셋 vs XID 31 하드웨어 격리 (differentiated_43_31)</option>
+              <option value="evidence_based">근거 기반: 앱 복구·반복 진단·확인된 GPU 복구 (설정 필요)</option>
+            </select>
+          </label>
+          <label style="font-size:12px;">스케줄러
+            <select id="live-scheduler">
+              <option value="Las">LAS</option>
+              <option value="Fifo">FIFO</option>
+              <option value="Tiresias2Q">Tiresias 2Q</option>
+            </select>
+          </label>
+        </div>
+        <div class="btn-group">
+          <button id="btn-live-run" class="primary">🚀 새 시뮬레이션 실시간 구동</button>
+          <button id="btn-live-stop" disabled>중단</button>
+          <span id="live-status" style="font-size:12.5px;color:#475569;">대기 중</span>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<script>
+const RUN_LABELS = {
+  "01_baseline_blind": "01. Blind (위험도 미사용 · 실패손실 1,305s)",
+  "02_junho_mask99": "02. 준호 99% 하드 마스킹 (완료 0개 · 100% 기아)",
+  "03_junho_prefer_e19": "03. 준호 E19 + 단일작업 Greedy DP (실패손실 1,020s)",
+  "04_solA_falcon_prefer": "04. 해법A(Falcon+Pareto) + 단일작업 DP (실패손실 720s)",
+  "05_solA_vuln_weighted_dp": "05. 해법A + 취약도 가중 다중작업 Exact DP (실패손실 0s!)",
+  "06_solA_metaheuristic": "06. 해법A + 메타휴리스틱 2-Opt+SA (실패손실 0s · 위험노출 최저!)",
+  "07_solA_topk_quarantine": "07. 해법A + 예산제약 Top-K 격리 (실패손실 0s · 기아 0%)",
+  "08_solA_full_co_opt": "08. 최종 통합: 메타휴리스틱 + 선점가드 (선점 -25.6% · JCT -930s!)",
+  "09_solB_blind_diff10": "09. [해법B 소프트리셋] Blind (실패손실 1,020s)",
+  "10_solB_junho_prefer_diff10": "10. [해법B 소프트리셋] 준호 E19 DP (실패손실 1,020s)",
+  "11_solAB_metaheuristic_diff10": "11. [해법A+B] 메타휴리스틱 2-Opt+SA (실패손실 0s!)",
+  "12_solAB_full_co_opt_diff10": "12. [해법A+B] 메타휴리스틱 + 선점가드 (JCT -1,009s!)",
+  "13_solAB_full_co_opt_diff05": "13. [해법A+B ρ=0.5] 메타휴리스틱 + 선점가드",
+  "14_mixed31_43_blind": "14. [혼합 XID 31+43] Blind (실패손실 1,620s · 5회 피격)",
+  "15_mixed31_43_junho_prefer": "15. [혼합 XID 31+43] 단일작업 DP (실패손실 375s)",
+  "16_mixed31_43_metaheuristic": "16. [혼합 XID 31+43] 메타휴리스틱 (실패손실 0s!)",
+  "17_mixed31_43_full_co_opt": "17. [혼합 XID 31+43] 최종 통합 (실패손실 -78.7% · JCT -1,033s!)"
+};
+
+const $ = id => document.getElementById(id);
+const fmt = v => v == null ? '—' : Number(v).toLocaleString('ko-KR', { maximumFractionDigits: 1 });
+
+let curStep = 540;
+let playing = false;
+let playTimer = null;
+let liveRunId = null;
+
+async function api(url, options) {
+  const r = await fetch(url, options);
+  const data = await r.json();
+  if (!r.ok) throw Error(data.error || r.statusText);
+  return data;
+}
+
+function stamp(value) {
+  if (!value) return '—';
+  const tz = $('timezone').value;
+  return new Intl.DateTimeFormat('sv-SE', {
+    timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
+  }).format(new Date(value)) + ' ' + (tz === 'UTC' ? 'UTC' : 'KST');
+}
+
+function renderClusterPanel(sidePrefix, data) {
+  const snap = data.snapshot;
+  const sum = data.summary || {};
+  const jobs = snap.jobs || {};
+
+  $(sidePrefix + '-comp').textContent = fmt(jobs.completed);
+  $(sidePrefix + '-runq').textContent = `${fmt(jobs.running)} 실행 / ${fmt(jobs.queued)} 대기`;
+  $(sidePrefix + '-hits').textContent = `${data.cum_active_failures}회 피격`;
+  $(sidePrefix + '-floss').textContent = sum.job_failure_lost_seconds != null ? `${fmt(sum.job_failure_lost_seconds)}s` : '—';
+  $(sidePrefix + '-jct').textContent = sum.avg_jct_seconds != null ? `${fmt(sum.avg_jct_seconds)}s` : 'N/A (기아)';
+
+  const container = $('gpus-' + (sidePrefix === 'l' ? 'left' : 'right'));
+  container.replaceChildren();
+
+  const groups = new Map();
+  for (const g of snap.gpus) {
+    if (!groups.has(g.server_id)) groups.set(g.server_id, []);
+    groups.get(g.server_id).push(g);
+  }
+
+  for (const [server, items] of groups) {
+    const sec = document.createElement('div');
+    sec.className = 'server';
+    const runningCnt = items.filter(g => g.state === 'running').length;
+    const maintCnt = items.filter(g => ['maintenance','failed','cooldown','diagnosing','quarantined'].includes(g.state)).length;
+
+    const head = document.createElement('div');
+    head.className = 'server-heading';
+    const title = document.createElement('strong');
+    title.textContent = '서버 ' + server.replace('10.140.0.', '');
+    const meta = document.createElement('span');
+    meta.className = 'server-meta';
+    meta.textContent = maintCnt > 0 ? `💥 장애/리셋 ${maintCnt}개` : `${runningCnt}/${items.length} 실행`;
+    if (maintCnt > 0) meta.style.color = '#dc2626';
+    head.append(title, meta);
+
+    const grid = document.createElement('div');
+    grid.className = 'server-grid';
+    for (const g of items.sort((a, b) => a.local_id - b.local_id)) {
+      const el = document.createElement('div');
+      el.className = 'gpu ' + g.state + (g.eligible ? '' : ' excluded') + (g.risk_alert ? ' alert' : '');
+      const shortJob = g.job_id ? String(g.job_id).slice(-4) : g.state.slice(0, 4);
+      el.innerHTML = `<span>G${g.local_id}</span><small>${g.job_id ? '#' + shortJob : shortJob}</small>`;
+      el.onclick = () => {
+        const b1 = g.b1_probability != null ? g.b1_probability.toFixed(4) : 'N/A';
+        const b2 = g.b2_probability != null ? g.b2_probability.toFixed(4) : 'N/A';
+        $('gpu-inspector').innerHTML = `
+          <span>🔍 <strong>[${data.run_id}] 서버 ${server} · GPU ${g.local_id}</strong> &nbsp;|&nbsp; 상태: <strong>${g.state.toUpperCase()}</strong> &nbsp;|&nbsp; 실행 작업: <strong>${g.job_id || '없음(유휴)'}</strong></span>
+          <span>결합 위험도(p<sup>fuse</sup>): <strong>${g.probability.toFixed(4)}</strong> &nbsp;|&nbsp; Branch 1(단기 텔레메트리): <strong>${b1}</strong> &nbsp;|&nbsp; Branch 2(만성 이력): <strong>${b2}</strong></span>
+        `;
+      };
+      grid.appendChild(el);
+    }
+    sec.append(head, grid);
+    container.appendChild(sec);
+  }
+
+  const evBox = $('events-' + (sidePrefix === 'l' ? 'left' : 'right'));
+  evBox.replaceChildren();
+  const evs = data.step_events || [];
+  if (evs.length === 0) {
+    evBox.textContent = '이 스텝 구간에는 특이 이벤트가 없습니다.';
+  } else {
+    for (const row of evs) {
+      const div = document.createElement('div');
+      let cls = 'event';
+      if (row.type === 'gang_failure') cls += ' fail-ev';
+      else if (row.type === 'job_launch' || row.type === 'job_relaunch') cls += ' launch-ev';
+      else if (row.type === 'scheduler_preemption') cls += ' preempt-ev';
+      div.className = cls;
+      const gpus = (row.gpu_ids || (row.gpu_id ? [row.gpu_id] : [])).map(u => u.replace('10.140.0.', '')).join(',');
+      div.textContent = `[${stamp(row.timestamp)}] ${row.type} · Job ${row.job_id || '—'} · GPU [${gpus || '—'}]`;
+      evBox.appendChild(div);
+    }
+    evBox.scrollTop = evBox.scrollHeight;
+  }
+}
+
+async function loadStep(idx) {
+  curStep = Math.max(0, Math.min(610, Number(idx)));
+  $('step-slider').value = curStep;
+  const leftId = $('sel-run-left').value;
+  const rightId = $('sel-run-right').value;
+  const mode = $('sel-viewmode').value;
+
+  try {
+    if (mode === 'compare') {
+      const [dLeft, dRight] = await Promise.all([
+        api(`/runs/${leftId}/step?idx=${curStep}`),
+        api(`/runs/${rightId}/step?idx=${curStep}`)
+      ]);
+      $('step-label').textContent = `Step ${curStep} / ${dLeft.total_steps - 1} · ${stamp(dLeft.snapshot.timestamp)}`;
+      renderClusterPanel('l', dLeft);
+      renderClusterPanel('r', dRight);
+    } else {
+      const dLeft = await api(`/runs/${leftId}/step?idx=${curStep}`);
+      $('step-label').textContent = `Step ${curStep} / ${dLeft.total_steps - 1} · ${stamp(dLeft.snapshot.timestamp)}`;
+      renderClusterPanel('l', dLeft);
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function togglePlay() {
+  playing = !playing;
+  $('btn-play').textContent = playing ? '⏸ 일시정지 (Pause)' : '▶ 재생 (Play)';
+  if (playing) {
+    scheduleNextTick();
+  } else if (playTimer) {
+    clearTimeout(playTimer);
+    playTimer = null;
+  }
+}
+
+function scheduleNextTick() {
+  if (!playing) return;
+  const delay = Number($('sel-speed').value);
+  playTimer = setTimeout(async () => {
+    if (!playing) return;
+    const nextIdx = curStep >= 610 ? 0 : curStep + 1;
+    await loadStep(nextIdx);
+    scheduleNextTick();
+  }, delay);
+}
+
+async function init() {
+  const c = await api('/config');
+  const selL = $('sel-run-left');
+  const selR = $('sel-run-right');
+  selL.replaceChildren();
+  selR.replaceChildren();
+
+  for (const r of c.runs) {
+    const o1 = document.createElement('option');
+    o1.value = r;
+    o1.textContent = RUN_LABELS[r] || r;
+    selL.appendChild(o1);
+
+    const o2 = document.createElement('option');
+    o2.value = r;
+    o2.textContent = RUN_LABELS[r] || r;
+    selR.appendChild(o2);
+  }
+
+  if (c.runs.includes('04_solA_falcon_prefer')) selL.value = '04_solA_falcon_prefer';
+  else if (c.runs.includes('03_junho_prefer_e19')) selL.value = '03_junho_prefer_e19';
+
+  if (c.runs.includes('06_solA_metaheuristic')) selR.value = '06_solA_metaheuristic';
+  else if (c.runs.includes('08_solA_full_co_opt')) selR.value = '08_solA_full_co_opt';
+
+  await loadStep(540);
+}
+
+$('btn-play').onclick = togglePlay;
+$('btn-prev').onclick = () => { if (playing) togglePlay(); loadStep(curStep - 1); };
+$('btn-next').onclick = () => { if (playing) togglePlay(); loadStep(curStep + 1); };
+$('step-slider').oninput = e => { if (playing) togglePlay(); loadStep(e.target.value); };
+$('sel-run-left').onchange = () => loadStep(curStep);
+$('sel-run-right').onchange = () => loadStep(curStep);
+$('timezone').onchange = () => loadStep(curStep);
+$('sel-viewmode').onchange = () => {
+  const isSingle = $('sel-viewmode').value === 'single';
+  $('panel-right').hidden = isSingle;
+  $('compare-container').className = isSingle ? 'compare-grid single' : 'compare-grid';
+  loadStep(curStep);
+};
+document.querySelectorAll('.jump-btn').forEach(btn => {
+  btn.onclick = () => {
+    if (playing) togglePlay();
+    loadStep(Number(btn.dataset.step));
+  };
+});
+
+// Live Runner
+$('btn-live-run').onclick = async () => {
+  try {
+    $('btn-live-run').disabled = true;
+    $('btn-live-stop').disabled = false;
+    $('live-status').textContent = '시뮬레이션 워커 시작 중...';
+    const r = await api('/runs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        manifest_choice: $('live-manifest').value,
+        policy: $('live-policy').value,
+        xid_severity_mode: $('live-xidmode').value,
+        scheduler: $('live-scheduler').value
+      })
+    });
+    liveRunId = r.run_id;
+    pollLiveRun();
+  } catch (e) {
+    $('live-status').textContent = '오류: ' + e.message;
+    $('btn-live-run').disabled = false;
+  }
+};
+
+$('btn-live-stop').onclick = async () => {
+  if (!liveRunId) return;
+  await api(`/runs/${liveRunId}/stop`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
+};
+
+async function pollLiveRun() {
+  if (!liveRunId) return;
+  try {
+    const s = await api(`/runs/${liveRunId}`);
+    const pct = ((s.progress || 0) * 100).toFixed(1);
+    $('live-status').textContent = `[${liveRunId}] 상태: ${s.status} (${pct}%)`;
+    if (['starting', 'validating', 'running', 'stopping'].includes(s.status)) {
+      setTimeout(pollLiveRun, 1200);
+    } else {
+      $('btn-live-run').disabled = false;
+      $('btn-live-stop').disabled = true;
+      await init();
+      $('sel-run-right').value = liveRunId;
+      await loadStep(curStep);
+    }
+  } catch (e) {
+    $('live-status').textContent = '오류: ' + e.message;
+    $('btn-live-run').disabled = false;
+  }
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "status": "completed",
+  "progress": 1.0,
+  "timestamp": 1692317100.0,
+  "start_time": 1686822000.0,
+  "end_time": 1692317100.0,
+  "arm": "tiresias",
+  "decisions": 18317,
+  "jobs": {
+    "future": 0,
+    "queued": 65410,
+    "running": 25,
+    "recovering": 10,
+    "loading": 0,
+    "checkpointing": 1,
+    "completed": 75340,
+    "failed": 0
+  },
+  "elapsed_seconds": 6808.156000000017,
+  "pid": 44028,
+  "peak_memory_bytes": 768970752
+}

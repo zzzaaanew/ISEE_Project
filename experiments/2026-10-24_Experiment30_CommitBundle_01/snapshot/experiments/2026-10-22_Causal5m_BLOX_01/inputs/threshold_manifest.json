@@ -1,0 +1,7 @@
+{
+  "threshold": 1.0,
+  "selection_split": "validation_only",
+  "heldout_used_for_selection": false,
+  "decision_interval_seconds": 300,
+  "rule": "Same predeclared no-mask threshold 1.0; 300s is held-tape delivery, not ML inference"
+}

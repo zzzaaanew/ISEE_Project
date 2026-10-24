@@ -1,0 +1,1592 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>실험 연대기</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    h1, h2, h3 { line-height: 1.25; }
+    h2 { margin-top: 2.5rem; border-top: 1px solid #ddd; padding-top: 1rem; }
+    table { border-collapse: collapse; display: block; overflow-x: auto; max-width: 100%; }
+    th, td { border: 1px solid #bbb; padding: .45rem .6rem; text-align: left; white-space: nowrap; }
+    th { background: #f2f2f2; }
+    code { background: #f4f4f4; padding: .1rem .25rem; overflow-wrap: anywhere; }
+    li { margin-bottom: .25rem; }
+  </style>
+</head>
+<body>
+<h1>실험 연대기</h1>
+<p>기존 <code>실험 기록/실험_연대기.md</code>가 존재하지 않아, 2026-09-28 실행을 기준으로 누적 기록을 초기화한다. 프로젝트 목표·결정사항 문서와 기존 실험 산출물을 기준으로 작성했다.</p>
+<h2>Experiment 10 = Equal-weight Branch 1 Cascade + fixed Branch 2 Sliding Training</h2>
+<p>[요약]</p>
+<ul>
+<li>이번 Experiment가 검증하는 질문: Branch 1에 동일 가중치 Parallel Ensemble과 Cascade를 적용하고, Branch 2는 ADST 동적 선택 없이 고정 7일 Sliding Training으로 유지할 때 전체 rolling 평가 성능과 ADWIN train-window 전환이 어떻게 나타나는가.</li>
+<li>이전 Experiment와의 연결: 직전 fixed-family-weight 실행에서 Branch 1 ADWIN이 21일 최대 window에 포화되어 <code>expand</code>가 실질적 변화를 만들지 못했다. 이번에는 초기 window를 14일로 낮추고 민감도를 완화해 실제 확장 가능성을 검증했다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>유지한 기준: All-XID 통합 onset 타깃, 30일 warm-up, 24시간 rolling/retrain, 24시간 horizon, 오류 직전 10분 제외, 36시간 purge, 30분 scoring, 전체 GPU-time population.</li>
+<li>Branch 1 변경: 1시간 input, Logistic·Extra Trees·HistGradientBoosting·CNN 4개 family의 동일 가중치 0.25 parallel ensemble, soft residual hardness-gated Cascade.</li>
+<li>Branch 1 ADWIN: 7·14·21일 후보, 초기 14일, delta 0.05, 최소 feedback 4개, 2회 연속 trigger, cooldown 1 cycle. label-matured 30분 Branch 1 log-loss를 감시했다.</li>
+<li>Branch 2: <code>xid_count_30d</code>, <code>days_since_xid</code> History-only 입력, 7일 고정 Sliding Training. Branch 2 ADST·ADWIN·recency adaptation은 적용하지 않았다.</li>
+<li>Fusion: <code>p_fused = 0.5 × p_B1 + 0.5 × p_B2</code>.</li>
+<li>평가: terminal held-out은 adaptation과 선택에서 제외하고, warm-up 이후 64개 rolling origin의 full-period 결과를 사용했다.</li>
+<li>실행 진입점: <code>ISEE_Project_GitHubBase/ML/run_experiment6_30m_adwin_b1_equal_cascade_b2_sliding_v2.py</code>.</li>
+<li>최종 manifest writer 정정 진입점: <code>ISEE_Project_GitHubBase/ML/run_experiment6_30m_adwin_b1_equal_cascade_b2_sliding_v3.py</code>.</li>
+<li>산출물: <code>ISEE_Project_GitHubBase/experiments/2026-09-28_All-XID_Experiment6_30m_ADWIN_B1EqualCascade_B2Sliding_01/</code>.</li>
+<li>재현 조건: seed <code>20260905</code>, 64개 state, 전체 score export, 실행 상태 <code>COMPLETED</code>.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>실행 시간: 256.9분.</li>
+<li>전체 score rows: 6,081,576개.</li>
+<li>decision timestamp: 3,053개.</li>
+<li>평가 origin: 64개.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>설정</th>
+<th align="right">Fusion PR-AUC 평균</th>
+<th align="right">Branch 1 PR-AUC 평균</th>
+<th align="right">Branch 2 PR-AUC 평균</th>
+<th align="right">Fusion ROC-AUC 평균</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>직전 fixed-family-weight 실행</td>
+<td align="right">0.019303</td>
+<td align="right">0.015177</td>
+<td align="right">0.031266</td>
+<td align="right">0.609334</td>
+</tr>
+<tr>
+<td>Experiment 10</td>
+<td align="right">0.020666</td>
+<td align="right">0.015484</td>
+<td align="right">0.031266</td>
+<td align="right">0.607385</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Experiment 10 Fusion PR-AUC 중앙값: <code>0.008529</code>.</li>
+<li>Branch 1 PR-AUC 중앙값: <code>0.010484</code>.</li>
+<li>Branch 2 PR-AUC 중앙값: <code>0.007812</code>.</li>
+<li>Fusion Recall@100 평균: <code>11.832%</code>.</li>
+<li>Fusion Lift@100 평균: <code>2.357x</code>.</li>
+<li>Fusion이 Branch 1보다 높은 origin: <code>21/64</code>.</li>
+<li>Fusion이 Branch 2보다 높은 origin: <code>37/64</code>.</li>
+<li>Fusion이 두 Branch 모두보다 높거나 같은 origin: <code>10/64</code>.</li>
+<li>ADWIN raw trigger: <code>0/64</code>.</li>
+<li>ADWIN effective trigger: <code>0/64</code>.</li>
+<li>실제 Branch 1 train window: 14일 <code>10개 state</code>, 21일 <code>54개 state</code>, 7일 <code>0개 state</code>.</li>
+<li>ADWIN action: hold <code>60회</code>, expand <code>4회</code>. 4회의 expand 중 첫 번째만 14일→21일로 실제 변경됐고, 나머지는 이미 최대 21일에서 발생했다.</li>
+<li>Branch 2 train window: 전 구간 7일 고정.</li>
+<li>Lambda: 전 구간 <code>0.5</code> 고정.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: 초기 14일 설정에서는 안정성 규칙에 의해 state 9 이후 21일로 확장됐다. raw ADWIN drift trigger는 delta를 0.05로 완화했음에도 발생하지 않았다.</li>
+<li>관찰: 동일 평가계약의 직전 실행 대비 Fusion PR-AUC는 <code>+7.1%</code>, Branch 1 PR-AUC는 <code>+2.0%</code>였지만 Fusion ROC-AUC는 <code>-0.3%</code>, Recall@100과 Lift@100은 각각 약 <code>-0.7%</code>였다.</li>
+<li>해석: 동일 가중치와 Cascade alpha 재선택은 PR-AUC 평균을 높였지만, 모든 origin에서 Branch 1 또는 Branch 2보다 우월한 구조는 아니다. PR-AUC 평균은 특정 고양성 구간의 영향을 받으므로 중앙값과 origin별 승률을 함께 봐야 한다.</li>
+<li>해석: 이번 ADWIN은 <code>hold</code> 포화 문제는 일부 해소했지만, 실제 drift 기반 축소는 검증하지 못했다. 현재 feedback log-loss stream에서 통계적 shift가 검출되지 않았거나, PR-AUC 변화와 log-loss 변화가 일치하지 않았을 가능성이 있다.</li>
+<li>결정: Equal-weight Cascade + Branch 2 fixed Sliding 조합은 비교 후보로 보존한다. 최종 우월 모델로 확정하지 않는다.</li>
+<li>결정: Branch 2에는 ADST 동적 선택을 적용하지 않은 현재 계약을 유지한다.</li>
+<li>한계: 이번 비교는 직전 실행과 1시간 input·lambda·Branch 2 조건은 공유하지만, Branch 1 family weighting과 ADWIN controller가 달라 직접적인 단일 원인 효과로 해석할 수 없다.</li>
+<li>검증 보정: 실제 계산 feature grid는 <code>[1]</code>이었다. inherited rolling writer가 state manifest에 <code>[1,6,24]</code>를 표시한 문제를 확인했고, score parquet와 metric CSV는 변경하지 않은 채 <code>model_state_manifest.parquet</code>의 표시값을 <code>[1]</code>로 정정했다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>Branch 1 baseline, equal-weight Cascade, Branch 2, Fusion을 동일 rolling 계약으로 비교표에 정리한다.</li>
+<li>ADWIN 축소를 최종 방법론으로 주장하지 않고, raw trigger 0회와 14일→21일 확장 결과를 별도 보고한다.</li>
+<li>ML 후보가 확정되기 전에는 BLOX를 실행하지 않는다.</li>
+<li>다음 실험에서는 성능 선택과 ADWIN 민감도 선택을 분리해, 사전에 정한 development 기준으로 채택 여부를 결정한다.</li>
+</ol>
+<h2>Experiment 11 = Han ADST + 4-model light Cascade + reliability Fusion</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표: G-004, G-007, G-008.</li>
+<li>한유형 <code>2f7914e</code> 기준의 30분 GitHub-base rolling evaluator를 유지하면서 Branch 1에 Han-style ADST train-window controller와 4개 경량 모델 Cascade를 적용했다.</li>
+<li>Branch 2는 History-only 21일 고정 Sliding Training으로 유지했고, ADWIN·BLOX·Parallel Branch 1은 사용하지 않았다.</li>
+<li>고정 Lambda 대신 최근 Branch 성능·안정성·하락률을 이용한 past-only reliability Fusion을 적용했다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>입력: 현재 All-XID 데이터, 1,992 GPU score population, XID 2,425개.</li>
+<li>split/evaluation: 30일 warm-up, warm-up 이후 64개 rolling origin, 24시간 horizon, 24시간 retrain, 30분 scoring, 36시간 purge, 오류 직전 10분 제외.</li>
+<li>Branch 1: Logistic Regression, Extra Trees, HistGradientBoosting, CNN의 4-model light Cascade; 1시간 입력 contract.</li>
+<li>Branch 1 ADST: 7/14/21일 후보, 초기 14일, Han-style momentum skip/trigger window controller. ADWIN은 미사용.</li>
+<li>Branch 2: strict History-only, 21일 고정 Sliding Training.</li>
+<li>Fusion: 최근 3개 origin reliability, 2회 hysteresis, B1 weight 0.2~0.8, origin당 최대 0.1 변경.</li>
+<li>재현 조건: seed <code>20260905</code>, negative ratio <code>10</code>, threads <code>4</code>.</li>
+<li>실행 진입점: <code>ISEE_Project_GitHubBase/ML/run_experiment11_30m_han_adst_b1_light_cascade_b2_sliding.py</code>.</li>
+<li>산출물: <code>ISEE_Project_GitHubBase/experiments/2026-09-29_All-XID_HanADST_B1LightCascade_B2Sliding_ReliabilityFusion_01/</code>.</li>
+<li>실행 상태: 64개 state 완료, full-population score <code>6,081,576</code>행, 실행시간 약 <code>163.3분</code>.</li>
+</ul>
+<p>[결과]</p>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th align="right">Fusion</th>
+<th align="right">Branch 1</th>
+<th align="right">Branch 2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cycle PR-AUC 평균</td>
+<td align="right">0.021318</td>
+<td align="right">0.017195</td>
+<td align="right">0.031576</td>
+</tr>
+<tr>
+<td>Cycle PR-AUC 중앙값</td>
+<td align="right">0.010232</td>
+<td align="right">0.010550</td>
+<td align="right">0.007100</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Fusion ROC-AUC 평균: <code>0.666546</code>.</li>
+<li>Fusion Recall@100 평균: <code>14.323%</code>.</li>
+<li>Fusion Lift@100 평균: <code>2.853x</code>.</li>
+<li>평균 양성률: <code>0.8653%</code>; 평균 양성 수: <code>827.27</code>.</li>
+<li>Fusion weight 사용 범위: B1 <code>0.2~0.8</code>.</li>
+<li>Fusion action: <code>hold_equal 19</code>, <code>drift_down_b1 16</code>, <code>drift_down_b2 18</code>, <code>pending_direction 5</code>, <code>trust_b1 3</code>, <code>trust_b2 3</code>.</li>
+<li>Drift branch: B1 <code>16</code>, B2 <code>18</code>, 없음 <code>30</code>.</li>
+<li>ADST action: <code>momentum_skip_hold 32</code>, <code>momentum_rescan_expand 8</code>, <code>momentum_trigger_rescan_hold_min 16</code>, <code>momentum_trigger_rescan_shrink 8</code>.</li>
+<li>실제 ADST train window: 7일 <code>38개 state</code>, 14일 <code>16개 state</code>, 21일 <code>10개 state</code>.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>Experiment 10의 동일 30분 rolling 결과(<code>Fusion PR-AUC 0.020666</code>)보다 이번 Fusion 평균은 <code>0.021318</code>로 높았다. 그러나 Branch 2 window가 7일에서 21일로 바뀌었고, B1 ADWIN 대신 Han-style ADST와 reliability Fusion을 함께 적용했으므로 단일 효과로 해석하지 않는다.</li>
+<li>Branch 2의 평균 PR-AUC가 Fusion과 Branch 1보다 높았지만 중앙값은 낮았다. 일부 고양성 구간의 평균 효과와 전체 구간의 안정성을 분리해서 봐야 한다.</li>
+<li>Fusion Drift는 실제로 양쪽 Branch를 모두 감지했다. 다만 현재 규칙은 0.2 또는 0.8까지도 이동할 수 있으므로, 다음 비교에서는 동일 rolling 조건의 fixed 0.5·Branch 1 단독·Branch 2 단독과 paired 비교가 필요하다.</li>
+<li>ADST window는 7/14/21일을 모두 사용했다. 따라서 이전 ADWIN 실험처럼 최대 window에 고정된 결과는 아니지만, window 선택이 실제 성능 향상으로 이어졌다고 아직 확정할 수 없다.</li>
+<li>smoke 단계에서 B1 half-life 0과 Cascade OOF block 수, 학습·scoring feature contract 문제를 발견해 수정했다. 최종 실행은 수정 후 1개 origin smoke를 통과하고 full run을 완료했다.</li>
+<li>metadata pass에서 상위 evaluator의 <code>[1,6,24]</code> 표시를 실제 B1 <code>[1]</code> 입력으로 보정했다. score parquet와 metric CSV는 재계산·수정하지 않았다.</li>
+<li>결정: 이번 구조는 최종 우월 모델로 확정하지 않고, 신뢰도 기반 Fusion 후보로 보존한다. BLOX 연결은 추가 비교 후 진행한다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>동일 30분 rolling 계약에서 B1 단독, B2 단독, fixed 0.5 Fusion, reliability Fusion을 paired origin 기준으로 비교한다.</li>
+<li>B2 7일과 21일을 분리해 ADST·Fusion 효과와 Sliding window 효과를 구분한다.</li>
+<li>Fusion weight 전환 횟수·drift 오탐·cycle별 성능 안정성을 분석한다.</li>
+<li>위 비교가 완료되기 전에는 BLOX를 실행하지 않는다.</li>
+</ol>
+<h2>Experiment 12 = Temporal MoE 저장 점수의 Top-100 검증과 후보 합집합 = 보충 기록</h2>
+<p>[요약]</p>
+<ul>
+<li>Experiment 11의 B1 경량 Cascade·Han ADST와 B2 History-only 21일 Sliding을 유지하고, 원 실행에서는 30분 Temporal MoE Fusion을 사용했다. 후속 저장 점수 분석에서 전체 GPU Top-100을 동일한 분모로 비교하고 B2-anchored 후보 합집합 재정렬을 탐색했다. 이 항목은 기존 실행을 2026-10-04에 뒤늦게 기록한 것이다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>목표 G-007·G-008. All-XID onset, 24시간 horizon, 10분 feature cutoff, 36시간 purge, 30일 warm-up 이후 64개 rolling origin, 30분 판단, 1,992 GPU. 별도 terminal held-out에서 선택하지 않았다.</li>
+<li>저장된 전체 GPU B1/B2 점수 64개 part와 원본 5분 grid·onset 라벨만 사용했다. 재정렬기는 성숙한 과거 OOF 7일 학습·7일 검증에서 M={150,250,400}, N={50,100,200}, K={0,5,10}, 위험비={1.0,1.2}를 선택하고 증거가 없으면 B2로 복귀했다.</li>
+<li>원본 실행 진입점: <code>ISEE_Project_GitHubBase/ML/run_experiment12_30m_temporal_moe_b2_anchor.py</code>. Top-100 검증과 재정렬 진입점: <code>ML/evaluate_experiment12_top100.py</code>, <code>ML/evaluate_experiment12_candidate_union.py</code>. 재정렬 seed <code>20260905</code>; 결과 <code>experiments/2026-10-01_Experiment12_B2Anchored_Union_Rerank_01/</code>.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>전체 64 origin, 3,053개 판단 시점, 6,081,576 GPU-time 중 양성 52,945개였다. B2 Top-100 적중은 8,335개(Recall <code>0.157428</code>, 양성 시점 NDCG <code>0.079820</code>), 원래 Temporal MoE Fusion 적중은 7,078개(Recall <code>0.133686</code>, NDCG <code>0.075425</code>)였다.</li>
+<li>후보 합집합은 8,411개 적중(Recall <code>0.158863</code>, NDCG <code>0.080190</code>)으로 B2보다 76개 많았다. 총 12,936번 교체했고 36개 origin에서 활성, 28개에서 B2 복귀했다. B2 대비 origin별 15승·46무·3패였다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: 기존 Fusion의 origin 평균 Recall 우위는 전체 GPU-time 포착 우위가 아니었다. 후보 합집합의 순증가 76개는 작고 손실 origin도 남았다.</li>
+<li>결정: 후보 합집합은 탐색 후보로 보존하되 최종 우월 모델로 채택하지 않는다. 저장된 B1의 ADST 피드백이 라벨 성숙 전에 영향을 받았을 가능성과 같은 XID 에피소드의 반복 GPU-time 집계를 분리해야 한다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>Experiment 13에서 교체 상한과 승격 증거를 보수화해 동일 저장 점수의 손실 origin을 비교한다.</li>
+<li>최종 주장 전 인과적 Branch 점수 재실행, 새 미관측 기간, XID episode 포착률을 검증한다. BLOX는 실행하지 않는다.</li>
+</ol>
+<h2>Experiment 13 = B2-anchored 보수적 교체 판단 = 탐색 완료</h2>
+<p>[요약]</p>
+<ul>
+<li>Experiment 12의 작은 순증가와 3개 손실 origin을 근거로, 과거 OOF 증거가 강할 때만 B2 Top-100의 꼬리 GPU를 교체하는 규칙을 시험했다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>목표 G-007·G-008. Experiment 12와 동일한 All-XID 24시간 라벨, 10분 feature cutoff, 36시간 purge, 30일 warm-up 이후 64 rolling origin, 30분 판단, 1,992 GPU와 저장 B1/B2 점수를 사용했다. 별도 terminal held-out 또는 Branch 재학습은 없었다.</li>
+<li>성숙한 과거 OOF 7일 학습·7일 검증을 유지했다. B2 상위 M={150,250,400}과 B1 상위 N={50,100,200}의 합집합에서 최대 5건만 교체하고, 승격 위험비 1.5와 검증 적중 개선·NDCG 비열화 방지·7개 24시간 블록의 2,000회 bootstrap 적중 차이 5백분위수 양수 조건을 모두 요구했다. 실패하면 B2 순위로 복귀했다.</li>
+<li>진입점 <code>ISEE_Project_GitHubBase/ML/evaluate_experiment13_conservative_swap.py</code>; 출력 <code>experiments/2026-10-04_Experiment13_ConservativeSwap_01/</code>; seed <code>20260905</code>. 4-origin smoke 후 전체 64-origin 실행이 exit code 0으로 완료됐다.</li>
+</ul>
+<p>[결과]</p>
+<table>
+<thead>
+<tr>
+<th>방법</th>
+<th align="right">Top-100 적중</th>
+<th align="right">Pooled Recall@100</th>
+<th align="right">양성 시점 NDCG@100</th>
+<th align="right">교체 수</th>
+<th align="right">B2 대비 손실 origin</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B2</td>
+<td align="right">8,335</td>
+<td align="right">0.157428</td>
+<td align="right">0.079820</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Experiment 12 후보 합집합</td>
+<td align="right">8,411</td>
+<td align="right">0.158863</td>
+<td align="right">0.080190</td>
+<td align="right">12,936</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>Experiment 13 보수적 교체</td>
+<td align="right">8,409</td>
+<td align="right">0.158825</td>
+<td align="right">0.080385</td>
+<td align="right">5,474</td>
+<td align="right">2</td>
+</tr>
+</tbody></table>
+<ul>
+<li>새 방식은 B2보다 74개 더 맞혔고, 양성 승격 101개에서 양성 밀림 27개를 뺀 순증가와 일치했다. 26개 origin에서 활성, 38개에서 B2 복귀했으며 승·동률·패는 9·53·2였다. 손실은 origin 40에서 1개, 45에서 5개였다.</li>
+<li>B2 대비 pooled Recall 차이는 <code>+0.001398</code>, NDCG 차이는 <code>+0.000565</code>였다. 3-origin 이동 블록 bootstrap 2,000회의 기술적 95% 구간은 Recall 차이 <code>[0.000077, 0.003437]</code>, NDCG 차이 <code>[0.00000097, 0.001377]</code>이었다. 기존 방식보다 적중은 2개 적지만 교체는 7,462건 적었다.</li>
+<li>64개 순위 Parquet에 6,081,576행이 있고 라벨 열은 없다. 선택된 origin의 교체 상한·OOF gate 위반 0건, B2 fallback 순위 불일치 0건, 이전 입력 점수·grid·onset checksum 불일치 0건을 확인했다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: 사전 기록한 탐색적 통과 조건(적중 B2 초과, NDCG 비열화 없음, 손실 origin 3개 미만)은 충족했다. 큰 손실이 있던 기존 origin 32·46은 각각 +1·0으로 바뀌었으나 새 손실 origin 40은 -1이고 origin 45의 -5는 남았다.</li>
+<li>해석·한계: 위 bootstrap 구간은 동일 64-origin을 보고 규칙을 설계한 사후 선택, 반복 GPU-time 라벨, B1 ADST 피드백의 잠재적 비인과성을 교정하지 않는다. PR-AUC도 재배치된 B2 점수 슬롯의 순위 지표일 뿐 보정된 고장 확률이 아니다. 따라서 독립적 우월성이나 실제 고장 에피소드 개선으로 주장하지 않는다.</li>
+<li>결정: 교체 보수화는 후속 후보로 유지하지만 최종 채택은 보류한다. 엄격한 gate가 전체 64-origin에서 26개만 활성화됐다는 점도 함께 보고한다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>새로운 미관측 기간과 인과적으로 재생성한 B1/B2 점수에서 같은 고정 규칙을 평가한다.</li>
+<li>GPU-time Recall과 XID 에피소드 포착률을 분리하고, 실제 운영 연결은 그 검증 후 다시 판단한다.</li>
+</ol>
+<h2>Experiment 14 = 성숙 피드백 ADST·Temporal MoE 전체 재실행 = 재현 검증</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-007·G-008(연결 목표 G-004). Experiment 12의 4-origin smoke와 Experiment 13의 저장 점수 재정렬만으로는 상류 ADST·MoE의 시간순 선택을 검증할 수 없었다. 두 컨트롤러의 피드백을 <code>현재 origin−36시간</code> 이전 점수로 제한해 전체 ML을 다시 실행했다.</li>
+<li>이전 Experiment 13의 +74개 적중은 비인과적일 수 있는 원래 B1 점수에 조건부인 탐색 결과였다. 이번에는 같은 64-origin에서 새 B1/B2 점수를 생성한 뒤 기존 보수적 교체 규칙을 재적용했다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>유지한 기준: All-XID 통합 onset, 24시간 라벨 horizon, 오류 직전 10분 feature 제외, 30일 warm-up 이후 64개 시간순 rolling origin, 24시간 재학습, 30분 판단, 36시간 학습 purge, 전 GPU 1,992개 점수 후 Top-100. 별도 terminal held-out를 적응·선택에 사용하지 않았다.</li>
+<li>Branch 1은 Experiment 12의 Han-style ADST 및 Logistic·ExtraTrees·HistGradientBoosting·CNN 4-model light Cascade를 유지했다. 학습창 후보는 7/14/21일, 초기 14일, 정규화 PR-AUC 하락 임계 0.15, 안정 3-origin이다. 현재 주기 전체의 정답을 즉시 쓰지 않고, 마지막 블록까지 cutoff 이내에 들어온 과거 주기만 ADST에 전달했다.</li>
+<li>Branch 2는 strict History-only 21일 고정 Sliding Training을 유지했다. 원본 Experiment 12와 전 6,081,576행의 B2 점수 차이를 검사했다.</li>
+<li>MoE는 양성 블록의 B1/B2 PR-AUC 우열을 target으로 한 balanced logistic gate(C=0.25), 최근 최대 672개 블록, 최소 48개 eligible 블록을 유지했다. 학습 라벨과 최근 AP context는 <code>score_bin ≤ origin−432 bins(36시간)</code>이며 <code>score_bin+288 bins(24시간) ≤ origin</code>을 assertion으로 검사했다. 현재 30분 블록의 B1/B2 점수에서 <code>λ_B1</code>을 계산하고 <code>p_fused = λ_B1 × p_B1 + (1−λ_B1) × p_B2</code>를 적용했다. 피드백 부족 시 B2로 복귀한다.</li>
+<li>Cascade OOF validation 라벨은 현재 origin 전에 성숙해야 한다는 assertion을 적용했다. ADST·MoE의 더 엄격한 36시간 피드백 경계와 OOF의 학습/검증 purge는 서로 다른 규칙이다.</li>
+<li>진입점: <code>ISEE_Project_GitHubBase/ML/run_experiment14_30m_matured_adst_moe.py</code>. 합성 시간 경계 테스트 2개 통과 후, bundled CPU Python·seed <code>20260905</code>·threads <code>4</code>로 전체 실행했다. 실행 시간 125.9분, exit code 0. 이전 코드·결과는 덮어쓰지 않았고 BLOX·커밋·푸시는 실행하지 않았다.</li>
+<li>검증 진입점: <code>ML/verify_experiment14_feedback.py</code>, <code>ML/evaluate_experiment14_top100.py</code>, <code>ML/evaluate_experiment14_conservative.py</code>. 결과는 각각 <code>experiments/2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/</code>, <code>2026-10-04_Experiment14_FeedbackAudit_01/</code>, <code>2026-10-04_Experiment14_Top100_01/</code>, <code>2026-10-04_Experiment14_ConservativeSwap_01/</code>에 보존했다. 마지막 두 평가도 종료 코드 0이다.</li>
+<li>보수적 재정렬은 Experiment 13과 같은 과거 성숙 OOF 7일 학습·7일 검증, M={150,250,400}, N={50,100,200}, 최대 5건 교체, 위험비 1.5, 검증 적중·NDCG·24시간 블록 bootstrap gate를 유지했다. 별도 평가 구간을 보고 파라미터를 바꾸지 않았다.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>64개 origin, 3,053개 30분 시점, 6,081,576 GPU-time 중 양성 52,945개로 원본과 같다. 전체 피드백 감사에서 gate 학습·최근 context·ADST cutoff/라벨 성숙 위반 0건, 실제 <code>p_fused</code> 가중합 오차 0, 블록 λ 이력 오차 0, 기존 Experiment 12 대비 B2 점수 차이 0을 확인했다.</li>
+<li>ADST는 성숙한 61개 주기만 갱신했다. action은 expand 7·shrink 8·최소창 hold 14·일반 hold 32회; 실제 학습창 사용은 7일 35·14일 17·21일 12개 state다. MoE는 2,909개 블록에서 학습되고 144개 블록에서 B2 fallback했다. 실제 <code>λ_B1</code> 범위는 0~0.769673이다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>같은 64-origin 전체 GPU 평가</th>
+<th align="right">Top-100 적중</th>
+<th align="right">Pooled Recall@100</th>
+<th align="right">양성 시점 pooled NDCG@100</th>
+<th align="right">Origin 평균 PR-AUC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>기존 Experiment 12 B1</td>
+<td align="right">5,820</td>
+<td align="right">0.109925</td>
+<td align="right">0.065435</td>
+<td align="right">0.017174</td>
+</tr>
+<tr>
+<td>Experiment 14 B1</td>
+<td align="right">6,100</td>
+<td align="right">0.115214</td>
+<td align="right">0.065435</td>
+<td align="right">0.017887</td>
+</tr>
+<tr>
+<td>B2(두 실행 동일)</td>
+<td align="right">8,335</td>
+<td align="right">0.157428</td>
+<td align="right">0.079820</td>
+<td align="right">0.031576</td>
+</tr>
+<tr>
+<td>기존 Experiment 12 Temporal MoE</td>
+<td align="right">7,078</td>
+<td align="right">0.133686</td>
+<td align="right">0.075425</td>
+<td align="right">0.021848</td>
+</tr>
+<tr>
+<td>Experiment 14 성숙 피드백 Temporal MoE</td>
+<td align="right">7,431</td>
+<td align="right">0.140353</td>
+<td align="right">0.075598</td>
+<td align="right">0.023030</td>
+</tr>
+<tr>
+<td>기존 Experiment 13 보수적 교체</td>
+<td align="right">8,409</td>
+<td align="right">0.158825</td>
+<td align="right">0.080385</td>
+<td align="right">보정 확률 아님</td>
+</tr>
+<tr>
+<td>Experiment 14 점수의 보수적 교체</td>
+<td align="right">8,368</td>
+<td align="right">0.158051</td>
+<td align="right">0.079807</td>
+<td align="right">보정 확률 아님</td>
+</tr>
+</tbody></table>
+<ul>
+<li>새 Fusion은 B2보다 904개 적게 맞혔다. Origin 평균 Recall은 Fusion <code>0.137043</code>, B2 <code>0.124986</code>으로 역전되므로 평균 origin 수치만으로 전체 포착 우위를 주장할 수 없다. 양성 시점 origin 평균 NDCG는 Fusion <code>0.072429</code>, B2 <code>0.080717</code>이다. Fusion의 B2 대비 최대 손실은 origin 53에서 1,317개였다.</li>
+<li>새 보수적 교체는 B2보다 33개 더 맞혔지만 pooled NDCG는 <code>0.079820→0.079807</code>로 소폭 하락했다. 23개 origin 활성·41개 B2 fallback·5,304건 교체, origin별 적중 9승·54무·1패(손실 origin 46에서 39개)였다. 3-origin 이동 블록 bootstrap 2,000회의 기술적 95% 구간은 pooled Recall 차이 <code>[-0.001764, 0.002652]</code>, NDCG 차이 <code>[-0.001144, 0.000824]</code>로 모두 0을 포함한다.</li>
+<li>기존 Experiment 13은 같은 기준선 대비 +74개·NDCG +0.000565였으나 새 점수에서는 +33개·NDCG 약 -0.000013이다. 새 점수의 <code>lambda_selection_history.csv</code>에는 고정 scalar 선택값이 없고, 실제 λ는 <code>temporal_moe_history.csv:gate_weight_b1</code> 및 <code>FeedbackAudit_01/actual_lambda_by_origin.csv</code>에 있다. 상속된 <code>model_state_manifest.lambda_fusion=0</code>은 내부 계산용 placeholder이지 실제 Fusion λ가 아니다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: ADST·MoE의 성숙 피드백 시각은 전체 실행에서 검증됐고, 원래 smoke의 검증 공백은 메웠다. B1과 Fusion의 전체 적중은 원본보다 각각 280·353개 늘었으나, B2는 그대로이며 Fusion은 여전히 B2에 못 미친다. 이 차이는 ADST 지연과 MoE 학습 이력이 함께 달라진 결과로, 둘 중 하나의 단독 효과가 아니다.</li>
+<li>결정: 성숙 피드백 실행을 방법론적으로 더 타당한 비교 기준으로 기록한다. 현재 MoE Fusion은 B2보다 우수한 최종 모델로 채택하지 않는다. 보수적 교체도 +33개 적중에 NDCG 약간 하락, paired 구간의 0 포함으로 최종 채택을 보류한다.</li>
+<li>한계: 보수적 교체 규칙은 같은 64-origin을 본 뒤 설계됐다. 이번 재실행은 입력 점수의 시간순 오류를 교정했지만, 새 미관측 기간에서의 독립 성능 검증은 아니다. 반복 GPU-time 양성은 XID episode 포착률과 다르다. 상속한 frozen upstream 설정의 원래 선택 출처와 정확한 전체 실행 재현은 이번 범위에서 독립 재검증하지 않았다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>요구사항 추적</th>
+<th>실행 증거</th>
+<th>판정</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>R1 공통 전체 GPU rolling 평가</td>
+<td>64 origin·3,053시점·6,081,576행, 양성 수와 평가 지표 재현</td>
+<td>confirmed</td>
+</tr>
+<tr>
+<td>R2 ADST 7/14/21일과 성숙 피드백</td>
+<td>61회 지연 갱신·시각 위반 0·세 학습창 모두 사용</td>
+<td>confirmed</td>
+</tr>
+<tr>
+<td>R3 B2 History-only 21일 고정</td>
+<td>기존 Experiment 12 대비 전 행 점수 차이 0</td>
+<td>confirmed</td>
+</tr>
+<tr>
+<td>R4 30분 MoE λ 선택·적용</td>
+<td>2,909블록 학습·144블록 fallback·실제 가중합 및 이력 오차 0</td>
+<td>confirmed</td>
+</tr>
+<tr>
+<td>R5 고정 scalar λ 기록과 실제 λ의 구분</td>
+<td>새 이력 scalar 값 없음; 상속 state manifest의 0은 placeholder</td>
+<td>confirmed</td>
+</tr>
+<tr>
+<td>R6 보수적 교체의 시간순 선택</td>
+<td>64개 순위 part·교체 상한·fallback 점수 검증</td>
+<td>confirmed</td>
+</tr>
+<tr>
+<td>R7 새 기간의 독립적 성능 우위</td>
+<td>동일 64-origin을 보고 규칙 설계, 별도 미관측 기간 없음</td>
+<td>unverified</td>
+</tr>
+<tr>
+<td>R8 frozen upstream 선택 출처와 exact 동일 재실행</td>
+<td>이번 범위에서 소스 선택 과정 재감사·전체 2차 재실행 없음</td>
+<td>unverified</td>
+</tr>
+</tbody></table>
+<p>[실행할 것]</p>
+<ol>
+<li>같은 규칙을 변경하지 않고 새로운 미관측 기간에서 B2·성숙 피드백 MoE·보수적 교체를 paired Recall@100/NDCG@100으로 검증한다.</li>
+<li>origin 53의 Fusion 손실과 origin 46의 보수적 교체 손실을 양성 부하·후보 포착 상한·B1/B2 순위 차이로 진단하되, 해당 기간을 보고 임계값을 재조정하지 않는다.</li>
+<li>XID episode 단위 포착률과 GPU-time 지표를 분리하고, 필요 시 별도 승인 후 BLOX 연결을 재검토한다.</li>
+</ol>
+<h2>Experiment 15 = B2-anchored 경계 후보 재정렬 = 탐색 결과 보류</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-007·G-008. Experiment 14에서 B2보다 낮았던 MoE 전체 가중합과, 작은 적중 이득에도 NDCG가 소폭 하락한 보수적 교체를 개선할 수 있는지 시험했다. 전체 B2 순위를 기본값으로 두고 후보 경계의 교체만 학습했다.</li>
+<li>이번 64-origin은 방법 설계에 이미 사용된 기간이므로 결과가 좋아도 독립 검증은 아니다. 결과는 B2 기준선보다 나빠 최종 방법으로 채택하지 않는다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>유지한 기준: Experiment 14의 인과적 피드백 B1/B2 저장 점수, All-XID 24시간 onset 라벨, 10분 feature cutoff, 36시간 purge, 30일 warm-up 이후 64개 rolling origin, 24시간 model state, 30분 판단, 전체 1,992 GPU. 원본 Branch 재학습·5분 평가·BLOX·커밋·푸시는 하지 않았다.</li>
+<li>진입점: <code>ISEE_Project_GitHubBase/ML/evaluate_experiment15_boundary_swap.py</code>. <code>Blox</code> 작업 트리에서 bundled Python, seed <code>20260905</code>, BLAS/OMP/MKL threads 4로 실행했다. 합성 자기검사는 통과했고 전체 실행은 exit code 0, 약 71초였다. 입력 source는 <code>2026-10-04_Experiment14_MaturedADST_TemporalMoE_01/</code>, 출력은 새 <code>2026-10-05_Experiment15_B2_Anchored_BoundarySwap_01/</code>에 보존했다.</li>
+<li>과거 성숙 OOF의 직전 7일은 선택 검증, 그 앞 7일은 candidate-only standardized logistic 학습에 사용했다. 사용 가능한 query는 현재 origin 시작보다 최소 36시간 앞선 점수이고 24시간 라벨 성숙도 확인했다. 특징은 B1/B2 순위 백분위·logit 점수·순위 차이와 B2 Top-100 경계 점수 차이다. 이 모델은 pairwise loss를 직접 학습한 것이 아니라 경계 후보별 위험도를 학습한 뒤 들어올/밀려날 GPU의 점수를 비교한다.</li>
+<li>후보는 B2 상위 M={150,250,400}과 B1 상위 N={50,100,200}의 합집합이다. <code>BoundaryModel5</code>는 과거 검증 적중 최대 설정을 선택하고 gate 없이 시점당 최대 5개를 교체한다. <code>BoundaryGuard2</code>는 최대 2개만 교체하며 과거 검증에서 B2보다 적중이 많고 NDCG와 전체 GPU rank-slot PR-AUC가 떨어지지 않는 설정만 선택한다. 실패·피드백 부족 시 B2로 정확히 복귀한다. 평가 origin의 라벨은 선택에 쓰지 않았다.</li>
+<li>같은 64-origin 전체 GPU에서 pooled Recall@100, 양성 시점 pooled NDCG@100, origin 평균 PR-AUC를 비교했다. PR-AUC는 B2 score slot을 새 전체 순위에 재배치해 계산한 순위 AP로, 보정 확률 품질은 아니다. 원본 onset ledger에는 episode ID가 없어 중복 <code>(gpu_id,onset_time)</code>을 한 번만 세는 onset-event 포착률을 보조 진단으로 산출했다. 이는 재구성된 실패 episode 포착률이 아니다.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>64개 origin·3,053개 시점·6,081,576 GPU-time·양성 52,945개를 평가했다. 두 새 방법 각각 전체 GPU 순위 Parquet 64개, 합계 128개/12,163,152행을 저장했고 순위 파일에는 라벨 열이 없다. 시간순 cutoff·라벨 성숙·시점당 교체 상한 위반 0건을 독립 감사했다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>방법</th>
+<th align="right">Top-100 적중</th>
+<th align="right">Pooled Recall@100</th>
+<th align="right">양성 시점 pooled NDCG@100</th>
+<th align="right">Origin 평균 PR-AUC</th>
+<th align="right">교체 수</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B2</td>
+<td align="right">8,335</td>
+<td align="right">0.157428</td>
+<td align="right">0.079820</td>
+<td align="right">0.031576</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Experiment 14 보수적 교체</td>
+<td align="right">8,368</td>
+<td align="right">0.158051</td>
+<td align="right">0.079807</td>
+<td align="right">0.031530</td>
+<td align="right">5,304</td>
+</tr>
+<tr>
+<td>BoundaryModel5</td>
+<td align="right">8,239</td>
+<td align="right">0.155614</td>
+<td align="right">0.079754</td>
+<td align="right">0.031457</td>
+<td align="right">11,389</td>
+</tr>
+<tr>
+<td>BoundaryGuard2</td>
+<td align="right">8,251</td>
+<td align="right">0.155841</td>
+<td align="right">0.079447</td>
+<td align="right">0.031526</td>
+<td align="right">2,047</td>
+</tr>
+</tbody></table>
+<ul>
+<li>BoundaryModel5는 50개 origin 활성, B2 대비 21승·38무·5패, 최대 손실 origin 52에서 -179개였다. BoundaryGuard2는 22개 활성, 4승·57무·3패, 최대 손실 origin 52에서 -87개였다. Guard2의 전체 순손실 -84개는 이 한 origin의 손실보다 작다. 이 origin에서 B2는 1,367개, B1은 303개 적중했다.</li>
+<li>B2 대비 Guard2의 3-origin 이동 블록 bootstrap 2,000회 기술적 95% 구간은 pooled Recall 차이 <code>[-0.004765, 0.000452]</code>, NDCG 차이 <code>[-0.001145, 0.000123]</code>으로 0을 포함한다. 이 구간은 이미 관찰된 기간의 사후 설계를 교정하지 않는다.</li>
+<li>가장 넓은 후보 M=400,N=200은 전체 양성 52,945개 중 23,338개(44.08%)를 포함했다. 그 후보 내 이상적인 Top-100 oracle 적중은 22,867개(43.19%)다. 이는 사후 진단 상한이지 실현 성능이나 파라미터 선택 근거가 아니다.</li>
+<li>평가 전 기간의 완전한 24시간 사전 점수와 onset 최소 10분 전 경고를 요구한 고유 onset 1,402개 중 B2는 299개, BoundaryModel5는 352개, BoundaryGuard2는 308개를 한 번 이상 포착했다. GPU-time Recall 하락과 onset-event 포착 증가가 동시에 나타났으므로 두 지표를 혼용하지 않는다. 별도 episode ID가 없어 엄밀한 episode 포착률은 미검증이다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: 전체 1,992 GPU에서 학습한 기존 메타 위험도를 후보 경계 전용 학습으로 바꿔도 B2를 넘지 못했다. 특히 Guard2는 origin 52의 과거 검증에서 적중 +8, NDCG 및 PR-AUC 비열화 없음으로 gate를 통과했지만 현재 적중은 -87이었다. 이는 과거 gate 통과가 다음 구간의 안전을 보장하지 않음을 보여준다.</li>
+<li>해석: origin 52에서는 B2가 B1보다 압도적으로 많은 양성을 상위 100개에 올렸다. 교체 손실은 이런 구간에서 B2의 강점을 보존하지 못한 결과와 일치하지만, 원인 메커니즘을 단일 요인으로 입증하지는 않는다. 후보 포착 상한이 실현 적중보다 높으므로 후보 부족만을 원인으로 단정할 수도 없다.</li>
+<li>결정: <code>BoundaryModel5</code>와 <code>BoundaryGuard2</code> 모두 최종 Fusion으로 채택하지 않는다. PR-AUC 주 지표 교체도 결정하지 않는다. 저장 점수의 인과적 피드백 경계는 Experiment 14에서 검증됐지만, 이 재정렬의 일반화 우위는 미검증이다.</li>
+<li>한계: 동일 64-origin을 보고 방법을 설계했다. 새로운 미관측 기간이 없고, onset-event 포착은 장애 episode를 재구성한 지표가 아니다. 전체 동일 재실행에 의한 exact deterministic reproduction은 이번 범위에서 확인하지 않았다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>새로운 미관측 기간이 확보되기 전에는 모델 우월성을 주장하지 않는다. 우선 origin 52의 B2/B1 순위·교체된 양성·최근 OOF 부하 차이를 사후 진단으로 분리한다.</li>
+<li>다음 방법을 시험한다면 B2 강세 구간의 fallback 근거와 하드네거티브/쌍별 비교 목표를 사전 고정하고, 기존 64-origin은 개발 자료로만 사용한다. 별도 계획·승인 없이 코드나 규칙을 추가 변경하지 않는다.</li>
+<li>진짜 실패 episode 포착률을 주장하려면 episode ID 또는 명시적 재구성 규칙을 먼저 확정한다. BLOX 연결은 계속 보류한다.</li>
+</ol>
+<h2>Experiment 16 = Branch 1 단독 EMA·학습형 기억 전문가 = 탐색 결과 보류</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-004·G-007. Experiment 15까지의 사후 Top-100 재정렬 대신, telemetry로 위험 점수를 생성하는 Branch 1 시계열 모델 자체에 GPU별 기억을 추가하는 가설을 시험했다. PSO 최적화는 적용하지 않았고, 고정 EMA와 LSTM/GRU식 학습형 게이트를 비교했다.</li>
+<li>새 두 전문가는 기존 4-family Cascade를 대체하는 <strong>독립 B1 모델</strong>이다. 기존 Cascade의 24시간 2단계는 원본 비교군에 그대로 남아 있으나 새 두 전문가 내부에는 사용하지 않았다. 따라서 이는 Cascade에 기억 모듈을 추가한 실험이나 단일 요인 ablation이 아니다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>Experiment 14 저장 점수의 B1·B2를 비교 기준으로만 읽었다. 학습 입력은 원본 5분 telemetry의 GPU별 4개 지표와 node 평균 3개 지표뿐이다. 각 30분 시점에는 최근 1시간의 원시값 중 판단 직전 10분을 제외한 12개 5분 bin의 평균을 사용했다. 과거 XID 이력·B2 점수·평가 origin 라벨은 새 모델의 입력에 포함하지 않았다.</li>
+<li>EMA 전문가는 30분마다 <code>m_t = 0.9 m_(t-1) + 0.1 x_t</code>를 GPU별로 유지하고 현재 1시간 요약과 EMA 상태에 logistic 위험 모델을 학습했다. GRU 전문가는 hidden 12의 학습형 게이트를 24시간(48개 판단 step) 과거 입력으로 학습했다. 새 모델 버전의 첫 판단 전에는 해당 모델로 24시간 telemetry를 재생하고, 같은 origin 안에서는 숨은 상태를 계속 전달했다. 학습은 최대 양성 1,500개와 10배 음성 표본, 2 epoch를 사용했다.</li>
+<li>두 전문가 각각 Experiment 11/14의 ADST 7/14/21일 momentum 상태 전이를 사용했다. 학습 샘플은 <code>origin−36시간</code> 이전에 한정했고, ADST 피드백도 score 시점이 현 origin보다 36시간 이상 앞서고 24시간 라벨이 성숙했을 때만 반영했다. 각 전문가의 ADST 창은 자신의 과거 성능으로 달라질 수 있으므로 두 모델의 직접 차이는 기억 메커니즘만의 효과가 아니다.</li>
+<li>평가 계약은 All-XID 통합 onset·24시간 horizon·30일 warm-up 이후 64 rolling origin·24시간 재학습·30분 판단·36시간 purge·전체 1,992 GPU이다. 새 score part 64개에는 라벨 열이 없다. Seed <code>20260905</code>, CPU 4 threads, <code>Blox</code> commit <code>4219120</code>, 실행 진입점 <code>ISEE_Project_GitHubBase/ML/run_experiment16_b1_gated_memory.py</code>. 1-origin 구현 검사 후 별도 전체 실행은 exit code 0, 약 128초였다. 출력은 <code>experiments/2026-10-05_Experiment16_B1_GatedMemory_01/</code>이며 기존 결과와 사용자 미추적 파일을 덮어쓰지 않았다. BLOX·커밋·푸시는 실행하지 않았다.</li>
+<li>독립 감사 <code>ML/verify_experiment16_b1_memory.py</code>는 64개 part·6,081,576행의 시각·GPU 모집단·라벨 정합·Recall/NDCG/AP 재계산, 학습 purge, 성숙 피드백을 검사했다. 모두 일치했고 61개 ADST 피드백 갱신씩을 확인했다. 합성 검사는 GPU 간 EMA 상태 혼합 없음, GRU 순차 재생과 일괄 예측 일치, 성숙 전 ADST 차단을 확인했다.</li>
+</ul>
+<p>[결과]</p>
+<table>
+<thead>
+<tr>
+<th>같은 64-origin 전체 GPU</th>
+<th align="right">Top-100 적중</th>
+<th align="right">Pooled Recall@100</th>
+<th align="right">양성 시점 pooled NDCG@100</th>
+<th align="right">Origin 평균 PR-AUC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Experiment 14 B1 Cascade</td>
+<td align="right">6,100</td>
+<td align="right">0.115214</td>
+<td align="right">0.065435</td>
+<td align="right">0.017887</td>
+</tr>
+<tr>
+<td>B2 History-only 기준</td>
+<td align="right">8,335</td>
+<td align="right">0.157428</td>
+<td align="right">0.079820</td>
+<td align="right">0.031576</td>
+</tr>
+<tr>
+<td>새 B1 EMA 기억 전문가</td>
+<td align="right">3,841</td>
+<td align="right">0.072547</td>
+<td align="right">0.044926</td>
+<td align="right">0.017087</td>
+</tr>
+<tr>
+<td>새 B1 GRU 게이트 전문가</td>
+<td align="right">3,993</td>
+<td align="right">0.075418</td>
+<td align="right">0.033714</td>
+<td align="right">0.013590</td>
+</tr>
+</tbody></table>
+<ul>
+<li>전 3,053 판단 시점·52,945 양성 GPU-time을 동일 분모로 비교했다. 기존 B1 대비 origin별 적중 승/동률/패는 EMA 18/6/40, GRU 20/5/39였다. EMA의 ADST 사용 창은 7일 34·14일 22·21일 8회, GRU는 7일 45·14일 17·21일 2회였다.</li>
+<li>기존 B1 대비 EMA는 2,259개, GRU는 2,107개 적게 맞혔다. 양성 부하가 큰 origin 52·53에서 B2는 각각 1,367·1,617개, EMA는 0·38개, GRU는 381·329개 적중했다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: 독립 B1 기억 전문가 두 개 모두 기존 Cascade와 B2의 pooled Recall·NDCG에 못 미쳤다. EMA의 평균 PR-AUC는 기존 B1에 근접했지만 Top-100 포착을 대체하지 못했다. 현재 구성은 최종 B1으로 채택하지 않는다.</li>
+<li>해석의 한계: 기존 B1은 4-family와 24시간 stage-2를 사용하고 새 전문가는 간소화된 1시간 요약과 장기 상태를 사용했다. 따라서 이번 하락을 기억·게이트 자체의 해로움으로 귀속할 수 없다. GRU는 24시간 unroll로 학습하고 origin 중에는 연속 state를 사용했으므로 학습·추론 기억 길이도 완전히 동일하지 않다. 모델 가중치 checkpoint와 전체 동일 재실행을 보존·검증하지 않아 exact deterministic reproduction은 미검증이다. 동일 64-origin은 이미 개발에 사용된 기간이고 실패 episode 포착률도 아니다.</li>
+<li>결정: 두 단독 전문가는 보류한다. 기존 B1/B2를 유지한다. 기억을 기존 4-family Cascade 내부에 결합할지, 1시간 요약 대신 원래 1시간 sequence tensor를 사용할지는 <strong>별도 구조 실험</strong>으로 분리해 사전 계획·승인을 받는다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>추가 실험을 승인받는다면 기존 Cascade의 1시간 CNN만 기억형 encoder로 대체하고 나머지 세 family·24시간 stage-2·ADST를 동일하게 유지해 단일 요인 ablation을 수행한다.</li>
+<li>새 미관측 기간 없이는 모델 우월성 주장을 하지 않으며, GPU-time과 XID episode 포착을 혼용하지 않는다. BLOX 연결은 계속 보류한다.</li>
+</ol>
+<h2>Experiment 17 = B1 Cascade CNN 슬롯의 EMA·GRU 기억형 교체 = 비교 판정 보류 (2026-10-05)</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-004·G-007. Experiment 16의 독립 B1 기억 전문가는 4-family Cascade와 24시간 2단계를 통과하지 않았으므로, 이번에는 Experiment 14 전체 ML 경로에서 B1의 1시간 CNN 슬롯만 기억형 CNN으로 교체해 EMA·GRU를 각각 실행했다. Experiment 16의 파일럿 결과는 별도로 보존한다.</li>
+<li><strong>실행은 전체 ML</strong>, <strong>Top-100 평가는 통과</strong>, <strong>기존 B2와의 엄밀한 동일성 감사는 실패</strong>했다. 따라서 성능 수치는 관측 결과로 기록하되, Experiment 14 대비 순수 단일 요인 효과나 최종 모델 우월성은 주장하지 않는다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>입력·평가 계약: All-XID 통합 onset, 24시간 라벨, 판단 직전 10분 feature buffer, 30일 warm-up 후 전체 기간 64개 rolling origin, 24시간 model state, 30분 판단, 36시간 학습 purge·성숙 피드백, 전체 1,992 GPU. 평가 origin 라벨은 ADST·MoE 선택에 사용하지 않았다. Terminal held-out 선별과 5분 평가는 수행하지 않았다.</li>
+<li>진입점 <code>ISEE_Project_GitHubBase/ML/run_experiment17_30m_memory_cascade.py</code>, seed <code>20260905</code>, CPU threads <code>2</code>, EMA·GRU 별도 출력 폴더. 두 실행 모두 기존 logistic·Extra Trees·HistGradientBoosting family, 과거 성숙 OOF 2블록의 24시간 Cascade stage 2, B1 7/14/21일 ADST, B2 History-only 21일 Sliding, 30분 Temporal MoE를 실제 재학습·추론했다. 이전 점수 파일을 새 점수로 복사하지 않았다.</li>
+<li>기억형 CNN은 기존 1시간 sequence CNN 증거에 GPU별 EMA(유지율 0.9) 또는 GRU(hidden 12, 최근 약 24시간에서 2시간 간격으로 뽑은 30분 프레임 12개) 기억 residual을 gate로 더한다. 원본 CNN 학습 5 epoch와 달리 새 기억형 CNN은 2 epoch이므로 순수 기억 구조만의 ablation은 아니다. 나머지 family·Cascade·B2·MoE 경로는 상속했다.</li>
+<li>각 variant의 64개 score part·6,081,576행·완료 manifest, 기억형 fit 192회(각 origin의 OOF 2회+최종 1회)를 확인했다. 예측 호출은 각 3,181회이다. 초기 예상 3,200회는 마지막 origin을 48개 판단 시점으로 잘못 세었으며, 실제 3,053개 판단 시점+OOF 128회가 정확한 기준이다.</li>
+<li><code>ML/evaluate_experiment14_top100.py</code>를 EMA·GRU 각각 별도 <code>Experiment17_B1_*_Top100Audit_01</code> 폴더에 실행해 64/64 origin의 라벨·모집단·지표를 재계산했다. <code>ML/verify_experiment14_feedback.py</code>도 각각 별도 감사 폴더를 지정해 실행했지만 B2 동일성 assertion에서 종료되어 감사 JSON은 생성되지 않았다. 기존 산출물·Experiment 16·사용자 미추적 파일은 덮어쓰지 않았고 BLOX·커밋·푸시는 하지 않았다.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>동일 64-origin에서 3,053개 판단 시점, 6,081,576 GPU-time, 양성 52,945개를 평가했다. 아래 PR-AUC는 origin 평균이며 NDCG는 양성 시점 pooled 값이다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>방법</th>
+<th align="right">Top-100 적중</th>
+<th align="right">Pooled Recall@100</th>
+<th align="right">NDCG@100</th>
+<th align="right">PR-AUC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Experiment 14 B1 Cascade</td>
+<td align="right">6,100</td>
+<td align="right">0.115214</td>
+<td align="right">0.065435</td>
+<td align="right">0.017887</td>
+</tr>
+<tr>
+<td>Experiment 17 B1 EMA Cascade</td>
+<td align="right">6,229</td>
+<td align="right">0.117650</td>
+<td align="right">0.067399</td>
+<td align="right">0.017524</td>
+</tr>
+<tr>
+<td>Experiment 17 B1 GRU Cascade</td>
+<td align="right">6,026</td>
+<td align="right">0.113816</td>
+<td align="right">0.065469</td>
+<td align="right">0.017757</td>
+</tr>
+<tr>
+<td>Experiment 17 B2 History-only</td>
+<td align="right">8,335</td>
+<td align="right">0.157428</td>
+<td align="right">0.079820</td>
+<td align="right">0.031573</td>
+</tr>
+<tr>
+<td>Experiment 14 Temporal MoE Fusion</td>
+<td align="right">7,431</td>
+<td align="right">0.140353</td>
+<td align="right">0.075598</td>
+<td align="right">0.023030</td>
+</tr>
+<tr>
+<td>Experiment 17 EMA Temporal MoE Fusion</td>
+<td align="right">6,801</td>
+<td align="right">0.128454</td>
+<td align="right">0.071083</td>
+<td align="right">0.020391</td>
+</tr>
+<tr>
+<td>Experiment 17 GRU Temporal MoE Fusion</td>
+<td align="right">6,824</td>
+<td align="right">0.128888</td>
+<td align="right">0.071068</td>
+<td align="right">0.020998</td>
+</tr>
+</tbody></table>
+<ul>
+<li>EMA·GRU 모두 B1 점수는 Experiment 14와 전 6,081,576행에서 달랐다. EMA와 GRU의 B2 점수는 전 행 정확히 같았다. 다만 Experiment 14/12의 B2 기준과는 각각 6,018,763행에서 차이가 있었고 최대 절대 차이는 <code>0.000753093</code>이다. B2 Top-100 적중·Recall·NDCG는 기준과 같았으나 PR-AUC는 <code>0.031576→0.031573</code>이다.</li>
+<li>피드백 감사는 64개 part에서 36시간 cutoff·24시간 라벨 성숙·ADST 7/14/21일·MoE fallback·실제 Fusion 가중합·λ trace 검사까지 통과한 후 <code>Branch 2 unexpectedly changed</code>에서 종료됐다. 감사 JSON이 없으므로 전체 감사 <code>VERIFIED</code>라고 기록하지 않는다. 두 변형 모두 MoE 학습 2,909블록·B2 fallback 144블록, 성숙 ADST 갱신 61회였다. B1 사용 학습창은 EMA 7/14/21일 각각 34/20/10 origin, GRU 31/21/12 origin이다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: EMA B1은 Experiment 14 B1보다 적중 +129개지만 PR-AUC는 소폭 낮다. GRU B1은 적중 -74개다. 두 Fusion은 기준 Fusion보다 적중과 세 지표가 낮고, 두 경우 모두 B2 8,335개 적중을 넘지 못했다.</li>
+<li>해석 제한: 기억형 CNN의 학습 epoch가 원본과 다르고, B1 점수 변화에 따라 Cascade alpha·ADST 경로·MoE 피드백이 달라질 수 있다. B2는 동일한 History-only 21일 설정·시각을 기록했지만 기준 점수와 정확히 같지 않다. Experiment 14는 threads 4, Experiment 17은 threads 2로 실행했으나 이것이 B2 차이의 원인인지는 입증하지 않았다. 동일 64-origin은 이미 개발에 사용됐고 새 미관측 기간이나 XID episode 포착률 검증도 없다.</li>
+<li>판정: <strong>전체 경로 실행 완료, 엄밀한 기준선 동일성 감사 실패로 방법론적 비교 판정 보류.</strong> EMA·GRU를 최종 B1/Fusion으로 채택하지 않는다. Experiment 14 기준과 Experiment 16 독립 파일럿은 변경하지 않는다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>별도 승인 후 B2 차이의 원인을 동일 입력·seed·thread·환경·실행 경로에서 분리하고, 정확한 B2 동일성 또는 사전에 명시한 허용오차·순위 안정성 기준을 확정한다. 실패한 감사의 assertion을 근거 없이 완화하지 않는다.</li>
+<li>순수 기억 구조 효과를 주장하려면 CNN epoch 등 학습 예산을 맞춘 사전 고정 ablation을 새 출력 폴더에서 재실행한다. 그전에는 현재 EMA의 작은 B1 적중 증가를 인과적 우위로 해석하지 않는다.</li>
+<li>새 미관측 기간의 paired Recall@100/NDCG@100·PR-AUC와 XID episode 포착을 별도 검증한다. BLOX 연결은 보류한다.</li>
+</ol>
+<h2>Experiment 18 = 1·12·24시간 단일 Logistic 전문가와 2층 MoE = 실행 검증·성능 채택 보류 (2026-10-05)</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-004·G-007. 사용자는 Experiment 17의 기억형 Cascade 후속 채택 경로를 폐기하고, Branch 1을 단기·중기·장기 telemetry 전문가로 분리한 뒤 신뢰도 기반 Branch Fusion을 시험하도록 승인했다. Experiment 17 산출물과 기존 판정은 역사적 증거로 보존한다.</li>
+<li>질문은 독립 로지스틱 전문가 세 개와 B1 내부·B1/B2 외부의 2층 MoE가 같은 평가 규약에서 Experiment 14 B1 및 B2 단독을 개선하는가이다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>유지한 계약: All-XID 통합 onset, 24시간 라벨, 10분 feature cutoff, 36시간 학습 purge·성숙 피드백, 30일 warm-up 후 전체 기간 64 rolling origin, 24시간 모델 재학습, 30분 판단, 전체 1,992 GPU. Terminal held-out은 선택에 사용하지 않았다. Seed <code>20260905</code>, CPU 4 threads, 코드 기준 <code>Blox</code> commit <code>4219120</code> 위의 사용자 미커밋 새 실행 파일이다.</li>
+<li>진입점 <code>ISEE_Project_GitHubBase/ML/run_experiment18_30m_multiscale_logistic_moe.py</code>. 1·12·24시간 telemetry-only 표로 각각 <code>StandardScaler + class-balanced LogisticRegression</code> 하나씩 학습했다. 12시간은 기존 특징 추출기의 명시적 1·6·24시간 map에 없어서 <strong>새 실행 프로세스 안에서만</strong> 144개 5분 bin을 추가했다. 기존 공용 코드·Experiment 14 점수는 수정하지 않았다. 세 전문가는 서로의 점수를 입력받지 않으며 Cascade, CNN, 트리 앙상블은 사용하지 않았다.</li>
+<li>세 전문가의 학습 샘플·학습 기간은 공유했다. B1 ADST는 Experiment 14의 초기 14일, 후보 7·14·21일, 성숙한 B1 PR-AUC의 15% 하락 시 축소·안정 3회 시 확대하는 momentum 전이 규칙을 유지했다. B2는 기존 History-only <code>xid_count_30d</code>, <code>days_since_xid</code> logistic을 21일 고정 Sliding으로 매 origin 재학습했고 B2 ADST는 사용하지 않았다.</li>
+<li>내부 gate는 과거 rolling의 <strong>미래가 아니었던</strong> 전체 GPU 전문가 점수 중 현 origin보다 36시간 이상 앞선 14일 이내 성숙 블록을 읽는다. 양성 GPU와 전문가별 상위 200개 경계의 어려운 음성을 이용해 양성은 더 높은 순위, 음성은 더 낮은 순위를 준 전문가를 고르는 정규화 로지스틱 gate를 학습한다. 이 점별 목표는 Top-100 순위의 대리 목표이지 Recall@100 자체의 직접 최적화는 아니다. 피드백 부족 시 세 전문가 동일가중으로 fallback한다.</li>
+<li>외부 gate는 성숙한 과거 블록의 B1/B2 후보 λ={0,0.25,0.5,0.75,1}를 전 GPU Top-100 적중과 NDCG로 비교한다. B2보다 적중이 늘고 NDCG가 떨어지지 않은 λ만 과거 블록의 양성 선택 대상으로 삼고, 현재 점수 분포·불일치·성숙한 과거 신뢰도 특징으로 30분 블록 λ를 예측한다. 증거 부족 또는 B2 fallback 예측 확률 0.5 이상이면 λ=0이다. 이는 미래 구간 손실을 보장하지 않는 경험적 gate다.</li>
+<li>1-origin과 5-origin smoke는 fit·predict·성숙 피드백 연결 확인용으로 분리했다. 본 64-origin 전체 ML은 종료 코드 0, 약 26.3분이다. 점수 원본에는 평가 정답 열을 저장하지 않았다. 독립 감사 <code>ML/verify_experiment18_multiscale_moe.py</code>와 기존 <code>ML/evaluate_experiment14_top100.py</code>를 각자 새 감사 폴더에 실행해 전 행과 지표를 재계산했다. BLOX·5분 평가·커밋·푸시는 수행하지 않았다.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>64개 score part·3,053개 시점·6,081,576 GPU-time·양성 52,945개. 독립 감사와 기존 Top-100 평가기 모두 <code>VERIFIED</code>다. B2의 Experiment 14 대비 전 행 점수 최대 절대 차이 <code>0</code>, 내부 가중치 합 최대 오차 <code>3.33e-16</code>, B1 가중합 오차 <code>0</code>, 최종 Fusion 가중합 최대 오차 <code>2.78e-17</code>이다. 36시간 gate·ADST 시각 경계 위반 0건을 확인했다.</li>
+<li>B1 내부 gate는 61개 origin에서 학습했고 처음 3개에서 동일가중 fallback했다. 외부 gate는 2,909개 블록에서 학습·144개 블록에서 B2 fallback했다. 성숙 ADST 갱신은 61회, 실제 B1 학습창 사용은 7일 35·14일 21·21일 8개 origin이다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>같은 64-origin 전체 GPU 방법</th>
+<th align="right">Top-100 적중</th>
+<th align="right">Pooled Recall@100</th>
+<th align="right">양성 시점 pooled NDCG@100</th>
+<th align="right">Origin 평균 PR-AUC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Experiment 14 B1 Cascade 기준</td>
+<td align="right">6,100</td>
+<td align="right">0.115214</td>
+<td align="right">0.065435</td>
+<td align="right">0.017887</td>
+</tr>
+<tr>
+<td>새 1시간 Logistic</td>
+<td align="right">5,400</td>
+<td align="right">0.101993</td>
+<td align="right">0.054235</td>
+<td align="right">0.014269</td>
+</tr>
+<tr>
+<td>새 12시간 Logistic</td>
+<td align="right">4,713</td>
+<td align="right">0.089017</td>
+<td align="right">0.051249</td>
+<td align="right">0.017425</td>
+</tr>
+<tr>
+<td>새 24시간 Logistic</td>
+<td align="right">5,275</td>
+<td align="right">0.099632</td>
+<td align="right">0.055348</td>
+<td align="right">0.018830</td>
+</tr>
+<tr>
+<td>새 세 전문가 동일가중 B1</td>
+<td align="right">5,384</td>
+<td align="right">0.101690</td>
+<td align="right">0.055681</td>
+<td align="right">0.018601</td>
+</tr>
+<tr>
+<td>새 내부 MoE B1</td>
+<td align="right">4,978</td>
+<td align="right">0.094022</td>
+<td align="right">0.053570</td>
+<td align="right">0.018488</td>
+</tr>
+<tr>
+<td>B2 History-only 동일 기준</td>
+<td align="right">8,335</td>
+<td align="right">0.157428</td>
+<td align="right">0.079820</td>
+<td align="right">0.031576</td>
+</tr>
+<tr>
+<td>새 2층 MoE Fusion</td>
+<td align="right">8,371</td>
+<td align="right">0.158107</td>
+<td align="right">0.076956</td>
+<td align="right">0.027814</td>
+</tr>
+</tbody></table>
+<ul>
+<li>내부 B1 MoE는 동일가중보다 적중 <code>-406</code>, 기존 Experiment 14 B1보다 <code>-1,122</code>개다. 최종 Fusion은 B2보다 <code>+36</code>개지만 NDCG <code>-0.002864</code>, origin 평균 PR-AUC <code>-0.003762</code>다. B2 대비 적중이 낮은 origin은 19개, 동률 12개, 높은 origin은 33개다.</li>
+<li>가장 큰 손실은 origin 52의 B2 1,367개 대 Fusion 608개(<code>-759</code>)였다. 이 origin에서 B1 자체는 65개였고 외부 gate의 평균 B1 가중치는 약 <code>0.434</code>라 B2로 충분히 복귀하지 못했다. Origin 53에서는 B2 1,617개 대 Fusion 1,664개(<code>+47</code>)였으나 NDCG는 B2가 더 높다. 3-origin 이동 블록 bootstrap 2,000회의 기술적 95% 구간은 B2 대비 pooled Recall 차이 <code>[-0.038035, 0.035200]</code>, NDCG 차이 <code>[-0.032942, 0.026607]</code>로 모두 0을 포함한다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: 로지스틱 장기 24시간 전문가는 PR-AUC <code>0.018830</code>으로 세 단독 전문가 중 가장 높지만 Top-100 적중은 1시간 전문가보다 낮다. PR-AUC를 내부 gate의 성공 대리로만 쓰면 이번 목표와 어긋난다. GPU별 내부 gate는 정규화된 경계 순위를 학습했으나 전체 Top-100에서는 동일가중보다 나빴다.</li>
+<li>승인안 대비 차이: 내부 gate는 세 전문가의 telemetry 기반 점수 순위·불일치만 사용했고 원시 telemetry 관측 품질 등 별도 문맥 변수는 직접 사용하지 않았다. 해당 문맥 입력은 <strong>부분 구현</strong>이므로 모든 telemetry-context MoE가 실패했다고 결론 내리지 않는다.</li>
+<li>해석: 내부 gate의 GPU별 oracle 전문가 선택이 서로 경쟁하는 1,992개 GPU의 최종 순위까지 보장하지 않는다는 가설과 일치한다. 외부 gate의 과거 블록 Top-100 보상도 양성 부하가 큰 origin 52의 B2 강세로 충분히 일반화되지 않았다. 이는 관찰에 근거한 가능성이지 단일 원인 입증이 아니다.</li>
+<li>판정: <strong>전체 ML 파이프라인과 평가 계약은 검증됨; 성능 개선 모델로는 채택 보류.</strong> Experiment 14 B1·B2를 기준선으로 유지한다. 기존 64-origin은 이미 방법 설계에 참고했으므로 +36개 적중이나 bootstrap 구간을 독립적 일반화 우위로 주장하지 않는다. Experiment 14와는 입력창·모델 family·내부 gate가 동시에 달라 단일 요인 비교가 아니다. GPU-time 포착을 XID episode 포착률로 바꾸어 말하지 않는다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>새 코드 변경은 별도 계획·승인 후 수행한다. 우선 저장된 세 전문가 점수로 상호 보완성·오류 상관과 origin 52의 gate 실패를 진단한다. 관찰한 origin에 맞춰 현 gate를 사후 수정하지 않는다.</li>
+<li>후속 구조 실험은 <strong>같은 전문가 점수와 평가 계약을 고정하고 내부 gate만</strong> 동일가중·블록별 gate·GPU별 gate로 분리하는 사전 정의 ablation을 검토한다. 필요하면 새로운 미관측 기간에서 고정 규칙을 검증한다.</li>
+<li>XID episode 포착과 BLOX 연결은 별도 계획·승인 전까지 보류한다. Experiment 16·17과 기존 산출물은 삭제하거나 덮어쓰지 않는다.</li>
+</ol>
+<h2>Experiment 19 = Experiment 14 고정 Branch 점수의 B1·B2 이중 관성 확률 Fusion = 실행 검증·최종 채택 보류 (2026-10-05)</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-004·G-007·G-008. Experiment 18의 다중 시간창 B1 MoE는 후속 채택하지 않고, 검증된 Experiment 14의 1시간 4-family·24시간 stage-2 B1 Cascade와 History-only B2 점수를 <strong>그대로 고정</strong>했다. 질문은 두 Branch에 독립적 지연 관성을 부여한 비선형 확률 Fusion이 B2 단독과 관성 없는 Fusion을 개선하는가이다.</li>
+<li>이번 실행에서 새로 학습한 것은 Fusion 보정기와 결합기다. B1/B2 원모델·ADST·B2 Sliding을 <strong>다시 학습한 전체 Branch ML 실행은 아니다</strong>. 기존 Branch score tape의 인과적 성숙 피드백 계약을 상속하되, 원모델 재학습 효과를 새로 검증했다고 주장하지 않는다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>입력: Experiment 14의 고정 B1/B2 64개 full-population score part. All-XID 24시간 라벨, 10분 feature cutoff, 30일 warm-up 이후 64 rolling origin·24시간 state·30분 판단, 전체 1,992 GPU, 36시간 purge·24시간 라벨 성숙. 원 B1 ADST 7/14/21일과 B2 History-only 21일 Sliding의 산출 점수를 변경하지 않았다. Terminal held-out, 5분 평가, BLOX는 사용하지 않았다.</li>
+<li>GPU별 각 Branch logit의 과거 시점만으로 지수평활 상태를 갱신했다. 반감기는 B1 2시간·B2 6시간이며 현재 시점의 원점수는 현재 관성에 넣지 않는다. 과거 성숙 OOF의 앞선 7일로 B1/B2 및 두 관성의 단조 sigmoid 보정기를 학습하고, 다음 7일로 B2 logit offset + 정규화된 저용량 비선형 residual Fusion을 학습했다. 두 기간은 겹치지 않으며 현재 origin보다 최소 36시간 전 점수·성숙 라벨만 사용한다. 음성 샘플링은 하지 않았다. 비교 arm은 관성 없음/B1만/B2만/양쪽이다. 신뢰도는 과거 라벨로 학습된 확률 보정과 잔차 계수로만 반영하며 별도 disagreement gate나 Top-100 사후 교체 규칙은 없다.</li>
+<li>Seed <code>20260905</code>, CPU 4 threads. 첫 16개 origin은 14일 OOF가 없어 네 arm 모두 B2 정확 복귀; 이후 48개 origin에서 4 arm 결합기 192회와 4 보정기 192회를 실제 fit했다. 1-origin·17-origin smoke는 연결 검사로 분리했고 본 성능에 포함하지 않았다.</li>
+<li>새 실행기 <code>ML/run_experiment19_30m_dual_inertia_fusion.py</code>, 독립 전수 감사 <code>ML/verify_experiment19_dual_inertia_fusion.py</code>, 운영 지표 평가 <code>ML/evaluate_experiment19_calibration_onset.py</code>. 각각의 출력은 새 <code>experiments/2026-10-05_Experiment19_DualInertiaFusion_01/</code>에 기록했다. 기존 Experiment 14·16·17·18 산출물은 덮어쓰지 않았다.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>완료 manifest, 64개 part, 3,053개 판단 시점, 6,081,576 GPU-time, 양성 52,945개. 독립 감사 <code>VERIFIED</code>: B1/B2·원 Experiment 14 Fusion 전 행 점수 차이 0, 지연 기억 전 행 검증, Fusion 산식 재계산, 성숙 피드백·시각 경계 위반 0, 지표 불일치 0. 학습한 48개 origin에서 실제 새 Fusion 점수가 B2와 달랐다. PR-AUC는 origin 평균, NDCG는 양성 시점 pooled 값이다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>같은 64-origin 전체 GPU 방법</th>
+<th align="right">Top-100 적중</th>
+<th align="right">Pooled Recall@100</th>
+<th align="right">NDCG@100</th>
+<th align="right">PR-AUC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Experiment 14 B1</td>
+<td align="right">6,100</td>
+<td align="right">0.115214</td>
+<td align="right">0.065435</td>
+<td align="right">0.017887</td>
+</tr>
+<tr>
+<td>Experiment 14 B2</td>
+<td align="right">8,335</td>
+<td align="right">0.157428</td>
+<td align="right">0.079820</td>
+<td align="right">0.031576</td>
+</tr>
+<tr>
+<td>Experiment 14 Temporal MoE Fusion</td>
+<td align="right">7,431</td>
+<td align="right">0.140353</td>
+<td align="right">0.075598</td>
+<td align="right">0.023030</td>
+</tr>
+<tr>
+<td>새 관성 없는 확률 Fusion</td>
+<td align="right">8,419</td>
+<td align="right">0.159014</td>
+<td align="right">0.080702</td>
+<td align="right">0.032465</td>
+</tr>
+<tr>
+<td>새 B1 관성만</td>
+<td align="right">8,505</td>
+<td align="right">0.160638</td>
+<td align="right">0.081657</td>
+<td align="right">0.033047</td>
+</tr>
+<tr>
+<td>새 B2 관성만</td>
+<td align="right">8,422</td>
+<td align="right">0.159071</td>
+<td align="right">0.080820</td>
+<td align="right">0.032484</td>
+</tr>
+<tr>
+<td>새 B1+B2 양쪽 관성</td>
+<td align="right">8,505</td>
+<td align="right">0.160638</td>
+<td align="right">0.081722</td>
+<td align="right">0.033064</td>
+</tr>
+</tbody></table>
+<ul>
+<li>양쪽 관성은 B2보다 +170개, 관성 없는 arm보다 +86개 적중했다. 그러나 <strong>B1 관성만 사용한 arm과 총 적중은 같고</strong>, B2 관성 추가 효과는 NDCG +0.000065, PR-AUC +0.000017에 그친다. B2 대비 origin 승/동률/패는 13/46/5이며 origin 18에서 -240개, 19에서 -60개, 46에서 -67개, 47에서 -31개, 53에서 -20개 손실이다. Origin 52는 B2 1,367개 대 양쪽 관성 1,410개다.</li>
+<li>별도 운영 평가에서 전체 GPU-time Brier/log-loss는 B2 <code>0.008671/0.051254</code>, 관성 없음 <code>0.008650/0.050709</code>, B1 관성 <code>0.008649/0.050628</code>, 양쪽 관성 <code>0.008649/0.050631</code>이다. 양쪽 관성의 평균 예측 확률은 <code>0.010257</code>, 관측 양성률은 약 <code>0.008706</code>로, 작은 Brier 차이만으로 잘 보정됐다고 단정하지 않는다.</li>
+<li>Experiment 15와 같은 <strong>고유 onset-event</strong> 정의(직전 24시간 전체 점수, onset 최소 10분 전 Top-100 경고)의 적격 사건은 1,402개다. B1은 894개, B2는 299개, 관성 없음은 360개, B1 관성은 351개, B2 관성은 357개, 양쪽 관성은 351개를 포착했다. 양쪽 관성의 포착 사건에서 첫 경고~onset 중앙값은 23.75시간이다. 방법별 포착 집합이 달라 이 중앙값을 직접 우열 비교할 수 없고, ledger에는 episode ID가 없어 <strong>episode 포착률이 아니다</strong>.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: 확률 Fusion의 전체 GPU-time Top-100·NDCG·PR-AUC는 B2보다 높지만, 양쪽 관성은 B1-only 관성 대비 총 적중 이득이 없다. 새 Fusion의 onset-event 포착은 B2보다 높고 B1보다 크게 낮다. 30분 GPU-time 적중과 사건별 조기경고는 서로 다른 목적 함수다.</li>
+<li>판정: <strong>Fusion-layer 실제 fit·동일 평가 계약·전수 감사 통과; 최종 모델 채택 보류.</strong> 첫 16개 origin은 학습 Fusion이 아니라 B2 복귀다. 동일 64-origin은 이전 구조 결정에 사용된 개발 기간이고 관성 반감기·basis도 그 맥락에서 정했으므로 차이를 독립적 일반화 증거로 사용하지 않는다. 특정 손실 origin에 맞춘 사후 보정은 하지 않는다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>후속 실험은 별도 계획·승인을 받아 B1-only 관성의 더 단순한 구조와 양쪽 관성을 <strong>새 미관측 기간</strong>에 고정 적용하고, paired GPU-time Recall/NDCG/PR-AUC와 onset-event 포착·첫 경고 시간을 동시에 비교한다.</li>
+<li>연구 목표가 GPU-time Top-100인지 onset-event 조기경고인지 우선순위를 명시한다. 엄밀한 episode 포착률이 필요하면 episode ID 또는 사전 고정된 사건 병합 규칙을 마련한다.</li>
+<li>확률 운용 전에는 신뢰도 diagram/구간별 보정과 origin별 Brier·log-loss 안정성, origin 18의 큰 손실을 별도 진단한다. 새 Branch 재학습, BLOX·5분 평가·커밋·푸시는 이번 범위에 포함하지 않는다.</li>
+</ol>
+<h2>Experiment 20 = B1 1시간 CNN 슬롯의 train-only 정규화 CNN 대 LSTM = 전체 ML 검증·채택 보류 (2026-10-06)</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-004·G-007, 보조 G-008. Experiment 17의 기억형 CNN은 학습 예산과 B2 동일성 문제가 있어 엄밀한 ablation이 아니었다. 이번에는 Experiment 14 전체 경로의 B1 1시간 12×7 CNN 슬롯만 정규화 CNN 또는 LSTM으로 바꾸고, 두 arm을 같은 5 epoch·batch 4096로 다시 학습했다.</li>
+<li>질문은 LSTM이 동일 예산의 정규화 CNN보다 B1·최종 Fusion의 전체 GPU Top-100 및 onset-event 성능을 개선하는가이다. 기존 64-origin은 개발에 이미 사용됐으므로 독립적인 일반화 성능 입증은 아니다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>기준: Experiment 14의 All-XID onset 24시간 라벨, 판단 전 10분 feature cutoff, 36시간 학습 purge·성숙 피드백, 30일 warm-up 이후 64 rolling origin·24시간 모델 state·30분 판단, 전체 1,992 GPU. Terminal held-out 선별, 5분 평가, BLOX는 사용하지 않았다.</li>
+<li>변경: 1시간 5분-bin 12×7 시퀀스의 CNN 슬롯에 각 fit의 학습 텐서만으로 채널 평균·표준편차를 구한 CNN(<code>cnn_norm</code>, 4,753 파라미터) 또는 단방향 hidden 28 LSTM(<code>lstm_norm</code>, 4,865 파라미터)을 삽입했다. 결측 0 대체, 표준편차 하한 <code>1e-3</code>; 두 arm 모두 5 epoch·batch 4096. Experiment 14 원 CNN과의 비교에는 정규화 변경도 포함된다.</li>
+<li>유지·실행: B1 Logistic/Extra Trees/HistGradientBoosting 및 과거 purge OOF 2블록의 24시간 Cascade stage 2, 성숙 B1 ADST 7/14/21일, B2 History-only 21일 Sliding, 과거 성숙 피드백의 30분 Temporal MoE를 각 arm에서 새로 fit·추론했다. 이전 Branch 점수 차용은 없다. B1 변화가 후속 ADST 선택·MoE 가중치에 반영되므로 LSTM 대 CNN 비교는 인코더 변경의 전체 파이프라인 효과다.</li>
+<li>진입점 <code>ISEE_Project_GitHubBase/ML/run_experiment20_30m_b1_lstm_ablation.py</code>, seed <code>20260905</code>, CPU threads <code>4</code>, 코드 기준 <code>Blox</code> commit <code>4219120</code> 위의 미커밋 실행기. 전체 출력은 <code>experiments/2026-10-06_Experiment20_CNNnorm_01/</code>와 <code>..._LSTMnorm_01/</code>에 각각 보존했다. 별도 1-origin smoke는 연결 검사이며 아래 성능에 포함하지 않았다.</li>
+<li>기존 <code>ML/evaluate_experiment14_top100.py</code>·<code>ML/verify_experiment14_feedback.py</code>, 새 <code>ML/evaluate_experiment20_onset.py</code>·<code>ML/verify_experiment20_encoder_ablation.py</code>를 두 arm의 분리 감사 출력 폴더와 공통 EncoderAudit 폴더에 실행했다. 기준·새 실험 출력, 다른 사용자 미추적 파일은 덮어쓰지 않았다.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>두 arm 모두 종료 코드 0·완료 manifest, 각 64개 score part·6,081,576행, 3,053개 판단 시점·52,945개 GPU-time 양성. 인코더 fit 192회(64 origin×OOF 2회+최종 1회), 예측 3,181회(OOF 128회+판단 3,053회)이며 <code>borrowed_scores=[]</code>다. CNN 132.7분, LSTM 134.3분이었다.</li>
+<li>각 Top-100·피드백 감사와 공통 전수 인코더 감사가 <code>VERIFIED</code>; onset 보조 평가도 <code>COMPLETED</code>. Experiment 14 대비 B2는 두 arm 모두 6,081,576행 정확 동일(최대 차이 0), B1은 두 arm 모두 전 행 변경, LSTM B1은 CNN B1과 전 행 다르다. 36시간 cutoff·24시간 라벨 성숙·7/14/21일 ADST 검사를 통과했다. 두 arm 모두 성숙 ADST 갱신 61회, MoE 학습 2,909블록/B2 fallback 144블록, Fusion 산식·가중치 trace 최대 오차 0이다. CNN 학습창 사용 7/14/21일은 43/14/7 origin, LSTM은 34/17/13 origin이다.</li>
+<li>다음 표의 Recall은 전체 양성 52,945개를 분모로 한 pooled GPU-time Recall@100, NDCG는 양성 판단 시점 pooled NDCG@100, PR-AUC는 origin 평균이다. Macro-origin Recall과 혼동하지 않는다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>같은 64-origin 전체 GPU 방법</th>
+<th align="right">Top-100 적중</th>
+<th align="right">Pooled Recall@100</th>
+<th align="right">NDCG@100</th>
+<th align="right">PR-AUC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Experiment 14 B1 Cascade</td>
+<td align="right">6,100</td>
+<td align="right">0.115214</td>
+<td align="right">0.065435</td>
+<td align="right">0.017887</td>
+</tr>
+<tr>
+<td>Experiment 20 B1 정규화 CNN</td>
+<td align="right">6,241</td>
+<td align="right">0.117877</td>
+<td align="right">0.066263</td>
+<td align="right">0.016990</td>
+</tr>
+<tr>
+<td>Experiment 20 B1 LSTM</td>
+<td align="right">6,133</td>
+<td align="right">0.115837</td>
+<td align="right">0.064025</td>
+<td align="right">0.017242</td>
+</tr>
+<tr>
+<td>B2 History-only 공통</td>
+<td align="right">8,335</td>
+<td align="right">0.157428</td>
+<td align="right">0.079820</td>
+<td align="right">0.031576</td>
+</tr>
+<tr>
+<td>Experiment 14 Temporal MoE Fusion</td>
+<td align="right">7,431</td>
+<td align="right">0.140353</td>
+<td align="right">0.075598</td>
+<td align="right">0.023030</td>
+</tr>
+<tr>
+<td>Experiment 20 정규화 CNN Fusion</td>
+<td align="right">6,876</td>
+<td align="right">0.129871</td>
+<td align="right">0.070273</td>
+<td align="right">0.019923</td>
+</tr>
+<tr>
+<td>Experiment 20 LSTM Fusion</td>
+<td align="right">7,643</td>
+<td align="right">0.144357</td>
+<td align="right">0.074587</td>
+<td align="right">0.021546</td>
+</tr>
+</tbody></table>
+<ul>
+<li>같은 정의의 적격 고유 onset-event는 1,402개다. CNN B1/B2/Fusion은 각각 893/299/889개, LSTM B1/B2/Fusion은 958/299/963개를 최소 10분 전 Top-100으로 경고했다. LSTM Fusion의 포착 사건 첫 경고 lead 중앙값은 17.83시간, CNN Fusion은 18.33시간이다. 포착 집합이 달라 lead 중앙값을 직접 우열 비교하지 않으며 XID episode 포착률도 아니다.</li>
+<li>전체 GPU-time Brier/log-loss는 B2 <code>0.008671/0.051254</code>, CNN Fusion <code>0.009096/0.054665</code>, LSTM Fusion <code>0.009066/0.054500</code>이다. 관측 양성률은 <code>0.008706</code>; LSTM Fusion 평균 예측 확률은 <code>0.021626</code>이다. 두 Fusion은 B2보다 확률 보정 오차가 높다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: LSTM B1은 정규화 CNN B1보다 적중 108개·NDCG <code>0.002238</code> 낮고, PR-AUC는 <code>0.000253</code> 높다. 반면 LSTM Fusion은 CNN Fusion보다 적중 767개 많아 후속 MoE 반응까지 포함한 결과가 B1 단독 순위와 다르다. LSTM Fusion은 Experiment 14 Fusion보다 적중 212개 많지만 NDCG <code>0.001011</code>·PR-AUC <code>0.001484</code> 낮다. B2 단독보다도 적중 692개·NDCG <code>0.005233</code>·PR-AUC <code>0.010030</code> 낮다. Recall 한 지표만으로 우월하다고 결론 낼 수 없다.</li>
+<li>방법론·기록 한계: CNN 정규화 대 LSTM은 학습 예산을 맞춘 인코더 교체 실험이지만 Experiment 14 원 CNN과의 차이는 정규화와 아키텍처가 함께 바뀐다. B1 성능 변동에 따라 ADST 학습창과 MoE 가중치가 달라져 최종 Fusion 차이를 LSTM 직접 효과 하나로 분해할 수 없다. LSTM manifest의 상속된 <code>branch1_model_families</code> 필드는 여전히 <code>cnn</code>을 포함하지만 명시적 <code>b1_sequence_encoder=lstm_norm</code>, 4,865 파라미터, fit·예측 trace 및 B1 전 행 변경으로 실제 LSTM 실행을 확인했다. 이 메타데이터 불일치는 원본을 사후 수정하지 않는다.</li>
+<li>판정: <strong>두 arm 모두 full pipeline verified, 최종 모델 채택 보류.</strong> 구조 충실도·전수 B2 동일성은 Experiment 17보다 개선됐으나, 동일 개발 64-origin의 차이는 독립적 일반화 근거가 아니고 B2보다 Top-100·NDCG·PR-AUC가 모두 낮다. GPU-time 포착과 onset-event 조기경고는 별개 목표다. Experiment 14 및 Experiment 16·17의 이전 파일·판정은 그대로 보존한다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>새 미관측 기간에 CNN·LSTM·Experiment 14 B1/B2/Fusion을 사전 고정해 paired Recall@100/NDCG@100/PR-AUC와 onset-event를 함께 비교한다. 현재 64-origin의 손실 시점에 맞춰 gate나 ADST를 사후 튜닝하지 않는다.</li>
+<li>G-008에서 GPU-time Top-100과 onset-event 조기경고 중 우선 목표, XID episode 병합 규칙, 확률 보정 기준을 별도로 확정한다. LSTM manifest의 상속 메타데이터 표기는 후속 재현 패키징 시 원본 보존 원칙에 따라 정리한다.</li>
+<li>5분 평가·BLOX·기존 실험 변경·커밋·푸시는 별도 계획·승인 전까지 수행하지 않는다.</li>
+</ol>
+<h2>Experiment 21 = Experiment 19 B1 관성 단독 Fusion 재현 검증 (2026-10-06)</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-004·G-007, 평가 해석 보조 G-008. Experiment 19의 전체 4-arm 중 사용자가 선택한 관성 없는 Fusion과 B1 관성만 적용한 Fusion만 새 격리 실행에서 재실행했다. 핵심 질문은 B1 관성 효과와 관성 없는 기준이 동일 입력에서 재현되는지이며, Branch 재학습이나 B2 관성 효과 재검증은 범위가 아니다.</li>
+<li>이번 작업은 이미 사용한 동일 64-origin 개발 테이프의 <strong>재현성 확인</strong>이다. 새 기간 일반화 검증이나 독립 성능 우위 검증으로 보지 않는다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>평가 계약: All-XID onset 24시간 라벨, 판단 전 10분 feature cutoff, 36시간 purge·성숙 피드백, 30일 warm-up 이후 64 rolling origin, 24시간 단위 상태, 30분 판단, 전체 1,992 GPU. 3,053개 판단 시점·6,081,576 GPU-time 행·양성 52,945개를 사용했다. Terminal held-out 선별, 5분 판단, BLOX는 사용하지 않았다.</li>
+<li>Experiment 14에서 이미 적합한 B1/B2 Branch 점수를 불변 입력으로 재사용했다. 따라서 B1 Cascade·ADST와 B2 History-only·21일 Sliding을 이번에 재학습하지 않았다. B1 logit에만 과거 30분 점수의 지수 관성을 적용했으며 반감기는 2시간이다. 현재 시점 점수는 현재 관성 상태에 넣지 않는다. B2 관성은 계산하거나 적용하지 않았다.</li>
+<li>비교 arm은 no_inertia와 b1_inertia 두 개뿐이다. 기존 E19와 동일하게 앞선 비중첩 7일은 보정, 그 다음 비중첩 7일은 Fusion 적합에 사용하고 두 구간 모두 현재 origin보다 최소 36시간 앞선 성숙 점수만 허용했다. 각 구간 양성·음성 최소 20개, 정규화 강도 0.01, 음성 샘플링 없음. 첫 16 origin은 B2 정확 복귀, 이후 48 origin에서 두 arm 합계 96회 Fusion fit을 수행했다. Seed 20260905, CPU 4 threads.</li>
+<li>전용 실행기 ML/run_experiment19_b1_inertia_rerun.py와 격리 출력 experiments/2026-10-06_Experiment19_B1Inertia_NoB2Inertia_Repeat_01/를 사용했다. 기존 실행·기준 점수·E19 결과를 수정하지 않았다.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>전수 재현 감사는 VERIFIED다. E19와 입력 해시 일치, 선택한 2개 arm 각각의 모든 점수와 순위 정확 일치, 64 origins × 2 arms = 128개 비교를 확인했다. Branch 재학습 없음, B2 관성 계산·사용 없음도 manifest에서 확인했다.</li>
+<li>지표는 전체 64-origin·1,992 GPU 모집단 기준이다. Recall은 pooled Recall@100, NDCG는 양성 시점 pooled NDCG@100, PR-AUC는 origin 평균이다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>방법</th>
+<th align="right">Top-100 적중</th>
+<th align="right">Pooled Recall@100</th>
+<th align="right">NDCG@100</th>
+<th align="right">Origin 평균 PR-AUC</th>
+<th align="right">Brier</th>
+<th align="right">Log-loss</th>
+<th align="right">포착 onset-event</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>B2 History-only 기준</td>
+<td align="right">8,335</td>
+<td align="right">0.157428</td>
+<td align="right">0.079820</td>
+<td align="right">0.031576</td>
+<td align="right">0.008671</td>
+<td align="right">0.051254</td>
+<td align="right">299</td>
+</tr>
+<tr>
+<td>관성 없는 Fusion</td>
+<td align="right">8,419</td>
+<td align="right">0.159014</td>
+<td align="right">0.080702</td>
+<td align="right">0.032465</td>
+<td align="right">0.008650</td>
+<td align="right">0.050709</td>
+<td align="right">360</td>
+</tr>
+<tr>
+<td>B1 관성만 Fusion</td>
+<td align="right">8,505</td>
+<td align="right">0.160638</td>
+<td align="right">0.081657</td>
+<td align="right">0.033047</td>
+<td align="right">0.008649</td>
+<td align="right">0.050628</td>
+<td align="right">351</td>
+</tr>
+</tbody></table>
+<ul>
+<li>B1 관성만 arm은 관성 없는 arm보다 적중 +86, Recall +0.001624, NDCG +0.000955, PR-AUC +0.000582였다. Brier는 약 0.000000718, log-loss는 약 0.0000813 낮았다. B2 기준 대비 origin별 적중 승/동률/패는 관성 없음 9/50/5, B1 관성 12/47/5다.</li>
+<li>보조 onset-event 평가는 동일한 1,402개 적격 고유 onset에서 완전한 직전 24시간 점수를 요구하고 onset 최소 10분 전 경고를 셌다. 이는 XID episode 포착률이 아니며 GPU-time Recall과 다른 목적의 지표다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>동일한 해시의 입력과 전 행 점수·순위가 재현됐으므로 기존 E19의 두 선택 arm 결과가 실행기 변경 후에도 그대로 나온다는 <strong>구현 재현성</strong>은 확인했다. 관성 추가는 이번 개발 테이프에서 지표상 소폭 개선과 일치하지만, 동일 테이프이며 방법 설계에도 사용됐으므로 이 차이를 일반화된 성능 향상으로 주장할 수 없다.</li>
+<li>B1 관성은 GPU-time Top-100 지표에서 B2보다 높았지만 onset-event 포착은 B2 299, no_inertia 360, b1_inertia 351로 순서가 다르다. 단일 종합 우위로 묶지 않는다. B1/B2 모델 자체를 다시 돌린 것이 아니므로 Cascade·ADST·Sliding Training 재현성 검증도 아니다.</li>
+<li>판정: <strong>선택한 두 Fusion arm의 동일 테이프 재현성 VERIFIED; 최종 모델 채택 및 미관측 일반화 판정은 보류.</strong> B2 관성 arm은 사용자의 이번 범위에서 제외되어 비교하지 않았다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>G-004·G-007 후속은 새 미관측 기간에서 B1 관성만과 사전 고정한 기준을 paired 비교하는 것이 우선이다. 성능 확인 후 규칙·반감기를 재조정하지 않는다.</li>
+<li>G-008에서 GPU-time Top-100과 onset-event 조기경고의 연구 우선순위 및 episode 정의를 확정하고, 두 결과를 별도로 보고한다.</li>
+<li>Branch 전체 재학습·B2 관성·BLOX·5분 판단·커밋·푸시는 이번 실행에 포함되지 않았으며 별도 계획·승인 전에는 수행하지 않는다.</li>
+</ol>
+<h2>Experiment 22 = Experiment 19 Fusion-only 30분 BLOX/RiskLab 전체 기간 replay (2026-10-07)</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-009. 사용자 정정에 따라 ML 위험 점수는 Experiment 19의 <code>fusion_dual_inertia</code>만 운영 입력에 사용한다. 전체 GPU Top-100과 고정 BLOX cohort 위험 테이프는 별도 산출물이다. 질문은 저장된 Fusion 위험 점수를 사용할 때 같은 입력의 risk-blind 대비 risk-prefer 정책이 이 탐색적 운영 replay에서 이득을 보이는가이다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>30일 warm-up 후 <code>2023-06-15 09:40</code>–<code>2023-08-18 00:05</code> UTC(끝 제외). 원본 64개 part, 3,053개 30분 시점 × 1,992 GPU = 6,081,576행의 입력/출력 파트 해시·GPU 집합·시간 간격·10분 feature cutoff·0–1 점수를 확인했다. 전 GPU Top-100과 고정 100-GPU cohort 테이프는 각각 305,300행이다. 라벨은 runtime 테이프에 없다.</li>
+<li><code>ML/export_experiment19_risklab_30m.py</code>로 추출한 Fusion 테이프 하나에 <code>risk_blind_packed</code>와 <code>risk_prefer_packed</code>를 각각 실행했다. 두 run은 관측 작업 140,786개·관측 XID episode 140개, 고정 cohort·seed 17·LAS·30분 판단·사전 고정 threshold 1.0(no-mask)을 공유한다. B2 위험선호 arm은 실행하지 않았다. 정정 전 B2 입력으로 시작한 blind run은 약 71%에서 중단, 완료 결과 없이 비교 제외했다. 두 완료 run의 manifest는 run ID·정책 이외 동일하고 RiskLab 입력 validator 및 checksum을 통과했다.</li>
+</ul>
+<p>[결과]</p>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th align="right">Fusion 입력 risk-blind</th>
+<th align="right">Fusion 입력 risk-prefer</th>
+<th align="right">차이(prefer−blind)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>완료 작업 / 140,786</td>
+<td align="right">119,166</td>
+<td align="right">119,166</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>미완료 / 미시작 작업</td>
+<td align="right">21,620 / 6,401</td>
+<td align="right">21,620 / 6,401</td>
+<td align="right">0 / 0</td>
+</tr>
+<tr>
+<td>평균 대기시간(초)</td>
+<td align="right">987,683.615</td>
+<td align="right">987,655.545</td>
+<td align="right">−28.070</td>
+</tr>
+<tr>
+<td>p95 대기시간(초)</td>
+<td align="right">3,160,243.00</td>
+<td align="right">3,160,242.25</td>
+<td align="right">−0.75</td>
+</tr>
+<tr>
+<td>평균 JCT(초)</td>
+<td align="right">805,427.830</td>
+<td align="right">805,423.396</td>
+<td align="right">−4.434</td>
+</tr>
+<tr>
+<td>failure lost time 회계값</td>
+<td align="right">562,155</td>
+<td align="right">562,605</td>
+<td align="right">+450</td>
+</tr>
+<tr>
+<td>고장 GPU 비가용(GPU·초)</td>
+<td align="right">555,525</td>
+<td align="right">555,525</td>
+<td align="right">0</td>
+</tr>
+</tbody></table>
+<ul>
+<li>두 run 모두 <code>completed</code>, 판단 3,053회, 필수 summary·metrics·job/GPU 산출물 확인. 고장 checkpoint loss는 <code>2,430→2,280</code> 작업·초, recovery delay는 <code>4,200→4,800</code> 작업·초다. <code>failure_lost_time_seconds</code>는 GPU·초와 작업·초를 합한 엔진 회계값으로, 단일 물리적 경과시간으로 해석하지 않는다. 모든 작업이 완료되지 않아 makespan은 censored다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>완료 작업 수는 같고 평균 대기/JCT 변화는 아주 작으며 고장 손실 회계값은 악화됐다. 이 결과로 Fusion 위험선호 정책의 운영 우월성을 주장하지 않는다. 같은 개발 64-origin 점수이고, 전체 클러스터 작업 도착을 관측된 해당 GPU 작업 부하가 아닌 고정 100-GPU cohort에 투입한 시뮬레이션이다. 기존 5분 replay와는 판단 간격이 달라 직접 효과 비교가 아니다. B2 추출물은 범위 정정 전 생성돼 보존하지만 이번 완료 replay에는 사용하지 않았다.</li>
+<li>판정: <strong>Fusion-only 전체 기간 ML→BLOX 연결 및 paired 30분 replay 완료; 정책 채택 보류.</strong> 원본 Experiment 19의 모델 자체를 재학습하거나 새 미관측 기간에서 검증한 것이 아니다. 근거는 <code>ISEE_Project_GitHubBase/experiments/2026-10-07_Experiment22_Exp19_30m_RiskLab_01/EXPERIMENT22_RESULT.md</code>와 각 run의 manifest·summary다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>다음 연구는 5분 실제 ML 추론 또는 새 미관측 기간, cohort/workload 가정과 운영 목적함수를 사전 고정해 별도 승인 아래 검증한다. 이번 30분 결과를 보고 정책·threshold를 사후 조정하지 않는다.</li>
+<li>G-009는 활성 유지, 담당 이준호·지한유, 다음 확인은 2026-10-14 계획 점검(회의 일정 확정 아님). 커밋·푸시는 하지 않았다.</li>
+</ol>
+<h2>Experiment 23 = XID 대응 분리와 30분 frozen-input BLOX·RiskLab 검증 (2026-10-17)</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-009. 최신 GitHub Blox 커밋 e082e3f를 별도 BLOX_RiskLab_GitHub_20261017 폴더로 받아 근거 기반 오류 대응을 추가했다. Experiment 22 전체 기간 실행과 구분되는 GitHub 30분 아카이브의 구현 검증이다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>사용자 승인: 기존 30분 산출 규정을 사용한 검증 실행, 이후 5분 전환 준비. ML 재학습·점수 변경·커밋·푸시는 수행하지 않았다.</li>
+<li>동결 입력: UTC 2023-08-05 06:45–2023-08-18 00:00(끝 제외), 611개 30분 시점, 100 GPU·13서버, 작업 16,560개, 관측 XID43 에피소드 31개, LAS, seed 17. 기존 원본 트레이스·점수·threshold·XID 코드는 보존했다. 이 구간을 warm-up 이후 전체 기간으로 부르지 않는다.</li>
+<li>새 evidence_based 모드에서 XID43 앱 복구, XID31 과거 distinct episode 반복 진단, 근거가 확인된 GPU 복구를 분리했다. 작업 연결이 없으면 기본 record_only이며 GPU-local 처리는 명시적 민감도 시나리오다. 진단 pass/fail/unknown, 재시도 상한 3회(정책 가정), 체크포인트 롤백과 큐 복귀, 사건 ID·seed 기반 분포 표본을 구현했다.</li>
+<li>300초는 기존 가정을 유지한 통제, 660초는 Lablup 자동 재시도 세션 간격 중앙값 참고 시나리오다. 추가 로드 시간을 중복 합산하지 않았다. 시간 성분을 작업-초·GPU-초·큐 대기로 분리했다. 위험도와 판단 주기를 분리하되 실제 실행은 모두 1800초다. 300초 cadence는 합성 fixture에서만 검사했다.</li>
+<li>실행기: BLOX_RiskLab_GitHub_20261017/experiments/2026-09-22_Blox_RiskLab_30m_01/blox-risklab/run_validation_30m.py. 최종 결과: runs_validation_final_20261017/validation.json 및 comparison.csv. Python 3.12.14, numpy 2.3.5, pandas 3.0.1, pyarrow 26.0.0.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>43개 회귀·기능 테스트와 최종 8개 검증 실행 통과. 수정 전후 legacy blind의 기존 summary 값 전체, events/decisions 바이트가 일치했고 기존 Falcon full 저장 summary도 재현했다. 모든 실행에서 GPU 시간 보존·큐 적분·비가용 회계·입력 checksum·611회 판단을 확인했다.</li>
+<li>같은 Falcon 점수의 GPU-local 300초 재시도 시나리오에서 blind/prefer/full 완료 작업은 16,201/16,201/16,198개, 활성 XID 중단은 3/1/1건, 작업 중단 합계는 2,879,580/2,880,375/2,149,545 작업-초다. 새 모드 GPU 비가용은 모두 0 GPU-초다.</li>
+<li>660초 blind/full은 완료 16,201/16,198개, 활성 중단 3/1건, 작업 중단 합계 2,880,660/2,149,905 작업-초다. 평균 JCT는 300초·660초 각각 blind 51,713.436초, full 50,696.363초로 같다. record_only 대조의 활성 중단은 0건으로, 정보 부족 처리 규칙의 확인이다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>원본 코드의 XID31 자동 하드웨어 판정, 누락 XID의 43 대체, 실제 코드를 길이로 재지정한 혼합 시나리오와 문서 수치 불일치를 바로잡았다. 혼합 입력은 합성 민감도 자료이며 관측 하드웨어 결함 자료가 아니다.</li>
+<li>full은 선점 손실과 평균 JCT가 낮지만 완료 작업이 3개 적어 포괄적인 정책 우월성으로 채택하지 않는다. 300→660초에서 복구 지연 성분은 늘지만 같은 다음 30분 배치 시점으로 흡수돼 완료 수·JCT가 같았다. 5분 전환에서 효과를 재검증해야 한다.</li>
+<li>실제 cohort의 사건은 모두 XID43이며 작업/PID 매핑이 없다. GPU-local 비교는 소프트웨어 오류의 이동 효과를 입증하지 않는다. XID31·진단·하드웨어 경로는 합성 fixture 검증이다. 주기적 checkpoint 비용 미부과, oracle 잔여시간, 미보정 score-time 노출, 전체 클러스터 도착의 100-GPU 투입 가정을 유지·명시했다.</li>
+<li>판정: 30분 구현·회계·과거 경로 재현 VERIFIED, 정책 채택과 실제 5분 성능 검증은 보류. 연구 목표 G-009는 활성 유지, 담당 이준호·지한유다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>같은 모델의 실제 5분 점수·주기 provenance·입력 manifest가 준비되면 동일 workload·사건·seed의 paired 검증을 진행한다. 30분 값을 복제한 가짜 5분 예측을 사용하지 않는다.</li>
+<li>앱 사건과 job/PID 연결, 실제 진단·복구시간 표본, 과거 정보 기반 실행시간 추정이 필요하다. 노드 전체 재부팅과 독립 미관측 기간 우월성은 이번 검증의 완료 항목이 아니다.</li>
+<li>수정 명세·모듈 관계·근거·남은 한계는 BLOX_RiskLab_GitHub_20261017/XID_RECOVERY_CHANGE_REPORT.md에 정리했다. 원본 실행·기존 파일·결과는 보존했고 커밋·푸시는 하지 않았다.</li>
+</ol>
+<h2>Experiment 24 = 문헌 재시도 660초 주 시나리오·GPU/Job HTML Replay (2026-10-17)</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-009. 사용자 요청에 따라 Experiment 23의 660초 문헌 참고 시나리오를 주 시나리오로 승격하고 동일 입력의 blind·prefer·full 세 정책을 실행했다. GPU별 상태와 작업 처리 이력을 한 파일에서 탐색하는 오프라인 HTML Replay를 제작했다.</li>
+<li>주 시나리오 변경은 복구 시간 가정의 선택이며 ML 모델 변경이나 최종 운영 정책 채택이 아니다. 기존 300초 대조와 Experiment 23 결과는 보존했다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>입력은 Experiment 23과 같은 Falcon/Pareto 30분 아카이브다. UTC 2023-08-05 06:45–2023-08-18 00:00(끝 제외), 611개 판단 시점, 100 GPU·13서버, 16,560개 작업, 관측 XID43 에피소드 31개, LAS·seed 17을 유지했다. Experiment 19 B1 관성 arm이나 Experiment 22 전체 기간 입력으로 대체하지 않았다. 모델 학습·데이터 분할 변경은 없다.</li>
+<li>evidence_based 오류 대응과 GPU-local 민감도 가정을 유지했다. 재시도 간격 전체를 660초로 두고 로드·재실행 비용을 중복 합산하지 않았다. 위험 점수와 배치 판단은 모두 1800초, 재시도 상한 3회는 정책 가정이다. 660초는 외부 운영 보고서의 세션 간 재시도 중앙값이며 XID43 전용 실측 분포가 아니다.</li>
+<li>run_main_scenario.py로 세 정책을 runs_main660_20261017에 실행하고 manifest·입력 checksum·구현 해시·GPU 시간 보존·큐 적분을 검사했다. 동일 입력·사건·seed의 paired 비교이며 파라미터 탐색은 하지 않았다.</li>
+<li>build_main_replay.py로 실제 시뮬레이션 GPU/Job 시간 구간과 사건을 압축 내장한 BLOX_RiskLab_660s_Replay.html을 생성했다. GPU 선택→현재 Job 확인, 전체 작업 검색·상태 필터·수명주기 타임라인, 재생·일시정지·시간 이동·XID 이동·정책 전환·UTC/KST를 제공한다. GPU/작업 상태는 정확한 사건 시각을 사용하고 위험 점수는 그 시점까지의 마지막 30분 값을 사용한다. 5분 예측을 새로 만든 것은 아니다.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>blind/prefer/full 완료 작업은 16,201/16,201/16,198개, 미완료는 359/359/362개, 활성 XID 작업 중단은 3/1/1건이다.</li>
+<li>blind/prefer/full 평균 JCT는 51,713.436/51,685.142/50,696.363초, 평균 큐 대기는 63,704.352/63,676.395/62,916.614초다. 작업 중단 합계는 2,880,660/2,880,735/2,149,905 작업-초, GPU 비가용은 모두 0 GPU-초다.</li>
+<li>세 실행의 1,833개 snapshot에서 GPU 상태·소유 작업 183,300건과 작업 상태 집계를 원본 출력과 대조했다. 238,654개 사건과 정책별 16,560개 작업을 HTML에 포함했다. HTML 크기는 7,063,121바이트다.</li>
+<li>Replay 코어 경계·역방향 탐색·위험 점수 시점 검사 18개 assertion 통과. 독립 Chrome 브라우저 기능 검사 11개 항목 통과, JavaScript 오류 0건·외부 네트워크 요청 0건, 1440px 및 390px 화면을 확인했다. 기존 Experiment 23의 43개 엔진 테스트와 이번 Replay 검사를 구분한다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>full은 평균 JCT와 작업 중단 합계가 낮지만 완료 작업이 3개 적다. prefer는 blind와 완료 수가 같고 오류 중단은 적지만 총 작업 중단 합계가 소폭 높다. 이번 결과만으로 종합 최적 정책을 선언하지 않는다.</li>
+<li>앱/작업 PID 매핑이 없어 관측 XID43을 GPU 위치의 작업에 연결한 민감도 시뮬레이션이다. GPU 이동이 소프트웨어 오류를 해결한다는 증거가 아니다. XID31 진단·하드웨어 정비 경로는 이번 관측 자료에서 실행 효과를 평가하지 못한다.</li>
+<li>660초는 근거 있는 참조점이지 로컬 복구시간 분포 추정치가 아니다. 반복 표본 기반 불확실성 평가도 하지 않았다. oracle 잔여 실행시간, 주기적 체크포인트 저장 정지 비용 미부과, 전체 클러스터 도착을 100-GPU cohort에 투입하는 가정은 유지됐다.</li>
+<li>판정: 660초 주 시나리오 실행·Replay 상태 일치 및 UI 검증 완료. 실제 5분 성능·미관측 일반화·정책 채택은 미완료다. G-009는 활성 유지, 담당 이준호·지한유다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ul>
+<li>실제 5분 ML 점수와 cadence provenance가 준비되면 동일 workload·사건·seed의 paired 검증을 한다. 30분 점수를 복제한 가짜 5분 예측은 사용하지 않는다.</li>
+<li>앱 사건의 Job/PID 매핑 및 실제 재시도·진단·정비시간 표본을 확보해 분포와 정책 근거를 보강한다. 다음 확인은 이 자료가 준비될 때다. 새 회의 일정을 확정한 것은 아니다.</li>
+<li>산출물과 재현 명령은 BLOX_RiskLab_GitHub_20261017/MAIN_SCENARIO_660_REPLAY.md에 정리했다. 원본·기존 실험·ML 학습 중단 상태는 유지했고 커밋·푸시는 하지 않았다.</li>
+</ul>
+<h2>Experiment 25 = 전체 기간 B1 관성 Fusion·배치/복구/Stress 재실험 준비 = 본실행 전 (2026-10-18)</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-009. Experiment 24의 짧은 기간·30분 배치·고정 복구시간·선점 대조군 혼재를 구분하기 위해 전체 기간 입력과 동일 구조 risk on/off, 배치 주기, 복구 분포 및 Stress 재실험 패키지를 준비했다. 사용자 승인은 준비 구현·입력 처리·합성 fixture 검증까지이며 전체 기간 운영 replay는 시작하지 않았다.</li>
+<li>최종 상태는 PREPARED_NOT_RUN이다. 설정 212개는 준비된 조합 수이지 실행 결과 수가 아니다. 기존 E22~E24, 중단된 ML 학습 상태, 원본 HTML·소스·점수를 보존했다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>새 폴더 BLOX_RiskLab_GitHub_20261017/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01에 격리 구현했다. 기반 checkout은 upstream e082e3f, 로컬 research/xid-recovery-30m-validation이며 커밋·푸시는 하지 않았다.</li>
+<li>원본 E19 B1 관성·B2 비관성 Fusion을 정확 재현한 E21 저장 점수의 fusion_b1_inertia를 사용했다. UTC 2023-06-15 09:40–08-18 00:05 미만, 64개 part·6,081,576행·1,992 GPU·3,053 시점의 선택 열을 원본 E19와 전 행 비교하고 고정 100-GPU 305,300행을 추출했다. 전체 GPU Top-100 추출이 아니다. 기존 rolling·30일 warm-up·24시간 horizon·36시간 purge·10분 cutoff는 바꾸지 않았다. ML fit·새 held-out 선택은 없다.</li>
+<li>초기/보정 미학습 구간 B1 관성 진단값의 결측 때문에 첫 입력 검증이 중단됐다. 소스 predict_arms의 B2 fallback을 확인한 뒤 유효 Fusion은 그대로 운영 입력에 쓰고 B1 관성·B2 진단은 별도 Parquet에 보존하도록 수정했다. 결측을 0이나 무관성 B1로 대치하지 않았다.</li>
+<li>Full의 입장·배치·metaheuristic 점수 접근을 allocation_risk로 통일하고 risk_enabled만 바꾸는 대조군을 준비했다. 두 군은 fused_only·추가 B1 가중 0·Top-k 격리 0·동일 LAS/선점 가드/packing/계산 예산을 공유한다. 기존 Blind packed 대 Full 비교와 다르다.</li>
+<li>위험 갱신은 1800초로 고정하고 배치는 1800초·300초·정규 1800초+사건 기반 빈자리 충원으로 분리했다. 사건 충원에는 중간 선점을 허용하지 않는다. 300초 배치는 실제 5분 ML 예측을 만든 것이 아니다.</li>
+<li>R0는 세션 간격 660초 고정 대조, R1은 660초 간격 뒤 재배정 후 외부 요약 기반 로그정규 로딩을 적용하는 민감도 시나리오다. loading은 GPU를 점유하되 유효 service를 진행하지 않는다. Job/attempt/component 키와 scheduler seed17·별도 recovery seed17–26을 사용한다. 임의 Gaussian·진단시간·하드웨어 비율은 만들지 않았다.</li>
+<li>Stress는 원래 달력 시각과 작업 크기를 유지하는 공통 난수 thinning/replication 설정이다. 실제 XID와 위험 점수의 시각·빈도는 바꾸지 않는다. 기존 workload는 전체 클러스터 도착을 100-GPU cohort에 넣는 가정임을 유지했다. 실제 본실행·새 대시보드는 만들지 않았으며 UI 확장 명세만 작성했다.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>입력 감사 통과: 작업 140,786개, 실제 관측 XID 에피소드 140개([43] 116, [31] 23, [31,43] 1). B1 관성 진단 결측 76,800 cohort행은 원본 B2 fallback과 일치하고 결측 그대로 보존됐다. 런타임에는 라벨이 없다.</li>
+<li>원본 제공 부하 합계는 198.616%다. 기대 부하 80/95/110/130%의 실제 생성 부하는 76.704/92.888/108.102/131.303%, 작업 수 56,579/67,250/78,016/92,234개다. 이는 유한 구간 요구 GPU시간/용량 계산이며 정상상태 이용률이나 측정 GPU 연산 사용률이 아니다.</li>
+<li>기존 43개 회귀 테스트와 새 13개 테스트, 총 56개 통과(실패·오류·skip 0). 기본 periodic 경로의 원본 summary/event 일치, risk-off 점수 변화 불변성, cadence 분리·비선점 충원, 로딩 자원/진행/실패·회계, 난수/분포 경계, Stress 재현성 및 cold-start 보존을 검사했다. 성능 검증이 아니라 합성 fixture·입력 계약 검증이다.</li>
+<li>전체 기간 입력 loader preflight 통과. 명시적 실행 확인 플래그 없는 full-run 요청은 simulation 전에 거부됐다. 전체 기간 실제 replay 0회, ML fit 0회다. 설정은 배치 비교6·no-XID 대조6·복구 민감도40·Stress 민감도160의 총212개이며 모두 NOT_RUN이다.</li>
+<li>기존 source/test 21개 파일을 시작/끝에 전 텍스트 비교해 변경 0개, E24 HTML hash 일치를 확인했다. raw job trace 818,327행에서 시작 전 제출·이후 종료이며 GPU 요구1–100인 관측 진행 작업100개를 확인했으나 가상 cohort에 매핑하지 못했다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>전체 기간 입력이 준비됐으므로 짧은 XID43-only 구간의 구현 검사에서 XID31도 있는 장기 구간으로 후속 검증할 수 있다. 그러나 정책 우위·실행시간 차이·Stress 개선 성능은 이번에 측정하지 않았다.</li>
+<li>사전 기록 정정: Experiment 23·24의 660초는 세션 간격만의 대조값이지 정상 연산 재개까지의 전체 복구시간이 아니다. 외부 보고서의 세션 시작 후 로딩은 별도 단계이며, R1에서 경계를 명시했다. 외부 로딩 분포는 다른 작업 규모의 요약 기반 민감도이지 로컬 XID별 실측 적합이 아니다.</li>
+<li>진행 중 관측 작업100개가 고정 cohort에 속한다는 근거가 없어 실제 초기 상태를 가짜 복원하지 않았다. 동일 빈 시작의 paired 비교와 첫7일 과도구간 별도 보고를 명세했다. oracle 잔여시간·주기적 checkpoint 저장 정지 비용 미부과·COMPLETED 작업 선택·GPU-local 앱 사건 가정은 남는다.</li>
+<li>판정: 입력·실행기 준비 및 fixture 검증 완료, 전체 기간 운영 효과와 실제 5분 ML 성능은 미검증. G-009는 활성 유지, 담당 이준호·지한유다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ul>
+<li>별도 승인 후 cadence_1800_risk0와 cadence_1800_risk1 두 개부터 전체 기간 baseline을 실행하고 실제 소요시간·자원·GPU/큐/손실 회계를 검증한다. 212개를 자동 일괄 실행하지 않는다.</li>
+<li>그 다음 배치5분·event_fill 대조, no-XID 원인 분리, 복구·부하 민감도를 순차 검토한다. 완료 유효 GPU시간과 미완료 잔여량을 함께 보고하며, 완료 JCT의 censoring·선점/오류 손실을 분리한다.</li>
+<li>실측 Job/PID 매핑·진단·복구시간 표본과 초기 상태 근거는 미확인으로 유지한다. 새 회의 일정은 정하지 않았다. 다음 확인은 전체 기간 첫 두 실행 범위 승인 시다. 준비 명세는 새 폴더의 SPEC.md·REQUIREMENTS.md·DASHBOARD_SPEC.md, 증거는 reports/preparation_status.json·input_audit.json·test_results.json·preflight_audit.json이다.</li>
+</ul>
+<h2>Experiment 26 = 동일 Full 구조의 전체 기간 30분 위험도 off/on paired baseline (2026-10-18)</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-009. Experiment 25에서 준비한 두 baseline만 사용자 승인으로 전체 기간 실행했다. 질문은 같은 Full 배치·선점 구조에서 ML 위험 점수의 영향만 켜면 완료 유효 작업량·오류/선점 손실·큐/JCT가 개선되는가이다. 기존 짧은 E24의 packed Blind 대 Full 비교와 달리 risk_enabled만 바꿨다.</li>
+<li>두 실행 모두 completed·exit0이고 실행 및 회계 검사를 통과했다. 다만 운영상 종합 개선은 확인되지 않았다. 공통 완료 작업의 JCT가 전부 동일해 전체 완료집합 평균의 작은 차이를 동일 작업 실행시간 효과로 해석하지 않는다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>동결한 E25 폴더의 run_prepared.py로 cadence_1800_risk0와 cadence_1800_risk1을 --confirm-full-run-approved 옵션으로 순차 실행했다. upstream e082e3f·로컬 research/xid-recovery-30m-validation, 코드·NativeScheduler·입력 해시를 재확인했고 frozen 구현은 수정하지 않았다.</li>
+<li>UTC 2023-06-15 09:40–08-18 00:05 미만 전체 기간, 고정100-GPU·작업140,786개·XID episode140개, 3,053개의 위험 갱신/정규 배치를 사용했다. 입력은 E21에서 E19와 전 행 일치가 확인된 B1 관성·B2 비관성 fusion_b1_inertia다. 초기 B2 fallback을 보존했다. 저장 점수를 이용한 운영 replay이며 ML 재학습·새 held-out 선택은 없다. 원본 rolling·30일 warm-up·36시간 purge·10분 cutoff·24시간 horizon 출처를 유지했다.</li>
+<li>두 군은 Full co-optimized·LAS·선점 가드·packing·120회 metaheuristic 예산·Fusion-only·추가B1 가중0·Top-k 격리0·scheduler/recovery seed17·위험/배치1800초를 공유한다. 런타임 manifest에서 run_id·source_manifest_sha256·risk_enabled 외 차이가 없음을 확인했다.</li>
+<li>복구는 R0 고정660초 세션 간격 대조이며 별도 loading은 적용하지 않았다. evidence_based XID 대응·재시도상한3·앱/Job 매핑 부재의 GPU-local 민감도 가정을 유지했다. R1 외부 loading·5분 배치·event_fill·no-XID·Stress·새 dashboard·커밋·푸시는 실행하지 않았다.</li>
+<li>experiment-agent run 방식으로 프로세스·출력 갱신·메모리·1800초 한도를 감시했다. 두 실행 모두 한도 이내 완료, 자동 재시도·timeout kill은0이다. OS 전체 메모리 조회는 권한이 없었지만 per-process 모니터링은 가능했다. Material Passport는 origin experiment-agent/run, 2026-10-18, UNVERIFIED(독립 재현 실행 없음)로 보존하고 회계 검증 상태와 구분했다.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>위험도 off/on 완료 작업은 120,277/120,276개, 미완료20,509/20,510개다. 완료 유효 작업량은 115,495,977/115,485,885 GPU-초(차이−10,092), 보존 유효 진행량189,647,577/189,683,685 GPU-초(차이+36,108), 미완료 잔여량901,769,432/901,733,324 GPU-초(차이−36,108)다.</li>
+<li>평균 큐 대기는 985,248.408/985,265.792초(+17.384), p95 큐 대기는 양쪽2,715,715.75초다. 완료 작업의 평균 JCT는 825,613.636/825,619.768초(+6.132), p95는1,424,603.20/1,424,603.25초다. 두 군 모두 전체 작업이 완료되지 않아 makespan과 완료 JCT 해석에 censoring이 있다.</li>
+<li>공통 완료120,267개 작업은 완료 시각·JCT가 모두 정확히 동일하다. off에서만 완료10개, on에서만 완료9개다. 공통 완료의 on−off 평균·중앙값 JCT 차이는0초, 빠름/동일/느림0/120,267/0이다.</li>
+<li>활성 XID 작업 중단은17/16건, 오류 checkpoint+복구 손실은13,440/12,750 작업-초(−690), 유실 연산은12,885/17,340 GPU-초(+4,455)다. 선점 비용은4,847,400/4,848,120 작업-초(+720), 총 작업 중단 합계는4,860,840/4,860,870 작업-초(+30)다. GPU 비가용·loading 점유는 두 군 모두0이다.</li>
+<li>시간가중 GPU 배정률은34.51447/34.52185%, 배치 직후 snapshot 평균은양쪽99.90567%다. 대기 작업이 있는 동안 가용 상태였던 GPU시간은359,713,787/359,673,224 GPU-초로 전체 용량의65.46083/65.45344%다. 이 지표만으로 모든 유휴 GPU에 즉시 배치 가능한 작업이 있었다고 단정하지는 않는다.</li>
+<li>초기7일 도착13,451개 중 7일 안 완료9,863개는 두 군 동일하다. 초기7일 시간가중 배정률은37.14732/37.12113%다. 실제 CPU 실행 wall-clock은460.664/446.765초(약7분41초/7분27초), peak working set1,003,126,784/1,005,752,320바이트다. 이 단일 wall-clock 차이를 계산 가속 성능 주장으로 쓰지 않는다.</li>
+<li>각 run의 evaluate_run.py 통과 후 100대 각각의 timeline 연속성·기간 경계와 GPU 시간 보존, 큐 적분=job queue_wait 합, 완료 유효량, retained+remaining=1,091,417,009 GPU-초, busy=retained+실패 유실량을 확인했다. stale/future 입력 오류·중복 할당·실패 작업0, 실제 실행 폴더는 승인된2개뿐이다. 코드·입력·E24 HTML 해시는 일치한다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>위험도 on은 오류 중단 횟수와 작업-초 손실은 줄였지만 유실 GPU-초는 늘었다. 사건 수만 줄어도 더 큰 Gang 작업이 영향을 받으면 계산 손실은 커질 수 있으므로 횟수만으로 효과를 주장하지 않는다. 선점 증가가 오류 손실 감소를 상쇄했고 완료 유효량도 소폭 낮았다. 보존 진행량·미완료 잔여량은 반대 방향의 작은 개선을 보여 단일 종합 우위로 묶지 않는다.</li>
+<li>평균 JCT +6.132초는 공통 작업이 느려진 결과가 아니라 완료된 작업 집합의 차이와 함께 발생했다. 공통 작업 완료시간은 전부 같고 불완료가 남았으므로 완료 작업만의 평균으로 우월성을 판정하지 않는다.</li>
+<li>198.616%의 제공 부하에도 시간가중 배정률은 약34.5%다. 코드상 중간 완료·도착 후 다음30분까지 배치하지 않는 동작과 많은 짧은 작업이 있어, 부하 부족보다 배치 주기·충원과 Gang/선점 영향을 분리하는 것이 다음 우선순위다. 가용 GPU×비빈큐 면적은 증상이며 fit 가능성까지 증명한 값은 아니다.</li>
+<li>동일 seed·동일 개발/관측 기간·고정 위험 테이프·GPU-local 앱 오류·빈 초기 상태의 탐색적 replay다. oracle 잔여시간, 주기적 checkpoint 저장 정지 비용 미부과, 완료 관측 작업만의 workload, 고정100-GPU cohort 가정이 남는다. 실제 재배치 시의 telemetry 변화로 ML 위험 점수를 다시 계산한 폐루프 평가가 아니다.</li>
+<li>판정: 승인한 두 전체 기간 baseline 실행·입력 동일성·회계 검증 완료; 위험도 on의 최종 정책 채택·통계적 우월성·미관측 일반화는 보류. G-009는 활성 유지, 담당 이준호·지한유다. 독립 반복 실행을 하지 않았으므로 독립 재현성 검증과도 구분한다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ul>
+<li>다음은 사전 고정된 위험1800초/배치300초의 같은 Full risk off/on 두 run을 비교하는 것이 우선이다. 30분 baseline 약7.5분의 실측 비용을 참고하되 단순6배 ETA를 확정하지 말고 timeout·자원 예산을 새 계획에서 명시해 별도 승인받는다.</li>
+<li>그 다음 event_fill·no-XID·R1 단계별 loading·부하 민감도를 검토한다. 이번 승인으로 남은210개 설정을 자동 실행하지 않는다. 실제5분 ML 점수나 새 dashboard 생성도 이번 완료 항목이 아니다.</li>
+<li>기계 판독 근거는 E25 폴더의 reports/baseline_comparison_20261018.json·.csv, baseline_monitor_20261018.json, baseline_launch_20261018.json 및 두 runs의 manifest·summary·evaluation·performance·GPU/Job timeline이다. E25의 준비 스냅샷은 역사적 기록으로 보존했다. 다음 확인은 배치 주기 비교의 실행 범위·시간 제한 승인 시다.</li>
+</ul>
+<h2>Experiment 27 = 과거 점수 유지 5분 입력·5분 Full risk OFF/ON 전체 기간 실행 (2026-10-22)</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 목표 G-009. E26에서 시간가중 배정률은약34.5%지만 배치 직후에는99.9%였고, 다음30분까지 빈자리를 채우지 않는 주기의 영향을 분리할 필요가 있었다. 사용자 승인으로 같은30분 ML점수를 과거 방향으로 유지한5분 입력을 만들고, Full/LAS의5분배치 OFF/ON 두 실행을 완료했다.</li>
+<li><strong>5분 배치의 처리량·공통 완료작업 JCT 개선은 확인됐다. 위험도 ON의 추가 운영 이득은 확인되지 않았다.</strong> 이번5분 산출물은 새로운5분 ML추론이 아니라 기존점수의 causal zero-order hold다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>유지: E19 B1관성·B2비관성 Fusion의 E21 정확재현 원시64part, 기존warm-up30일·horizon24시간·purge36시간·cutoff10분 계보, UTC2023-06-15 09:40–08-18 00:05 미만·고정100GPU/13서버·140,786작업·XID140episode. 전체1,992GPU 중 사전고정cohort이며 시점별Top100을 가져온 것이 아니다. MLfit·새held-out선택 없음.</li>
+<li>변경을 쉽게 설명하면: 30분마다 갱신되는 같은 위험점수판을 보고, 작업을 배치할 기회를30분마다가 아니라5분마다 준 것이다. 새 ML정보는 추가하지 않았다. 각5분시점에는 그때까지 나온 가장 최근 원점수만 사용하고, 다음30분점수를 미리 섞지 않았다.</li>
+<li>prepare.py가 원본305,300cohort행에서5분1,831,700행/18,317시점을 생성했다. source timestamp·model state·feature cutoff·score age·B1결측 여부를 별도provenance에 보존했다. 원점수경과&lt;1800초(최대1500초), 초기B2 fallback 보존, 미래선형보간/역방향채움/유효기간밖외삽 없음. 전5분snapshot이 native30분feed의 과거유지와 같음을 검증했다.</li>
+<li>기존 E25 엔진·Native Blox Las·Full co-optimized·선점가드·metaheuristic120·seed17·Fusion-only·추가B1가중0·Top-k격리0·event_fill=false를 유지했다. 두군은 risk_enabled만 다르다. 내부experiment_id=Experiment25는 frozen엔진의 확장회계출력 스위치로 유지하고 실제정체성은research_experiment_id=Experiment27로 구분했다. 엔진코드 바이트 변경 없음.</li>
+<li>XID evidence_based·GPU-local 앱사건 민감도, R0고정660초 세션간격·최대3회재시도, checkpoint/정비조건을 유지했다. 660초는 전체정상연산복귀시간이나 XID별 실측분포가 아니다. Gaussian·R1로딩·새예방이주/격리·목적함수·Stress추가조합·새대시보드·커밋/푸시는 실행하지 않았다.</li>
+<li>격리폴더 <code>BLOX_RiskLab_GitHub_20261017/experiments/2026-10-22_Causal5m_BLOX_01</code>의 <code>supervise.py --risk 0</code>과 <code>--risk 1</code>을 순차실행했다. 각60분hardtimeout·시작디스크30GiB이상·프로세스/출력감시·실패자동재시도금지. 기존원본/결과에 덮어쓰기 없음.</li>
+</ul>
+<p>[결과]</p>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th align="right">E26 30분 OFF</th>
+<th align="right">E26 30분 ON</th>
+<th align="right">E27 5분 OFF</th>
+<th align="right">E27 5분 ON</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>완료 작업</td>
+<td align="right">120,277</td>
+<td align="right">120,276</td>
+<td align="right">140,232</td>
+<td align="right">140,230</td>
+</tr>
+<tr>
+<td>미완료 작업</td>
+<td align="right">20,509</td>
+<td align="right">20,510</td>
+<td align="right">554</td>
+<td align="right">556</td>
+</tr>
+<tr>
+<td>완료 유효 GPU-초</td>
+<td align="right">115,495,977</td>
+<td align="right">115,485,885</td>
+<td align="right">356,990,447</td>
+<td align="right">356,553,807</td>
+</tr>
+<tr>
+<td>보존 유효 진행 GPU-초</td>
+<td align="right">189,647,577</td>
+<td align="right">189,683,685</td>
+<td align="right">491,959,547</td>
+<td align="right">491,980,107</td>
+</tr>
+<tr>
+<td>미완료 잔여 GPU-초</td>
+<td align="right">901,769,432</td>
+<td align="right">901,733,324</td>
+<td align="right">599,457,462</td>
+<td align="right">599,436,902</td>
+</tr>
+<tr>
+<td>시간가중 GPU 배정률</td>
+<td align="right">34.51447%</td>
+<td align="right">34.52185%</td>
+<td align="right">89.53357%</td>
+<td align="right">89.53846%</td>
+</tr>
+<tr>
+<td>평균 큐 대기(초)</td>
+<td align="right">985,248.408</td>
+<td align="right">985,265.792</td>
+<td align="right">29,665.539</td>
+<td align="right">29,692.394</td>
+</tr>
+<tr>
+<td>완료 평균 JCT(초)</td>
+<td align="right">825,613.636</td>
+<td align="right">825,619.768</td>
+<td align="right">21,071.015</td>
+<td align="right">21,084.842</td>
+</tr>
+<tr>
+<td>활성 XID 작업 중단(건)</td>
+<td align="right">17</td>
+<td align="right">16</td>
+<td align="right">68</td>
+<td align="right">74</td>
+</tr>
+<tr>
+<td>오류 유실 연산(GPU-초)</td>
+<td align="right">12,885</td>
+<td align="right">17,340</td>
+<td align="right">36,375</td>
+<td align="right">42,705</td>
+</tr>
+<tr>
+<td>오류 손실(작업-초)</td>
+<td align="right">13,440</td>
+<td align="right">12,750</td>
+<td align="right">54,615</td>
+<td align="right">59,115</td>
+</tr>
+<tr>
+<td>선점 비용(작업-초)</td>
+<td align="right">4,847,400</td>
+<td align="right">4,848,120</td>
+<td align="right">85,962,660</td>
+<td align="right">85,995,720</td>
+</tr>
+<tr>
+<td>총 작업 중단(작업-초)</td>
+<td align="right">4,860,840</td>
+<td align="right">4,860,870</td>
+<td align="right">86,017,275</td>
+<td align="right">86,054,835</td>
+</tr>
+</tbody></table>
+<ul>
+<li>5분ON−OFF: 완료−2개, 완료유효량−436,640GPU초, 보존진행+20,560GPU초·잔여동일량감소, 평균큐+26.855초. 공통완료140,229개의 평균JCT차이+27.243초·중앙0초, 빠름/동일/느림2,826/135,106/2,297개. OFF만완료3개·ON만완료1개다.</li>
+<li>같은risk군의30분공통완료작업은5분에서도 전부완료했다. OFF/ON 공통완료120,277/120,276개의5분−30분 평균JCT차이−816,458.162/−816,471.426초,5분에만추가완료19,955/19,954개.5분에서오히려느린공통작업도841/825개다. 모든작업최종완료/makespan 검증은 아니다.</li>
+<li>두실행exit0·18,317정규배치·전기간완료, 자동재시도/timeout종료0. 실제wall-clock1,598.305/1,176.424초, peak working set2,338,365,440/2,611,032,064바이트. GPU비가용은양쪽0이다. 초기7일도착13,451개 중7일내완료12,815개씩(30분9,863개),7일시간가중배정률77.42551/77.43166%다.</li>
+<li>입력미래/만료0·원래tick전행정확일치·전체provider snapshot일치. 합성계약검사2개통과. 실제두run의GPU별연속성·용량시간·큐적분=작업대기합·보존진행+잔여=1,091,417,009GPU초·busy=보존진행+오류유실 재계산통과. 기존118파일해시전후동일이다. E25의56테스트를이번에다시실행했다고주장하지않는다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: 같은ML정보에서도5분배치는시간가중배정과공통작업JCT를크게개선했다.30분배치주기가병목이었던해석을지지하며, ML예측성능향상의기여가아니다.</li>
+<li>관찰: 5분ON은OFF대비오류중단+6건·오류유실+6,330GPU초·선점+33,060작업초·총중단+37,560작업초다. 보존진행량은소폭나아졌으므로모든지표악화라고도하지않지만위험도ON의종합운영이득은확인되지않았다. 완료평균JCT와공통작업JCT를분리했다.</li>
+<li>관찰: 5분배치와함께선점비용이크게증가했다. 빈자리충원이득과자주재배치하는비용이함께변한결과이므로주기가짧을수록무조건최적이라고결론내리지않는다.</li>
+<li>실패/보완: 준비중us/ns형식오류는원본ns로맞춰엄격비교를유지했다. 추가합성검사는집계동일이나risk_refresh로그삽입에따른event_id순번차이로처음실패했고, 순번만제외한나머지작업시각/배치를전부비교해통과했다. 최초실패JSON을보존했으며본실행재시도/엔진수정은없다. WindowsOFF초기감시RSS는launcher값이므로최종worker peak와구분했다. OFF감시기록의약5분간격이있었으나정상진행/종료확인.</li>
+<li>한계: 단일seed·고정score의비폐루프replay, GPU-local앱사건/Job매핑부재,oracle실행시간,periodic checkpoint저장정지비용미부과,COMPLETED trace선택·100GPU에전체도착부하·빈초기상태유지. 소프트웨어오류가GPU이주로해결된다는증거, 실제5분추론·실측XID복구분포·새예방정책검증은아니다.</li>
+<li>판정: 입력변환·승인된2회실행·운영회계완료.독립반복재현/통계적우월성/정책최종채택은미완료. Material Passport UNVERIFIED(독립재현없음)와회계통과를구분한다.G-009활성유지·담당이준호/지한유.</li>
+</ul>
+<p>[실행할 것]</p>
+<ul>
+<li>별도계획/승인후기존준비된비선점event_fill과5분periodic를비교해충원이득과선점비용을분리하는것을권고한다.이번승인으로추가run을자동실행하지않는다.</li>
+<li>실제5분ML정보의가치는같은5분운영배치위에서분리검증한다.현재원점수/코드/결과는보존하고새목적함수·예방정책은한꺼번에추가하지않는다.</li>
+<li>근거: 새폴더 REPORT.md·REQUIREMENTS.md, reports/comparison.json/.csv·input_audit.json·monitor_risk*.json, runs/risk*/manifest·summary·evaluation·performance·GPU/Job timeline.다음확인은후속범위승인시이며새회의일정확정은아니다.</li>
+</ul>
+<h2>Experiment 28 = ON·필수 Parquet·5분 Queue–Placement 공동 최적화 장기 방향 = 분석·계획 (2026-10-23)</h2>
+<p>[요약]</p>
+<ul>
+<li>관련 G-009. E27은5분배치의 처리량 개선을 확인했지만 위험도ON의추가운영이득은확인하지못했다. 사용자는ON과해당Parquet사용을필수로하고, FIFO/LAS/Tiresias 계열을기준으로 Queue와GPU배정을목적함수·제약으로공동최적화하는것을장기목표로지시했다.</li>
+<li>문헌·실행구조 검토 후 사용자에게 제시한 문서반영안을 승인받아 장기계획과목표·진행상황을갱신했다. <strong>이번E28은분석·계획기록이다. 새정책코드·ML학습·fixture·solver·본실험을실행하지않았다.</strong></li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>유지: E19 B1관성·B2비관성 Fusion의E27과거유지5분 Parquet/provenance 계보, 고정100GPU·전체기간·원본warm-up30일/horizon24h/purge36h/cutoff10분. 원정보갱신1800초와운영판단300초를구분한다. 과거B2 fallback·원점수·기존코드·E26/E27결과를보존한다.</li>
+<li>변경한연구방향: ON/OFF비교자체를최종기여로삼지않고, 모든주비교군이동일위험입력을실제배정에사용하는ON상태에서 Queue의실행작업선택과GPU집합을공동결정한다. 기존OFF결과를삭제/정정하지않으며 후속OFF실행을자동추가하지않는다.</li>
+<li>baseline 기록안: B0제출순FIFO+공통risk-aware packing, B1Tiresias-style 이산2D서비스우선순위+큐내최초실행순FIFO+동일packing. LAS는물리GPU위치결정규칙이아니며, 현재Tiresias2Q는간이어댑터라논문원형재현으로표시하지않는다.</li>
+<li>Tiresias의우선순위이산화/FIFO, Gavel의lease renewal, CheckFreq의checkpoint비용예산, Aupy의예측-비용손익분기, Shockwave의유한계획·solver gap보고를장기계획의근거로연결했다. 논문의성능수치/보장을우리실험성과로사용하지않았다.</li>
+<li>주목적후보는기대총flow time/평균JCT연결이다. 실행작업y·GPU배정x·실제변경z와공통비용상태전이를명세하고, 이미완료지연에반영된오류/선점비용을중복합산하지않도록했다. 계획길이·terminal·공정성한도·선점예산·위험확률변환수치는아직미확정이다.</li>
+<li>다음예정E29를ON고정baseline·공통비용회계·소규모공동최적화정확성검증으로설계했다. 예정파일구조·전기간input preflight·큐전이/FIFO/lease/Gang/복구경계/해상태검사·실패중단조건을계획파일에정리했으며, 존재하지않는실행코드를완료로표시하지않았다.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>문서반영범위: <code>실험 계획/2026-10-23_BLOX_위험기반_공동최적화_장기계획.md</code> 신규, <code>프로젝트 목표 및 결정사항.md</code>·<code>프로젝트 진행 상황.md</code>·누적연대기MD/HTML 갱신. 총5개문서.</li>
+<li>새성능결과·개선율·fit횟수·solver해·정책실행시간은 <strong>없음</strong>. 다음실험상태는 DESIGN_READY / IMPLEMENTATION_NOT_APPROVED / NOT_RUN이다.</li>
+<li>E27의숫자는역사적분석근거로만참조했다. 이번에Parquet을생성하거나기존BLOX/ML을재실행한것이아니다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: 현Full은입장작업을먼저고정하고위치를최적화하므로최종목표인Queue–Placement공동최적화와다르다. 현재위험제약·정비설정이모두활성화된정책이라고도볼수없다.</li>
+<li>결정: 필수Parquet·ON·5분·공동최적화를G-009장기방향으로기록한다. 논문수준의검증은정식모형·구현충실도·작은문제정확해/큰문제gap·계산비용·공정한운영평가·독립기간검증을함께요구한다. solver사용만으로완료를선언하지않는다.</li>
+<li>다음실험설계: 우선새기준선·공통비용모델과작은공동변수를검증한후전체기간ON-only비교로확장한다. 합성정확성검사를본실험성능으로보고하거나구현검사에머문채공동최적화완료라고하지않는다.</li>
+<li>한계: 24hAll-XIDscore를단순5분확률로쓰지않는다. periodic checkpoint무정지·oracle duration·GPU-local앱사건가정·Job/PID부재·과부하/미완료·동일개발기간의한계는남는다. 오류손실을자의로키워ON을유리하게하지않는다. 미확정수치/정보계약은구현승인전에확정한다.</li>
+<li>G-009활성·담당이준호/지한유. 사용자승인에따른방향기록이지새회의결정이나최종정책채택이아니다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ul>
+<li>다음구체구현계획에서FIFO HOL/처음미실행삽입·큐전이·promote·위험변환·공통checkpoint/선점회계·solver/H/terminal/공정성/예산을확정해승인받는다.</li>
+<li>승인후새격리폴더에서baseline/공통비용/작은공동최적화fixture를구현하고입력hash·인과성·상태회계·해품질을검증한다. 전체기간성능실행은비용측정과별도승인후진행한다.</li>
+<li>모든주비교ON·같은위험tape를유지하며Queue-only/Placement-only/joint를분리한다. 커밋·푸시·새회의일정은이번범위에없다. 상세근거와다음실험계약은장기계획문서의§7–§11을따른다.</li>
+</ul>
+<h2>Experiment 29 = FIFO/Tiresias-style·lease 비용·작은 Queue–Placement 공동 결정 구현 및 입력 감사 (2026-10-23)</h2>
+<p>[요약]</p>
+<ul>
+<li>G-009. E28의 장기 방향을 이어, 사용자에게 구체 계획을 제시하고 승인받아 새 격리 폴더에 코드와 검사를 구현했다. 상태는 <strong>기초 정확성·입력감사 통과 / 실제 전체 정책은 부분 구현 / 전체기간 성능 실험 미실행</strong>이다.</li>
+<li>기존에는 E27의 LAS 입장 작업을 고정한 뒤 위치를 고르는 구조였다. 이번에는 작은 문제에서 실행 Job 집합과 GPU집합을 모두 선택하고, 유지/변경 비용과 실제 event시각이 구분되는지 검사했다. 논문용 최적화 완성이나 E27 대비 성능 향상을 주장하지 않는다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>위치: <code>BLOX_RiskLab_GitHub_20261017/experiments/2026-10-23_JointQueuePlacement_Preparation_01/</code>. 기존 branch <code>research/xid-recovery-30m-validation</code>, 기준HEAD <code>e082e3fbc26fe159f384cb2f6ade6a1fb5030314</code>; 기존 dirty 변경을 보존하고 Git쓰기는 하지 않았다.</li>
+<li>유지: E19 B1관성/B2비관성 Fusion의 E27 과거유지5분 Parquet/provenance. All-XID24h/warm-up30일/purge36h/cutoff10분은 저장점수계보이며 재학습/새분할은 없다. 운영300초와 원정보1800초를 구분한다. ML fit0·확률변환0·full replay0.</li>
+<li>B0: strict 제출순FIFO, head가맞지않으면backfill하지않는다. B1: GPU시간 서비스량으로 상/하2개큐를 바꾸고, 큐 내부는 최초실행순FIFO, 미실행작업은 같은큐의 실행이력작업 뒤에 제출순삽입. 대기/실행 비율로 승급하고 정책카운터를초기화한다. threshold100GPU초·승급비율2는 <strong>검사용</strong>이며 운영채택값이 아니다. 원형Tiresias 전체재현으로쓰지않는다.</li>
+<li>공통배정 <code>risk_pack</code>: feasible한동일GPU lease를유지하고, 그외rawscore합→서버수→ID순으로 작은greedy배정. E25의DP/SA와동일구현은아니다. 실제100GPU 전체반복에이새기준선을적용한것은아니다.</li>
+<li><code>joint_planner</code>: y=실행Job선택, x=GPU목표배정, z=실제변경. 한GPU중복0·부분Gang0·준비전배정0을검사한다. 최대6Job/8GPU의전수열거와별도Cartesian oracle대조, seed17. 매검사프로세스60초hard timeout·실패자동재시도/결과덮어쓰기없음.</li>
+<li>작은목적은 <code>F=Σ(명시적잔여시간추정+변경지연+300×미선택여부)</code>의최소화, 동률이면선택GPU rawscore합최소다. F는 단일결정 completion-offset surrogate이며 실제기대총flow time이아니다. 새작업사이에서잔여시간합은상수라선택작업수를우선하는성질이있다. 위험확률보정·위험과전환비용의경제적trade-off·다기간H/terminal/공정성은미구현이다.</li>
+<li><code>transition_costs</code>: 같은lease/초기입장0, 스케줄러변경 checkpoint60초(기존GPU점유)+restart300초(GPU예약없음), failure경로는R0세션간격660초만적용해추가restart/선점을중복합산하지않는다. 실측복구분포로포장하지않는다.</li>
+<li><code>event_runtime.TinyRuntime</code>: 시각0도착합성Job에서위목표배정을실제사건시각으로실행한다. checkpoint중기존GPU를즉시다른Job에주지않고,360/660초복구를5분경계에서삭제하지않는다. 주기checkpoint도명시적pause값으로정지시킨다. 실제duration은환경객체에만있고planner는별도estimate를받는다. 실데이터estimate추정기는미구현이다.</li>
+<li><code>input_contract</code>: 전기간risk/provenance행과원천64part를검사한다. 정책API에는timestamp/GPU/rawscore만전달하고schema밖label·미래사건·실제미래duration을거부한다. actual_input_probe는실제첫시점ID순4GPU의동일점수를세정책에전달하지만Job은합성이다. 실제성능/전체기간정책실행과분리한다.</li>
+<li>주요진입점: 기존venv Python <code>-B evaluate.py</code>, <code>-B -m unittest discover -s tests -p test_runtime.py -v</code>, <code>-B -m unittest discover -s tests -p test_input_contract.py -v</code>, <code>-B input_contract.py</code>, <code>-B actual_input_probe.py</code>. 정확명령·cwd·시간·상태는reports와실행인계증거를따른다. 이미생성된결과를이명령으로자동재실행하지않는다.</li>
+</ul>
+<p>[결과]</p>
+<ul>
+<li>core26·runtime6·input21, <strong>총53개 검사 통과</strong>. seed17의40개작은문제정확해대조는1개검사안의사례이며53에별도로더하지않는다. core프로세스0.359초·runtime0.235초·input검사3.141초. 통계적유의성/운영성능검사가아니다.</li>
+<li>전기간입력PASS: 1,831,700행·18,317시점·100GPU·원정보3,053시점. canonical64part/6,081,576행계보, cohort305,300행의원점수·선택필드정확일치. 최대score age1500초, 원source보다600초이전featurecutoff확인. B1결측원본76,800행/전달460,800행과B2 fallback보존. 152파일전후hash동일. audit내부14.5초/프로세스16.329초.</li>
+<li>합성Queue변경예제: B0/B1은large1개, joint는small1/small2를선택. toy F=1800/1500작업초, exact상태OPTIMAL·gap0. 이값을실제JCT개선이나논문성능으로해석하지않는다.</li>
+<li>실제점수연결probe PASS/exit0/2.141초. 첫시점4GPU의rawscore를세경로에서사용했음을기록했다. 본실험의100GPU전체정책평가는아니다.</li>
+<li>고장/선점비용중복0·동일lease추가중단0·60초checkpoint점유·360/660초경계·1/2/3/4/8GPU Gang·작은event용량/유효진행+rollback/작업체류시간보존검사통과.</li>
+<li>이상기록: probe의한글경로만Windows stdout인코딩으로깨졌다. 최초JSON은보존하고worker출력을ASCII escape로수정했다(수정후재실행없음; 점수/hash/ID는정상). 입력검사에서pandas향후버전경고가있었다. 인계중메인run_input_validation.py는이미있는audit를보고자식실행전FileExistsError로중단했다. 중복감사/실험재시도/결과덮어쓰기는없었다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>확인: 실행Job선택과GPU선택이모두변수인작은정확모델, 큐/lease/복구의기초실행경로, 필수실제Parquet의인과적계보를검증했다. 계획만기록한E28과달리실제코드와검사실행증거가있다.</li>
+<li>확인: 360초전환비용은300초판단주기를넘는다. 다음판단에서복구를지우면중단비용이과소계상된다. 같은lease는유지하면서실제전환에만비용을부과하는공통event회계가필요하다.</li>
+<li>한계: 현재F는작업수우선단일결정surrogate이며다기간기대flow time이아니다. raw위험은F동률에만영향을준다. 효과가큰오류를예측해선제행동하는최종경제적최적화·확률보정·GPU이동의앱오류회피효과는검증하지않았다.</li>
+<li>한계: TinyRuntime은모두시각0도착fixture다. 실제trace도착·정비·유형별오류·추정duration·미완료/기아·terminal·solver예산/fallback·E25통합이남는다. checkpoint예약때문에목표배정의실제시작이늦어지는효과를planner가예측하는다기간모형도아직없다.</li>
+<li>판정: <strong>E29의기초검증범위완료</strong>, 전체정책partial. Material Passport는독립full정책재현이없어UNVERIFIED다. 실험충실도스킬에따라단위검사통과와실제성능/최종방법완료를분리기록했다. G-009활성·담당이준호/지한유.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>원점수→운영위험의보정/시나리오·회피가능오류가정과현실적duration추정을확정한다. 오류penalty를결과에맞춰늘리지않는다.</li>
+<li>실제trace event엔진에공통baseline/lease/비용을결합하고다기간목적/H/terminal·공정성·solver예산을명세한다. 그후작은동일시나리오에서고정Queue/Queue-only/Placement-only/joint를대조한다.</li>
+<li>위통합검증후별도계획·승인으로전체기간ON-only비교를진행한다. 이번범위에서는본실험·ML재학습·설치·커밋/푸시를하지않는다.</li>
+</ol>
+<h2>Experiment 30 = 실제 전체기간 Queue–Placement 공동 후보탐색·물리 checkpoint 비용 (2026-10-23 실행 / 10-24 검증)</h2>
+<p>[요약]</p>
+<ul>
+<li>G-009. E29는실제Parquet감사와작은문제검증이었으며전체실험이아니었다. 사용자의전체실행지시·계획승인으로실제도착/고장/복구환경에새정책을연결하고FIFO/Tiresias-style/joint 세ON arm을끝까지실행했다.</li>
+<li>이번변경은“다음5분에어떤Job을실행하고어떤GPU에올릴지”를정하는것이다. 같은Job/GPU lease는유지하며실제중단에만비용을낸다. 모든작업최종완료나논문수준전역최적화완성을뜻하지않는다.</li>
+</ul>
+<p>[실행]</p>
+<ul>
+<li>새위치 <code>BLOX_RiskLab_GitHub_20261017/experiments/2026-10-23_FullQueuePlacement_01/</code>. frozenE25 <code>ActualRiskLabSimulation</code>을상속해실제도착·완료·XID·복구를처리한다. 정책에Job duration/미래XID를전달하지않으며<code>JobView</code>에는현재서비스·큐·GPU수·checkpoint age만있다.</li>
+<li>유지: E19 <strong>B1관성/B2비관성 Fusion</strong>의E27과거유지Parquet/provenance,UTC2023-06-15 09:40–08-18 00:05끝제외·100GPU·140,786Job·140XIDepisode·18,317회300초판단·seed17. 원점수All-XID24h/warm-up30일/purge36h/cutoff10분계보를유지하며새학습/분할/실제5분ML추론은없다. 정보갱신1800초와운영300초를구분한다.</li>
+<li>공통비용변경: 유효연산300초마다checkpoint60초동안정지하고GPU를점유한다. 스케줄러선점은기존GPU에서CP60초후해제·재실행300초;같은lease는추가선점0. 고장은직전완료checkpoint로rollback하고R0gap660초에추가restart300을중복합산하지않는다. 이periodic정지는E27의무료저장과달라<strong>새세arm끼리비교</strong>한다. 비용은고정시나리오이지실측분포가아니다.</li>
+<li>FIFO: incumbent유지·제출순strictHOL,대기열head가못들어가면뒤의작은작업도새로넣지않는다. Tiresias-style: 2큐·유효GPU서비스3600초에서강등·큐내최초실행순FIFO·정책epoch대기≥실행시간2배면승급/reset. 원형Tiresias완전재현이나최적파라미터가아니다.</li>
+<li>공통GPU배정: 선택된incumbent의GPU집합유지,신규Job은관측가능노출 <code>(checkpoint_age+660)×demand</code>가큰순서로낮은rawscore GPU를greedy배정한다. topology/네트워크공유성능을함께풀지않는다.</li>
+<li>joint: running전부+queued오래된256개+각Gang수요별가장오래된대표를후보로한다. 후보밖Job은실제큐와전체평가에남는다. 정방향/역방향용량DP와FIFO fallback으로최대3개Job집합을만들고각완전한GPU목표배정을비교한다. DP는작은proposal부분문제만정확하며전체는FEASIBLE_APPROXIMATE·bound/gap없음이다.</li>
+<li>목적: <code>F=300×미선택Job수+360×실행Job중단수+60×선점GPU해제를기다리는신규Job수</code> 최소. 동률이면 <code>Σ_j(checkpoint_age_j+660)Σ_g raw_score_g x_jg</code>,다시동률이면변경수순이다. <strong>단일결정대리목적</strong>이며기대총flow time·보정고장손실의다기간최적화가아니다. GPU배정을고르지만선택incumbent를적극적으로이주시키지는않는다.</li>
+<li><code>connection.py</code> 8검사그룹(40개seed17 DP/oracle문제포함)·실제첫6시간863Job/72판단의세arm연결검사PASS후, <code>supervise.py --gate FROZEN/GATEPASS</code>가전체3arm을1회씩병렬실행했다. 연결결과로정책/비용튜닝없음. 시작후코드/입력변경·자동재시도없음.</li>
+<li>감시한도는초기7200초에서사용자명시승인으로최초시작기준21600초로연장. 구감독기만일시정지하고workers는그대로실행,자식종료후감독기재개·기존평가기를실행했다. extension JSON에기록했고원monitor의7200초는초기설정이다. 최장run은6,807.750초로연장한도보다짧았다.</li>
+<li>주평가: 모든도착Job의 <code>Σ(min(C_j또는T,T)−arrival_j)</code> /전체Job수,완료·미완료·미시작,공통완료pairedJCT,완료/보존/잔여GPU초와오류/선점/periodic비용의단위분리. 실행시메모리peak와최종export포함peak는구분한다.</li>
+</ul>
+<p>[결과]</p>
+<table>
+<thead>
+<tr>
+<th>같은전체기간·ON</th>
+<th align="right">FIFO</th>
+<th align="right">Tiresias-style</th>
+<th align="right">joint</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>완료Job</td>
+<td align="right">74,822</td>
+<td align="right">75,340</td>
+<td align="right">88,697</td>
+</tr>
+<tr>
+<td>미완료Job</td>
+<td align="right">65,964</td>
+<td align="right">65,446</td>
+<td align="right">52,089</td>
+</tr>
+<tr>
+<td>미시작Job</td>
+<td align="right">65,934</td>
+<td align="right">65,329</td>
+<td align="right">52,057</td>
+</tr>
+<tr>
+<td>전체Job restricted 평균체류(초)</td>
+<td align="right">1,829,169.001</td>
+<td align="right">1,765,216.522</td>
+<td align="right">1,312,150.215</td>
+</tr>
+<tr>
+<td>완료유효량(GPU초)</td>
+<td align="right">379,810,856</td>
+<td align="right">377,337,839</td>
+<td align="right">409,094,968</td>
+</tr>
+<tr>
+<td>보존진행량(GPU초)</td>
+<td align="right">387,780,176</td>
+<td align="right">389,320,499</td>
+<td align="right">418,985,908</td>
+</tr>
+<tr>
+<td>스케줄러선점(건)</td>
+<td align="right">0</td>
+<td align="right">113,398</td>
+<td align="right">612</td>
+</tr>
+<tr>
+<td>활성XID작업중단(건)</td>
+<td align="right">70</td>
+<td align="right">69</td>
+<td align="right">82</td>
+</tr>
+<tr>
+<td>오류rollback(GPU초)</td>
+<td align="right">202,620</td>
+<td align="right">150,765</td>
+<td align="right">85,350</td>
+</tr>
+<tr>
+<td>선점비용(작업초)</td>
+<td align="right">0</td>
+<td align="right">40,820,730</td>
+<td align="right">220,320</td>
+</tr>
+<tr>
+<td>periodic CP비용(작업초)</td>
+<td align="right">14,883,900</td>
+<td align="right">10,624,650</td>
+<td align="right">22,449,630</td>
+</tr>
+<tr>
+<td>32GPU이상완료 /631Job</td>
+<td align="right">231</td>
+<td align="right">234</td>
+<td align="right">14</td>
+</tr>
+<tr>
+<td>실행wall(초)</td>
+<td align="right">5,979.234</td>
+<td align="right">6,807.750</td>
+<td align="right">5,390.047</td>
+</tr>
+</tbody></table>
+<ul>
+<li>joint는Tiresias대비완료+13,357개·restricted평균체류−25.666%,FIFO대비체류−28.265%다. joint/Tiresias공통완료75,119개에서pairedJCT평균−691,901.480초,빠름/동일/느림72,104/2,081/934개. 완료모집단차이를분리했다.</li>
+<li>세arm 모두exit0·전체18,317판단·140,786Job·100GPU. joint는FIFO와실행집합변경17,046회·후보제한16,806회다. 평균계획시간0.311/0.356/0.278초,최대4.054/4.524/2.630초. 계산전체wall에는입출력·사건처리가포함된다.</li>
+<li>최종전수검증PASS(2026-10-24): 코드/입력/provenancehash·전체모집단·큐적분·periodic비용·유효진행/rollback·GPU상태시간·전체체류적분일치,기존152파일hash보존. <code>final_verification.json</code>과수요별재집계<code>limitations_evidence.json</code>보존. 이는독립재실행이아니다.</li>
+</ul>
+<p>[분석]</p>
+<ul>
+<li>관찰: 실제전체기간에서공동후보선택이완료작업수와전체체류를개선했다. Tiresias보다선점113,398→612건이지만FIFO는0건이라“선점이적기때문에만개선”했다고단정하지않는다. Queue선택·선점·위치효과를분리한ablation은없다.</li>
+<li><strong>가장중요한한계는공정성</strong>: 32GPU작업완료179→11개,64GPU51→3개,32이상전체234→14개다. joint의대형631Job중615개는미시작,전체미시작52,057개·최대누적큐대기5,297,726초다. 작은작업수우선의F·제한후보·대기보호부재와양립하는결과이며평균개선을대형작업까지의우월성으로주장하지않는다.</li>
+<li><strong>ML위험의추가기여미입증</strong>: 모두ON·같은점수입력이다. joint의XID중단82건은Tiresias69건보다많지만GPUrollback85,350초는150,765초보다적다. 오류건수·유실작업량·위험score노출은다른지표다. raw24hscore가F동률에만작용하므로오류손실과전환비용의경제적trade-off는아직없다.</li>
+<li><strong>탐색/예방구조미완성</strong>: 후보3개비교·greedypacking·고정incumbentlease이며다기간H/terminal·globalbound/gap·공정성한도없음. 적극적예방이주/격리·하드웨어진단효과도미검증(이번hardware recovery0/GPU비가용0)이다.</li>
+<li><strong>현실성/일반화</strong>: 고정100cohort에클러스터전체완료trace도착을넣어offered load198.616%,빈시작·완료trace선택·고정속도·네트워크/공유I/O비용미모형화다. 앱/Job PID연결없이GPU-local민감도라GPU이동이소프트웨어오류를해결한다고말할수없다. CP60/restart300/R0gap660은고정시나리오이지XID별복구분포실측이아니다. 같은개발기간/seed1회·미완료절단·PYTHONHASHSEED미기록으로독립일반화/bitwise재현은남는다.</li>
+<li>판정: <strong>실제전체실행·회계충실도완료 / 최종정책채택보류 / G-009활성</strong>. Material Passport는독립재현/일반화없음과전수회계PASS를구분한다. user승인에따라실험로그스킬의연속연구노트에기록했고원본결과를소급수정하지않았다.</li>
+</ul>
+<p>[실행할 것]</p>
+<ol>
+<li>대형Gang서비스하한/최대대기/aging보호와후보집합을먼저명세한다. 같은평균지표개선과공정성보존을함께채택조건으로검토한다. 이번에정책변경·추가run은하지않는다.</li>
+<li>모든군ON·동일Parquet을유지한Queue-only/Placement-only/joint대조로기여를분리하고,보정된회피가능오류손실·다기간목적의후속계약을승인받는다. 결과에맞춘penalty증폭금지.</li>
+<li>사용자10/24승인으로새<code>2026-10-24_Experiment30_CommitBundle_01</code>에코드/의존소스·설정·작업별결과·검증·프로젝트기록을보존하고현재연구브랜치에커밋/푸시한다. 원시입력/대용량event로그·다른dirty변경·main/Blox병합·PR은제외한다. 실제성공hash는완료인계로확인한다.</li>
+</ol>
+</body>
+</html>

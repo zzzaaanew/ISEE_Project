@@ -1,0 +1,806 @@
+{
+  "status": "PASS_ARCHIVE_INTEGRITY_SYNTAX_AND_RESULT_AUDIT",
+  "goal": "G-009",
+  "experiment": 30,
+  "archived_at": "2026-10-24T14:01:11.867351+00:00",
+  "source_head": "e082e3fbc26fe159f384cb2f6ade6a1fb5030314",
+  "target": "origin/research/xid-recovery-30m-validation",
+  "file_count_excluding_this_manifest": 71,
+  "total_bytes_excluding_this_manifest": 11630464,
+  "archive_git_attributes": "Folder-local * -text added after archive generation to preserve exact source bytes through Git; no repository/global config change",
+  "files": [
+    {
+      "path": "archive_environment.json",
+      "bytes": 519,
+      "sha256": "5d3d775283b20568d461921b99e2d10101ab50ba11f55c610024b572d0a53c68"
+    },
+    {
+      "path": "build_bundle.py",
+      "bytes": 7485,
+      "sha256": "4c3788401a88abadc90b5fe2b1f4d853aa7912020ba4edc4ccaad8d8ffeb62a8"
+    },
+    {
+      "path": "docs/\uc2e4\ud5d8 \uacc4\ud68d/2026-10-23_BLOX_\uc704\ud5d8\uae30\ubc18_\uacf5\ub3d9\ucd5c\uc801\ud654_\uc7a5\uae30\uacc4\ud68d.md",
+      "bytes": 26784,
+      "sha256": "dede387bb1436d7e57746448bc1f8fa22a72488331b53870ab0e88fc3a919d62"
+    },
+    {
+      "path": "docs/\uc2e4\ud5d8 \uae30\ub85d/render_experiment_log.cjs",
+      "bytes": 1327,
+      "sha256": "50ae5a18a6336370754b099298db5a4c3df2d8b442e05c1af2fc277f9e4ed4c5"
+    },
+    {
+      "path": "docs/\uc2e4\ud5d8 \uae30\ub85d/\uc2e4\ud5d8_\uc5f0\ub300\uae30.html",
+      "bytes": 148366,
+      "sha256": "816e946589218255b1a389689b89934144b2dc5b0d801b82bb108af65dda71c9"
+    },
+    {
+      "path": "docs/\uc2e4\ud5d8 \uae30\ub85d/\uc2e4\ud5d8_\uc5f0\ub300\uae30.md",
+      "bytes": 128875,
+      "sha256": "9d1253a545daeb88725205949fb2922e59ab20add70e22942263772979fc8238"
+    },
+    {
+      "path": "docs/\ud504\ub85c\uc81d\ud2b8 \ubaa9\ud45c \ubc0f \uacb0\uc815\uc0ac\ud56d.md",
+      "bytes": 102244,
+      "sha256": "395fa55d35a538ecdf8eac6b9e775bac123c377e870f48b11ecea3ba966b899f"
+    },
+    {
+      "path": "docs/\ud504\ub85c\uc81d\ud2b8 \uc9c4\ud589 \uc0c1\ud669.md",
+      "bytes": 93006,
+      "sha256": "13ae75c909b6b9ab018ce2abfd00bc2d61156833471c46b4c2c12b5241053b8e"
+    },
+    {
+      "path": "input_inventory.json",
+      "bytes": 2699,
+      "sha256": "f07acfce168b8e4594d02568e5ea3d2a21e86a311d5338a4c8be8ffaa8eb9a84"
+    },
+    {
+      "path": "preexisting_tracked_changes.json",
+      "bytes": 1879,
+      "sha256": "66992f58d0ce99afaed0d6aadfb26837bd6b50e5944b78e80cbdabcc5a3062c8"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7218,
+      "sha256": "43cfbc953cbc5fec7c920c90f9f6eb5589affb8aec5f716e4cbaf0ee6f0ed27c"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/__init__.py",
+      "bytes": 112,
+      "sha256": "26f053634ce0403b202c60d11704ca06925db3f1836df7705fcd417a40c3fa5e"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/feeds.py",
+      "bytes": 10152,
+      "sha256": "cd0fb72c558cf548299f54c80ea1be4290b8cb7a1e41691d154bd73c1b195926"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/incident_policy.py",
+      "bytes": 2763,
+      "sha256": "dd46d2509f8aabdd39cbeb8287a02ec56220c1d6952f4289f9379441636ada93"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/loss_ledger.py",
+      "bytes": 4196,
+      "sha256": "f9705e44e1cb6f751bafcda00f2e566ebf4f80308187656eb1af0cc68185368d"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/placement_policy.py",
+      "bytes": 13804,
+      "sha256": "8a16881a068827a5d572f84023e64391af4c460645dd350d9ba9c327368cfefc"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/prepare_replay_inputs.py",
+      "bytes": 8466,
+      "sha256": "1f8b3e6d724b1994e9c3182f09b5c379719e9a8b2b68c378be3658b37dc6ef08"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/recovery_models.py",
+      "bytes": 3737,
+      "sha256": "203583a3feb81a8aad770635620878a86d9ae36baac27eef4fe70a9089492ea0"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/replay_engine.py",
+      "bytes": 41248,
+      "sha256": "a9954b7728727fed1766f959a7371e942989bff0a2246c67603f78953501c8ea"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/replay_runner.py",
+      "bytes": 9998,
+      "sha256": "5ca6ea4f5877a67b79fd447ba1bb30edb5cd09ba5857e6b73a8150fa3cd7ab70"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/replay_web.py",
+      "bytes": 12479,
+      "sha256": "e28be948981a5e38fe75ff2ea8b07643f91817f69a915f7db8befdd1277c0aeb"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/runtime_metrics.py",
+      "bytes": 1240,
+      "sha256": "a07be1d25da894efd7ef7dc036c331da99095d7c896f0aaad8018447f58e33e2"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/thresholds.py",
+      "bytes": 983,
+      "sha256": "576144cc5e0ff7cb8fd924d60161a04a5731e8d72cf0301aa3daa1d9d1bebccf"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/timelines.py",
+      "bytes": 2999,
+      "sha256": "f6b209ad639551f4a67bf02417accb4747e11c3d01f88e332f8cb70d6cdeb49a"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/web/replay.html",
+      "bytes": 26262,
+      "sha256": "c2ca70634e77317901fb29c08428d9f5d5adefec2b036a8b95be19306ec48eae"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-22_Causal5m_BLOX_01/configs/risk1.json",
+      "bytes": 6569,
+      "sha256": "2875f8a4c03999312936b083b5da44f59cbfc1480d9e11721b2066cb3c59d174"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-22_Causal5m_BLOX_01/inputs/threshold_manifest.json",
+      "bytes": 243,
+      "sha256": "61dba5ec226034d282dfaa7b93f5ab5ddccc09313fc53ad18362dba14992cc98"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/analysis/extend_guard.py",
+      "bytes": 8284,
+      "sha256": "00b83cdbce0b5635c121466deb1c4d2a45751c6a5db033242a05a6a9d735febe"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/analysis/limitations.py",
+      "bytes": 2608,
+      "sha256": "0b2b24754e03411f33501e88db05e39ff1ffbf6eea5a5cfefe1b140bf2aa3403"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/analysis/verify.py",
+      "bytes": 6215,
+      "sha256": "0a1e845943c57245a6c02a8e8841baf00b3a8d086c8f00019623fb66ab46e365"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/common.py",
+      "bytes": 1817,
+      "sha256": "af427efb0959dab6c42bc74c3fd158c6e93be1acdeb8dd0184238d7ab6d13491"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/connection.py",
+      "bytes": 6583,
+      "sha256": "6746a781f28868d568e3864b65c5a5f86c4c0877e1ec35b9bbdb9895c5f92661"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/engine.py",
+      "bytes": 15321,
+      "sha256": "525c1027f5608c7960390a9b0ffdd0528e5544990b94f647444bff5669e10b04"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/evaluate.py",
+      "bytes": 12145,
+      "sha256": "27d405223094182768b33390fcb96829737ac2fc3d5586aba24edd5b7d7a2a46"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/policies.py",
+      "bytes": 6307,
+      "sha256": "1006fc234312b69dccc2468e13ceb44e67c23f61c5089a7668162239fb465ba4"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/comparison.csv",
+      "bytes": 890,
+      "sha256": "f78e1143a0eb26705e44e29fe688a9a6a1ac1275a7ffab7b0d7917acd54ed43c"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/comparison.json",
+      "bytes": 28750,
+      "sha256": "11ab33724d91d9c95400647ebf83c2db440e186f139dfc077d7a27f74afb3c67"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/connection.json",
+      "bytes": 1755,
+      "sha256": "ce24d68554ea093300458f862c413f6ce277a56dfef572c0780210c93664730e"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/connection_executor.json",
+      "bytes": 2415,
+      "sha256": "4cf31c92055a67970e546f4c69bc99d40407fffe9adb08991d58b2c138b53af4"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/fifo.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/fifo.stdout.log",
+      "bytes": 234631,
+      "sha256": "47d7182838f8d16d4535e676ce1b31bbc5f25187d91746fd39b23722445fe72a"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/final_verification.json",
+      "bytes": 1780,
+      "sha256": "083d612acd51ccd3a1598ba72c5da7333affadecc9f9a0b66fdf5dc22522d95d"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/joint.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/joint.stdout.log",
+      "bytes": 213346,
+      "sha256": "8e2713da81efbb21602b29f3bb48ec631f7548304a3baee0ad93aacfa4ac34ee"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/limitations_evidence.json",
+      "bytes": 7035,
+      "sha256": "ddf9082d8f3daaaec24b2fd902c312b87e1e694b989010d91355cfcd6c8d05dd"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/monitor.json",
+      "bytes": 10239,
+      "sha256": "b78c9b0ef6611d24736f6772d2341e83ac4687c3a2bc201fffb75aa2d67032b3"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/monitor_extension.json",
+      "bytes": 3282,
+      "sha256": "62417b7dcca5ba2d99090eb8a75961b19e50c9dbc17521d29153a60679a74632"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/time_budget_extension.json",
+      "bytes": 3282,
+      "sha256": "62417b7dcca5ba2d99090eb8a75961b19e50c9dbc17521d29153a60679a74632"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/tiresias.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/tiresias.stdout.log",
+      "bytes": 268434,
+      "sha256": "07bada2bb9f258ed74cb53f53fc4eac75b7df43513904a2557d5e3398360bbc8"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/REQUIREMENTS.md",
+      "bytes": 2980,
+      "sha256": "99f62a9c6a1d1db61344658783d56385342393c421f011bb7f67c1a1550359a1"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/run.py",
+      "bytes": 4558,
+      "sha256": "dddb58db1bbaa6bc92f0287fc230af6eee45f64d1f4ea5d1c0a0b73fe6511636"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/fifo/gpu_state_time.parquet",
+      "bytes": 5036,
+      "sha256": "93d1dede65dac626bcbc573eda6a003d8a7edfbe5cc1cfcb88e070bc62850610"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/fifo/jobs.parquet",
+      "bytes": 3158519,
+      "sha256": "b876c1de02519e4869e3679c949ddcde968fb05cc6b354379bf3d8b662e57eb8"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/fifo/manifest.json",
+      "bytes": 9969,
+      "sha256": "418b48895d053ad8e098a4dc672cb27353116feb707c33aee4a571ad21718dfb"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/fifo/progress.json",
+      "bytes": 461,
+      "sha256": "47ce8afbbb0d8a37905865dcb3a54bde05708493539beb4415d26b4d69381b54"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/fifo/summary.json",
+      "bytes": 4747,
+      "sha256": "c66a2b2203acd835a90dbda686b0721e0a7ebd6f6c3735d09ee018a251399baf"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/joint/gpu_state_time.parquet",
+      "bytes": 5058,
+      "sha256": "4f863116768c8470f17281b9854568f2ba032b0188739095df0a4d1f8634f685"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/joint/jobs.parquet",
+      "bytes": 3507065,
+      "sha256": "69c0a479ba0b0b03921819c831e0331c4e02660568da862659a5134230937ad8"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/joint/manifest.json",
+      "bytes": 9971,
+      "sha256": "0b36ec3b691893a0e90bc9ad763b3497604bcb06dd5782af30d69ef1b58e81b4"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/joint/progress.json",
+      "bytes": 460,
+      "sha256": "bf9db96f646c8f8da605d5824c05b21629726c865484dd7988bb5585fc27f3b6"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/joint/summary.json",
+      "bytes": 4894,
+      "sha256": "0a216724cce974dc7d0a4dad26fd841bbd26f85a84882e8161cba0a08df1cf52"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/tiresias/gpu_state_time.parquet",
+      "bytes": 5049,
+      "sha256": "4e46879b65889ea4d9b1d12acb60e72c34aab7db60d6c86bda0c3931a1a313bc"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/tiresias/jobs.parquet",
+      "bytes": 3262710,
+      "sha256": "24f5c2ce50db5fb30e8fdb3aaaf228e418edf38fc54f0cc4bb7e5957034939e0"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/tiresias/manifest.json",
+      "bytes": 9981,
+      "sha256": "a01ed66a5f0a24a35af469d1625b866956c423dc64b626830e2fb4285563e033"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/tiresias/progress.json",
+      "bytes": 465,
+      "sha256": "d246aac96d7fe3ac07fb57703bd91dc93ce53dcd315174ba0af7e80553fa450f"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/tiresias/summary.json",
+      "bytes": 4907,
+      "sha256": "cc4867d2dcdbfd985a1e341ef5599cea12e99a2ea6e73b91f78cddc39fc62884"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/SPEC.md",
+      "bytes": 10374,
+      "sha256": "dd40bf181c53253b254dfac0892d32994c904fc7839e147dbc50d30c899c0299"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/supervise.py",
+      "bytes": 9132,
+      "sha256": "63e0e69c2631bf6e9c6a8fbe2a4ffb6a3ed32bc24e72004252051c4b0625a1e3"
+    },
+    {
+      "path": "snapshot/experiments/2026-10-23_JointQueuePlacement_Preparation_01/reports/input_audit.json",
+      "bytes": 113348,
+      "sha256": "cd93d3d1ef6180d29bd2fe1eefbfad110676a82bd86c7c0f3ccfef77dcb0ec7d"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    }
+  ],
+  "copies": [
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\analysis\\extend_guard.py",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/analysis/extend_guard.py",
+      "sha256": "00b83cdbce0b5635c121466deb1c4d2a45751c6a5db033242a05a6a9d735febe",
+      "bytes": 8284
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\analysis\\limitations.py",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/analysis/limitations.py",
+      "sha256": "0b2b24754e03411f33501e88db05e39ff1ffbf6eea5a5cfefe1b140bf2aa3403",
+      "bytes": 2608
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\analysis\\verify.py",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/analysis/verify.py",
+      "sha256": "0a1e845943c57245a6c02a8e8841baf00b3a8d086c8f00019623fb66ab46e365",
+      "bytes": 6215
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\common.py",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/common.py",
+      "sha256": "af427efb0959dab6c42bc74c3fd158c6e93be1acdeb8dd0184238d7ab6d13491",
+      "bytes": 1817
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\connection.py",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/connection.py",
+      "sha256": "6746a781f28868d568e3864b65c5a5f86c4c0877e1ec35b9bbdb9895c5f92661",
+      "bytes": 6583
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\engine.py",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/engine.py",
+      "sha256": "525c1027f5608c7960390a9b0ffdd0528e5544990b94f647444bff5669e10b04",
+      "bytes": 15321
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\evaluate.py",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/evaluate.py",
+      "sha256": "27d405223094182768b33390fcb96829737ac2fc3d5586aba24edd5b7d7a2a46",
+      "bytes": 12145
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\policies.py",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/policies.py",
+      "sha256": "1006fc234312b69dccc2468e13ceb44e67c23f61c5089a7668162239fb465ba4",
+      "bytes": 6307
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\comparison.csv",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/comparison.csv",
+      "sha256": "f78e1143a0eb26705e44e29fe688a9a6a1ac1275a7ffab7b0d7917acd54ed43c",
+      "bytes": 890
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\comparison.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/comparison.json",
+      "sha256": "11ab33724d91d9c95400647ebf83c2db440e186f139dfc077d7a27f74afb3c67",
+      "bytes": 28750
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\connection.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/connection.json",
+      "sha256": "ce24d68554ea093300458f862c413f6ce277a56dfef572c0780210c93664730e",
+      "bytes": 1755
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\connection_executor.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/connection_executor.json",
+      "sha256": "4cf31c92055a67970e546f4c69bc99d40407fffe9adb08991d58b2c138b53af4",
+      "bytes": 2415
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\fifo.stderr.log",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/fifo.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\fifo.stdout.log",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/fifo.stdout.log",
+      "sha256": "47d7182838f8d16d4535e676ce1b31bbc5f25187d91746fd39b23722445fe72a",
+      "bytes": 234631
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\final_verification.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/final_verification.json",
+      "sha256": "083d612acd51ccd3a1598ba72c5da7333affadecc9f9a0b66fdf5dc22522d95d",
+      "bytes": 1780
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\joint.stderr.log",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/joint.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\joint.stdout.log",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/joint.stdout.log",
+      "sha256": "8e2713da81efbb21602b29f3bb48ec631f7548304a3baee0ad93aacfa4ac34ee",
+      "bytes": 213346
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\limitations_evidence.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/limitations_evidence.json",
+      "sha256": "ddf9082d8f3daaaec24b2fd902c312b87e1e694b989010d91355cfcd6c8d05dd",
+      "bytes": 7035
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\monitor.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/monitor.json",
+      "sha256": "b78c9b0ef6611d24736f6772d2341e83ac4687c3a2bc201fffb75aa2d67032b3",
+      "bytes": 10239
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\monitor_extension.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/monitor_extension.json",
+      "sha256": "62417b7dcca5ba2d99090eb8a75961b19e50c9dbc17521d29153a60679a74632",
+      "bytes": 3282
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\time_budget_extension.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/time_budget_extension.json",
+      "sha256": "62417b7dcca5ba2d99090eb8a75961b19e50c9dbc17521d29153a60679a74632",
+      "bytes": 3282
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\tiresias.stderr.log",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/tiresias.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\reports\\tiresias.stdout.log",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/reports/tiresias.stdout.log",
+      "sha256": "07bada2bb9f258ed74cb53f53fc4eac75b7df43513904a2557d5e3398360bbc8",
+      "bytes": 268434
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\REQUIREMENTS.md",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/REQUIREMENTS.md",
+      "sha256": "99f62a9c6a1d1db61344658783d56385342393c421f011bb7f67c1a1550359a1",
+      "bytes": 2980
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\run.py",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/run.py",
+      "sha256": "dddb58db1bbaa6bc92f0287fc230af6eee45f64d1f4ea5d1c0a0b73fe6511636",
+      "bytes": 4558
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\fifo\\gpu_state_time.parquet",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/fifo/gpu_state_time.parquet",
+      "sha256": "93d1dede65dac626bcbc573eda6a003d8a7edfbe5cc1cfcb88e070bc62850610",
+      "bytes": 5036
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\fifo\\jobs.parquet",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/fifo/jobs.parquet",
+      "sha256": "b876c1de02519e4869e3679c949ddcde968fb05cc6b354379bf3d8b662e57eb8",
+      "bytes": 3158519
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\fifo\\manifest.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/fifo/manifest.json",
+      "sha256": "418b48895d053ad8e098a4dc672cb27353116feb707c33aee4a571ad21718dfb",
+      "bytes": 9969
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\fifo\\progress.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/fifo/progress.json",
+      "sha256": "47ce8afbbb0d8a37905865dcb3a54bde05708493539beb4415d26b4d69381b54",
+      "bytes": 461
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\fifo\\summary.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/fifo/summary.json",
+      "sha256": "c66a2b2203acd835a90dbda686b0721e0a7ebd6f6c3735d09ee018a251399baf",
+      "bytes": 4747
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\joint\\gpu_state_time.parquet",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/joint/gpu_state_time.parquet",
+      "sha256": "4f863116768c8470f17281b9854568f2ba032b0188739095df0a4d1f8634f685",
+      "bytes": 5058
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\joint\\jobs.parquet",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/joint/jobs.parquet",
+      "sha256": "69c0a479ba0b0b03921819c831e0331c4e02660568da862659a5134230937ad8",
+      "bytes": 3507065
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\joint\\manifest.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/joint/manifest.json",
+      "sha256": "0b36ec3b691893a0e90bc9ad763b3497604bcb06dd5782af30d69ef1b58e81b4",
+      "bytes": 9971
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\joint\\progress.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/joint/progress.json",
+      "sha256": "bf9db96f646c8f8da605d5824c05b21629726c865484dd7988bb5585fc27f3b6",
+      "bytes": 460
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\joint\\summary.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/joint/summary.json",
+      "sha256": "0a216724cce974dc7d0a4dad26fd841bbd26f85a84882e8161cba0a08df1cf52",
+      "bytes": 4894
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\tiresias\\gpu_state_time.parquet",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/tiresias/gpu_state_time.parquet",
+      "sha256": "4e46879b65889ea4d9b1d12acb60e72c34aab7db60d6c86bda0c3931a1a313bc",
+      "bytes": 5049
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\tiresias\\jobs.parquet",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/tiresias/jobs.parquet",
+      "sha256": "24f5c2ce50db5fb30e8fdb3aaaf228e418edf38fc54f0cc4bb7e5957034939e0",
+      "bytes": 3262710
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\tiresias\\manifest.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/tiresias/manifest.json",
+      "sha256": "a01ed66a5f0a24a35af469d1625b866956c423dc64b626830e2fb4285563e033",
+      "bytes": 9981
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\tiresias\\progress.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/tiresias/progress.json",
+      "sha256": "d246aac96d7fe3ac07fb57703bd91dc93ce53dcd315174ba0af7e80553fa450f",
+      "bytes": 465
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\tiresias\\summary.json",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/runs/tiresias/summary.json",
+      "sha256": "cc4867d2dcdbfd985a1e341ef5599cea12e99a2ea6e73b91f78cddc39fc62884",
+      "bytes": 4907
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\SPEC.md",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/SPEC.md",
+      "sha256": "dd40bf181c53253b254dfac0892d32994c904fc7839e147dbc50d30c899c0299",
+      "bytes": 10374
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\supervise.py",
+      "archived_path": "snapshot/experiments/2026-10-23_FullQueuePlacement_01/supervise.py",
+      "sha256": "63e0e69c2631bf6e9c6a8fbe2a4ffb6a3ed32bc24e72004252051c4b0625a1e3",
+      "bytes": 9132
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\__init__.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/__init__.py",
+      "sha256": "26f053634ce0403b202c60d11704ca06925db3f1836df7705fcd417a40c3fa5e",
+      "bytes": 112
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\feeds.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/feeds.py",
+      "sha256": "cd0fb72c558cf548299f54c80ea1be4290b8cb7a1e41691d154bd73c1b195926",
+      "bytes": 10152
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\incident_policy.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/incident_policy.py",
+      "sha256": "dd46d2509f8aabdd39cbeb8287a02ec56220c1d6952f4289f9379441636ada93",
+      "bytes": 2763
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\loss_ledger.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/loss_ledger.py",
+      "sha256": "f9705e44e1cb6f751bafcda00f2e566ebf4f80308187656eb1af0cc68185368d",
+      "bytes": 4196
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\placement_policy.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/placement_policy.py",
+      "sha256": "8a16881a068827a5d572f84023e64391af4c460645dd350d9ba9c327368cfefc",
+      "bytes": 13804
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\prepare_replay_inputs.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/prepare_replay_inputs.py",
+      "sha256": "1f8b3e6d724b1994e9c3182f09b5c379719e9a8b2b68c378be3658b37dc6ef08",
+      "bytes": 8466
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\recovery_models.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/recovery_models.py",
+      "sha256": "203583a3feb81a8aad770635620878a86d9ae36baac27eef4fe70a9089492ea0",
+      "bytes": 3737
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\replay_engine.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/replay_engine.py",
+      "sha256": "a9954b7728727fed1766f959a7371e942989bff0a2246c67603f78953501c8ea",
+      "bytes": 41248
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\replay_runner.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/replay_runner.py",
+      "sha256": "5ca6ea4f5877a67b79fd447ba1bb30edb5cd09ba5857e6b73a8150fa3cd7ab70",
+      "bytes": 9998
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\replay_web.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/replay_web.py",
+      "sha256": "e28be948981a5e38fe75ff2ea8b07643f91817f69a915f7db8befdd1277c0aeb",
+      "bytes": 12479
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\runtime_metrics.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/runtime_metrics.py",
+      "sha256": "a07be1d25da894efd7ef7dc036c331da99095d7c896f0aaad8018447f58e33e2",
+      "bytes": 1240
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\thresholds.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/thresholds.py",
+      "sha256": "576144cc5e0ff7cb8fd924d60161a04a5731e8d72cf0301aa3daa1d9d1bebccf",
+      "bytes": 983
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\timelines.py",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/timelines.py",
+      "sha256": "f6b209ad639551f4a67bf02417accb4747e11c3d01f88e332f8cb70d6cdeb49a",
+      "bytes": 2999
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-18_Experiment25_FullPeriod_StressPrep_01\\src\\risklab\\web\\replay.html",
+      "archived_path": "snapshot/experiments/2026-10-18_Experiment25_FullPeriod_StressPrep_01/src/risklab/web/replay.html",
+      "sha256": "c2ca70634e77317901fb29c08428d9f5d5adefec2b036a8b95be19306ec48eae",
+      "bytes": 26262
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-22_Causal5m_BLOX_01\\configs\\risk1.json",
+      "archived_path": "snapshot/experiments/2026-10-22_Causal5m_BLOX_01/configs/risk1.json",
+      "sha256": "2875f8a4c03999312936b083b5da44f59cbfc1480d9e11721b2066cb3c59d174",
+      "bytes": 6569
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-22_Causal5m_BLOX_01\\inputs\\threshold_manifest.json",
+      "archived_path": "snapshot/experiments/2026-10-22_Causal5m_BLOX_01/inputs/threshold_manifest.json",
+      "sha256": "61dba5ec226034d282dfaa7b93f5ab5ddccc09313fc53ad18362dba14992cc98",
+      "bytes": 243
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_JointQueuePlacement_Preparation_01\\reports\\input_audit.json",
+      "archived_path": "snapshot/experiments/2026-10-23_JointQueuePlacement_Preparation_01/reports/input_audit.json",
+      "sha256": "cd93d3d1ef6180d29bd2fe1eefbfad110676a82bd86c7c0f3ccfef77dcb0ec7d",
+      "bytes": 113348
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\\ud504\ub85c\uc81d\ud2b8 \ubaa9\ud45c \ubc0f \uacb0\uc815\uc0ac\ud56d.md",
+      "archived_path": "docs/\ud504\ub85c\uc81d\ud2b8 \ubaa9\ud45c \ubc0f \uacb0\uc815\uc0ac\ud56d.md",
+      "sha256": "395fa55d35a538ecdf8eac6b9e775bac123c377e870f48b11ecea3ba966b899f",
+      "bytes": 102244
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\\ud504\ub85c\uc81d\ud2b8 \uc9c4\ud589 \uc0c1\ud669.md",
+      "archived_path": "docs/\ud504\ub85c\uc81d\ud2b8 \uc9c4\ud589 \uc0c1\ud669.md",
+      "sha256": "13ae75c909b6b9ab018ce2abfd00bc2d61156833471c46b4c2c12b5241053b8e",
+      "bytes": 93006
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\\uc2e4\ud5d8 \uacc4\ud68d\\2026-10-23_BLOX_\uc704\ud5d8\uae30\ubc18_\uacf5\ub3d9\ucd5c\uc801\ud654_\uc7a5\uae30\uacc4\ud68d.md",
+      "archived_path": "docs/\uc2e4\ud5d8 \uacc4\ud68d/2026-10-23_BLOX_\uc704\ud5d8\uae30\ubc18_\uacf5\ub3d9\ucd5c\uc801\ud654_\uc7a5\uae30\uacc4\ud68d.md",
+      "sha256": "dede387bb1436d7e57746448bc1f8fa22a72488331b53870ab0e88fc3a919d62",
+      "bytes": 26784
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\\uc2e4\ud5d8 \uae30\ub85d\\\uc2e4\ud5d8_\uc5f0\ub300\uae30.md",
+      "archived_path": "docs/\uc2e4\ud5d8 \uae30\ub85d/\uc2e4\ud5d8_\uc5f0\ub300\uae30.md",
+      "sha256": "9d1253a545daeb88725205949fb2922e59ab20add70e22942263772979fc8238",
+      "bytes": 128875
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\\uc2e4\ud5d8 \uae30\ub85d\\\uc2e4\ud5d8_\uc5f0\ub300\uae30.html",
+      "archived_path": "docs/\uc2e4\ud5d8 \uae30\ub85d/\uc2e4\ud5d8_\uc5f0\ub300\uae30.html",
+      "sha256": "816e946589218255b1a389689b89934144b2dc5b0d801b82bb108af65dda71c9",
+      "bytes": 148366
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\\uc2e4\ud5d8 \uae30\ub85d\\render_experiment_log.cjs",
+      "archived_path": "docs/\uc2e4\ud5d8 \uae30\ub85d/render_experiment_log.cjs",
+      "sha256": "50ae5a18a6336370754b099298db5a4c3df2d8b442e05c1af2fc277f9e4ed4c5",
+      "bytes": 1327
+    }
+  ],
+  "excluded_traces": [
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\fifo\\decisions.jsonl.gz",
+      "sha256": "5ee8068ea1064ee75d6b7006ccada5dc7b900ee28ff677a6bff2d426fbcfdc00",
+      "bytes": 1063397,
+      "reason": "large event/decision trace retained locally"
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\fifo\\events.jsonl.gz",
+      "sha256": "b5a72f9cc33bbc9920630362b6053d69455f02a4c56ac3df5ffbc8d762acbdcb",
+      "bytes": 10926749,
+      "reason": "large event/decision trace retained locally"
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\joint\\decisions.jsonl.gz",
+      "sha256": "4578e74fb40c867a7b519ea6eede90576e378a103bd3a03a75b322136b99ecbf",
+      "bytes": 1920334,
+      "reason": "large event/decision trace retained locally"
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\joint\\events.jsonl.gz",
+      "sha256": "a8df473c67831b5b4deeedf91b53b4d2fe6d24be58aadef3a85bee67213fd026",
+      "bytes": 14811324,
+      "reason": "large event/decision trace retained locally"
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\tiresias\\decisions.jsonl.gz",
+      "sha256": "9669df7d7757cedbfc91716d41f8344519be99d9403c843937deb427e79996d5",
+      "bytes": 1223627,
+      "reason": "large event/decision trace retained locally"
+    },
+    {
+      "source": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\experiments\\2026-10-23_FullQueuePlacement_01\\runs\\tiresias\\events.jsonl.gz",
+      "sha256": "df255c8a94f32c30db221ada84d57b6a93b4f5396c0b619111ce3162ba4f69eb",
+      "bytes": 19890462,
+      "reason": "large event/decision trace retained locally"
+    }
+  ],
+  "python_AST_checks": 24,
+  "credential_pattern_scan": "PASS",
+  "preexisting_tracked_changes_preserved": true,
+  "original_runs_untouched": true,
+  "raw_input_parquet_included": false,
+  "independent_reproduction": false,
+  "review_note": "ship checklist absent; workflow stopped and research archive/manual source review used",
+  "manifest_hash_scope": "all files except this manifest; new generation only, no experiment run"
+}

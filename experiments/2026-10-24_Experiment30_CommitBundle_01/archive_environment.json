@@ -1,0 +1,11 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\BLOX_RiskLab_GitHub_20261017\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "pandas": "3.0.1",
+    "numpy": "2.3.5",
+    "pyarrow": "26.0.0"
+  },
+  "historical_hash_seed": "not separately fixed/recorded"
+}
