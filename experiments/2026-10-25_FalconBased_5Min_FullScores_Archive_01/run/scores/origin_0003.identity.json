@@ -1,0 +1,27 @@
+{
+  "origin": 3,
+  "policy": "S21",
+  "inertia": true,
+  "fusion": null,
+  "fusion_status": "not_selected",
+  "model_training_end_bin_exclusive": 9072,
+  "model_origin_bin": 9504,
+  "b1_model_sha256": "6e0ea92bd278187edfe6c759c404bc94a783fc05395b0a66acc043ee977505f1",
+  "b2_model_sha256": "9e010df789f7647abd25e4cc55f17701a866c68c4a526222ef0c0ce927a5f167",
+  "score_sha256": "aa127e63989bc04bd0f4524c0cd502c0744da8962c3faaab639ad15d448f1a74",
+  "seconds": 15.447672999987844,
+  "common_30m": {
+    "common_rows": 95616,
+    "b1_max_score_difference": 0.0,
+    "b2_max_score_difference": 0.0
+  },
+  "pr_auc": 0.022423767192814685,
+  "hits_at_100": 649,
+  "positives": 8013,
+  "recall_at_100": 0.08099338574815924,
+  "precision_at_100": 0.022534722222222223,
+  "decision_times": 288,
+  "gpu_count": 1992,
+  "ndcg_at_100": 0.041229089848892085,
+  "query_mean_ap": 0.02682395782991067
+}
