@@ -1,0 +1,15 @@
+{
+  "bins": 26957,
+  "gpus": 1992,
+  "nodes": 249,
+  "observed_time_bins": 26931,
+  "missing_time_bins": 26,
+  "input_events": 2425,
+  "events_after_exact_dedup": 2424,
+  "history_unique_gpu_onset_times": true,
+  "label_interval": "(t,t+24h]",
+  "same_bin_onset_excluded": true,
+  "label_eligible_bins": 24851,
+  "label_gap_policy": "exclude_all_GPU_labels_when_forward_24h_intersects_raw_recording_gap",
+  "raw_gap_count": 11
+}

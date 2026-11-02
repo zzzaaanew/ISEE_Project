@@ -1,0 +1,52 @@
+{
+  "approval": "재실행",
+  "goals": [
+    "G-004",
+    "G-007",
+    "G-008"
+  ],
+  "from_completed_origins": 39,
+  "next_origin_bin": 19872,
+  "remaining_origins": 24,
+  "original_results_policy": "preserve SHA256, no retraining completed origins",
+  "config_unchanged": true,
+  "config_sha256": "7e92dbe232df95e1bd4f3620045a92183d25f3ad7081e5768b7d8a4f38f0ac44",
+  "scientific_parameters_changed": false,
+  "execution_change": "one new origin per fresh process, explicit feature mmap closure",
+  "supervisor_root_cause": "uncaught PermissionError WinError5 from monitor.tmp.replace(monitor.json)",
+  "supervisor_fix": "retry file sharing errors, noncritical monitor writes cannot abort supervision, attempt terminal sidecar",
+  "regression_tests": {
+    "passed": 11,
+    "log": "regression_tests.log",
+    "seconds": 1.34
+  },
+  "readonly_memory_probe_mib": {
+    "before_ws": 26.4921875,
+    "loaded_ws": 158.62890625,
+    "released_ws": 37.68359375
+  },
+  "changed_code": {
+    "run_experiment.py": {
+      "before": "02bfdad2610e2fdb9eddfebafc215374dfdf83e818e01479e8c92a7855738e3e",
+      "after": "539d1a6a8e1c79aec47c9b05c193c9d0bf0d1829b314ea48cd71ba620295b64b"
+    },
+    "data_adapter.py": {
+      "before": "e98fdfc06ce92cd83cb804a35a3c8332936ac929aa4df9581a96d1a2fa55c3b8",
+      "after": "93b6262cf3b031666c984cbb4b517b1274fcbea3146c52c63fd30a0876bcbe65"
+    },
+    "supervise.py": {
+      "before": "387abda72a835a3e6ed4da2f878365063be152971b6903c0c73595381ccbefa7",
+      "after": "ffcb2c1b5d93027fc844c35d0e7be330a763fa6adebd7e21d8d2fee5cbedc5e7"
+    },
+    "finish_handoff.py": {
+      "before": "5c0986ea421020d84c5c722245ebb73f464a36b1b0808f0b475d4daf4e0f6089",
+      "after": "ab75c8707183664c1313fe4d5c4489be73c52ec70d695151956efc084c332210"
+    },
+    "test_contract.py": {
+      "before": "831983e24d2719b5c745979e745d4190cd43e1c4427bf64d038ca54618786e71",
+      "after": "7936a3fc6906f8c92d28e7a30aa62b682cf7b86b12b47aa780a99ce2d68e6f17"
+    }
+  },
+  "failed_attempt_retained": true,
+  "model_retry_on_failure": false
+}

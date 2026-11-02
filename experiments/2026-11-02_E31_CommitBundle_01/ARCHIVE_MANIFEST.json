@@ -1,0 +1,1536 @@
+{
+  "archived_kst": "2026-11-02T22:26:34.892858+09:00",
+  "goals": [
+    "G-004",
+    "G-007",
+    "G-008"
+  ],
+  "remote": "https://github.com/zzzaaanew/ISEE_Project.git",
+  "target_branch": "main",
+  "parent_commit": "1877e09f81d47753fccbb55ba9acb4fb8372b2ed",
+  "run": "E31_ADST_Falcon_Holdout",
+  "four_arms": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "classifier_fits": 378,
+  "new_training_for_archive": false,
+  "source_files_preserved": true,
+  "source_records": [
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/adst_C_trace.csv",
+      "archive": "run/adst_C_trace.csv",
+      "source_sha256": "94bff734a227e1adf663a65b8bfa4e1f50de18d7cfa321c277b2c8031e728ba1",
+      "archive_sha256": "94bff734a227e1adf663a65b8bfa4e1f50de18d7cfa321c277b2c8031e728ba1",
+      "bytes": 5528,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/adst_D_trace.csv",
+      "archive": "run/adst_D_trace.csv",
+      "source_sha256": "53c35f506cb3ccbe9f79b48067a724264e8c741ddc9dc3a06f86a891bac2ab93",
+      "archive_sha256": "53c35f506cb3ccbe9f79b48067a724264e8c741ddc9dc3a06f86a891bac2ab93",
+      "bytes": 5656,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/analysis.json",
+      "archive": "run/analysis/2026-11-02_performance_report_01/analysis.json",
+      "source_sha256": "80bfc8f4eb23f0bb6f20d5af52a9dfeb74e8be30e3fb3bc25866cb41db96aea7",
+      "archive_sha256": "80bfc8f4eb23f0bb6f20d5af52a9dfeb74e8be30e3fb3bc25866cb41db96aea7",
+      "bytes": 3191,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/build_report.py",
+      "archive": "run/analysis/2026-11-02_performance_report_01/build_report.py",
+      "source_sha256": "9619842ea88d8d84dd1ca36c9c016e407f4906f5aa1d21d36674d980bd561df9",
+      "archive_sha256": "9619842ea88d8d84dd1ca36c9c016e407f4906f5aa1d21d36674d980bd561df9",
+      "bytes": 39337,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/cadence_comparison.csv",
+      "archive": "run/analysis/2026-11-02_performance_report_01/cadence_comparison.csv",
+      "source_sha256": "588a20827fd43ddf8d8784f0b25fa2e74f791f7a0112b9eed6f38d49d7b8755e",
+      "archive_sha256": "588a20827fd43ddf8d8784f0b25fa2e74f791f7a0112b9eed6f38d49d7b8755e",
+      "bytes": 8301,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/cap_sensitivity_development_D.csv",
+      "archive": "run/analysis/2026-11-02_performance_report_01/cap_sensitivity_development_D.csv",
+      "source_sha256": "30a1fcddeb17e7be1f4a8bb5800aa3533e35595d3843d185b1819f89ba031f2e",
+      "archive_sha256": "30a1fcddeb17e7be1f4a8bb5800aa3533e35595d3843d185b1819f89ba031f2e",
+      "bytes": 953,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/claim_evidence.csv",
+      "archive": "run/analysis/2026-11-02_performance_report_01/claim_evidence.csv",
+      "source_sha256": "aa88e8819cf81b5c0b0863299c7d84cbe1773596bd96ddd357010f9d56ab5cfb",
+      "archive_sha256": "aa88e8819cf81b5c0b0863299c7d84cbe1773596bd96ddd357010f9d56ab5cfb",
+      "bytes": 1902,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/factorial_contrasts_5m.csv",
+      "archive": "run/analysis/2026-11-02_performance_report_01/factorial_contrasts_5m.csv",
+      "source_sha256": "bbdb492bbd0cc522dca52f0334057d0299dac8974c67893acc71ea4a3d87f172",
+      "archive_sha256": "bbdb492bbd0cc522dca52f0334057d0299dac8974c67893acc71ea4a3d87f172",
+      "bytes": 1596,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/inertia_effects_5m.csv",
+      "archive": "run/analysis/2026-11-02_performance_report_01/inertia_effects_5m.csv",
+      "source_sha256": "1c748b7393ef0fbb63d9952fdd6c15c6d78cdd875660e251585e6b93932af676",
+      "archive_sha256": "1c748b7393ef0fbb63d9952fdd6c15c6d78cdd875660e251585e6b93932af676",
+      "bytes": 1683,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/main_fusion_5m.csv",
+      "archive": "run/analysis/2026-11-02_performance_report_01/main_fusion_5m.csv",
+      "source_sha256": "72de7c0434c2a4efffe1470f540003da98fadf5566337659fcc4049d2e357192",
+      "archive_sha256": "72de7c0434c2a4efffe1470f540003da98fadf5566337659fcc4049d2e357192",
+      "bytes": 1667,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/paired_origin_AP.csv",
+      "archive": "run/analysis/2026-11-02_performance_report_01/paired_origin_AP.csv",
+      "source_sha256": "befd34ad974254d4fb25baa8caeda42101c19402acc1f9d9a70f6c97e2c4b883",
+      "archive_sha256": "befd34ad974254d4fb25baa8caeda42101c19402acc1f9d9a70f6c97e2c4b883",
+      "bytes": 1966,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/population.csv",
+      "archive": "run/analysis/2026-11-02_performance_report_01/population.csv",
+      "source_sha256": "821f8f5c1454afdc08b599c8e262dc97bfb33e866e365e54969b19a16a2dc728",
+      "archive_sha256": "821f8f5c1454afdc08b599c8e262dc97bfb33e866e365e54969b19a16a2dc728",
+      "bytes": 413,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/robustness_5m.csv",
+      "archive": "run/analysis/2026-11-02_performance_report_01/robustness_5m.csv",
+      "source_sha256": "ebb7274362b0d352f965e3551b6459a6e76c6832532b3d3a8a009b01106beb4d",
+      "archive_sha256": "ebb7274362b0d352f965e3551b6459a6e76c6832532b3d3a8a009b01106beb4d",
+      "bytes": 10959,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/terminal_models_5m.csv",
+      "archive": "run/analysis/2026-11-02_performance_report_01/terminal_models_5m.csv",
+      "source_sha256": "c3cb0fc988addcc88fb894620ebe80e58b938c71fc5625319ab0a4eb58ae03d7",
+      "archive_sha256": "c3cb0fc988addcc88fb894620ebe80e58b938c71fc5625319ab0a4eb58ae03d7",
+      "bytes": 3516,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/analysis/2026-11-02_performance_report_01/training_cost.csv",
+      "archive": "run/analysis/2026-11-02_performance_report_01/training_cost.csv",
+      "source_sha256": "d9c94441ca4452e267fe6a43da6cc4edf80a0aee5703fad5dec7c05c206fa67c",
+      "archive_sha256": "d9c94441ca4452e267fe6a43da6cc4edf80a0aee5703fad5dec7c05c206fa67c",
+      "bytes": 475,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/adst_C_trace.csv",
+      "archive": "run/attempts/resume_01/before/adst_C_trace.csv",
+      "source_sha256": "9f0dcfbe24612ee743959f32c2f092477f268179f53cfb4be83fd81a72ab85b6",
+      "archive_sha256": "9f0dcfbe24612ee743959f32c2f092477f268179f53cfb4be83fd81a72ab85b6",
+      "bytes": 3378,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/adst_D_trace.csv",
+      "archive": "run/attempts/resume_01/before/adst_D_trace.csv",
+      "source_sha256": "c3a162ee3cce8b89a682f76711904b912fd4324d11961e244a23d4696dc26911",
+      "archive_sha256": "c3a162ee3cce8b89a682f76711904b912fd4324d11961e244a23d4696dc26911",
+      "bytes": 3449,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/branch_checkpoint.json",
+      "archive": "run/attempts/resume_01/before/branch_checkpoint.json",
+      "source_sha256": "dfb2e6fa980f90e83935ceae7d00cb83d12b0fed383ba1caa044fba6e1deb660",
+      "archive_sha256": "dfb2e6fa980f90e83935ceae7d00cb83d12b0fed383ba1caa044fba6e1deb660",
+      "bytes": 139055,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/branches_original.log",
+      "archive": "run/attempts/resume_01/before/branches_original.log",
+      "source_sha256": "41b0185ef2587b8f9c749ebd5f40d3a31bc61028192f2c03e5b49c71f11ffb08",
+      "archive_sha256": "41b0185ef2587b8f9c749ebd5f40d3a31bc61028192f2c03e5b49c71f11ffb08",
+      "bytes": 3963,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/completion_handoff_status.json",
+      "archive": "run/attempts/resume_01/before/completion_handoff_status.json",
+      "source_sha256": "52a1eb3e5b3e80e4fb9f512407f73b83628d2e5c0e26c28635a1aba29bd67f7a",
+      "archive_sha256": "52a1eb3e5b3e80e4fb9f512407f73b83628d2e5c0e26c28635a1aba29bd67f7a",
+      "bytes": 260,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/config.json",
+      "archive": "run/attempts/resume_01/before/config.json",
+      "source_sha256": "7e92dbe232df95e1bd4f3620045a92183d25f3ad7081e5768b7d8a4f38f0ac44",
+      "archive_sha256": "7e92dbe232df95e1bd4f3620045a92183d25f3ad7081e5768b7d8a4f38f0ac44",
+      "bytes": 1145,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/data_adapter.py",
+      "archive": "run/attempts/resume_01/before/data_adapter.py",
+      "source_sha256": "e98fdfc06ce92cd83cb804a35a3c8332936ac929aa4df9581a96d1a2fa55c3b8",
+      "archive_sha256": "e98fdfc06ce92cd83cb804a35a3c8332936ac929aa4df9581a96d1a2fa55c3b8",
+      "bytes": 10647,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/finish_handoff.py",
+      "archive": "run/attempts/resume_01/before/finish_handoff.py",
+      "source_sha256": "5c0986ea421020d84c5c722245ebb73f464a36b1b0808f0b475d4daf4e0f6089",
+      "archive_sha256": "5c0986ea421020d84c5c722245ebb73f464a36b1b0808f0b475d4daf4e0f6089",
+      "bytes": 8029,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/fit_trace.csv",
+      "archive": "run/attempts/resume_01/before/fit_trace.csv",
+      "source_sha256": "80a26375ce91e303aa6252f61fabd38c94ef5c9e3e395e087ca3662e58ce4ca5",
+      "archive_sha256": "80a26375ce91e303aa6252f61fabd38c94ef5c9e3e395e087ca3662e58ce4ca5",
+      "bytes": 20338,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/frozen_code.json",
+      "archive": "run/attempts/resume_01/before/frozen_code.json",
+      "source_sha256": "e36db73f59f7d664a2d6cc2f1330639408829fdb5f962897b02229bad0c9803e",
+      "archive_sha256": "e36db73f59f7d664a2d6cc2f1330639408829fdb5f962897b02229bad0c9803e",
+      "bytes": 1784,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/monitor.json",
+      "archive": "run/attempts/resume_01/before/monitor.json",
+      "source_sha256": "2810c7d6f338545eeffbe80385a1134eb59fb1519049277095518fb3db3b16f6",
+      "archive_sha256": "2810c7d6f338545eeffbe80385a1134eb59fb1519049277095518fb3db3b16f6",
+      "bytes": 970,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/progress.json",
+      "archive": "run/attempts/resume_01/before/progress.json",
+      "source_sha256": "f4164d6390619cd99cfff1f7a04150a5e106739bf0b5938c201b1cb9584213cc",
+      "archive_sha256": "f4164d6390619cd99cfff1f7a04150a5e106739bf0b5938c201b1cb9584213cc",
+      "bytes": 565,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/run_experiment.py",
+      "archive": "run/attempts/resume_01/before/run_experiment.py",
+      "source_sha256": "02bfdad2610e2fdb9eddfebafc215374dfdf83e818e01479e8c92a7855738e3e",
+      "archive_sha256": "02bfdad2610e2fdb9eddfebafc215374dfdf83e818e01479e8c92a7855738e3e",
+      "bytes": 14168,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/runtime_environment_branches.json",
+      "archive": "run/attempts/resume_01/before/runtime_environment_branches.json",
+      "source_sha256": "eb34ee98ba5a6b17b6a843248a798deeac9a0420c3100d067af7d5746d629e28",
+      "archive_sha256": "eb34ee98ba5a6b17b6a843248a798deeac9a0420c3100d067af7d5746d629e28",
+      "bytes": 887,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/stage_branches_status.json",
+      "archive": "run/attempts/resume_01/before/stage_branches_status.json",
+      "source_sha256": "6efab261abb5e91ef2e6db5cfe98b43b3664cb219c7ee4371b9824fca4136861",
+      "archive_sha256": "6efab261abb5e91ef2e6db5cfe98b43b3664cb219c7ee4371b9824fca4136861",
+      "bytes": 1205,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/supervise.py",
+      "archive": "run/attempts/resume_01/before/supervise.py",
+      "source_sha256": "387abda72a835a3e6ed4da2f878365063be152971b6903c0c73595381ccbefa7",
+      "archive_sha256": "387abda72a835a3e6ed4da2f878365063be152971b6903c0c73595381ccbefa7",
+      "bytes": 3445,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/before/test_contract.py",
+      "archive": "run/attempts/resume_01/before/test_contract.py",
+      "source_sha256": "831983e24d2719b5c745979e745d4190cd43e1c4427bf64d038ca54618786e71",
+      "archive_sha256": "831983e24d2719b5c745979e745d4190cd43e1c4427bf64d038ca54618786e71",
+      "bytes": 5150,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/completion_handoff_status.json",
+      "archive": "run/attempts/resume_01/completion_handoff_status.json",
+      "source_sha256": "cf49d6db7ea0a804c656f79f8e991fd612fab8c3bd4226473b69dcf9ef6a9e5d",
+      "archive_sha256": "cf49d6db7ea0a804c656f79f8e991fd612fab8c3bd4226473b69dcf9ef6a9e5d",
+      "bytes": 292,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/first_resumed_origin_validation.json",
+      "archive": "run/attempts/resume_01/first_resumed_origin_validation.json",
+      "source_sha256": "5cb3b64797c02e4e86fd99b8568f820dcef5b7188ff0416be914380509d26430",
+      "archive_sha256": "5cb3b64797c02e4e86fd99b8568f820dcef5b7188ff0416be914380509d26430",
+      "bytes": 256,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/handoff_exit.json",
+      "archive": "run/attempts/resume_01/handoff_exit.json",
+      "source_sha256": "ff2814c4d823f035995a643df6d07977811b374e624ee906cc7511f0fd79bd84",
+      "archive_sha256": "ff2814c4d823f035995a643df6d07977811b374e624ee906cc7511f0fd79bd84",
+      "bytes": 53,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/launch.json",
+      "archive": "run/attempts/resume_01/launch.json",
+      "source_sha256": "6508e365f8794b23846e78ea129cb68164eff9607fa55d3f65d672b6d937d1b1",
+      "archive_sha256": "6508e365f8794b23846e78ea129cb68164eff9607fa55d3f65d672b6d937d1b1",
+      "bytes": 91,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/completion_handoff.log",
+      "archive": "run/attempts/resume_01/logs/completion_handoff.log",
+      "source_sha256": "7d295849e9bbb25147f9332ab06f94462b8279e1c34736ce10f3362c26fc808d",
+      "archive_sha256": "7d295849e9bbb25147f9332ab06f94462b8279e1c34736ce10f3362c26fc808d",
+      "bytes": 54,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/evaluate.log",
+      "archive": "run/attempts/resume_01/logs/evaluate.log",
+      "source_sha256": "fcd2464ad1b9d3238c511ea234721fd39497c984b164f4d19c41951b086eba9c",
+      "archive_sha256": "fcd2464ad1b9d3238c511ea234721fd39497c984b164f4d19c41951b086eba9c",
+      "bytes": 2268,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/final_validation.log",
+      "archive": "run/attempts/resume_01/logs/final_validation.log",
+      "source_sha256": "5bea35f33d826e3f56302e9212cc04e99c973f991dfe8638a53c245c2d0e42ba",
+      "archive_sha256": "5bea35f33d826e3f56302e9212cc04e99c973f991dfe8638a53c245c2d0e42ba",
+      "bytes": 21269,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/first_resume_validation.log",
+      "archive": "run/attempts/resume_01/logs/first_resume_validation.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_040.log",
+      "archive": "run/attempts/resume_01/logs/origin_040.log",
+      "source_sha256": "70dfbb17c1844baedda49efa5b3bde1bd9e37d555b2a07d13a3c409fab948a37",
+      "archive_sha256": "70dfbb17c1844baedda49efa5b3bde1bd9e37d555b2a07d13a3c409fab948a37",
+      "bytes": 105,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_040_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_040_runtime_environment_next-origin.json",
+      "source_sha256": "2fc723d86628bed67a2c20e2c08cc27e80d81fac2086b25ebb94e9cf38093b94",
+      "archive_sha256": "2fc723d86628bed67a2c20e2c08cc27e80d81fac2086b25ebb94e9cf38093b94",
+      "bytes": 946,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_040_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_040_stage_next-origin_status.json",
+      "source_sha256": "50a29f084158d0bf89abc4231541d8a2334cd1c27cacdb2656493006d064bf4c",
+      "archive_sha256": "50a29f084158d0bf89abc4231541d8a2334cd1c27cacdb2656493006d064bf4c",
+      "bytes": 62,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_041.log",
+      "archive": "run/attempts/resume_01/logs/origin_041.log",
+      "source_sha256": "0566f74d474eae8eef0c6149559d639f48a172bd8ffa65bb881c39cb2f13c4d1",
+      "archive_sha256": "0566f74d474eae8eef0c6149559d639f48a172bd8ffa65bb881c39cb2f13c4d1",
+      "bytes": 106,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_041_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_041_runtime_environment_next-origin.json",
+      "source_sha256": "a0de2844ca390128f4bc5f4f1cbfc35a47b721a58206daf0b2eb7b0fde886ff6",
+      "archive_sha256": "a0de2844ca390128f4bc5f4f1cbfc35a47b721a58206daf0b2eb7b0fde886ff6",
+      "bytes": 947,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_041_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_041_stage_next-origin_status.json",
+      "source_sha256": "81393bac4156a6c5b2d57da8059518226ceb3b646fae2c0447a6908c2ef137e2",
+      "archive_sha256": "81393bac4156a6c5b2d57da8059518226ceb3b646fae2c0447a6908c2ef137e2",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_042.log",
+      "archive": "run/attempts/resume_01/logs/origin_042.log",
+      "source_sha256": "9cdec55e43e994a811350d0a9d9d1f268c3c661388022242ca63aea81a5761f7",
+      "archive_sha256": "9cdec55e43e994a811350d0a9d9d1f268c3c661388022242ca63aea81a5761f7",
+      "bytes": 106,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_042_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_042_runtime_environment_next-origin.json",
+      "source_sha256": "a410d8044458a893548b7a66ba0ffbe43518ae75e6c19248a05b817347ffb60c",
+      "archive_sha256": "a410d8044458a893548b7a66ba0ffbe43518ae75e6c19248a05b817347ffb60c",
+      "bytes": 947,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_042_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_042_stage_next-origin_status.json",
+      "source_sha256": "6a0bdaf6b133175ddc29fcc4b49c4d1a8391faa8ed88442ab47c27c178d18c21",
+      "archive_sha256": "6a0bdaf6b133175ddc29fcc4b49c4d1a8391faa8ed88442ab47c27c178d18c21",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_043.log",
+      "archive": "run/attempts/resume_01/logs/origin_043.log",
+      "source_sha256": "7a0104dd77ad67e6670f351cce7eb6dc432c28718a0ea6df93f5eea9c7e42533",
+      "archive_sha256": "7a0104dd77ad67e6670f351cce7eb6dc432c28718a0ea6df93f5eea9c7e42533",
+      "bytes": 106,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_043_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_043_runtime_environment_next-origin.json",
+      "source_sha256": "ba3711b9161da1c7fa9507fa6ecb75753501a1b95e5e02867a8c4336943fddee",
+      "archive_sha256": "ba3711b9161da1c7fa9507fa6ecb75753501a1b95e5e02867a8c4336943fddee",
+      "bytes": 946,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_043_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_043_stage_next-origin_status.json",
+      "source_sha256": "42dd52aaf53bb6301f9abbd8439a66f4065ff595aa0eae8df26f3e3066e2ccfc",
+      "archive_sha256": "42dd52aaf53bb6301f9abbd8439a66f4065ff595aa0eae8df26f3e3066e2ccfc",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_044.log",
+      "archive": "run/attempts/resume_01/logs/origin_044.log",
+      "source_sha256": "e6e60679844183ba175ee83c609752ea5bb642a4a04f46b2a3830fa79412e01b",
+      "archive_sha256": "e6e60679844183ba175ee83c609752ea5bb642a4a04f46b2a3830fa79412e01b",
+      "bytes": 108,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_044_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_044_runtime_environment_next-origin.json",
+      "source_sha256": "2d75a2a87a9398c97806da09f2195e81dd5606f436c9acf89372f01a3456968b",
+      "archive_sha256": "2d75a2a87a9398c97806da09f2195e81dd5606f436c9acf89372f01a3456968b",
+      "bytes": 946,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_044_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_044_stage_next-origin_status.json",
+      "source_sha256": "54dfd6f61a4b705ea21b5babffc155bb66d82def6b8094e1c2c6f9c90e4841a7",
+      "archive_sha256": "54dfd6f61a4b705ea21b5babffc155bb66d82def6b8094e1c2c6f9c90e4841a7",
+      "bytes": 62,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_045.log",
+      "archive": "run/attempts/resume_01/logs/origin_045.log",
+      "source_sha256": "cb07cde584e585426b264e68d56b84b9e838568cbe27f859c2cdbef58c4c55c1",
+      "archive_sha256": "cb07cde584e585426b264e68d56b84b9e838568cbe27f859c2cdbef58c4c55c1",
+      "bytes": 108,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_045_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_045_runtime_environment_next-origin.json",
+      "source_sha256": "6df79fdd08a92669291315cc85299a6fe69a448fb5f412b399c2b35199fdd92a",
+      "archive_sha256": "6df79fdd08a92669291315cc85299a6fe69a448fb5f412b399c2b35199fdd92a",
+      "bytes": 944,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_045_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_045_stage_next-origin_status.json",
+      "source_sha256": "0a429d2aea5180cc1aea868a50c18bb3623960dd8fa42881f346271a7874c9f7",
+      "archive_sha256": "0a429d2aea5180cc1aea868a50c18bb3623960dd8fa42881f346271a7874c9f7",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_046.log",
+      "archive": "run/attempts/resume_01/logs/origin_046.log",
+      "source_sha256": "3e2a6cc2953f0cf9fabfa4371fd604e4e6dc60f860cef248a81935a124326ff2",
+      "archive_sha256": "3e2a6cc2953f0cf9fabfa4371fd604e4e6dc60f860cef248a81935a124326ff2",
+      "bytes": 108,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_046_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_046_runtime_environment_next-origin.json",
+      "source_sha256": "a0b8a05405037c72fd09f14615f3e0bb2e75bfd52f0e05f8715cdd21b34617c4",
+      "archive_sha256": "a0b8a05405037c72fd09f14615f3e0bb2e75bfd52f0e05f8715cdd21b34617c4",
+      "bytes": 945,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_046_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_046_stage_next-origin_status.json",
+      "source_sha256": "df62dad8d2302a313abc02c525841d39c6d80b8331a6094d10e0eaec3bc9b9de",
+      "archive_sha256": "df62dad8d2302a313abc02c525841d39c6d80b8331a6094d10e0eaec3bc9b9de",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_047.log",
+      "archive": "run/attempts/resume_01/logs/origin_047.log",
+      "source_sha256": "e02b56f9cd615163fd09f580f976cf746f4ca8ea6d5966cfca7640e7d9c11d09",
+      "archive_sha256": "e02b56f9cd615163fd09f580f976cf746f4ca8ea6d5966cfca7640e7d9c11d09",
+      "bytes": 108,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_047_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_047_runtime_environment_next-origin.json",
+      "source_sha256": "d4087ada0e283e0a24123d879f5b3e9a8e8a1e76b763048bf8744782b2e44bca",
+      "archive_sha256": "d4087ada0e283e0a24123d879f5b3e9a8e8a1e76b763048bf8744782b2e44bca",
+      "bytes": 946,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_047_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_047_stage_next-origin_status.json",
+      "source_sha256": "ade6a6185bd470bfd383d8a0fd6e131ed816b7b9878d5e265c8c6829a8634207",
+      "archive_sha256": "ade6a6185bd470bfd383d8a0fd6e131ed816b7b9878d5e265c8c6829a8634207",
+      "bytes": 62,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_048.log",
+      "archive": "run/attempts/resume_01/logs/origin_048.log",
+      "source_sha256": "bf8433115633b5b3be1d248e95d41b5beff2c870ec33587385a4cbead5a66fb9",
+      "archive_sha256": "bf8433115633b5b3be1d248e95d41b5beff2c870ec33587385a4cbead5a66fb9",
+      "bytes": 108,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_048_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_048_runtime_environment_next-origin.json",
+      "source_sha256": "4212701f528781390aba5dbdff81f79c910ba57222b33a18d1dfbce9768faee3",
+      "archive_sha256": "4212701f528781390aba5dbdff81f79c910ba57222b33a18d1dfbce9768faee3",
+      "bytes": 946,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_048_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_048_stage_next-origin_status.json",
+      "source_sha256": "7f7cf5f6ca80d22669682a09c36fa34e28cb951effc58ecb99f2a4ca6c9429a5",
+      "archive_sha256": "7f7cf5f6ca80d22669682a09c36fa34e28cb951effc58ecb99f2a4ca6c9429a5",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_049.log",
+      "archive": "run/attempts/resume_01/logs/origin_049.log",
+      "source_sha256": "1c5ea467386b13dc803243fcd4ec4d797ef45b506cb412f2fdb834443a00c3a0",
+      "archive_sha256": "1c5ea467386b13dc803243fcd4ec4d797ef45b506cb412f2fdb834443a00c3a0",
+      "bytes": 106,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_049_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_049_runtime_environment_next-origin.json",
+      "source_sha256": "3526872545163ad5b03814c0a8856ec0aa674eaf05481cab6e15e6775ccf3341",
+      "archive_sha256": "3526872545163ad5b03814c0a8856ec0aa674eaf05481cab6e15e6775ccf3341",
+      "bytes": 946,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_049_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_049_stage_next-origin_status.json",
+      "source_sha256": "52721f4d12e9493ec4b0d3509613f8f20a2a35f8762561a1480f3ac2c0ccd374",
+      "archive_sha256": "52721f4d12e9493ec4b0d3509613f8f20a2a35f8762561a1480f3ac2c0ccd374",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_050.log",
+      "archive": "run/attempts/resume_01/logs/origin_050.log",
+      "source_sha256": "9b5759bb386518ec5b8efe0fa80e6810d7232e87b22ac6e23100ff6cbf8fecdd",
+      "archive_sha256": "9b5759bb386518ec5b8efe0fa80e6810d7232e87b22ac6e23100ff6cbf8fecdd",
+      "bytes": 106,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_050_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_050_runtime_environment_next-origin.json",
+      "source_sha256": "05bbc10b2d8153674fe7cc0a8c731ce81fba4cee34ef01b3d5676ebdd9cfede4",
+      "archive_sha256": "05bbc10b2d8153674fe7cc0a8c731ce81fba4cee34ef01b3d5676ebdd9cfede4",
+      "bytes": 944,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_050_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_050_stage_next-origin_status.json",
+      "source_sha256": "50ea22e4d1de412b1591e86861e30cd82e730587e1da8a488f3c5d7805d19732",
+      "archive_sha256": "50ea22e4d1de412b1591e86861e30cd82e730587e1da8a488f3c5d7805d19732",
+      "bytes": 62,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_051.log",
+      "archive": "run/attempts/resume_01/logs/origin_051.log",
+      "source_sha256": "ed7c574feab68f7910e7e1e4ba2b29d8ec91d5985bb3a9563d910d6813d0df98",
+      "archive_sha256": "ed7c574feab68f7910e7e1e4ba2b29d8ec91d5985bb3a9563d910d6813d0df98",
+      "bytes": 106,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_051_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_051_runtime_environment_next-origin.json",
+      "source_sha256": "fe0ff8fdfcc4509b8787edfc2eaab23e84d4b10d06a1093ff7d4700fa8a1706e",
+      "archive_sha256": "fe0ff8fdfcc4509b8787edfc2eaab23e84d4b10d06a1093ff7d4700fa8a1706e",
+      "bytes": 946,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_051_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_051_stage_next-origin_status.json",
+      "source_sha256": "731446c536ceba4b0c77b25ac9db6028c70448833ce598bd20540c0739c056c5",
+      "archive_sha256": "731446c536ceba4b0c77b25ac9db6028c70448833ce598bd20540c0739c056c5",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_052.log",
+      "archive": "run/attempts/resume_01/logs/origin_052.log",
+      "source_sha256": "117f4aad2b46b028063a6bd04d464f3bae69448c94ac13353349178005cdc1fb",
+      "archive_sha256": "117f4aad2b46b028063a6bd04d464f3bae69448c94ac13353349178005cdc1fb",
+      "bytes": 105,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_052_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_052_runtime_environment_next-origin.json",
+      "source_sha256": "d0e9fc863509646bcefb09741eee8988491bb13e315606bedd7bf66d66eff95c",
+      "archive_sha256": "d0e9fc863509646bcefb09741eee8988491bb13e315606bedd7bf66d66eff95c",
+      "bytes": 945,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_052_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_052_stage_next-origin_status.json",
+      "source_sha256": "2bd785486f5d7f3a166d7485cff4314cbc0df0bcd5ce0db8c8eccfa5ea571972",
+      "archive_sha256": "2bd785486f5d7f3a166d7485cff4314cbc0df0bcd5ce0db8c8eccfa5ea571972",
+      "bytes": 62,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_053.log",
+      "archive": "run/attempts/resume_01/logs/origin_053.log",
+      "source_sha256": "93c2e37c0f06f0ff363da9d2f347dbc5a88439f3b10280fc797bb9c8105d6e1b",
+      "archive_sha256": "93c2e37c0f06f0ff363da9d2f347dbc5a88439f3b10280fc797bb9c8105d6e1b",
+      "bytes": 106,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_053_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_053_runtime_environment_next-origin.json",
+      "source_sha256": "807cbe230d2cdd342246edc80acbd86c2632802d6e31e1961734377494bcded2",
+      "archive_sha256": "807cbe230d2cdd342246edc80acbd86c2632802d6e31e1961734377494bcded2",
+      "bytes": 947,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_053_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_053_stage_next-origin_status.json",
+      "source_sha256": "1dc2e723a73a368524ba1c5d73fdadc7f9261f7e0cadf1e77e301768084260a0",
+      "archive_sha256": "1dc2e723a73a368524ba1c5d73fdadc7f9261f7e0cadf1e77e301768084260a0",
+      "bytes": 62,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_054.log",
+      "archive": "run/attempts/resume_01/logs/origin_054.log",
+      "source_sha256": "4eb96087126f0651eb61cf9cf7cd98f5718449f0b8cd160edf55adbddaa63629",
+      "archive_sha256": "4eb96087126f0651eb61cf9cf7cd98f5718449f0b8cd160edf55adbddaa63629",
+      "bytes": 106,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_054_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_054_runtime_environment_next-origin.json",
+      "source_sha256": "ba14847935945d989d42dc07855ba8742cdc5f5a5cd01464583c302ab0e525cc",
+      "archive_sha256": "ba14847935945d989d42dc07855ba8742cdc5f5a5cd01464583c302ab0e525cc",
+      "bytes": 945,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_054_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_054_stage_next-origin_status.json",
+      "source_sha256": "150b9e798d95be919e89c0dec1247be693a95fff85db0c225ff7c036a711a6f0",
+      "archive_sha256": "150b9e798d95be919e89c0dec1247be693a95fff85db0c225ff7c036a711a6f0",
+      "bytes": 62,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_055.log",
+      "archive": "run/attempts/resume_01/logs/origin_055.log",
+      "source_sha256": "2736b630f70aae936caa9a11ca576171ddbd4d0f157a4a8a5e7f42a63c6976bf",
+      "archive_sha256": "2736b630f70aae936caa9a11ca576171ddbd4d0f157a4a8a5e7f42a63c6976bf",
+      "bytes": 107,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_055_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_055_runtime_environment_next-origin.json",
+      "source_sha256": "3fc4c83af291191f894332410ab218b5ae8079639dc964419524e916bb9ced7c",
+      "archive_sha256": "3fc4c83af291191f894332410ab218b5ae8079639dc964419524e916bb9ced7c",
+      "bytes": 946,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_055_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_055_stage_next-origin_status.json",
+      "source_sha256": "3ba5263d13f4d45d37c8ef60f62ffe7abab79ccbb2890455e63037739fca9e0e",
+      "archive_sha256": "3ba5263d13f4d45d37c8ef60f62ffe7abab79ccbb2890455e63037739fca9e0e",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_056.log",
+      "archive": "run/attempts/resume_01/logs/origin_056.log",
+      "source_sha256": "1686227c6467642c37df81a2a16e9a98337e574cf183e9402a66432a926a2733",
+      "archive_sha256": "1686227c6467642c37df81a2a16e9a98337e574cf183e9402a66432a926a2733",
+      "bytes": 107,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_056_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_056_runtime_environment_next-origin.json",
+      "source_sha256": "bcf21b54c4905962cfe382bca28e32ff9d360d7b56a11622dff110a682bedca1",
+      "archive_sha256": "bcf21b54c4905962cfe382bca28e32ff9d360d7b56a11622dff110a682bedca1",
+      "bytes": 947,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_056_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_056_stage_next-origin_status.json",
+      "source_sha256": "ab2c4ad90956acb0a4b5cd16c56fe590665cb8ffd7f759c8cf40c0205e9d39f4",
+      "archive_sha256": "ab2c4ad90956acb0a4b5cd16c56fe590665cb8ffd7f759c8cf40c0205e9d39f4",
+      "bytes": 61,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_057.log",
+      "archive": "run/attempts/resume_01/logs/origin_057.log",
+      "source_sha256": "cd35e280cec6e6f58d7b96ebf1f1869a9fdcefd3c13b5857d3007384abcc67da",
+      "archive_sha256": "cd35e280cec6e6f58d7b96ebf1f1869a9fdcefd3c13b5857d3007384abcc67da",
+      "bytes": 107,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_057_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_057_runtime_environment_next-origin.json",
+      "source_sha256": "2bcb7d83123d71d6a752b1d414339521c5efd9f00ace1f2dab7dc4bcd391e288",
+      "archive_sha256": "2bcb7d83123d71d6a752b1d414339521c5efd9f00ace1f2dab7dc4bcd391e288",
+      "bytes": 946,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_057_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_057_stage_next-origin_status.json",
+      "source_sha256": "db5ae6adbd0bd8c73595975d5aef17d1780992d6e85fc6c2e1484bc79e882e60",
+      "archive_sha256": "db5ae6adbd0bd8c73595975d5aef17d1780992d6e85fc6c2e1484bc79e882e60",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_058.log",
+      "archive": "run/attempts/resume_01/logs/origin_058.log",
+      "source_sha256": "906f6d5673c5752b90bb9d52acf5dd920c5adb99c8c04d42a332389248e7345a",
+      "archive_sha256": "906f6d5673c5752b90bb9d52acf5dd920c5adb99c8c04d42a332389248e7345a",
+      "bytes": 107,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_058_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_058_runtime_environment_next-origin.json",
+      "source_sha256": "af8cd318a512e236ef734542d6d0f06616da8a4c34a4020472ea4f3935003408",
+      "archive_sha256": "af8cd318a512e236ef734542d6d0f06616da8a4c34a4020472ea4f3935003408",
+      "bytes": 945,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_058_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_058_stage_next-origin_status.json",
+      "source_sha256": "4b29eed7a17a370e99032d7f78dd01b45e68e5904a010c5738a982a1ae85e825",
+      "archive_sha256": "4b29eed7a17a370e99032d7f78dd01b45e68e5904a010c5738a982a1ae85e825",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_059.log",
+      "archive": "run/attempts/resume_01/logs/origin_059.log",
+      "source_sha256": "c7f278e11702a6e6dba3d6bee450a55bed1ce8503fc703586740beb7067c8c4d",
+      "archive_sha256": "c7f278e11702a6e6dba3d6bee450a55bed1ce8503fc703586740beb7067c8c4d",
+      "bytes": 108,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_059_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_059_runtime_environment_next-origin.json",
+      "source_sha256": "f668d77c24d0f8c081001ee3cce66853b09ebdf063012a7401ccda08c2871bf0",
+      "archive_sha256": "f668d77c24d0f8c081001ee3cce66853b09ebdf063012a7401ccda08c2871bf0",
+      "bytes": 946,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_059_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_059_stage_next-origin_status.json",
+      "source_sha256": "bb01b43467516e0997869685d6af1ef97e5fae033106443ceb5c8dc086c278f2",
+      "archive_sha256": "bb01b43467516e0997869685d6af1ef97e5fae033106443ceb5c8dc086c278f2",
+      "bytes": 62,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_060.log",
+      "archive": "run/attempts/resume_01/logs/origin_060.log",
+      "source_sha256": "e6d6316964b01b3925f6be13f7c1e600650ea6a737a98d3dcbba093d01d67ea8",
+      "archive_sha256": "e6d6316964b01b3925f6be13f7c1e600650ea6a737a98d3dcbba093d01d67ea8",
+      "bytes": 107,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_060_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_060_runtime_environment_next-origin.json",
+      "source_sha256": "15291f2897303cd254e095cffb99ca0a0d2406d0e754c2f0a0381363eecd49c8",
+      "archive_sha256": "15291f2897303cd254e095cffb99ca0a0d2406d0e754c2f0a0381363eecd49c8",
+      "bytes": 945,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_060_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_060_stage_next-origin_status.json",
+      "source_sha256": "5204bb9284322e9faeba2779fe102ea0cf75c46a4e1d2646ed2754eace2a268d",
+      "archive_sha256": "5204bb9284322e9faeba2779fe102ea0cf75c46a4e1d2646ed2754eace2a268d",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_061.log",
+      "archive": "run/attempts/resume_01/logs/origin_061.log",
+      "source_sha256": "c6c84c2eb7d01a62f1014029f58fdaa18e9c92e4775c868f35eb0095adcb2476",
+      "archive_sha256": "c6c84c2eb7d01a62f1014029f58fdaa18e9c92e4775c868f35eb0095adcb2476",
+      "bytes": 107,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_061_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_061_runtime_environment_next-origin.json",
+      "source_sha256": "eaedd7d3b22770e5da76280f093c34ebca78050a7c2cd4a2f42124049f875f36",
+      "archive_sha256": "eaedd7d3b22770e5da76280f093c34ebca78050a7c2cd4a2f42124049f875f36",
+      "bytes": 946,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_061_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_061_stage_next-origin_status.json",
+      "source_sha256": "af6d789d5bbcb0018df70762fb175a0fa5f6c6b483987e3adc31115f790f85ec",
+      "archive_sha256": "af6d789d5bbcb0018df70762fb175a0fa5f6c6b483987e3adc31115f790f85ec",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_062.log",
+      "archive": "run/attempts/resume_01/logs/origin_062.log",
+      "source_sha256": "99e45afd550780b3ffa8abbf047fd64442c5f14dc331e02ca579dbffca7bc302",
+      "archive_sha256": "99e45afd550780b3ffa8abbf047fd64442c5f14dc331e02ca579dbffca7bc302",
+      "bytes": 106,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_062_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_062_runtime_environment_next-origin.json",
+      "source_sha256": "65df5882834de40ad454ac14da29563da8ab8c4a3135543aea47d0443d323587",
+      "archive_sha256": "65df5882834de40ad454ac14da29563da8ab8c4a3135543aea47d0443d323587",
+      "bytes": 947,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_062_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_062_stage_next-origin_status.json",
+      "source_sha256": "033fe9ec17d8b31ff771f1cd5a66c4f8fdaacfed9d183c471f59fe281bb4e7c6",
+      "archive_sha256": "033fe9ec17d8b31ff771f1cd5a66c4f8fdaacfed9d183c471f59fe281bb4e7c6",
+      "bytes": 62,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_063.log",
+      "archive": "run/attempts/resume_01/logs/origin_063.log",
+      "source_sha256": "5a5aaa9bfa4dfc343161375927385b3142b2df167a5a15e61cdac7e6def125b5",
+      "archive_sha256": "5a5aaa9bfa4dfc343161375927385b3142b2df167a5a15e61cdac7e6def125b5",
+      "bytes": 106,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_063_runtime_environment_next-origin.json",
+      "archive": "run/attempts/resume_01/logs/origin_063_runtime_environment_next-origin.json",
+      "source_sha256": "ac7b0aeb3571cf25ef09e8b3de6a3602640c72e80681220d2aaebe9240b08f70",
+      "archive_sha256": "ac7b0aeb3571cf25ef09e8b3de6a3602640c72e80681220d2aaebe9240b08f70",
+      "bytes": 947,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/origin_063_stage_next-origin_status.json",
+      "archive": "run/attempts/resume_01/logs/origin_063_stage_next-origin_status.json",
+      "source_sha256": "e6462f8880751204850e5ca3811d5c5c0d6df3b701265f3d451035c95ba94b28",
+      "archive_sha256": "e6462f8880751204850e5ca3811d5c5c0d6df3b701265f3d451035c95ba94b28",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/supervisor_stderr.log",
+      "archive": "run/attempts/resume_01/logs/supervisor_stderr.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/logs/supervisor_stdout.log",
+      "archive": "run/attempts/resume_01/logs/supervisor_stdout.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/monitor.json",
+      "archive": "run/attempts/resume_01/monitor.json",
+      "source_sha256": "2d69b714b79bcf377d840d09cfc673081f1f187d913ff0f8efcf79c77924d1d2",
+      "archive_sha256": "2d69b714b79bcf377d840d09cfc673081f1f187d913ff0f8efcf79c77924d1d2",
+      "bytes": 9612,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/preserved_scores.json",
+      "archive": "run/attempts/resume_01/preserved_scores.json",
+      "source_sha256": "8774da9aea02ed8fc063e1b7d75f07bce7e33039b5002441c4e09a62dd43f384",
+      "archive_sha256": "8774da9aea02ed8fc063e1b7d75f07bce7e33039b5002441c4e09a62dd43f384",
+      "bytes": 6043,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/regression_tests.log",
+      "archive": "run/attempts/resume_01/regression_tests.log",
+      "source_sha256": "da8050a22809f3faeaad83dd7aa956a3a52366ea55bd4c2538e22747c8e6d793",
+      "archive_sha256": "da8050a22809f3faeaad83dd7aa956a3a52366ea55bd4c2538e22747c8e6d793",
+      "bytes": 1338,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/resume_manifest.json",
+      "archive": "run/attempts/resume_01/resume_manifest.json",
+      "source_sha256": "8a1df631705a7783ea9a50dea00123997bf0e39251984779db1330742d9b5d25",
+      "archive_sha256": "8a1df631705a7783ea9a50dea00123997bf0e39251984779db1330742d9b5d25",
+      "bytes": 2099,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/STARTED.json",
+      "archive": "run/attempts/resume_01/STARTED.json",
+      "source_sha256": "9618ce55c2f49003f745e407d28e7a88e7618ac097cb5bab2779982a858288c1",
+      "archive_sha256": "9618ce55c2f49003f745e407d28e7a88e7618ac097cb5bab2779982a858288c1",
+      "bytes": 133,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/attempts/resume_01/terminal_status.json",
+      "archive": "run/attempts/resume_01/terminal_status.json",
+      "source_sha256": "c2fc44579b1966890222401d5c12cea051d0fa47a1be17ff0140153d35ce4c22",
+      "archive_sha256": "c2fc44579b1966890222401d5c12cea051d0fa47a1be17ff0140153d35ce4c22",
+      "bytes": 9336,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/branch_checkpoint.json",
+      "archive": "run/branch_checkpoint.json",
+      "source_sha256": "63db5217fb973c84c291ed7e31e89b7db240fa2443e3ab32f6bfc4074f045b41",
+      "archive_sha256": "63db5217fb973c84c291ed7e31e89b7db240fa2443e3ab32f6bfc4074f045b41",
+      "bytes": 224921,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/completion_handoff_status.json",
+      "archive": "run/completion_handoff_status.json",
+      "source_sha256": "cf49d6db7ea0a804c656f79f8e991fd612fab8c3bd4226473b69dcf9ef6a9e5d",
+      "archive_sha256": "cf49d6db7ea0a804c656f79f8e991fd612fab8c3bd4226473b69dcf9ef6a9e5d",
+      "bytes": 292,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/config.json",
+      "archive": "run/config.json",
+      "source_sha256": "7e92dbe232df95e1bd4f3620045a92183d25f3ad7081e5768b7d8a4f38f0ac44",
+      "archive_sha256": "7e92dbe232df95e1bd4f3620045a92183d25f3ad7081e5768b7d8a4f38f0ac44",
+      "bytes": 1145,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/data_adapter.py",
+      "archive": "run/data_adapter.py",
+      "source_sha256": "93b6262cf3b031666c984cbb4b517b1274fcbea3146c52c63fd30a0876bcbe65",
+      "archive_sha256": "93b6262cf3b031666c984cbb4b517b1274fcbea3146c52c63fd30a0876bcbe65",
+      "bytes": 10446,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/evaluate_scores.py",
+      "archive": "run/evaluate_scores.py",
+      "source_sha256": "e67806156341a59a972de4590f4ba49fb0243577fad0cbaa1e1474e6277a2feb",
+      "archive_sha256": "e67806156341a59a972de4590f4ba49fb0243577fad0cbaa1e1474e6277a2feb",
+      "bytes": 10240,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/evaluation_manifest.json",
+      "archive": "run/evaluation_manifest.json",
+      "source_sha256": "ae33367b8968e09d511f3a27399bd2b09e0487a7e3b7bb2fbdcb6d92666f03c0",
+      "archive_sha256": "ae33367b8968e09d511f3a27399bd2b09e0487a7e3b7bb2fbdcb6d92666f03c0",
+      "bytes": 886,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/feature_manifest.json",
+      "archive": "run/feature_manifest.json",
+      "source_sha256": "5da62cbffff9ca73ef27deac660f8d8aad0822e9ccbe3699a37a04a6fa0cdbea",
+      "archive_sha256": "5da62cbffff9ca73ef27deac660f8d8aad0822e9ccbe3699a37a04a6fa0cdbea",
+      "bytes": 3780,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/final_validation.json",
+      "archive": "run/final_validation.json",
+      "source_sha256": "fa9eddecf6817d035a7aa1cf0d618f9fe239224360577bf8aa97809cc96d6773",
+      "archive_sha256": "fa9eddecf6817d035a7aa1cf0d618f9fe239224360577bf8aa97809cc96d6773",
+      "bytes": 22253,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/finish_handoff.py",
+      "archive": "run/finish_handoff.py",
+      "source_sha256": "ab75c8707183664c1313fe4d5c4489be73c52ec70d695151956efc084c332210",
+      "archive_sha256": "ab75c8707183664c1313fe4d5c4489be73c52ec70d695151956efc084c332210",
+      "bytes": 9119,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/fit_trace.csv",
+      "archive": "run/fit_trace.csv",
+      "source_sha256": "530b86462bef907dbdd765df91c9ad633a883d1bcf57ff9c4e885f2a62194309",
+      "archive_sha256": "530b86462bef907dbdd765df91c9ad633a883d1bcf57ff9c4e885f2a62194309",
+      "bytes": 32790,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/frozen_code.json",
+      "archive": "run/frozen_code.json",
+      "source_sha256": "910fd088f0d136811d6fc6c89186a17bf00c6a289fcf068c669500fedf98d0cc",
+      "archive_sha256": "910fd088f0d136811d6fc6c89186a17bf00c6a289fcf068c669500fedf98d0cc",
+      "bytes": 1912,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/frozen_code_before_evaluation_amendment.json",
+      "archive": "run/frozen_code_before_evaluation_amendment.json",
+      "source_sha256": "bdc0b5d3f4b79262a5d8a186aed6eabe7dab9926d9df815ae351887687a9c222",
+      "archive_sha256": "bdc0b5d3f4b79262a5d8a186aed6eabe7dab9926d9df815ae351887687a9c222",
+      "bytes": 1586,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/frozen_code_before_handoff_registration.json",
+      "archive": "run/frozen_code_before_handoff_registration.json",
+      "source_sha256": "d0de510f3137252f4cfed359f537404f6d0ad53a9db641602db9a946393d395f",
+      "archive_sha256": "d0de510f3137252f4cfed359f537404f6d0ad53a9db641602db9a946393d395f",
+      "bytes": 1638,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/frozen_code_before_scoring_amendment.json",
+      "archive": "run/frozen_code_before_scoring_amendment.json",
+      "source_sha256": "b0f117acb1cd3360a5dfaf6a0b41f71fd59fb1eb67926a1863384a5efaea9ead",
+      "archive_sha256": "b0f117acb1cd3360a5dfaf6a0b41f71fd59fb1eb67926a1863384a5efaea9ead",
+      "bytes": 1524,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/gpu_mapping.csv",
+      "archive": "run/gpu_mapping.csv",
+      "source_sha256": "bf13fe4759e25a54b876e94dd35fffa414d27f365b66f4b52b5d169077488a5b",
+      "archive_sha256": "bf13fe4759e25a54b876e94dd35fffa414d27f365b66f4b52b5d169077488a5b",
+      "bytes": 39874,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/grid_manifest.json",
+      "archive": "run/grid_manifest.json",
+      "source_sha256": "b83aa7514bdb24d7a6e881bf563fed336daf7f7ed273e95612d87b6d59bd0376",
+      "archive_sha256": "b83aa7514bdb24d7a6e881bf563fed336daf7f7ed273e95612d87b6d59bd0376",
+      "bytes": 442,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/input_manifest.json",
+      "archive": "run/input_manifest.json",
+      "source_sha256": "8e1c684515c795e14fb69eb72126a62d0911e97d4ce66e3bf40470f91ac4ddc7",
+      "archive_sha256": "8e1c684515c795e14fb69eb72126a62d0911e97d4ce66e3bf40470f91ac4ddc7",
+      "bytes": 4761,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/logs/branches.log",
+      "archive": "run/logs/branches.log",
+      "source_sha256": "41b0185ef2587b8f9c749ebd5f40d3a31bc61028192f2c03e5b49c71f11ffb08",
+      "archive_sha256": "41b0185ef2587b8f9c749ebd5f40d3a31bc61028192f2c03e5b49c71f11ffb08",
+      "bytes": 3963,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/logs/completion_handoff.log",
+      "archive": "run/logs/completion_handoff.log",
+      "source_sha256": "df13899750e1aef6256630e2dccbb56069edc5b5bb479548e9fe12c5791637db",
+      "archive_sha256": "df13899750e1aef6256630e2dccbb56069edc5b5bb479548e9fe12c5791637db",
+      "bytes": 55,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/logs/pilot.log",
+      "archive": "run/logs/pilot.log",
+      "source_sha256": "e15bc91fd8b9d030f43d920a725eaa1d286063a3f86de7fe45ae1351867a2fea",
+      "archive_sha256": "e15bc91fd8b9d030f43d920a725eaa1d286063a3f86de7fe45ae1351867a2fea",
+      "bytes": 75,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/logs/pilot_validation.log",
+      "archive": "run/logs/pilot_validation.log",
+      "source_sha256": "0560f3685aebff5f0340bb5c07228db558c7612a461502c02775da25e5b741a7",
+      "archive_sha256": "0560f3685aebff5f0340bb5c07228db558c7612a461502c02775da25e5b741a7",
+      "bytes": 352,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/logs/prepare.log",
+      "archive": "run/logs/prepare.log",
+      "source_sha256": "fc45b56deb2e9232c7b407a65db9708a4a5058baa54b91c9636fad7b95f50179",
+      "archive_sha256": "fc45b56deb2e9232c7b407a65db9708a4a5058baa54b91c9636fad7b95f50179",
+      "bytes": 22438,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/metrics_by_origin.csv",
+      "archive": "run/metrics_by_origin.csv",
+      "source_sha256": "64e785661fa39fd5b71bda262434d7acd67ae5670bbc4036dcb66f82225f3915",
+      "archive_sha256": "64e785661fa39fd5b71bda262434d7acd67ae5670bbc4036dcb66f82225f3915",
+      "bytes": 445288,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/metrics_summary.csv",
+      "archive": "run/metrics_summary.csv",
+      "source_sha256": "b5eea1a9ba5c1f7b7cbc5e00e0b42ec88f65bf28ebde2695e4fa8025110a2c0d",
+      "archive_sha256": "b5eea1a9ba5c1f7b7cbc5e00e0b42ec88f65bf28ebde2695e4fa8025110a2c0d",
+      "bytes": 22157,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/monitor.json",
+      "archive": "run/monitor.json",
+      "source_sha256": "2d69b714b79bcf377d840d09cfc673081f1f187d913ff0f8efcf79c77924d1d2",
+      "archive_sha256": "2d69b714b79bcf377d840d09cfc673081f1f187d913ff0f8efcf79c77924d1d2",
+      "bytes": 9612,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/monitor_before_status_reconciliation.json",
+      "archive": "run/monitor_before_status_reconciliation.json",
+      "source_sha256": "de479b0c2183e154cddbb057efd201790d6e831b0f5adddabebadc103041a3c1",
+      "archive_sha256": "de479b0c2183e154cddbb057efd201790d6e831b0f5adddabebadc103041a3c1",
+      "bytes": 589,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/pilot_validation.json",
+      "archive": "run/pilot_validation.json",
+      "source_sha256": "353e990f904370e6f7ee4888a9643270323b6d473a2a7cf4d9726ead7fb55df2",
+      "archive_sha256": "353e990f904370e6f7ee4888a9643270323b6d473a2a7cf4d9726ead7fb55df2",
+      "bytes": 393,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/pre_evaluation_code_amendment.json",
+      "archive": "run/pre_evaluation_code_amendment.json",
+      "source_sha256": "52913ee3453efba0b990393bf8c69d2eb54b366fa8f2270a050114dfd22bc6cc",
+      "archive_sha256": "52913ee3453efba0b990393bf8c69d2eb54b366fa8f2270a050114dfd22bc6cc",
+      "bytes": 2854,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/pre_scoring_code_amendment.json",
+      "archive": "run/pre_scoring_code_amendment.json",
+      "source_sha256": "04d408453fed0dfe5b589d33975679b833c46b8bb1b7b1da99fb2326b5f2edbf",
+      "archive_sha256": "04d408453fed0dfe5b589d33975679b833c46b8bb1b7b1da99fb2326b5f2edbf",
+      "bytes": 2848,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/progress.json",
+      "archive": "run/progress.json",
+      "source_sha256": "bc62c5e6ccfcaf0cc46d3b2df741691f5cde47f5afd2823a40bc3d7a2e27cb8a",
+      "archive_sha256": "bc62c5e6ccfcaf0cc46d3b2df741691f5cde47f5afd2823a40bc3d7a2e27cb8a",
+      "bytes": 445,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/progress_before_status_reconciliation.json",
+      "archive": "run/progress_before_status_reconciliation.json",
+      "source_sha256": "e55b8fe3bd515405db7a44bb1563c3645e969a71035dbd15a94608e9961da19e",
+      "archive_sha256": "e55b8fe3bd515405db7a44bb1563c3645e969a71035dbd15a94608e9961da19e",
+      "bytes": 444,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/raw_recording_identity.json",
+      "archive": "run/raw_recording_identity.json",
+      "source_sha256": "2893f53e6c4811a7437dbe2d19ce5215cc59f32306a922ff9d606440f152b447",
+      "archive_sha256": "2893f53e6c4811a7437dbe2d19ce5215cc59f32306a922ff9d606440f152b447",
+      "bytes": 257,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/README.md",
+      "archive": "run/README.md",
+      "source_sha256": "50d78967805375c8e90e3a380647f43b9a8ea6f3eb0b1b9fcd2bce3ae5c2e2f5",
+      "archive_sha256": "50d78967805375c8e90e3a380647f43b9a8ea6f3eb0b1b9fcd2bce3ae5c2e2f5",
+      "bytes": 4773,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/REQUIREMENTS.csv",
+      "archive": "run/REQUIREMENTS.csv",
+      "source_sha256": "7d72d6d07a61363158f3538e8e1d598916f7fd896d4b222712bab04021c99d55",
+      "archive_sha256": "7d72d6d07a61363158f3538e8e1d598916f7fd896d4b222712bab04021c99d55",
+      "bytes": 2299,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/run_experiment.py",
+      "archive": "run/run_experiment.py",
+      "source_sha256": "539d1a6a8e1c79aec47c9b05c193c9d0bf0d1829b314ea48cd71ba620295b64b",
+      "archive_sha256": "539d1a6a8e1c79aec47c9b05c193c9d0bf0d1829b314ea48cd71ba620295b64b",
+      "bytes": 14843,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/runtime_environment_branches.json",
+      "archive": "run/runtime_environment_branches.json",
+      "source_sha256": "eb34ee98ba5a6b17b6a843248a798deeac9a0420c3100d067af7d5746d629e28",
+      "archive_sha256": "eb34ee98ba5a6b17b6a843248a798deeac9a0420c3100d067af7d5746d629e28",
+      "bytes": 887,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/runtime_environment_evaluate.json",
+      "archive": "run/runtime_environment_evaluate.json",
+      "source_sha256": "9548066243db23d4c1985a0a2f51bfcad92de9cdaafe296f2e4bf6876346605a",
+      "archive_sha256": "9548066243db23d4c1985a0a2f51bfcad92de9cdaafe296f2e4bf6876346605a",
+      "bytes": 943,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/runtime_environment_next-origin.json",
+      "archive": "run/runtime_environment_next-origin.json",
+      "source_sha256": "ac7b0aeb3571cf25ef09e8b3de6a3602640c72e80681220d2aaebe9240b08f70",
+      "archive_sha256": "ac7b0aeb3571cf25ef09e8b3de6a3602640c72e80681220d2aaebe9240b08f70",
+      "bytes": 947,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/runtime_environment_pilot.json",
+      "archive": "run/runtime_environment_pilot.json",
+      "source_sha256": "2e0f29ff50581655e7dbb393aa6e5a800faf5d1d6b74b5b39eae9279e573a163",
+      "archive_sha256": "2e0f29ff50581655e7dbb393aa6e5a800faf5d1d6b74b5b39eae9279e573a163",
+      "bytes": 880,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/runtime_environment_prepare.json",
+      "archive": "run/runtime_environment_prepare.json",
+      "source_sha256": "0890a0033e7f55b6395a755782dfbbaadf32db04cf241997c8d6765d798c9eb7",
+      "archive_sha256": "0890a0033e7f55b6395a755782dfbbaadf32db04cf241997c8d6765d798c9eb7",
+      "bytes": 885,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/source_bridge.py",
+      "archive": "run/source_bridge.py",
+      "source_sha256": "37096a358809a7bb1f86a340e439398d8b1cedc1bcf06ee85dc276f44f2b66be",
+      "archive_sha256": "37096a358809a7bb1f86a340e439398d8b1cedc1bcf06ee85dc276f44f2b66be",
+      "bytes": 4433,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/sources/oct26_benchmark.py",
+      "archive": "run/sources/oct26_benchmark.py",
+      "source_sha256": "768366170490946d47b570054e591168061e2de1d64c1e2cf3dec78c1c3e4ffb",
+      "archive_sha256": "768366170490946d47b570054e591168061e2de1d64c1e2cf3dec78c1c3e4ffb",
+      "bytes": 24672,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/sources/oct26_unified.py",
+      "archive": "run/sources/oct26_unified.py",
+      "source_sha256": "887763bd35572b03e559df9812704528bc956f417ed321f802fbe991e2383d74",
+      "archive_sha256": "887763bd35572b03e559df9812704528bc956f417ed321f802fbe991e2383d74",
+      "bytes": 40047,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/sources/run_bidirectional_adst_fusion.py",
+      "archive": "run/sources/run_bidirectional_adst_fusion.py",
+      "source_sha256": "c20380294f7c7e6b1543fe48454d8540580eb8ed72cca233a2e1385b50143856",
+      "archive_sha256": "c20380294f7c7e6b1543fe48454d8540580eb8ed72cca233a2e1385b50143856",
+      "bytes": 34033,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/sources/run_experiment11_30m_han_adst_b1_light_cascade_b2_sliding.py",
+      "archive": "run/sources/run_experiment11_30m_han_adst_b1_light_cascade_b2_sliding.py",
+      "source_sha256": "3d35ccce2d6a8d945ae072e744220ecf70eab101f5948e7ebcfb020fa7375d1a",
+      "archive_sha256": "3d35ccce2d6a8d945ae072e744220ecf70eab101f5948e7ebcfb020fa7375d1a",
+      "bytes": 29847,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/sources/run_experiment14_30m_matured_adst_moe.py",
+      "archive": "run/sources/run_experiment14_30m_matured_adst_moe.py",
+      "source_sha256": "36385d0722092c07ecdeeded6c1a3d43301abddd4a66d4e572b2be4263b40d40",
+      "archive_sha256": "36385d0722092c07ecdeeded6c1a3d43301abddd4a66d4e572b2be4263b40d40",
+      "bytes": 13475,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/SPEC.md",
+      "archive": "run/SPEC.md",
+      "source_sha256": "695a989bdc8d7ebff3d7aa7482f1da6c1f4164a7d4bbf29da9b236508bae091c",
+      "archive_sha256": "695a989bdc8d7ebff3d7aa7482f1da6c1f4164a7d4bbf29da9b236508bae091c",
+      "bytes": 5011,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/split_manifest.json",
+      "archive": "run/split_manifest.json",
+      "source_sha256": "2bb4ecec2b4ff723b059f7888f55bcb6954f40f3493597d7ae9285b2ad3ba508",
+      "archive_sha256": "2bb4ecec2b4ff723b059f7888f55bcb6954f40f3493597d7ae9285b2ad3ba508",
+      "bytes": 1343,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/stage_branches_status.json",
+      "archive": "run/stage_branches_status.json",
+      "source_sha256": "2a95221d516be2b47c7cbc059dd42905c354408c79062c74637cc881fce05be5",
+      "archive_sha256": "2a95221d516be2b47c7cbc059dd42905c354408c79062c74637cc881fce05be5",
+      "bytes": 77,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/stage_evaluate_status.json",
+      "archive": "run/stage_evaluate_status.json",
+      "source_sha256": "1980ca1a9252f34a1f10064dba26298a81573c0f328802ddf4939d12c5d76cf7",
+      "archive_sha256": "1980ca1a9252f34a1f10064dba26298a81573c0f328802ddf4939d12c5d76cf7",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/stage_next-origin_status.json",
+      "archive": "run/stage_next-origin_status.json",
+      "source_sha256": "e6462f8880751204850e5ca3811d5c5c0d6df3b701265f3d451035c95ba94b28",
+      "archive_sha256": "e6462f8880751204850e5ca3811d5c5c0d6df3b701265f3d451035c95ba94b28",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/stage_pilot_status.json",
+      "archive": "run/stage_pilot_status.json",
+      "source_sha256": "6498caddf36097b2fc6527d53f7300cd03c4600fee0767b66b0aab8997ff6340",
+      "archive_sha256": "6498caddf36097b2fc6527d53f7300cd03c4600fee0767b66b0aab8997ff6340",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/stage_prepare_status.json",
+      "archive": "run/stage_prepare_status.json",
+      "source_sha256": "520c2597a53b73d429e4bcde7836a62ca0859a5762e66050dd921af5036ea284",
+      "archive_sha256": "520c2597a53b73d429e4bcde7836a62ca0859a5762e66050dd921af5036ea284",
+      "bytes": 63,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/status_reconciliation.json",
+      "archive": "run/status_reconciliation.json",
+      "source_sha256": "069347f40db21949d79a91a48cdef9a52165db0e45c57bc1125be9aca098c23c",
+      "archive_sha256": "069347f40db21949d79a91a48cdef9a52165db0e45c57bc1125be9aca098c23c",
+      "bytes": 552,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/supervise.py",
+      "archive": "run/supervise.py",
+      "source_sha256": "ffcb2c1b5d93027fc844c35d0e7be330a763fa6adebd7e21d8d2fee5cbedc5e7",
+      "archive_sha256": "ffcb2c1b5d93027fc844c35d0e7be330a763fa6adebd7e21d8d2fee5cbedc5e7",
+      "bytes": 8759,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/test_contract.py",
+      "archive": "run/test_contract.py",
+      "source_sha256": "7936a3fc6906f8c92d28e7a30aa62b682cf7b86b12b47aa780a99ce2d68e6f17",
+      "archive_sha256": "7936a3fc6906f8c92d28e7a30aa62b682cf7b86b12b47aa780a99ce2d68e6f17",
+      "bytes": 9791,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "ISEE_Project_GitHubBase/experiments/2026-11-02_ADST_Falcon_Holdout_01/verify_run.py",
+      "archive": "run/verify_run.py",
+      "source_sha256": "ef471f3705187ab4a1f23e1b6b173d8baa9c84133054e72c9d9c51b9df91be70",
+      "archive_sha256": "ef471f3705187ab4a1f23e1b6b173d8baa9c84133054e72c9d9c51b9df91be70",
+      "bytes": 4683,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "실험 기록/2026-11-02_E31_성능분석보고서.md",
+      "archive": "reports/2026-11-02_E31_성능분석보고서.md",
+      "source_sha256": "580b28ba230b63b54f7fb9f29862548d52293e7ac8b9ea6d822f6e0b6d82af38",
+      "archive_sha256": "104398d2323f68531ce87cb5a10878df9e38ff00a2d1250dce98e436ea1615e7",
+      "bytes": 21315,
+      "change": "report links only"
+    },
+    {
+      "source": "실험 기록/2026-11-02_E31_성능분석보고서.html",
+      "archive": "reports/2026-11-02_E31_성능분석보고서.html",
+      "source_sha256": "a49720e69c848dc09b83d0da6a60fd6df6fe28a3d9c4de88b393efe41d966b8e",
+      "archive_sha256": "849127cce5a915e9ac8249e1757927a18e889b08310324157720c731c8e5c01c",
+      "bytes": 26625,
+      "change": "report links only"
+    },
+    {
+      "source": "프로젝트 목표 및 결정사항.md",
+      "archive": "project_records/프로젝트 목표 및 결정사항.md",
+      "source_sha256": "366ae10be5f7b10d16feb256911b156614a7a48c7e7842fa461c1034fc65cc18",
+      "archive_sha256": "366ae10be5f7b10d16feb256911b156614a7a48c7e7842fa461c1034fc65cc18",
+      "bytes": 110350,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "프로젝트 진행 상황.md",
+      "archive": "project_records/프로젝트 진행 상황.md",
+      "source_sha256": "6cb2525b85980b12f63d1509c1b6cbc5402fabbe5396a9a90c52f4262e50862e",
+      "archive_sha256": "6cb2525b85980b12f63d1509c1b6cbc5402fabbe5396a9a90c52f4262e50862e",
+      "bytes": 99358,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "실험 기록/실험_연대기.md",
+      "archive": "project_records/실험 기록/실험_연대기.md",
+      "source_sha256": "26754f5db7f4eae7415f4319df5eef305fb6bc5c00ff8bb271f0c0e2619f29f0",
+      "archive_sha256": "26754f5db7f4eae7415f4319df5eef305fb6bc5c00ff8bb271f0c0e2619f29f0",
+      "bytes": 145635,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "실험 기록/실험_연대기.html",
+      "archive": "project_records/실험 기록/실험_연대기.html",
+      "source_sha256": "8b1962562b5eac85b3c5946513f5e66ae4fd5fd21b8cd1152419c7d45784a780",
+      "archive_sha256": "8b1962562b5eac85b3c5946513f5e66ae4fd5fd21b8cd1152419c7d45784a780",
+      "bytes": 167268,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "실험 기록/render_experiment_log.cjs",
+      "archive": "project_records/실험 기록/render_experiment_log.cjs",
+      "source_sha256": "50ae5a18a6336370754b099298db5a4c3df2d8b442e05c1af2fc277f9e4ed4c5",
+      "archive_sha256": "50ae5a18a6336370754b099298db5a4c3df2d8b442e05c1af2fc277f9e4ed4c5",
+      "bytes": 1327,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "회의 기록/2026-10-07_회의요약.txt",
+      "archive": "project_records/회의 기록/2026-10-07_회의요약.txt",
+      "source_sha256": "e30704700eb4b52d10ed1c3278c20aeb89a94a44233c72cb681183e13b8c60f4",
+      "archive_sha256": "e30704700eb4b52d10ed1c3278c20aeb89a94a44233c72cb681183e13b8c60f4",
+      "bytes": 5465,
+      "change": "byte-identical copy"
+    },
+    {
+      "source": "AGENTS.md",
+      "archive": "project_records/AGENTS.md",
+      "source_sha256": "ad29d62437700f1d19d6953b4aacabf80530212f0126df351105586e7e037aab",
+      "archive_sha256": "ad29d62437700f1d19d6953b4aacabf80530212f0126df351105586e7e037aab",
+      "bytes": 4093,
+      "change": "byte-identical copy"
+    }
+  ],
+  "excluded": [
+    "raw telemetry/data",
+    "run/cache/**",
+    "run/branch_scores/**",
+    "run/fusion_scores/**",
+    "binary models",
+    "virtual environments",
+    "temporary files",
+    "unrelated experiments"
+  ],
+  "checks": {
+    "status": "PASS",
+    "copied_files": 186,
+    "python_AST_files": 19,
+    "report_HTML_local_links": 14,
+    "frozen_code_hashes": 14,
+    "git_byte_preservation": "Archive-local * -text disables newline conversion; staged blobs verified against working files before commit.",
+    "historical_whitespace": "8 git diff --check notices: intentional Markdown hard breaks and unchanged frozen source whitespace; preserved for provenance."
+  },
+  "generated_archive_files": [
+    "README.md",
+    ".gitignore",
+    "ARCHIVE_MANIFEST.json",
+    ".gitattributes"
+  ]
+}

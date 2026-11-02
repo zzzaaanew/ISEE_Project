@@ -1,0 +1,26 @@
+{
+  "status": "FAILED",
+  "stage": "branches",
+  "worker_pid": 82340,
+  "supervisor_pid": 50920,
+  "stage_elapsed_seconds": 2715.5421953201294,
+  "completed_stages": [
+    {
+      "stage": "prepare",
+      "exit_code": 0,
+      "seconds": 480.25647377967834
+    },
+    {
+      "stage": "pilot",
+      "exit_code": 0,
+      "seconds": 150.10377097129822
+    }
+  ],
+  "log": "C:\\Users\\\uc774\uc900\ud638\\Desktop\\Archive\\\uc5f0\uad6c \uad00\ub828 \ud504\ub85c\uc81d\ud2b8\\IISE \ub17c\ubb38 \uc900\ube44 \ud504\ub85c\uc81d\ud2b8\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\logs\\branches.log",
+  "failure_reason": "RuntimeError('Resource stop: disk=26.10GiB, available RAM=0.67GiB')",
+  "checkpoint_completed_origins": 39,
+  "saved_gpu_time_rows": 22374144,
+  "reconciled_at": "2026-11-02T05:01:30.206509+00:00",
+  "reconciliation": "status_reconciliation.json",
+  "supervisor_and_worker_processes_absent": true
+}

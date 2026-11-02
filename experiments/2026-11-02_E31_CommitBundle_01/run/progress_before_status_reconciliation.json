@@ -1,0 +1,19 @@
+{
+  "stage": "branch_scoring",
+  "completed": 38,
+  "total": 63,
+  "origin": 19296,
+  "last_origin_seconds": 164.4603943999391,
+  "train_days": {
+    "A": 21,
+    "B": 21,
+    "C": 7,
+    "D": 14
+  },
+  "rows_total": 21800448,
+  "last_part_sha256": "033845b3f9127f787fa9ea52cc09da16ae3b951d66ed7c74b026ecdd66045383",
+  "resources": {
+    "disk_free_gib": 26.11331558227539,
+    "available_memory_gib": 1.1479148864746094
+  }
+}

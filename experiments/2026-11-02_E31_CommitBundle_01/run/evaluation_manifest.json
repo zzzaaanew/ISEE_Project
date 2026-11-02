@@ -1,0 +1,18 @@
+{
+  "status": "COMPLETED",
+  "branch_refits": 0,
+  "main_config": {
+    "cap": 0.6,
+    "gamma": 1.0,
+    "half_life_hours": 2.0
+  },
+  "sensitivity": "D_only_development_not_terminal_selection",
+  "selected_from_terminal": false,
+  "primary_metric": "mean average_precision_score across eligible origin blocks; not trapezoidal PR-AUC",
+  "roc_metric": "mean origin-block ROC-AUC, not pooled ROC-AUC",
+  "terminal": "retrospective terminal prequential; frozen algorithms may update on mature labels",
+  "full_period": "includes terminal; not independent second test",
+  "onset": "unique GPU/onset-time, full 24h-10min warning window eligible, not incident sessions",
+  "uncertainty": "single historical trace/seed, no statistical generalization proof",
+  "input_missingness": "legacy feature missing-value assumptions preserved; per-GPU label completeness unverified"
+}

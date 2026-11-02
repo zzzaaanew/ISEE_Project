@@ -1,0 +1,1 @@
+{"status": "PASS", "mode": "pilot", "origins": 1, "rows": 573696, "actual_branch_estimator_fits": 6, "full_cluster_gpus": 1992, "source_only_old_scores_used": false, "shared_label_mask": true, "label_eligible_bins": 24851, "outputs_sha256": {"branch_scores\\origin_008640.parquet": "704b5300a6a4a98a093d390154d9c7863db78361927d74e509e57ccc775d5675"}}

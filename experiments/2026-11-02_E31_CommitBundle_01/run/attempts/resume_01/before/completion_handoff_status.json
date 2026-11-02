@@ -1,0 +1,8 @@
+{
+  "status": "COMPLETED",
+  "experiment_success": false,
+  "supervisor_status": "FAILED",
+  "completed_unix": 1793595703.8964453,
+  "updated_project_records": true,
+  "source_sha256": "5c0986ea421020d84c5c722245ebb73f464a36b1b0808f0b475d4daf4e0f6089"
+}

@@ -1,0 +1,23 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\migrate\\migration\\e19-reproduction\\.venv\\Scripts\\python.exe",
+  "pid": 30804,
+  "created_unix": 1793600041.1151257,
+  "argv": [
+    "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\run_experiment.py",
+    "next-origin"
+  ],
+  "versions": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.1",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.0",
+    "pyarrow": "25.0.1",
+    "threadpoolctl": "3.6.0"
+  },
+  "config_sha256": "7e92dbe232df95e1bd4f3620045a92183d25f3ad7081e5768b7d8a4f38f0ac44",
+  "resources": {
+    "disk_free_gib": 25.965335845947266,
+    "available_memory_gib": 2.370452880859375
+  }
+}

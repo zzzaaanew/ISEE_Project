@@ -1,0 +1,9 @@
+{
+  "status": "COMPLETED",
+  "experiment_success": true,
+  "supervisor_status": "COMPLETED",
+  "completed_unix": 1793602848.0620894,
+  "updated_project_records": true,
+  "source_sha256": "ab75c8707183664c1313fe4d5c4489be73c52ec70d695151956efc084c332210",
+  "attempt_id": "resume_01"
+}

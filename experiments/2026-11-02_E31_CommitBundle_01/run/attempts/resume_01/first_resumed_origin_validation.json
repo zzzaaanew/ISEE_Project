@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "origin": 19872,
+  "completed_origins": 40,
+  "preserved_origins": 39,
+  "old_scores_unchanged": true,
+  "old_fit_trace_unchanged": true,
+  "new_classifier_fits": 6,
+  "new_score_rows": 573696,
+  "config_unchanged": true
+}

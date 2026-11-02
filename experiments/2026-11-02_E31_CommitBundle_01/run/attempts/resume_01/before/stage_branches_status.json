@@ -1,0 +1,6 @@
+{
+  "status": "FAILED",
+  "error": "RuntimeError('Resource stop: disk=26.10GiB, available RAM=0.67GiB')",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\run_experiment.py\", line 273, in main\n    branches(config)\n  File \"C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\run_experiment.py\", line 248, in branches\n    last_part_sha256=digest(part),resources=resource_check(config)))\n                                            ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\run_experiment.py\", line 46, in resource_check\n    raise RuntimeError(f\"Resource stop: disk={free:.2f}GiB, available RAM={available:.2f}GiB\")\nRuntimeError: Resource stop: disk=26.10GiB, available RAM=0.67GiB\n",
+  "seconds": 5467.228020191193
+}

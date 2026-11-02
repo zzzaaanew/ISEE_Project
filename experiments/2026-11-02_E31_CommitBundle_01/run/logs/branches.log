@@ -1,0 +1,49 @@
+[resume] 1 committed origins
+[origin 2/63] 8928 complete, 134.4s; {'A': 21, 'B': 21, 'C': 14, 'D': 14}
+[origin 3/63] 9216 complete, 130.3s; {'A': 21, 'B': 21, 'C': 14, 'D': 14}
+[origin 4/63] 9504 complete, 125.4s; {'A': 21, 'B': 21, 'C': 14, 'D': 14}
+[origin 5/63] 9792 complete, 1749.4s; {'A': 21, 'B': 21, 'C': 14, 'D': 14}
+[origin 6/63] 10080 complete, 182.6s; {'A': 21, 'B': 21, 'C': 21, 'D': 21}
+[origin 7/63] 10368 complete, 79.9s; {'A': 21, 'B': 21, 'C': 21, 'D': 21}
+[origin 8/63] 10656 complete, 83.7s; {'A': 21, 'B': 21, 'C': 14, 'D': 14}
+[origin 9/63] 10944 complete, 85.9s; {'A': 21, 'B': 21, 'C': 14, 'D': 14}
+[origin 10/63] 11232 complete, 83.2s; {'A': 21, 'B': 21, 'C': 14, 'D': 14}
+[origin 11/63] 11520 complete, 82.8s; {'A': 21, 'B': 21, 'C': 21, 'D': 21}
+[origin 12/63] 11808 complete, 77.6s; {'A': 21, 'B': 21, 'C': 21, 'D': 21}
+[origin 13/63] 12096 complete, 84.2s; {'A': 21, 'B': 21, 'C': 14, 'D': 14}
+[origin 14/63] 12384 complete, 71.7s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 15/63] 12672 complete, 72.4s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 16/63] 12960 complete, 71.1s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 17/63] 13248 complete, 101.4s; {'A': 21, 'B': 21, 'C': 7, 'D': 14}
+[origin 18/63] 13536 complete, 117.6s; {'A': 21, 'B': 21, 'C': 14, 'D': 14}
+[origin 19/63] 13824 complete, 155.1s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 20/63] 14112 complete, 147.7s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 21/63] 14400 complete, 68.4s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 22/63] 14688 complete, 70.3s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 23/63] 14976 complete, 82.6s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 24/63] 15264 complete, 107.4s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 25/63] 15552 complete, 99.4s; {'A': 21, 'B': 21, 'C': 14, 'D': 14}
+[origin 26/63] 15840 complete, 67.8s; {'A': 21, 'B': 21, 'C': 14, 'D': 14}
+[origin 27/63] 16128 complete, 70.0s; {'A': 21, 'B': 21, 'C': 14, 'D': 7}
+[origin 28/63] 16416 complete, 66.1s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 29/63] 16704 complete, 70.6s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 30/63] 16992 complete, 137.8s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 31/63] 17280 complete, 99.5s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 32/63] 17568 complete, 94.2s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 33/63] 17856 complete, 76.5s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 34/63] 18144 complete, 72.1s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 35/63] 18432 complete, 69.8s; {'A': 21, 'B': 21, 'C': 7, 'D': 7}
+[origin 36/63] 18720 complete, 120.4s; {'A': 21, 'B': 21, 'C': 14, 'D': 7}
+[origin 37/63] 19008 complete, 175.0s; {'A': 21, 'B': 21, 'C': 14, 'D': 14}
+[origin 38/63] 19296 complete, 164.5s; {'A': 21, 'B': 21, 'C': 7, 'D': 14}
+Traceback (most recent call last):
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\experiments\2026-11-02_ADST_Falcon_Holdout_01\run_experiment.py", line 285, in <module>
+    main()
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\experiments\2026-11-02_ADST_Falcon_Holdout_01\run_experiment.py", line 273, in main
+    branches(config)
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\experiments\2026-11-02_ADST_Falcon_Holdout_01\run_experiment.py", line 248, in branches
+    last_part_sha256=digest(part),resources=resource_check(config)))
+                                            ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\이준호\Desktop\Archive\연구 관련 프로젝트\IISE 논문 준비 프로젝트\ISEE_Project_GitHubBase\experiments\2026-11-02_ADST_Falcon_Holdout_01\run_experiment.py", line 46, in resource_check
+    raise RuntimeError(f"Resource stop: disk={free:.2f}GiB, available RAM={available:.2f}GiB")
+RuntimeError: Resource stop: disk=26.10GiB, available RAM=0.67GiB

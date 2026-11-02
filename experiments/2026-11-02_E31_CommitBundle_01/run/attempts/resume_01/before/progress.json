@@ -1,0 +1,20 @@
+{
+  "stage": "FAILED_RESOURCE_STOP",
+  "completed": 39,
+  "total": 63,
+  "origin": 19584,
+  "last_origin_seconds": null,
+  "train_days": {
+    "A": 21,
+    "B": 21,
+    "C": 7,
+    "D": 14
+  },
+  "rows_total": 22374144,
+  "last_part_sha256": "033845b3f9127f787fa9ea52cc09da16ae3b951d66ed7c74b026ecdd66045383",
+  "resources": null,
+  "last_origin_seconds_note": "not persisted for final committed origin; prior timing archived",
+  "resource_stop_available_memory_gib": 0.67,
+  "reconciliation": "status_reconciliation.json",
+  "restarted": false
+}

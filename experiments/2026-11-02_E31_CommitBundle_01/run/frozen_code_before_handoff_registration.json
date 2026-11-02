@@ -1,0 +1,22 @@
+{
+  "sha256": {
+    "data_adapter.py": "e98fdfc06ce92cd83cb804a35a3c8332936ac929aa4df9581a96d1a2fa55c3b8",
+    "evaluate_scores.py": "e67806156341a59a972de4590f4ba49fb0243577fad0cbaa1e1474e6277a2feb",
+    "run_experiment.py": "02bfdad2610e2fdb9eddfebafc215374dfdf83e818e01479e8c92a7855738e3e",
+    "source_bridge.py": "37096a358809a7bb1f86a340e439398d8b1cedc1bcf06ee85dc276f44f2b66be",
+    "supervise.py": "387abda72a835a3e6ed4da2f878365063be152971b6903c0c73595381ccbefa7",
+    "test_contract.py": "831983e24d2719b5c745979e745d4190cd43e1c4427bf64d038ca54618786e71",
+    "verify_run.py": "ef471f3705187ab4a1f23e1b6b173d8baa9c84133054e72c9d9c51b9df91be70",
+    "config.json": "7e92dbe232df95e1bd4f3620045a92183d25f3ad7081e5768b7d8a4f38f0ac44",
+    "sources\\oct26_benchmark.py": "768366170490946d47b570054e591168061e2de1d64c1e2cf3dec78c1c3e4ffb",
+    "sources\\oct26_unified.py": "887763bd35572b03e559df9812704528bc956f417ed321f802fbe991e2383d74",
+    "sources\\run_bidirectional_adst_fusion.py": "c20380294f7c7e6b1543fe48454d8540580eb8ed72cca233a2e1385b50143856",
+    "sources\\run_experiment11_30m_han_adst_b1_light_cascade_b2_sliding.py": "3d35ccce2d6a8d945ae072e744220ecf70eab101f5948e7ebcfb020fa7375d1a",
+    "sources\\run_experiment14_30m_matured_adst_moe.py": "36385d0722092c07ecdeeded6c1a3d43301abddd4a66d4e572b2be4263b40d40"
+  },
+  "created_unix": 1793582792.2049744,
+  "local_head": "42191204ff0eecfa2e0250c7da232713781203a1",
+  "remote_source_commit": "1877e09f81d47753fccbb55ba9acb4fb8372b2ed",
+  "amended_before_branch_training_unix": 1793582978.9814596,
+  "evaluation_amendment_unix": 1793583590.3838885
+}

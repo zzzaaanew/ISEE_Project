@@ -1,0 +1,20 @@
+{
+  "status": "RUNNING",
+  "stage": "branches",
+  "worker_pid": 82340,
+  "supervisor_pid": 50920,
+  "stage_elapsed_seconds": 2715.5421953201294,
+  "completed_stages": [
+    {
+      "stage": "prepare",
+      "exit_code": 0,
+      "seconds": 480.25647377967834
+    },
+    {
+      "stage": "pilot",
+      "exit_code": 0,
+      "seconds": 150.10377097129822
+    }
+  ],
+  "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\logs\\branches.log"
+}

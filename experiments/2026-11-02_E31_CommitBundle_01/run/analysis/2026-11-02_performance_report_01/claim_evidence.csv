@@ -1,0 +1,11 @@
+﻿claim,source,condition,status,verification,action
+Pipeline completed with 63 origins and 378 classifier fits,final_validation.json,E31,confirmed,PASS plus persisted tapes,retain
+Current AP macro mean equally weights a one-point origin,metrics_by_origin.csv; evaluate_scores.py:167,5m terminal origin23616,confirmed,1992 rows; 1/15 macro weight vs1/3454 time weight,report robustness; do not silently replace metric
+D is consistently best,metrics_summary.csv; robustness_5m.csv,four arm comparison,unsupported,rank changes by split/metric/aggregation,withhold claim
+Inertia decreases ranking churn,metrics_summary.csv,D full and terminal fixed main,confirmed,47.85% and48.48% lower churn; event capture also lower,state tradeoff
+Fusion has general predictive advantage over B1,metrics_summary.csv; robustness_5m.csv,B1-inertia vs same-arm fusion,unsupported,all four full macro AP lower after fusion,"audit B2, calibration and fusion"
+Cap0.60 is optimal,metrics_summary.csv,D development sensitivity,unsupported,cap1 better AP/R/churn but lower onset capture,specify objective before selecting cap
+ADST reduces training compute,fit_trace.csv,same63 fits per B1 arm,unsupported,fewer samples; recorded fit wall time higher,measure iterations and cost under controlled conditions
+Transient peaks suppressed by inertia explain lost onsets,metrics_summary.csv,onset capture/churn tradeoff,hypothesis,no per-event diagnostic completed,inspect event traces under matched alert budget
+New unseen generalization established,evaluation_manifest.json,retrospective terminal,unsupported,previously inspected trace; online mature-label updates,use retrospective wording
+Re-evaluate aggregation from saved scores without branch retraining,branch_scores; fusion_scores,future protocol amendment,proposed,existing tapes available; not executed here,separate approval before replacing publication metrics

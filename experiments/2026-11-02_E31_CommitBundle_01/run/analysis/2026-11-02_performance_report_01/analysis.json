@@ -1,0 +1,72 @@
+{
+  "created_kst": "2026-11-02T16:30:03+09:00",
+  "goals": [
+    "G-004",
+    "G-007",
+    "G-008"
+  ],
+  "input_sha256": {
+    "metrics_summary.csv": "b5eea1a9ba5c1f7b7cbc5e00e0b42ec88f65bf28ebde2695e4fa8025110a2c0d",
+    "metrics_by_origin.csv": "64e785661fa39fd5b71bda262434d7acd67ae5670bbc4036dcb66f82225f3915",
+    "fit_trace.csv": "530b86462bef907dbdd765df91c9ad633a883d1bcf57ff9c4e885f2a62194309",
+    "config.json": "7e92dbe232df95e1bd4f3620045a92183d25f3ad7081e5768b7d8a4f38f0ac44",
+    "split_manifest.json": "2bb4ecec2b4ff723b059f7888f55bcb6954f40f3493597d7ae9285b2ad3ba508",
+    "evaluation_manifest.json": "ae33367b8968e09d511f3a27399bd2b09e0487a7e3b7bb2fbdcb6d92666f03c0",
+    "grid_manifest.json": "b83aa7514bdb24d7a6e881bf563fed336daf7f7ed273e95612d87b6d59bd0376",
+    "final_validation.json": "fa9eddecf6817d035a7aa1cf0d618f9fe239224360577bf8aa97809cc96d6773",
+    "evaluate_scores.py": "e67806156341a59a972de4590f4ba49fb0243577fad0cbaa1e1474e6277a2feb",
+    "SPEC.md": "695a989bdc8d7ebff3d7aa7482f1da6c1f4164a7d4bbf29da9b236508bae091c",
+    "cache\\grid.npz": "fb4386c7ce202640df2a62d310562925b17966f34d6d2e4cf5b4b71052d9ac79",
+    "cache\\label_eligible.npy": "1e7d18f22fe7d08e6ce543ccbe3b4451daaca91e409c17a6da015b5ccef0eeee"
+  },
+  "source_metrics_unchanged": true,
+  "branch_refits": 0,
+  "new_inference": 0,
+  "posthoc_diagnostics": true,
+  "primary_metric_replaced": false,
+  "model_selected": false,
+  "original_aggregation_verified": {
+    "groups": 114,
+    "max_AP_error": 3.469446951953614e-18,
+    "max_recall_error": 0.0
+  },
+  "tiny_block_witness": {
+    "origin_bin": 23616,
+    "valid_points": 1,
+    "gpu_time_rows": 1992,
+    "positive_gpu_time_rows": 57,
+    "score_time_utc": "2023-08-07T09:35:00+00:00",
+    "C_fusion_AP": 0.09766278187535998,
+    "macro_terminal_weight": 0.06666666666666667,
+    "time_weight": 0.00028951939779965256,
+    "absent_from_30minute_sample": true
+  },
+  "random_reference": {
+    "expected_random_recall_at100": 0.050200803212851405,
+    "independent_5min_random_onset_capture": 0.9999996195250929,
+    "expected_random_new_entries_per_hour": 1139.7590361445784,
+    "actual_random_experiment_run": false
+  },
+  "main_findings": [
+    "macro AP sensitive to tiny partial origin",
+    "no consistent D superiority",
+    "inertia stability/capture tradeoff",
+    "Fusion gain and cap optimality unsupported"
+  ],
+  "statistical_significance_test_run": false,
+  "outputs": [
+    "cadence_comparison.csv",
+    "cap_sensitivity_development_D.csv",
+    "claim_evidence.csv",
+    "factorial_contrasts_5m.csv",
+    "inertia_effects_5m.csv",
+    "main_fusion_5m.csv",
+    "paired_origin_AP.csv",
+    "population.csv",
+    "robustness_5m.csv",
+    "terminal_models_5m.csv",
+    "training_cost.csv"
+  ],
+  "report_markdown": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\실험 기록\\2026-11-02_E31_성능분석보고서.md",
+  "report_html": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\실험 기록\\2026-11-02_E31_성능분석보고서.html"
+}

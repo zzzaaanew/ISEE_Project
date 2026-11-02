@@ -1,0 +1,16 @@
+test_basic30_matches_direct_windows (__main__.Contract.test_basic30_matches_direct_windows) ... ok
+test_chunked_features_equal_frozen_full_grid (__main__.Contract.test_chunked_features_equal_frozen_full_grid) ... ok
+test_classifiers_fit_and_predict (__main__.Contract.test_classifiers_fit_and_predict) ... ok
+test_controller_actually_changes_window (__main__.Contract.test_controller_actually_changes_window) ... ok
+test_inertia_stream_causality_and_legacy_parity (__main__.Contract.test_inertia_stream_causality_and_legacy_parity) ... ok
+test_mmap_release_preserves_values (__main__.Contract.test_mmap_release_preserves_values) ... ok
+test_noncritical_monitor_failure_does_not_abort (__main__.Contract.test_noncritical_monitor_failure_does_not_abort) ... ok
+test_purge_and_feedback_boundaries (__main__.Contract.test_purge_and_feedback_boundaries) ... ok
+test_research_methods_and_config_unchanged (__main__.Contract.test_research_methods_and_config_unchanged) ... ok
+test_resume_completion_preserves_old_failure_record (__main__.Contract.test_resume_completion_preserves_old_failure_record) ... ok
+test_windows_monitor_lock_old_fails_new_retries (__main__.Contract.test_windows_monitor_lock_old_fails_new_retries) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.340s
+
+OK

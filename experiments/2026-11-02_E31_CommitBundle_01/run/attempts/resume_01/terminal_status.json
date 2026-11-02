@@ -1,0 +1,171 @@
+{
+  "status": "COMPLETED",
+  "stage": "final_validation",
+  "completed_origins": 63,
+  "attempt_id": "resume_01",
+  "completed_stages": [
+    {
+      "stage": "origin_040",
+      "exit_code": 0,
+      "seconds": 105.67110705375671,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_040.log"
+    },
+    {
+      "stage": "first_resume_validation",
+      "exit_code": 0,
+      "seconds": 5.046940326690674,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\first_resume_validation.log"
+    },
+    {
+      "stage": "origin_041",
+      "exit_code": 0,
+      "seconds": 261.9603593349457,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_041.log"
+    },
+    {
+      "stage": "origin_042",
+      "exit_code": 0,
+      "seconds": 150.84064054489136,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_042.log"
+    },
+    {
+      "stage": "origin_043",
+      "exit_code": 0,
+      "seconds": 276.64182806015015,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_043.log"
+    },
+    {
+      "stage": "origin_044",
+      "exit_code": 0,
+      "seconds": 190.68679857254028,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_044.log"
+    },
+    {
+      "stage": "origin_045",
+      "exit_code": 0,
+      "seconds": 205.69806909561157,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_045.log"
+    },
+    {
+      "stage": "origin_046",
+      "exit_code": 0,
+      "seconds": 241.38703799247742,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_046.log"
+    },
+    {
+      "stage": "origin_047",
+      "exit_code": 0,
+      "seconds": 225.86118745803833,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_047.log"
+    },
+    {
+      "stage": "origin_048",
+      "exit_code": 0,
+      "seconds": 225.86971926689148,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_048.log"
+    },
+    {
+      "stage": "origin_049",
+      "exit_code": 0,
+      "seconds": 215.8450469970703,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_049.log"
+    },
+    {
+      "stage": "origin_050",
+      "exit_code": 0,
+      "seconds": 210.85726308822632,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_050.log"
+    },
+    {
+      "stage": "origin_051",
+      "exit_code": 0,
+      "seconds": 150.57292246818542,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_051.log"
+    },
+    {
+      "stage": "origin_052",
+      "exit_code": 0,
+      "seconds": 75.24963736534119,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_052.log"
+    },
+    {
+      "stage": "origin_053",
+      "exit_code": 0,
+      "seconds": 85.35998821258545,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_053.log"
+    },
+    {
+      "stage": "origin_054",
+      "exit_code": 0,
+      "seconds": 75.22762656211853,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_054.log"
+    },
+    {
+      "stage": "origin_055",
+      "exit_code": 0,
+      "seconds": 140.7047848701477,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_055.log"
+    },
+    {
+      "stage": "origin_056",
+      "exit_code": 0,
+      "seconds": 226.11347770690918,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_056.log"
+    },
+    {
+      "stage": "origin_057",
+      "exit_code": 0,
+      "seconds": 125.43074226379395,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_057.log"
+    },
+    {
+      "stage": "origin_058",
+      "exit_code": 0,
+      "seconds": 180.74640822410583,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_058.log"
+    },
+    {
+      "stage": "origin_059",
+      "exit_code": 0,
+      "seconds": 319.94931626319885,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_059.log"
+    },
+    {
+      "stage": "origin_060",
+      "exit_code": 0,
+      "seconds": 191.1674644947052,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_060.log"
+    },
+    {
+      "stage": "origin_061",
+      "exit_code": 0,
+      "seconds": 430.748007774353,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_061.log"
+    },
+    {
+      "stage": "origin_062",
+      "exit_code": 0,
+      "seconds": 251.5714509487152,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_062.log"
+    },
+    {
+      "stage": "origin_063",
+      "exit_code": 0,
+      "seconds": 190.84760904312134,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\origin_063.log"
+    },
+    {
+      "stage": "evaluate",
+      "exit_code": 0,
+      "seconds": 1381.1101384162903,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\evaluate.log"
+    },
+    {
+      "stage": "final_validation",
+      "exit_code": 0,
+      "seconds": 45.415703773498535,
+      "log": "C:\\Users\\이준호\\Desktop\\Archive\\연구 관련 프로젝트\\IISE 논문 준비 프로젝트\\ISEE_Project_GitHubBase\\experiments\\2026-11-02_ADST_Falcon_Holdout_01\\attempts\\resume_01\\logs\\final_validation.log"
+    }
+  ],
+  "updated_unix": 1793602844.774992
+}

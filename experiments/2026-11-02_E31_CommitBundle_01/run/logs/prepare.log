@@ -1,0 +1,388 @@
+[grid] util complete
+[grid] temp complete
+[grid] power complete
+[grid] fb complete
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.39s.
+[features] 219/26957 bins
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.26s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.18s.
+[FastGridStore] Rolling L_obs=6h cached in 0.25s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.33s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.38s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.18s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.18s.
+[FastGridStore] Rolling L_obs=6h cached in 0.26s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.35s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.37s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.35s.
+[features] 3099/26957 bins
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.36s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.36s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.36s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.35s.
+[FastGridStore] Rolling L_obs=6h cached in 0.40s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.25s.
+[FastGridStore] Rolling L_obs=6h cached in 0.43s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.39s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.26s.
+[FastGridStore] Rolling L_obs=6h cached in 0.34s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.34s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.34s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.40s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.33s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.39s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.25s.
+[FastGridStore] Rolling L_obs=6h cached in 0.44s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.39s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.25s.
+[FastGridStore] Rolling L_obs=6h cached in 0.34s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.38s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.34s.
+[features] 5979/26957 bins
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.34s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.40s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.26s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.26s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.25s.
+[FastGridStore] Rolling L_obs=6h cached in 0.35s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.18s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.33s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[features] 8859/26957 bins
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.34s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.41s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.33s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.18s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.26s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[features] 11739/26957 bins
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.35s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.34s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.25s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.25s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.33s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.26s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.33s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.26s.
+[FastGridStore] Rolling L_obs=6h cached in 0.36s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.41s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.25s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.33s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.18s.
+[FastGridStore] Rolling L_obs=6h cached in 0.33s.
+[features] 14619/26957 bins
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.25s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.33s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.28s.
+[FastGridStore] Rolling L_obs=6h cached in 0.39s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.28s.
+[FastGridStore] Rolling L_obs=6h cached in 0.34s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.24s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.34s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.26s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.26s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.25s.
+[FastGridStore] Rolling L_obs=6h cached in 0.25s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.38s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.35s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[features] 17499/26957 bins
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.34s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.26s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.43s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.36s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.38s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.26s.
+[FastGridStore] Rolling L_obs=6h cached in 0.37s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.36s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[features] 20379/26957 bins
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.33s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.25s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.27s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.26s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.45s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.26s.
+[FastGridStore] Rolling L_obs=6h cached in 0.38s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.27s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.29s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.36s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[features] 23259/26957 bins
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.26s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.35s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.26s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.33s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.26s.
+[FastGridStore] Rolling L_obs=6h cached in 0.36s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.26s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.25s.
+[FastGridStore] Rolling L_obs=6h cached in 0.38s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.35s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.23s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.26s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.28s.
+[FastGridStore] Rolling L_obs=6h cached in 0.40s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.24s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[features] 26139/26957 bins
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.32s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.30s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.20s.
+[FastGridStore] Rolling L_obs=6h cached in 0.71s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.21s.
+[FastGridStore] Rolling L_obs=6h cached in 0.31s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.22s.
+[FastGridStore] Rolling L_obs=6h cached in 0.28s.
+[FastGridStore] Spatial, Peer-Relative & B2 grids built in 0.19s.
+[FastGridStore] Rolling L_obs=6h cached in 0.27s.

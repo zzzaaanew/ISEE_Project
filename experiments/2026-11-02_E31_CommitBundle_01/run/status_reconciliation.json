@@ -1,0 +1,16 @@
+{
+  "audited_at": "2026-11-02T05:01:30.206509+00:00",
+  "experiment_status": "FAILED_RESOURCE_STOP",
+  "checkpoint_origins": 39,
+  "planned_origins": 63,
+  "remaining_origins": 24,
+  "parquet_parts": 39,
+  "saved_gpu_time_rows": 22374144,
+  "committed_estimator_fits": 234,
+  "metadata_rows_verified": true,
+  "old_progress_origins": 38,
+  "old_monitor_status": "RUNNING",
+  "reason": "RuntimeError('Resource stop: disk=26.10GiB, available RAM=0.67GiB')",
+  "supervisor_and_worker_processes_absent_verified": true,
+  "restarted": false
+}
