@@ -354,9 +354,9 @@ def main() -> None:
         engine=engine,
         history_map=history_map,
         gt_matrix=gt_matrix,
-        output_dir=Path("outputs/unified_adst"),
+        output_dir=PROJECT_ROOT / "outputs" / "unified_adst",
     )
-    metrics_df = pd.read_csv(Path("outputs/unified_adst/unified_adst_metrics.csv"))
+    metrics_df = pd.read_csv(PROJECT_ROOT / "outputs" / "unified_adst" / "unified_adst_metrics.csv")
 
     cadence_bins = int(24 * 60 / runner.base.STEP_MINUTES)  # 288 bins per day (5-minute resolution)
     warmup_bins = int(30 * 24 * 60 / runner.base.STEP_MINUTES)
@@ -372,6 +372,8 @@ def main() -> None:
     all_p2_5m = np.zeros((total_5m_bins, engine.num_gpus), dtype=np.float32)
     all_k_5m = np.zeros((total_5m_bins, engine.num_gpus), dtype=np.float32)
     all_gt_5m = np.zeros((total_5m_bins, engine.num_gpus), dtype=bool)
+    all_bins_5m = np.zeros(total_5m_bins, dtype=np.int32)
+    all_lobs_5m = np.zeros(total_5m_bins, dtype=np.int64)
 
     rng = np.random.default_rng(42)
     t0_all = time.time()
@@ -442,21 +444,27 @@ def main() -> None:
         all_p2_5m[s0:s1] = p2
         all_k_5m[s0:s1] = xid_counts[None, :]
         all_gt_5m[s0:s1] = gt_matrix[test_bins_5m]
+        all_bins_5m[s0:s1] = test_bins_5m
+        all_lobs_5m[s0:s1] = best_l_obs
 
         if (origin_idx + 1) % 10 == 0 or origin_idx == n_origins - 1:
             print(f"  [{origin_idx + 1:2d}/{n_origins}] Origins inferred ({(origin_idx + 1) * cadence_bins * engine.num_gpus:,} 5-min rows) in {time.time() - t0_all:.1f}s", flush=True)
 
     # Evaluate both 30-minute (stride=6) and 5-minute (stride=1) cadences across Inertia & Pareto configurations
     summary_rows = []
+    out_dir = PROJECT_ROOT / "outputs" / "unified_adst"
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     for cadence_name, step_min, stride in [("30m (Standard)", 30, 6), ("5m (Blox High-Cadence)", 5, 1)]:
         p1_grid = all_p1_5m[::stride]
         p2_grid = all_p2_5m[::stride]
         k_grid = all_k_5m[::stride]
         gt_grid = all_gt_5m[::stride]
+        bins_grid = all_bins_5m[::stride]
+        lobs_grid = all_lobs_5m[::stride]
 
-        lam_capped = np.minimum(0.60, 1.0 / (k_grid + 1.0))
-        lam_uncapped = 1.0 / (k_grid + 1.0)
+        lam_capped = np.minimum(0.60, 1.0 / (k_grid + 1.0)).astype(np.float32)
+        lam_uncapped = (1.0 / (k_grid + 1.0)).astype(np.float32)
 
         # 1. B1 Standalone (No Inertia)
         m_b1_raw = compute_metrics_and_churn(p1_grid, gt_grid, step_min)
@@ -477,7 +485,7 @@ def main() -> None:
             m_b1_kl = compute_metrics_and_churn(q1, gt_grid, step_min)
             summary_rows.append({"cadence": cadence_name, "model": f"B1 + KL-Inertia (γ={gamma}, h={hl}h)", "gamma": gamma, "half_life_h": hl, **m_b1_kl})
 
-            pf_kl = lam_capped * q1 + (1.0 - lam_capped) * p2_grid
+            pf_kl = (lam_capped * q1 + (1.0 - lam_capped) * p2_grid).astype(np.float32)
             m_pf_kl = compute_metrics_and_churn(pf_kl, gt_grid, step_min)
             summary_rows.append({"cadence": cadence_name, "model": f"5-Step Integrated Dual (Cap 0.60 + KL γ={gamma}, h={hl}h)", "gamma": gamma, "half_life_h": hl, **m_pf_kl})
 
@@ -486,9 +494,37 @@ def main() -> None:
                 m_uncap = compute_metrics_and_churn(pf_uncap, gt_grid, step_min)
                 summary_rows.append({"cadence": cadence_name, "model": f"Uncapped Pareto (No Cap + KL γ={gamma}, h={hl}h)", "gamma": gamma, "half_life_h": hl, **m_uncap})
 
+                # Export Top-100 Risk Tape Parquet for Blox Scheduler (5m & 30m)
+                T_s, G_s = pf_kl.shape
+                top_order = np.argsort(-pf_kl, axis=1, kind="stable")[:, :100]
+                step_idx = np.repeat(np.arange(T_s, dtype=np.int32), 100)
+                gpu_idx = top_order.ravel()
+                rank_col = np.tile(np.arange(1, 101, dtype=np.uint16), T_s)
+                times_ns = engine.bin_start_ns[bins_grid[step_idx]]
+
+                tape_df = pd.DataFrame({
+                    "decision_time": pd.to_datetime(times_ns, unit="ns", utc=True),
+                    "gpu_id": engine.gpu_ids[gpu_idx],
+                    "fused_risk": pf_kl[step_idx, gpu_idx],
+                    "b1_risk": q1[step_idx, gpu_idx],
+                    "b2_risk": p2_grid[step_idx, gpu_idx],
+                    "b1_raw_risk": p1_grid[step_idx, gpu_idx],
+                    "pareto_lambda": lam_capped[step_idx, gpu_idx],
+                    "risk_rank": rank_col,
+                    "L_train_days": np.full(len(step_idx), 21, dtype=np.int64),
+                    "L_obs_hours": lobs_grid[step_idx],
+                    "target_24h": gt_grid[step_idx, gpu_idx].astype(np.uint8),
+                })
+                tape_path = out_dir / f"integrated_5step_risk_tape_{step_min}m.parquet"
+                tape_df.to_parquet(tape_path, index=False, compression="zstd")
+                print(f"[Saved Risk Tape] {tape_path} ({len(tape_df):,} rows, {step_min}-min cadence)", flush=True)
+
     res_df = pd.DataFrame(summary_rows)
-    out_path = PROJECT_ROOT / "outputs" / "unified_adst" / "integrated_5step_30m_5m_benchmark.csv"
+    out_path = out_dir / "integrated_5step_30m_5m_benchmark.csv"
     res_df.to_csv(out_path, index=False)
+    (PROJECT_ROOT / "ML" / "reports" / "integrated_5step_30m_5m_benchmark.csv").write_text(
+        out_path.read_text(encoding="utf-8"), encoding="utf-8"
+    )
 
     print("\n" + "=" * 115)
     print(" === 5-STEP INTEGRATED ARCHITECTURE BENCHMARK (30-MIN & 5-MIN BLOX CADENCE, 1,992 GPUS, 63 ORIGINS) ===")
